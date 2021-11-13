@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const db = require('./config/keys').mongoURI;
 mongoose
-  .connect(db, { useNewUrlParser: true })
-  .then(() => console.log("Connected to MongoDB successfully"))
-  .catch(err => console.log(err));
+    .connect(db, { useNewUrlParser: true })
+    .then(() => console.log("Successfully Connected to DB"))
+    .catch(err => console.log(err));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
