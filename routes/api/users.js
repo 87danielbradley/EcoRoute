@@ -5,10 +5,19 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login")
 
 router.get("/test", (request, response) => response.json({msg: "The users route is working"}));
 
 router.post('/register', (request, response) => {
+    const { errors, isValid } = validateRegisterInput(request.body);
+
+    if(!isValid){
+        return response.status(400).json(errors);
+    }
+
+
     //Checking for duplicate emails
     User.findOne({ email: request.body.email})
         .then(user => {
@@ -37,6 +46,12 @@ router.post('/register', (request, response) => {
         
 })
 router.post('/login', (request, response) => {
+    const { errors, isValid } = validateLoginInput(request.body);
+
+    if (!isValid){
+        return response.status(400).json(errors);
+    }
+
     const email = request.body.email;
     const password = request.body.password;
 
