@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
-const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
+const passport = require('passport');
 
 router.get("/test", (request, response) => response.json({msg: "The users route is working"}));
 
@@ -34,31 +35,51 @@ router.post('/register', (request, response) => {
             }
         })
         
-    })
-    router.post('/login', (request, response) => {
-        const email = request.body.email;
-        const password = request.body.password;
+})
+router.post('/login', (request, response) => {
+    const email = request.body.email;
+    const password = request.body.password;
 
-        User.findOne({email})
-            .then(user => {
-                if(!user) {
-                    return response.status(404).json({ email: "This email has not been registered."});
-                }
-                bcrypt.compare(password, user.password)
-                    .then( isMatch => {
-                        if(isMatch) {
-                           const payload = {
-                               id: user.id,
-                               username: user.username,
-                               email: user.email
-                           }
-                        } else {
-                            return response.status(400).json({password: "Password and email combination is incorrect"});
+    User.findOne({email})
+        .then(user => {
+            if(!user) {
+                return response.status(404).json({ email: "This email has not been registered."});
+            }
+            bcrypt.compare(password, user.password)
+                .then( isMatch => {
+                    if(isMatch) {
+                        const payload = {
+                            id: user.id,
+                            username: user.username,
+                            email: user.email
                         }
-                    })
-            })
-    })
+                        jwt.sign(
+                            payload,
+                            keys.secretOrKey,
+                            {expiresIn: 3600},
+                            (error, token) => {
+                                response.json({
+                                    success: true,
+                                    token: "Bearer " + token
+                                })
+                            }
 
+                        )
+                    } else {
+                        return response.status(400).json({password: "Password and email combination is incorrect"});
+                    }
+                })
+        })
+})
+
+//private auth route
+router.get('/current', passport.authenticate('jwt', {session: false}), (request, response) => {
+  response.json({
+      id: request.user.id,
+      username: request.user.username,
+      email: request.user.email
+  });
+})
 
 
 module.exports = router;
