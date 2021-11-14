@@ -37,6 +37,10 @@ export const login = (formUser) => dispatch => APIutil.login(formUser)
         const decoded = jwt_decode(token);
         dispatch(recieveCurrentUser(decoded))
     })
-
+export const logout = () => dispatch => {
+    localStorage.removeItem("jwtToken");
+    APIutil.setAuthToken(false);
+    dispatch(logoutCurrentUser())
+}
 
 // export const logout = (formUser) => dispatch => APIutil.signup(formUser)
