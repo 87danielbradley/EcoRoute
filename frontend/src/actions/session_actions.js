@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode"
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECIEVE_USER_LOGOUT = "RECIEVE_USER_LOGOUT";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const RESET_SESSION_ERRORS = "RESET_SESSION_ERRORS";
+// export const RESET_SESSION_ERRORS = "RESET_SESSION_ERRORS";
 export const RECIEVE_USER_SIGN_IN = "RECIEVE_USER_SIGN_IN";
 
 
@@ -36,6 +36,9 @@ export const login = (formUser) => dispatch => APIutil.login(formUser)
         APIutil.setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(recieveCurrentUser(decoded))
+    })
+    .catch(error => {
+        dispatch(receiveSessionErrors(error.response.data));
     })
 export const logout = () => dispatch => {
     localStorage.removeItem("jwtToken");

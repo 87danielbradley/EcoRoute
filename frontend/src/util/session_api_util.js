@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const signup = (user) => (
-    axios.post('api/users/register', user)
+export const signup = (formUser) => (
+    axios.post('api/users/register', formUser)
 );
 
-export const login = (user) => (
-    axios.post('/api/users/login', user)
+export const login = (formUser) => (
+    axios.post('/api/users/login', formUser)
 );
 
 export const setAuthToken = token => {
