@@ -21,9 +21,12 @@ const Modal = ({modal, closeModal}) => {
             return null;
     }
     return (
-        <div className="modal-background" onClick={closeModal}>
-            { component }
-        </div>
+        <div className="modal-overlay" onClick={closeModal}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+                <button onClick={closeModal} id="modal-close-button">&times;</button>
+                { component }
+            </div>
+        </div>,
     );
 };
 
