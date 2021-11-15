@@ -25,8 +25,9 @@ const receiveSessionErrors = (errors) => ({
 })
 
 export const signup = (formUser) => dispatch => APIutil.signup(formUser)
-    .then( () => dispatch(recieveUserSignIn()))
-    .catch(error => dispatch(receiveSessionErrors(error.response.data)))
+    .then( () => dispatch(recieveUserSignIn()),
+    (error) => dispatch(receiveSessionErrors(error.response.data)))
+    // .catch(error => dispatch(receiveSessionErrors(error.response.data)))
 
 
 export const login = (formUser) => dispatch => APIutil.login(formUser)
