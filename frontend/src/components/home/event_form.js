@@ -63,7 +63,7 @@ export default class EventForm extends Component {
                 
               <DatePicker date={date} onDateChange={this.onDateChange}/>
           </FormControl>
-          <Button size="small">Submit</Button>
+          <Button size="small">Add Event</Button>
 
         </CardContent>
         
