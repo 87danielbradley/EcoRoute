@@ -4,8 +4,8 @@ import React from 'react';
 import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
-// import accessToken from require('./config/keys').mapbox;
-mapboxgl.accessToken = "pk.eyJ1IjoiODdkYW5pZWxicmFkbGV5IiwiYSI6ImNrYXRwMHhseDBzd28zMHBiaXg5MTFzZDMifQ.IiD55RpwRZLXQxddLXVxEw"
+const accessToken = require('../../config/keys').mapbox;
+mapboxgl.accessToken = accessToken
 
 export default class MapboxView extends React.PureComponent{
     constructor(props) {
