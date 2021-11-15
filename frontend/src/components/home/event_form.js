@@ -43,7 +43,6 @@ export default class EventForm extends Component {
                   onChange={(e)=> this.onTextFieldChange("title", e)}
                   id="standard-required"
                   label="Event Title"
-                  defaultValue=""
                   variant="filled"
                   placeholder="Add Title"
                   value={title}
@@ -53,7 +52,6 @@ export default class EventForm extends Component {
                 onChange={(e)=> this.onTextFieldChange("guests", e)}
                 id="standard-required"
                 label="Add guests"
-                defaultValue=""
                 variant="filled"
                 placeholder="Add guests"
                 value={guest}

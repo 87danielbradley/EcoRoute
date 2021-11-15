@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import { fetchEvents } from "../../actions/event_actions";
+import { fetchUserEvents } from "../../actions/event_actions";
 import EventIndex from "./event_index";
 
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchEvents: () => dispatch(fetchEvents())
+        fetchUserEvents: () => dispatch(fetchUserEvents())
     }
 
 }

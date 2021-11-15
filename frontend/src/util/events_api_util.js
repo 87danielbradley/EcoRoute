@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getEvents = () => {
-    return axios.get('api/events')
-};
+// export const getEvents = () => {
+//     return axios.get('api/events')
+// };
 export const getUserEvents = userId => {
     return axios.get(`api/events/user/${userId}`)
 };
@@ -16,7 +16,7 @@ export const updateEvent = event => {
 }
 
 export const deleteEvent = eventId => {
-    return axios.delete(`api/eventId/${eventId}`)
+    return axios.delete(`api/events/${eventId}`)
 }
 
 

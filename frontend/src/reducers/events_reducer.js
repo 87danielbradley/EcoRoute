@@ -1,21 +1,23 @@
-import { RECEIVE_ALL_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/event_actions";
+import { RECEIVE_USER_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/event_actions";
 
 const initialState = {
-    
-  1: {
-    id: 1,
+    all: [{
     title: 'Beethoven Concert',
+    category: 'Music',
     date: 'November 24, 2021',
     time: '2.00 pm',
     location: "Maine"
   },
-  2: {
-    id: 2,
-    title: 'Dog Show',
-    date: 'with shampoo',
-    time: '3,.00 pm'
+  
+  {
+   title: 'Dinner Pary',
+    category: '',
+    date: 'November 24, 2021',
+    time: '2.00 pm',
+    location: "Massachusetts"
   
     }
+] 
 }
 
 const EventsReducer = (oldState = initialState, action) => {
@@ -23,7 +25,7 @@ const EventsReducer = (oldState = initialState, action) => {
     let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
-        case RECEIVE_ALL_EVENTS:
+        case RECEIVE_USER_EVENTS:
             return action.events;
 
         case RECEIVE_EVENT:

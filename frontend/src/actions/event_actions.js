@@ -1,14 +1,14 @@
 import * as APIUtil from '../util/events_api_util';
 
-export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
+// export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
 
-export const receiveAllEvents = events => ({
-    type: RECEIVE_ALL_EVENTS,
-    events
-})
+// export const receiveAllEvents = events => ({
+//     type: RECEIVE_ALL_EVENTS,
+//     events
+// })
 
 
 export const receiveUserEvents = events => ({
@@ -27,14 +27,14 @@ export const removeEvent = eventId => ({
 })
 
 
-export const fetchEvents = () => dispatch => {
-    return APIUtil.getEvents()
-    .then(events => dispatch(receiveAllEvents(events)))
-    .catch(error => console.log(error))
-}
+// export const fetchEvents = () => dispatch => {
+//     return APIUtil.getEvents()
+//     .then(events => dispatch(receiveAllEvents(events)))
+//     .catch(error => console.log(error))
+// }
 export const fetchUserEvents = (userId) => dispatch => {
     return APIUtil.getUserEvents(userId)
-    .then(event => dispatch(receiveEvent(event)))
+    .then(events => dispatch(receiveEvent(events)))
     .catch(error => console.log(error))
 }
 export const createAnEvent = (event) => dispatch => {
