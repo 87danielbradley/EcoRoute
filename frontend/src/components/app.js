@@ -6,6 +6,7 @@ import HomePage from "./home/home_page";
 import NavBarContainer from './navbar/navbar_container'
 import SignupContainer from "./session/signup_container";
 import LoginContainer from "./session/login_container"
+import MessagesContainer from "./messages/messages_container"
 
 const App = () => (
     <div>
@@ -16,6 +17,7 @@ const App = () => (
             <AuthRoute exact path="/" component={HomePage} />
             <AuthRoute path="/login" component={LoginContainer} />
             <AuthRoute path="/signup" component={SignupContainer}/>
+            <ProtectedRoute path="/messages" component={MessagesContainer} />
         </Switch>
     </div>
 )

@@ -7,3 +7,6 @@ const SessionReducer = combineReducers({
 })
 
 export default SessionReducer;
+
+
+// This file is currently not being referenced.  May be consolidated at some point.

@@ -129,7 +129,7 @@ class SessionForm extends React.Component{
                         {this.props.formType === 'Sign up'?
                             <div className="form-item">
                             <input 
-                                type="text"
+                                type="password"
                                 className="form-item form-input"
                                 placeholder="Confirm Password"
                                 value={this.state.password2}
