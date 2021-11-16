@@ -22,7 +22,18 @@ const EventSchema = new Schema(
             default: Date.now
         },
 
+        attendees: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+
+
         hidden: Boolean
+    },
+    {
+        timestamps: true
     }
 )
 
