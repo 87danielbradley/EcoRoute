@@ -34,29 +34,20 @@ class EventForm extends Component {
 
     createEventHandler = (e) => {
       e.preventDefault()
-      // const {title, category, user, attendees, date} = this.state;
-      // const currentEvent =    {
-      //   title: '',
-      //   category: 'Music',
-      //   user: 2,
-      //   attendees, //this.state.attendees,
-      //   _id: 1,
-      //   date,
-      // }
-      // console.log(currentEvent);
-
+   
       this.props.action(this.state);
 
     }
 
     onOptionsChange = (options) => {
+      
       this.setState({attendees: options})
-      console.log(this.state.attendees)
+     
     }
-
+    
     render() {
       // debugger
-
+        console.log(this.state.attendees)
         const {title, attendees, date, category} = this.state;
     
         return (

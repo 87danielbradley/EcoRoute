@@ -42,9 +42,13 @@ export const fetchUserEvents = (userId) => dispatch => {
     .catch(error => console.log(error))
 }
 export const createAnEvent = (event) => dispatch => {
-    return APIUtil.createEvent(event)
-    .then(event => dispatch(receiveEvent(event)))
-    .catch(error => console.log(error))
+    const fakeCreate = Promise.resolve(event)
+    fakeCreate.then(event => dispatch(receiveEvent(event)))
+    
+    
+    // return APIUtil.createEvent(event)
+    // .then(event => dispatch(receiveEvent(event)))
+    // .catch(error => console.log(error))
 }
 export const updateAnEvent = (event) => dispatch => {
     return APIUtil.updateEvent(event)
