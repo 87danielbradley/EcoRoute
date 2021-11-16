@@ -33,8 +33,12 @@ export const removeEvent = eventId => ({
 //     .catch(error => console.log(error))
 // }
 export const fetchUserEvents = (userId) => dispatch => {
+    console.log('fetching user events')
     return APIUtil.getUserEvents(userId)
-    .then(events => dispatch(receiveEvent(events)))
+    .then(events => {
+        console.log('succeess',events)
+        dispatch(receiveUserEvents(events))
+    })
     .catch(error => console.log(error))
 }
 export const createAnEvent = (event) => dispatch => {

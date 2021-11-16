@@ -1,43 +1,58 @@
 import { RECEIVE_USER_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/event_actions";
 
 const initialState = {
-    all: [{
+    events: [
+   {
     title: 'Beethoven Concert',
     category: 'Music',
-    date: 'November 24, 2021',
+    user: 2,
+    attendees: [],
+    _id: 1,
+    date: Date.now(),
     time: '2.00 pm',
-    location: "Maine"
   },
   
   {
    title: 'Dinner Pary',
     category: '',
-    date: 'November 24, 2021',
+      user: 25464,
+    attendees: [],
+    _id: 2,
+    date: Date.now(),
     time: '2.00 pm',
-    location: "Massachusetts"
   
     }
-] 
+]
 }
 
-const EventsReducer = (oldState = initialState, action) => {
-    Object.freeze(oldState);
-    let nextState = Object.assign({}, oldState);
+
+const EventsReducer = (state = initialState, action) => {
+    // Object.freeze(oldState);
+    // let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
         case RECEIVE_USER_EVENTS:
-            return action.events;
+            return {
+                ...state,
+                events: action.events
+            }
 
         case RECEIVE_EVENT:
-             nextState[action.event.id] = action.event;
-            return nextState;
+             
+            return {
+                ...state,
+                events: [action.event, ...state.events]
+            };
 
         case REMOVE_EVENT:
-            delete nextState[action.eventId];
-            return nextState;
+           
+            return {
+                ...state,
+                events: state.events.filter(event => action.eventId !== event.id)
+            }
         
         default:
-            return oldState;
+            return state;
     }
 }
 

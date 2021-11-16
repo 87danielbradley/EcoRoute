@@ -15,7 +15,7 @@ export default function DatePicker(props) {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <div className="calendar">
+    <div>
            <DateTimePicker
           label="Date&Time picker"
           value={props.date}

@@ -5,18 +5,21 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import DatePicker from './date_picker';
+import { receiveEvent } from '../../actions/event_actions';
+import { connect } from 'react-redux';
 // import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
-export default class EventForm extends Component {
+class EventForm extends Component {
 
     constructor(props){
         super(props);
             this.state = {
                 title: '',
+                category: '',
+                attendees: [],
                 date: new Date(),
-                currentGuestName: '',
-                guests: []
+                time: ''
             }    
     }
     
@@ -28,6 +31,24 @@ export default class EventForm extends Component {
 
     onDateChange = (newDate) => {
       this.setState({date: newDate})
+    }
+
+
+    createEventHandler = () => {
+      const {title, category, user, attendees, date, time} = this.state;
+      const currentEvent =    {
+        title,
+        category: 'Music',
+        user: 2,
+        attendees: [],
+        _id: 1,
+        date,
+        time: '2.00 pm',
+      }
+      console.log(currentEvent);
+
+      this.props.receiveEvent(currentEvent);
+
     }
 
     render() {
@@ -58,10 +79,11 @@ export default class EventForm extends Component {
                 />
 
               {/* <LocationOnIcon/> */}
-                
+              <div className="formCalendar">
               <DatePicker date={date} onDateChange={this.onDateChange}/>
+              </div>
           </FormControl>
-          <Button size="small">Add Event</Button>
+          <Button onClick={this.createEventHandler}  size="small">Add Event</Button>
 
         </CardContent>
         
@@ -71,3 +93,13 @@ export default class EventForm extends Component {
         )
     }
 }
+
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    receiveEvent: (event) => dispatch(receiveEvent(event))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(EventForm);

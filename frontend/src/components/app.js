@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import { Routes } from 'react-router-dom'; //v6
+import '../App.css';
+
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import HomePage from "./home/home_page";
 import NavBarContainer from './navbar/navbar_container'

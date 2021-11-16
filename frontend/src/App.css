@@ -40,12 +40,12 @@
 
 
 .eventTitle{
-  background-color:black !important;
+margin-bottom: 30px;
 
 }
 
-/* 
-.calendar{
+
+.formCalendar{
   margin-top: 30px !important;
 
-} */
+}
