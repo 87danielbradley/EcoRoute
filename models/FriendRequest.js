@@ -12,9 +12,13 @@ const FriendRequestSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
+    isPending: {
+      type: Boolean,
+      default: false, // sending the friend request becomes true
+    },
     isAccepted: {
       type: Boolean,
-      default: false,
+      default: false, // accepting the friend request because true
     },
   },
   { timestamps: true },

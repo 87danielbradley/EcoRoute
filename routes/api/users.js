@@ -88,26 +88,26 @@ router.post('/login', (request, response) => {
         })
 })
 // send friend request
-router.get('/friend_request/:userId', passport.authenticate('jwt', {session: false}), 
+router.post('/friend_request/:userId', passport.authenticate('jwt', {session: false}), 
     (request, response) => {
         const receiver = User.findById(request.params.userId)
-        if (!receiver) {
-            return response.status(404).json({ error: 'User not found' })
-        }
-        if (receiver.friends.includes(request.userId)) {
-            return response.status(400).json({ error: "Y'all already friends" })
-        }
-        if (request.userId == request.params.userId) {
-            return response.status(400).json({ error: 'You cannot send a friend request to yourself' })
-        }
-
+        // if (!receiver) {
+        //     return response.status(404).json({ error: 'User not found' })
+        // } else 
+        // {if (receiver.friends.findById(request.userId)) {
+        //     return response.status(400).json({ error: "Y'all already friends" })
+        // }}
+        // if (request.userId == request.params.userId) {
+        //     return response.status(400).json({ error: 'You cannot send a friend request to yourself' })
+        // }
+        // add friend to each respective user in lieu of new collection
         const friendRequest = FriendRequest.findOne({
             sender: request.userId,
             receiver: request.params.userId,
         })
 
         if (friendRequest) {
-            return res.status(400).json({ error: 'Friend Request already sent' })
+            return response.status(400).json({ error: 'Friend Request already sent' })
         }
 
         const newFriendRequest = new FriendRequest({
@@ -117,7 +117,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 
         newFriendRequest.save()
         .then(fr => response.json(fr))
-        .catch( err => response.status(400).json({ error: 'Something went wrong' }));
+        .catch( err => response.json(error));
     }
 );
 // accept friend request
@@ -135,12 +135,12 @@ router.get('/friend_request/:userId/accept', passport.authenticate('jwt', {sessi
         sender.friends.push(reciever.userId)
         sender.save()
         .then(fr => response.json(fr))
-        .catch( err => response.status(400).json({ error: 'Something went wrong' }));
+        .catch( err => response.json(error));
         
         reciever.friends.push(sender.userId)
         reciever.save()
         .then(fr => response.json(fr))
-        .catch( err => response.status(400).json({ error: 'Something went wrong' }));
+        .catch( err => response.json(error));
     }
 );
 // cancel friend request 
@@ -152,7 +152,7 @@ router.get('/friend_request/:userId/cancel', passport.authenticate('jwt', {sessi
         }
         FriendRequest.deleteOne({ _id: req.params.requestId })
         .then(() => response.status(200).json({ message: 'Friend request canceled' }))
-        .catch( err => response.status(400).json({ error: 'Something went wrong' }));
+        .catch( err => response.json(error));
     }
 );
 // decline friend request 
@@ -164,7 +164,7 @@ router.get('/friend_request/:userId/decline', passport.authenticate('jwt', {sess
         }
         FriendRequest.deleteOne({ _id: req.params.requestId })
         .then(() => response.status(200).json({ message: 'Friend request declined' }))
-        .catch( err => response.status(400).json({ error: 'Something went wrong' }));
+        .catch( err => response.json(error));
     }
 );
 
