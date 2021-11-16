@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import Tags from './event_invite_friends';
+import Tags from './tags';
 // import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
@@ -57,7 +57,7 @@ class EventForm extends Component {
 
     onOptionsChange = (options) => {
       this.setState({attendees: options})
-      // console.log(this.state.att)
+      console.log(this.state.attendees)
     }
 
     render() {
@@ -78,11 +78,11 @@ class EventForm extends Component {
                   value={title}
                 />
        <div>
-         <Tags onOptionsChange={this.onOptionsChange}/>
+         <Tags attendees={attendees}  onOptionsChange={this.onOptionsChange}/>
        </div>
        
        <div className="formCalendar">
-       <DatePicker attendees={attendees} date={date} onDateChange={this.onDateChange}/>
+       <DatePicker date={date} onDateChange={this.onDateChange}/>
        </div>
 
           </FormControl>

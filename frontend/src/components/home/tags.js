@@ -14,10 +14,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Tags(props) {
+  console.log(props)
   const classes = useStyles();
   const [options, setOptions] = useState(["mickey", "tyler", "daniel", "sydney"]);
   const handleOptionsChange = (e) => {
     setOptions(options.concat(e.target.value));
+    console.log("calling ")
     props.onOptionsChange(options)
   }
   return (
