@@ -81,9 +81,9 @@ class EventForm extends Component {
                   value={category}
                   onChange={(e) => this.onTextFieldChange("category", e)}
                   >
-                  <MenuItem value={10}>Music</MenuItem>
-                  <MenuItem value={20}>Food</MenuItem>
-                  <MenuItem value={30}>Games</MenuItem>
+                  <MenuItem value={'Music'}>Music</MenuItem>
+                  <MenuItem value={'Food'}>Food</MenuItem>
+                  <MenuItem value={'Games'}>Games</MenuItem>
                 </Select>
 
                 <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
