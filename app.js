@@ -7,6 +7,7 @@ const passport = require('passport');
 
 const users = require("./routes/api/users");
 const messages = require("./routes/api/messages");
+const events = require("./routes/api/events");
 // const User = require('./models/User')
 
 mongoose
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", users);
 app.use("/api/messages", messages);
+app.use("/api/events", events);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
