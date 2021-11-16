@@ -1,8 +1,8 @@
 import React from 'react';
-import EventForm from './event_form';
+// import EventForm from './event_form';
 import EventIndex from './event_index';
 import MapboxContainer from '../mapbox/mapbox_container';
-
+import EventFormContainer from './event_form_container';
 
 class HomePage extends React.Component{
 
@@ -18,7 +18,7 @@ class HomePage extends React.Component{
                         <div className="column"></div>
 
                         <div className="column is-two-thirds">
-                            <EventForm/>
+                            <EventFormContainer/>
                             <EventIndex/>
                             
                         </div>
