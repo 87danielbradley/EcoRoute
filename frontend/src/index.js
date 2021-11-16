@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 //   </React.StrictMode>,
 //   root
 // );
-
-// window.axios = axios;
+const ax = axios;
+window.axios = ax;
 
 
 })

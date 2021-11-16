@@ -21,8 +21,8 @@ const Protected = ({ component: Component, loggedIn, ...rest}) => (
             loggedIn ? (
                 <Component {...props} />
             ) : (
-                // <Redirect to="/login" />
-                console.log('Redirect is not supported.  Need to fix')
+                <Redirect to="/login" />
+                // console.log('Redirect is not supported.  Need to fix')
             )
         }
     />
