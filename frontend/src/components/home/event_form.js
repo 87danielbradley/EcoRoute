@@ -87,7 +87,7 @@ class EventForm extends Component {
 
           </FormControl>
 
-                <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                <FormControl className="selectCategory" variant="filled" sx={{ m: 1, minWidth: 120 }}>
                 <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
