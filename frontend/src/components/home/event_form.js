@@ -99,9 +99,10 @@ class EventForm extends Component {
                   <MenuItem value={20}>Food</MenuItem>
                   <MenuItem value={30}>Games</MenuItem>
                 </Select>
+
+                <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
           </FormControl>
 
-          <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
 
         </CardContent>
         
