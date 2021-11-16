@@ -7,6 +7,9 @@ import FormControl from '@mui/material/FormControl';
 import DatePicker from './date_picker';
 import { receiveEvent } from '../../actions/event_actions';
 import { connect } from 'react-redux';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 // import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
@@ -19,7 +22,7 @@ class EventForm extends Component {
                 category: '',
                 attendees: [],
                 date: new Date(),
-                time: ''
+                // time: ''
             }    
     }
     
@@ -43,7 +46,7 @@ class EventForm extends Component {
         attendees: [],
         _id: 1,
         date,
-        time: '2.00 pm',
+        // time: '2.00 pm',
       }
       console.log(currentEvent);
 
@@ -52,7 +55,7 @@ class EventForm extends Component {
     }
 
     render() {
-      const {title, guest, date} = this.state;
+      const {title, attendees, date, category} = this.state;
     
         return (
             <div>
@@ -75,13 +78,27 @@ class EventForm extends Component {
                 label="Add guests"
                 variant="filled"
                 placeholder="Add guests"
-                value={guest}
+                value={attendees}
                 />
 
               {/* <LocationOnIcon/> */}
               <div className="formCalendar">
               <DatePicker date={date} onDateChange={this.onDateChange}/>
               </div>
+          </FormControl>
+
+                <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  value={category}
+                  onChange={(e) => this.onTextFieldChange("category", e)}
+                >
+                  <MenuItem value={10}>Music</MenuItem>
+                  <MenuItem value={20}>Food</MenuItem>
+                  <MenuItem value={30}>Games</MenuItem>
+                </Select>
           </FormControl>
           <Button onClick={this.createEventHandler}  size="small">Add Event</Button>
 
