@@ -76,24 +76,24 @@ class EventForm extends Component {
                   placeholder="Add Title"
                   value={title}
                 />
+       <div>
+         <Tags onOptionsChange={this.onOptionsChange}/>
+       </div>
        
-              <TextField
+       <div className="formCalendar">
+       <DatePicker date={date} onDateChange={this.onDateChange}/>
+       </div>
+
+              {/* <TextField
                 onChange={(e)=> this.onTextFieldChange("guests", e)}
                 id="standard-required"
                 label="Add guests"
                 variant="filled"
-                placeholder="Add guests"
+                placeholder="Attendees"
                 value={attendees}
-                />
+                /> */}
 
               {/* <LocationOnIcon/> */}
-              <div className="formCalendar">
-              <DatePicker date={date} onDateChange={this.onDateChange}/>
-              </div>
-
-              <div>
-                <Tags onOptionsChange={this.onOptionsChange}/>
-              </div>
           </FormControl>
 
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
@@ -109,7 +109,8 @@ class EventForm extends Component {
                   <MenuItem value={30}>Games</MenuItem>
                 </Select>
           </FormControl>
-          <Button onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
+
+          <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
 
         </CardContent>
         

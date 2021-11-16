@@ -41,10 +41,30 @@
 
 .eventTitle{
 margin-bottom: 60px !important;
+height: 3em !important;
 }
 
 
 .formCalendar{
   margin-top: 30px !important;
 
+}
+
+
+.MuiInputBase-input {
+    font: inherit;
+    color: currentColor;
+    width: 100%;
+    border: 0;
+    height: 3em !important;
+    margin: 0;
+    display: block;
+    padding: 6px 0 7px;
+    min-width: 0;
+    background: none;
+    box-sizing: content-box;
+    animation-name: mui-auto-fill-cancel;
+    letter-spacing: inherit;
+    animation-duration: 10ms;
+    -webkit-tap-highlight-color: transparent;
 }
