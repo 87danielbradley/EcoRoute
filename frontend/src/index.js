@@ -15,8 +15,11 @@ import axios from "axios";
 
 document.addEventListener('DOMContentLoaded', ()=>{
   let store = configureStore();
+  console.log(store)
+  window.store = store;
 
   if(localStorage.jwtToken){
+    console.log("running")
     setAuthToken(localStorage.jwtToken);
     const decodedUser = jwt_decode(localStorage.jwtToken)
 
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   } else {
     store = configureStore({});
   }
+
 
   const root = document.getElementById('root')
 
