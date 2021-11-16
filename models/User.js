@@ -14,8 +14,24 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-},{
+    friends: [{ type: Schema.Types.ObjectId, ref: 'User' }
+    ],
+    events: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Event'
+        }
+    ],
+
+    location: {
+        geometry: {
+            type: {type: String},
+            coordinates:[]
+        }
+    }
+},
+
+{
     timestamps: true
 })
 
