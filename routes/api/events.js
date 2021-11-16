@@ -51,7 +51,13 @@ router.delete("/:id", (req, res) => {
         .catch(err => {res.json(err)})
 });
 
-router
+router.put("/:id", (req, res) => {
+     Event.findByIdAndUpdate(req.params.id, req.body)
+     .then(event => res.json(event))
+     .catch(err => res.json(err))
+
+})
+
 
 
 

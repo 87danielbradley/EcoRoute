@@ -57,6 +57,7 @@ class EventForm extends Component {
 
     onOptionsChange = (options) => {
       this.setState({attendees: options})
+      // console.log(this.state.att)
     }
 
     render() {
@@ -81,7 +82,7 @@ class EventForm extends Component {
        </div>
        
        <div className="formCalendar">
-       <DatePicker date={date} onDateChange={this.onDateChange}/>
+       <DatePicker attendees={attendees} date={date} onDateChange={this.onDateChange}/>
        </div>
 
           </FormControl>
