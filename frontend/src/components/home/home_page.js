@@ -1,4 +1,6 @@
 import React from 'react';
+import MapboxContainer from '../mapbox/mapbox_container';
+
 
 class HomePage extends React.Component{
 
@@ -7,7 +9,7 @@ class HomePage extends React.Component{
     render(){
         return(
             <div>
-                Home Page
+                <MapboxContainer />
             </div>
         )
     }
