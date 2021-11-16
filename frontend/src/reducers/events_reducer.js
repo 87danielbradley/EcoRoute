@@ -1,27 +1,26 @@
 import { RECEIVE_USER_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/event_actions";
 
 const initialState = {
-    all: [{
+   1: {
     title: 'Beethoven Concert',
     category: 'Music',
-    user: 2,
+    user: 100,
     attendees: [],
     _id: 1,
     date: 'November 24, 2021',
-    time: '2.00 pm',
+
   },
   
-  {
+  2: {
    title: 'Dinner Pary',
     category: '',
-      user: 25464,
+      user: 101,
     attendees: [],
     _id: 2,
     date: 'November 24, 2021',
-    time: '2.00 pm',
   
     }
-] 
+
 }
 
 

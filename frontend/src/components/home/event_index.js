@@ -32,7 +32,8 @@ class EventIndex extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        events: state.events.events
+        // events: state.events.events
+        events: Object.values(state.events)
     }
 }
 
