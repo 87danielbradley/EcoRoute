@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Tags from './add_friends';
 // import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
@@ -38,7 +39,7 @@ class EventForm extends Component {
 
 
     createEventHandler = () => {
-      const {title, category, user, attendees, date, time} = this.state;
+      const {title, category, user, attendees, date} = this.state;
       const currentEvent =    {
         title,
         category: 'Music',
@@ -52,6 +53,10 @@ class EventForm extends Component {
 
       this.props.receiveEvent(currentEvent);
 
+    }
+
+    onOptionsChange = (options) => {
+      this.setState({attendees: options})
     }
 
     render() {
@@ -85,6 +90,10 @@ class EventForm extends Component {
               <div className="formCalendar">
               <DatePicker date={date} onDateChange={this.onDateChange}/>
               </div>
+
+              <div>
+                <Tags onOptionsChange={this.onOptionsChange}/>
+              </div>
           </FormControl>
 
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
@@ -100,7 +109,7 @@ class EventForm extends Component {
                   <MenuItem value={30}>Games</MenuItem>
                 </Select>
           </FormControl>
-          <Button onClick={this.createEventHandler}  size="small">Add Event</Button>
+          <Button onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
 
         </CardContent>
         
