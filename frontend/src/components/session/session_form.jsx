@@ -50,7 +50,7 @@ class SessionForm extends React.Component{
             email: this.state.email
         }
         this.props.action(this.state, this.props.history)
-            .then( () => this.props.history.push('/'))
+            // .then( () => this.props.history.push('/'))
 
     }
     demoUser(e){
@@ -87,7 +87,7 @@ class SessionForm extends React.Component{
                             <h3 className="form-item">{formType}</h3>
                         </div>: 
                         <div>
-                            <h3 className="form-item session-form-title">{formType}</h3>
+                            <h3 className="form-item">{formType}</h3>
                         </div>
                     }
                     {this.sessionErrors()}
