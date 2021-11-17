@@ -129,7 +129,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 
             receiver.friends.push(sender)
             await receiver.save()
-            debugger
+            
             await FriendRequest.deleteOne({ _id: savedRequest._id })
             response.status(200).json({ message: 'Friend Request Accepted', save })
 
@@ -206,20 +206,7 @@ router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {s
     }
 );
 
-// router.get('/friends', passport.authenticate('jwt', { session: false }),
-//      async (req, res) => {
-//         try {
-//             const currentUser = await User.findById(jwt.decode(request.get('authorization').split('Bearer ')[1]).id)
-        
-//             const friends = currentUser.friends.map( id => {
-//                 User.findById(id)
-//             })
-//         } catch (err) {
-//             console.log(err)
-//         }
 
-   
-// })
 
 //private auth route
 router.get('/current', passport.authenticate('jwt', {session: false}), (request, response) => {
@@ -228,6 +215,22 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (request,
       username: request.user.username,
       email: request.user.email
   });
+})
+
+router.get('/:user_id', (req, res) => {
+    User.findById(req.params.user_id)
+        .then(user => {
+            if(user) {
+                res.json({
+                    id: user._id,
+                    username: user.username,
+                    email: user.email,
+                    location: user.location,
+                    events: user.events,
+                    friends: user.friends
+                })
+            }   
+        }).catch(err => console.log(err))
 })
 
 
