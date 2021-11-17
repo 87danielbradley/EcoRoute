@@ -69,7 +69,8 @@ router.post('/login', (request, response) => {
                             id: user.id,
                             username: user.username,
                             email: user.email,
-                            // friends: []
+                            friends: user.friends,
+                            events: user.events
                         }
                         jwt.sign(
                             payload,
@@ -120,9 +121,20 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             const save = await newFriendRequest.save()
 
             FriendRequest.findById(save.id).populate('receiver')
-            FriendRequest.findById(save.id).populate('sender')
+            const savedRequest = FriendRequest.findById(save.id).populate('sender')
+            
+            // this is the quick fix to automatically add someone as a friend
+            sender.friends.push(receiver)
+            await sender.save()
 
-            response.status(200).json({ message: 'Friend Request Sent' })
+            receiver.friends.push(sender)
+            await receiver.save()
+            
+            await FriendRequest.deleteOne({ _id: savedRequest._id })
+            response.status(200).json({ message: 'Friend Request Accepted', save })
+
+
+            // response.status(200).json({ savedRequest })
 
         } catch (err) {
             console.log(err)
@@ -194,6 +206,8 @@ router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {s
     }
 );
 
+
+
 //private auth route
 router.get('/current', passport.authenticate('jwt', {session: false}), (request, response) => {
   response.json({
@@ -201,6 +215,22 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (request,
       username: request.user.username,
       email: request.user.email
   });
+})
+
+router.get('/:user_id', (req, res) => {
+    User.findById(req.params.user_id)
+        .then(user => {
+            if(user) {
+                res.json({
+                    id: user._id,
+                    username: user.username,
+                    email: user.email,
+                    location: user.location,
+                    events: user.events,
+                    friends: user.friends
+                })
+            }   
+        }).catch(err => console.log(err))
 })
 
 
