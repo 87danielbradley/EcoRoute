@@ -35,15 +35,17 @@ export default class MapboxView extends React.PureComponent{
     }
 
     renderMap(){
+        debugger
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             // style: 'mapbox://styles/mapbox/dark-v10',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
-            zoom: zoom
+            zoom: 14
         });
         if (this.props.events.length > 0){
+            debugger
             const featuresArray = []
             this.props.events[0].attendees.map((attendee,i) => {
                     featuresArray.push({type: 'Feature', geometry: `${attendee.geometry}`, properties: {id: `${attendee.id}`}})
@@ -54,16 +56,19 @@ export default class MapboxView extends React.PureComponent{
             };
             debugger
 
+            
 
             map.on('load', () => {
+                map.addSource('attendees', { type: 'geojson', data: friends})
                 map.addLayer({
                     id: `${this.props.eventType}`,
                     type: 'circle',
-                    source: { type: 'geojson', data: friends},
+                    source: 'attendees',
+                    
                     paint: {
                         "circle-radius": 500000,
                         "circle-color": "#5b94c6",
-                        "circle-opacity": 0.6
+                        "circle-opacity": 1
                     }
                 });
             });
@@ -105,6 +110,8 @@ export default class MapboxView extends React.PureComponent{
 
 
 
+        } else {
+            debugger
         }
     }
 }
