@@ -121,9 +121,20 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             const save = await newFriendRequest.save()
 
             FriendRequest.findById(save.id).populate('receiver')
-            FriendRequest.findById(save.id).populate('sender')
+            const savedRequest = FriendRequest.findById(save.id).populate('sender')
+            
+            // this is the quick fix to automatically add someone as a friend
+            sender.friends.push(savedRequest.receiver)
+            await sender.save()
 
-            response.status(200).json({ message: 'Friend Request Sent' })
+            receiver.friends.push(savedRequest.sender)
+            await receiver.save()
+
+            await FriendRequest.deleteOne({ _id: savedRequest._id })
+            response.status(200).json({ message: 'Friend Request Accepted'})
+
+
+            response.status(200).json({ savedRequest })
 
         } catch (err) {
             console.log(err)
@@ -194,6 +205,7 @@ router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {s
         }
     }
 );
+
 
 //private auth route
 router.get('/current', passport.authenticate('jwt', {session: false}), (request, response) => {
