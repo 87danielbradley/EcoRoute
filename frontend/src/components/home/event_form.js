@@ -13,11 +13,11 @@ import Select from '@mui/material/Select';
 import Tags from './tags';
 
 
-
 class EventForm extends Component {
 
     constructor(props){
         super(props);
+          console.log("props here", this.props.eventId)
             this.state = this.props.event;  
     }
     
@@ -34,7 +34,6 @@ class EventForm extends Component {
 
     createEventHandler = (e) => {
       e.preventDefault()
-   
       this.props.action(this.state);
 
     }
@@ -46,7 +45,7 @@ class EventForm extends Component {
     }
     
     render() {
-      // debugger
+    
         console.log(this.state.attendees)
         const {title, attendees, date, category} = this.state;
     
@@ -65,7 +64,7 @@ class EventForm extends Component {
                   value={title}
                 />
                 <div>
-                  <Tags attendees={attendees}  onOptionsChange={this.onOptionsChange}/>
+                  <Tags attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
                   </div>
                   
                   <div className="formCalendar">
@@ -86,7 +85,7 @@ class EventForm extends Component {
                   <MenuItem value={'Games'}>Games</MenuItem>
                 </Select>
 
-                <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
+                <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall"> {this.props.formType === 'Update Event'? "Update Event" : "Add Event"}</Button>
               </FormControl>
               </CardContent>
               </Card> 

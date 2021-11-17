@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 
 
@@ -36,7 +37,9 @@ const EventIndexItem = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Edit Event</Button>
+        <Button size="small">
+          <Link to={`/events/${event.id}`}>Edit Event</Link>
+          </Button>
         <Button onClick={() => deleteEvent(event.id)} size="small">Delete Event</Button>
       </CardActions>
     </Card>

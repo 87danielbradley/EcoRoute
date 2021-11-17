@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { createAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     event: {
         title: '',
         category: '',

@@ -5,7 +5,7 @@ const initialState = {
     title: 'Beethoven Concert',
     category: 'Music',
     user: 100,
-    attendees: [],
+    attendees: ["mickey", "daniel"],
     id: 1,
     date: 'November 24, 2021',
 
@@ -13,9 +13,9 @@ const initialState = {
   
   2: {
    title: 'Dinner Pary',
-    category: '',
+    category: 'Food',
       user: 101,
-    attendees: [],
+    attendees: ["sydney", "tyler"],
     id: 2,
     date: 'November 24, 2021',
   

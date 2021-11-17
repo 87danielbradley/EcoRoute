@@ -53,8 +53,12 @@ export const createAnEvent = (event) => dispatch => {
     // .catch(error => console.log(error))
 }
 export const updateAnEvent = (event) => dispatch => {
-    return APIUtil.updateEvent(event)
-    .then(event => dispatch(receiveEvent(event)))
+    const fakeUpdate = Promise.resolve(event);
+    fakeUpdate.then(event => {
+        dispatch(receiveEvent(event))
+    })
+    // return APIUtil.updateEvent(event)
+    // .then(event => dispatch(receiveEvent(event)))
 }
 export const deleteAnEvent = (eventId) => dispatch => {
 
