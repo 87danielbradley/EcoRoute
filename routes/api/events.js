@@ -27,7 +27,7 @@ router.post('/',
 )
 
 router.get('/user/:user_id', (req, res) => {
-    // debugger
+    // // debugger
     Event.find({user: req.params.user_id})
         .sort({ date: -1 })
         .then( events => res.json(events))

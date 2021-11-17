@@ -59,7 +59,7 @@ export default class LoginGeocoder extends React.PureComponent{
         )
         let that = this;
         geocoder.on('result', function(e) {
-            debugger
+            // debugger
             console.log(e.result.geometry)
 
             that.props.setParentState({location: e.result.geometry.coordinates})
