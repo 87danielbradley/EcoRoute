@@ -64,7 +64,7 @@ class EventForm extends Component {
                   value={title}
                 />
                 <div>
-                  <Tags attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
+                  <Tags friends={this.props.friends} attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
                   </div>
                   
                   <div className="formCalendar">

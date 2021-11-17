@@ -67,7 +67,7 @@ router.post('/login', (request, response) => {
                             id: user.id,
                             username: user.username,
                             email: user.email,
-                            // friends: 
+                            // friends: []
                         }
                         jwt.sign(
                             payload,

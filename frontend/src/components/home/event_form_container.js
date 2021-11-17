@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
         attendees: [],
         hidden: false
     },
-    formType: "Create Event"
+    formType: "Create Event",
+    // friends: state.session.user.friends
 })
 
 
