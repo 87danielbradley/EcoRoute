@@ -4,7 +4,7 @@ import MapboxView from "./mapbox_view"
 
 const mSTP = (state ={}, ownProps) => ({
     events: Object.values(state.events),
-    eventType: 'event'
+    eventType: 'carpool'
 })
 
 const mDTP = (dispatch, ownProps) => ({
