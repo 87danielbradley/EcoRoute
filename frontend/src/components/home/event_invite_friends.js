@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Tags(props) {
   const classes = useStyles();
-  const [options, setOptions] = useState(["mickey.addai@gmail.com", "tyler.koh@gmail.com", "daniel.bradley@gmail.com", "sydneyparsons@gmail.com"]);
+  const [options, setOptions] = useState(["mickey", "tyler", "daniel", "sydney"]);
   const handleOptionsChange = (e) => {
     setOptions(options.concat(e.target.value));
     props.onOptionsChange(options)

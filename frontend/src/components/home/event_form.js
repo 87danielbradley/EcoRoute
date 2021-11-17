@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import Tags from './add_friends';
+import Tags from './event_invite_friends';
 // import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
@@ -44,7 +44,7 @@ class EventForm extends Component {
         title,
         category: 'Music',
         user: 2,
-        attendees: [],
+        attendees, //this.state.attendees,
         _id: 1,
         date,
         // time: '2.00 pm',
@@ -57,6 +57,7 @@ class EventForm extends Component {
 
     onOptionsChange = (options) => {
       this.setState({attendees: options})
+      // console.log(this.state.att)
     }
 
     render() {
@@ -81,19 +82,9 @@ class EventForm extends Component {
        </div>
        
        <div className="formCalendar">
-       <DatePicker date={date} onDateChange={this.onDateChange}/>
+       <DatePicker attendees={attendees} date={date} onDateChange={this.onDateChange}/>
        </div>
 
-              {/* <TextField
-                onChange={(e)=> this.onTextFieldChange("guests", e)}
-                id="standard-required"
-                label="Add guests"
-                variant="filled"
-                placeholder="Attendees"
-                value={attendees}
-                /> */}
-
-              {/* <LocationOnIcon/> */}
           </FormControl>
 
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
