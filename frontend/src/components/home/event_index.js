@@ -11,14 +11,14 @@ class EventIndex extends React.Component{
     render(){
 
         const {events, deleteEvent} = this.props;
-        console.log(events)
+        // console.log(events)
 
         return(
             <div>
                 <h1>Events</h1>
 
                 {
-                    events.reverse().map((event, i) => {
+                    events.map((event, i) => {
                         return (event !== undefined && <EventIndexItem key={i} event={event} deleteEvent={deleteEvent} />)
                     })
                 }
