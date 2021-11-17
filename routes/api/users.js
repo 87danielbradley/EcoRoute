@@ -88,83 +88,107 @@ router.post('/login', (request, response) => {
         })
 })
 // send friend request
-router.post('/friend_request/:userId', passport.authenticate('jwt', {session: false}), 
-    (request, response) => {
-        const receiver = User.findById(request.params.userId)
-        // if (!receiver) {
-        //     return response.status(404).json({ error: 'User not found' })
-        // } else 
-        // {if (receiver.friends.findById(request.userId)) {
-        //     return response.status(400).json({ error: "Y'all already friends" })
-        // }}
-        // if (request.userId == request.params.userId) {
-        //     return response.status(400).json({ error: 'You cannot send a friend request to yourself' })
-        // }
-        // add friend to each respective user in lieu of new collection
-        const friendRequest = FriendRequest.findOne({
-            sender: request.userId,
-            receiver: request.params.userId,
-        })
+router.get('/friend_request/:userId', passport.authenticate('jwt', {session: false}), 
+    async (request, response) => {
+        try {
+            const sender = await User.findById(jwt.decode(request.get('authorization').split('Bearer ')[1]).id)
+            const receiver = await User.findById(request.params.userId);
+            if (!receiver) {
+                return response.status(404).json({ error: 'User not found' })
+            }
 
-        if (friendRequest) {
-            return response.status(400).json({ error: 'Friend Request already sent' })
+            if (receiver.friends.includes(request.userId)) {
+                return response.status(400).json({ error: "Y'all already friends" })
+            }
+
+            const friendRequest = await FriendRequest.findOne({
+                sender: sender._id,
+                receiver: request.params.userId,
+            })
+
+            if (friendRequest) {
+                return response.status(400).json({ error: 'Already sent friend request' })
+            }
+
+            const newFriendRequest = new FriendRequest({
+                sender: sender._id, // note the difference
+                receiver: request.params.userId, // note the difference
+            })
+            
+            const save = await newFriendRequest.save()
+
+            FriendRequest.findById(save.id).populate('receiver')
+            FriendRequest.findById(save.id).populate('sender')
+
+            response.status(200).json({ message: 'Friend Request Sent' })
+
+        } catch (err) {
+            console.log(err)
+            return response.status(500).json({ error: "whoops" })
         }
-
-        const newFriendRequest = new FriendRequest({
-            sender: req.userId,
-            receiver: req.params.userId,
-        })
-
-        newFriendRequest.save()
-        .then(fr => response.json(fr))
-        .catch( err => response.json(error));
     }
 );
 // accept friend request
-router.get('/friend_request/:userId/accept', passport.authenticate('jwt', {session: false}),
-    (request, response) => {
-        const friendRequest = FriendRequest.findById(req.params.requestId)
-        if (!friendRequest) {
-            return response.status(404).json({error: 'No request found'})
+router.get('/friend_request/:requestId/accept', passport.authenticate('jwt', {session: false}),
+    async (request, response) => {
+        try {
+            const friendsRequest = await FriendRequest.findById(request.params.requestId)
+            if (!friendsRequest) {
+                return response.status(404).json({ error: 'Request not found/Request already accepted' })
+            }
+
+            const sender = await User.findById(friendsRequest.sender)
+            if (sender.friends.includes(friendsRequest.receiver)) {
+                return response.status(400).json({ error: "Already in sender's friend list" })
+            }
+            sender.friends.push(friendsRequest.receiver)
+            await sender.save()
+
+            const receiver = await User.findById(friendsRequest.receiver)
+            receiver.friends.push(friendsRequest.sender)
+            await receiver.save()
+
+            await FriendRequest.deleteOne({ _id: request.params.requestId })
+            response.status(200).json({ message: 'Friend Request Accepted', friendsRequest: friendsRequest })
+
+        } catch (err) {
+            console.log(err)
+            return response.status(500).json({ error: "whoops" })
         }
-        const sender = User.findById(friendRequest.sender);
-        const reciever = User.findById(friendRequest.reciever);
-        // if (sender.friends.includes(friendRequest.receiver)) {
-        //     return response.status(400).json({error: 'Already friends'})
-        // }
-        sender.friends.push(reciever.userId)
-        sender.save()
-        .then(fr => response.json(fr))
-        .catch( err => response.json(error));
-        
-        reciever.friends.push(sender.userId)
-        reciever.save()
-        .then(fr => response.json(fr))
-        .catch( err => response.json(error));
     }
 );
 // cancel friend request 
-router.get('/friend_request/:userId/cancel', passport.authenticate('jwt', {session: false}),
-    (request, response) => {
-        const friendRequest = FriendRequest.findById(req.params.requestId)
-        if (!friendsRequest) {
-            return response.status(404).json({ error: 'Request already cenceled or not sended yet' })
+router.get('/friend_request/:requestId/cancel', passport.authenticate('jwt', {session: false}),
+    async (request, response) => {
+        try {
+            const friendsRequest = await FriendRequest.findById(request.params.requestId,)
+            if (!friendsRequest) {
+                return response.status(404).json({ error: 'Request does not exist' })
+            }
+            await FriendRequest.deleteOne({ _id: request.params.requestId })
+
+            response.status(200).json({ message: 'Friend Request Canceled' })
+        } catch (err) {
+            console.log(err)
+            return response.status(500).json({ error: "whoops" })
         }
-        FriendRequest.deleteOne({ _id: req.params.requestId })
-        .then(() => response.status(200).json({ message: 'Friend request canceled' }))
-        .catch( err => response.json(error));
     }
 );
 // decline friend request 
-router.get('/friend_request/:userId/decline', passport.authenticate('jwt', {session: false}),
-    (request, response) => {
-        const friendRequest = FriendRequest.findById(req.params.requestId)
-        if (!friendRequest) {
-            return response.status(404).json({ error: 'Request already declined or not sended yet' })
+router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {session: false}),
+    async (request, response) => {
+        try {
+            const friendsRequest = await FriendRequest.findById(request.params.requestId,)
+            if (!friendsRequest) {
+                return response.status(404).json({ error: 'Request does not exist' })
+            }
+            await FriendRequest.deleteOne({ _id: request.params.requestId })
+
+            response.status(200).json({ message: 'Friend request declined' })
+        } catch (err) {
+            console.log(err)
+            return res.status(500).json({ error: "whoops" })
         }
-        FriendRequest.deleteOne({ _id: req.params.requestId })
-        .then(() => response.status(200).json({ message: 'Friend request declined' }))
-        .catch( err => response.json(error));
     }
 );
 
