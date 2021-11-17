@@ -29,18 +29,18 @@ export default class MapboxView extends React.PureComponent{
         return (
             <div>
                 <div id="map" ref={this.mapContainer} className="map-container">
-                    <div id="left" class="sidebar flex-center left">
-                        <div class="sidebar-content rounded-rect flex-center">
+                    <div id="left" className="sidebar flex-center left">
+                        <div className="sidebar-content rounded-rect flex-center">
                             <EventIndexContainer />
-                            <div class="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
+                            <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
                                 &#10513;
                             </div>
                         </div>
                     </div>
-                    <div id="right" class="sidebar flex-center right collapsed">
-                        <div class="sidebar-content rounded-rect flex-center">
+                    <div id="right" className="sidebar flex-center right collapsed">
+                        <div className="sidebar-content rounded-rect flex-center">
                             Right Sidebar
-                            <div class="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
+                            <div className="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
                                 &#11064;
                             </div>
                         </div>
@@ -76,7 +76,7 @@ export default class MapboxView extends React.PureComponent{
                 type: "FeatureCollection",
                 features: featuresArray
             };
-            debugger
+           
 
             
 
@@ -142,7 +142,7 @@ export default class MapboxView extends React.PureComponent{
         // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
         padding[id] = !collapsed ? 300 : 0; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
         // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
-        // // debugger
+        // 
         // this.state.map.easeTo({
         //     padding: padding,
         //     duration: 1000 // In ms. This matches the CSS transition duration property.

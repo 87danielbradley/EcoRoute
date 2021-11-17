@@ -119,7 +119,7 @@ const EventsReducer = (oldState = initialState, action) => {
             return nextState;
 
         case REMOVE_EVENT:
-            debugger
+            
             delete nextState[action.eventId];
             return nextState;
         
