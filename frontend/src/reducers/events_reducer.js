@@ -6,7 +6,7 @@ const initialState = {
     category: 'Music',
     user: 100,
     attendees: [],
-    _id: 1,
+    id: 1,
     date: 'November 24, 2021',
 
   },
@@ -16,7 +16,7 @@ const initialState = {
     category: '',
       user: 101,
     attendees: [],
-    _id: 2,
+    id: 2,
     date: 'November 24, 2021',
   
     }

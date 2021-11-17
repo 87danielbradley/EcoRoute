@@ -27,11 +27,6 @@ export const removeEvent = eventId => ({
 })
 
 
-// export const fetchEvents = () => dispatch => {
-//     return APIUtil.getEvents()
-//     .then(events => dispatch(receiveAllEvents(events)))
-//     .catch(error => console.log(error))
-// }
 export const fetchUserEvents = (userId) => dispatch => {
     console.log('fetching user events')
     return APIUtil.getUserEvents(userId)
@@ -41,18 +36,32 @@ export const fetchUserEvents = (userId) => dispatch => {
     })
     .catch(error => console.log(error))
 }
-export const createAnEvent = (event) => dispatch => {
-    return APIUtil.createEvent(event)
+
+export const fetchEvent = eventId => dispatch => {
+    return APIUtil.getEvent(eventId)
     .then(event => dispatch(receiveEvent(event)))
-    .catch(error => console.log(error))
+}
+
+export const createAnEvent = (event) => dispatch => {
+    const fakeCreate = Promise.resolve(event)
+    fakeCreate.then(event => {
+        event.id = Math.floor(Math.random()*100)
+        dispatch(receiveEvent(event))
+    })
+    // return APIUtil.createEvent(event)
+    // .then(event => dispatch(receiveEvent(event)))
+    // .catch(error => console.log(error))
 }
 export const updateAnEvent = (event) => dispatch => {
     return APIUtil.updateEvent(event)
     .then(event => dispatch(receiveEvent(event)))
 }
 export const deleteAnEvent = (eventId) => dispatch => {
-    return APIUtil.deleteEvent(eventId)
-    .then(() => dispatch(removeEvent(eventId)))
-    .catch(error => console.log(error))
+
+    const fakeDelete = Promise.resolve(eventId)
+    fakeDelete.then(() => dispatch(removeEvent(eventId)))
+    // return APIUtil.deleteEvent(eventId)
+    // .then(() => dispatch(removeEvent(eventId)))
+    // .catch(error => console.log(error))
 
 }

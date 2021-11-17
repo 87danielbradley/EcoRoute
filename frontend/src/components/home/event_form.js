@@ -5,26 +5,20 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import DatePicker from './date_picker';
-import { receiveEvent } from '../../actions/event_actions';
-import { connect } from 'react-redux';
+// import { createAnEvent, updateAnEvent } from '../../actions/event_actions';
+// import { connect } from 'react-redux';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import Tags from './add_friends';
-// import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Tags from './tags';
+
 
 
 class EventForm extends Component {
 
     constructor(props){
         super(props);
-            this.state = {
-                title: '',
-                category: '',
-                attendees: [],
-                date: new Date(),
-                // time: ''
-            }    
+            this.state = this.props.event;  
     }
     
     onTextFieldChange = (fieldName, event) => {
@@ -38,29 +32,23 @@ class EventForm extends Component {
     }
 
 
-    createEventHandler = () => {
-      const {title, category, user, attendees, date} = this.state;
-      const currentEvent =    {
-        title,
-        category: 'Music',
-        user: 2,
-        attendees: [],
-        _id: 1,
-        date,
-        // time: '2.00 pm',
-      }
-      console.log(currentEvent);
-
-      this.props.receiveEvent(currentEvent);
+    createEventHandler = (e) => {
+      e.preventDefault()
+   
+      this.props.action(this.state);
 
     }
 
     onOptionsChange = (options) => {
+      
       this.setState({attendees: options})
+     
     }
-
+    
     render() {
-      const {title, attendees, date, category} = this.state;
+      // debugger
+        console.log(this.state.attendees)
+        const {title, attendees, date, category} = this.state;
     
         return (
             <div>
@@ -76,57 +64,48 @@ class EventForm extends Component {
                   placeholder="Add Title"
                   value={title}
                 />
-       <div>
-         <Tags onOptionsChange={this.onOptionsChange}/>
-       </div>
-       
-       <div className="formCalendar">
-       <DatePicker date={date} onDateChange={this.onDateChange}/>
-       </div>
+                <div>
+                  <Tags attendees={attendees}  onOptionsChange={this.onOptionsChange}/>
+                  </div>
+                  
+                  <div className="formCalendar">
+                     <DatePicker date={date} onDateChange={this.onDateChange}/>
+                  </div>
+                </FormControl>
 
-              {/* <TextField
-                onChange={(e)=> this.onTextFieldChange("guests", e)}
-                id="standard-required"
-                label="Add guests"
-                variant="filled"
-                placeholder="Attendees"
-                value={attendees}
-                /> */}
-
-              {/* <LocationOnIcon/> */}
-          </FormControl>
-
-                <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                <FormControl className="selectCategory" variant="filled" sx={{ m: 1, minWidth: 120 }}>
                 <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
                   value={category}
                   onChange={(e) => this.onTextFieldChange("category", e)}
-                >
-                  <MenuItem value={10}>Music</MenuItem>
-                  <MenuItem value={20}>Food</MenuItem>
-                  <MenuItem value={30}>Games</MenuItem>
+                  >
+                  <MenuItem value={'Music'}>Music</MenuItem>
+                  <MenuItem value={'Food'}>Food</MenuItem>
+                  <MenuItem value={'Games'}>Games</MenuItem>
                 </Select>
-          </FormControl>
 
-          <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
-
-        </CardContent>
-        
-        </Card> 
+                <Button className="addEvent" onClick={this.createEventHandler}  size="s+mall">Add Event</Button>
+              </FormControl>
+              </CardContent>
+              </Card> 
                 
             </div>
         )
     }
 }
 
+// const mapStateToProps = state => {
 
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    receiveEvent: (event) => dispatch(receiveEvent(event))
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     createEvent: (event) => dispatch(createAnEvent(event)), 
+//     updateEvent: (event) => dispatch(updateAnEvent(event))
+    
+//   }
+// }
 
-export default connect(null, mapDispatchToProps)(EventForm);
+export default EventForm;

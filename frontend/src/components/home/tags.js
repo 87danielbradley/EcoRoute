@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Autocomplete from "@mui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -13,19 +13,31 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Tags(props) {
+export default function Tags({ onOptionsChange, attendees}) {
+
   const classes = useStyles();
-  const [options, setOptions] = useState(["mickey.addai@gmail.com", "tyler.koh@gmail.com", "daniel.bradley@gmail.com", "sydneyparsons@gmail.com"]);
+  const [options, setOptions] = useState(["mickey", "tyler", "daniel", "sydney"]); //options=initialalueof the array, setOptions is settting people
+  const [selectedOptions, setSelectedOptions] = useState([]) 
+  
   const handleOptionsChange = (e) => {
     setOptions(options.concat(e.target.value));
-    props.onOptionsChange(options)
+   onOptionsChange(options)
   }
+ // Everytime selectOptions change, call  props.OptionsChange
+  useEffect(() => { //hook that listens for changes in depencey array . everytime selecteOptions chnage the logic wi
+    onOptionsChange(selectedOptions)
+  }, [onOptionsChange, selectedOptions])
+
   return (
     <div className={classes.root}>
       <Autocomplete
         multiple
         id="tags-outlined"
         options={options}
+        onChange={(e, selectedOptions) => {
+          setSelectedOptions(selectedOptions)
+          onOptionsChange(selectedOptions)
+        }}
         
         renderInput={(params) => (
           <TextField
@@ -33,10 +45,12 @@ export default function Tags(props) {
             variant="outlined"
             label="Add Attendees"
             placeholder="Attendees"
-            onChange={() => {}}
+            onChange={(e) => {
+              console.log(e)
+            }}
             onKeyDown={(e) => {
               if (e.code === "Enter" && e.target.value) {
-                console.log("enter!!");
+                // console.log("enter!!");
                 handleOptionsChange(e)
               }
             }}

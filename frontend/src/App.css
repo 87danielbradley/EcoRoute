@@ -49,8 +49,6 @@ height: 3em !important;
   margin-top: 30px !important;
 
 }
-
-
 .MuiInputBase-input {
     font: inherit;
     color: currentColor;
@@ -67,4 +65,21 @@ height: 3em !important;
     letter-spacing: inherit;
     animation-duration: 10ms;
     -webkit-tap-highlight-color: transparent;
+}
+
+.selectCategory{
+
+  min-width: 120px !important;
+  padding-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.formCalendar{
+
+  margin-bottom: 30px !important;
+}
+
+.addEvent{
+  margin-top: 30px !important;
+  margin-right: 20px !important;
 }

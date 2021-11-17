@@ -10,10 +10,11 @@ import moment from 'moment';
 
 
 const EventIndexItem = (props) => {
-    const {event} = props;
-    console.log(event.date)
+    const {event, deleteEvent} = props;
+    console.log(event)
+    // console.log(event.date)
     const dateString = moment(event.date).format('MM/DD/YYYY HH:mm:ss');
-    console.log("moment date", dateString)
+    // console.log("moment date", dateString)
     return (
         <div style={{marginTop: "20px"}}>
              <Card sx={{ maxWidth: 345 }}>
@@ -35,17 +36,21 @@ const EventIndexItem = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Edit Event</Button>
+        <Button onClick={() => deleteEvent(event.id)} size="small">Delete Event</Button>
       </CardActions>
     </Card>
 
         </div>
     )
 
-
-
 }
+
+
+
+
+
+
 
 export default EventIndexItem;
 
