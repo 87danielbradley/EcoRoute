@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginContainer from '../session/login_form_container';
-import SignupContainer from '../session/signup_form_container';
+import LoginContainer from '../session/login_container';
+import SignupContainer from '../session/signup_container';
 
 const Modal = ({ modal, closeModal }) => {
     if (!modal) {
