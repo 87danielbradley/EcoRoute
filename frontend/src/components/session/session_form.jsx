@@ -24,8 +24,8 @@ class SessionForm extends React.Component{
     componentWillReceiveProps(nextProps) {
         if( nextProps.currentUser === true) {
             (this.props.formType === "Sign up") ?
-                this.props.histry.push('/login') :
-                this.props.histry.push('/')
+                this.props.history.push('/login') :
+                this.props.history.push('/')
                 
         }
         this.setState({errors: nextProps.errors})
@@ -55,16 +55,14 @@ class SessionForm extends React.Component{
     }
     demoUser(e){
         e.preventDefault();
-        
-        this.props.login({email: "starwars",password: "starwars"})
-            .then( () => this.props.history.push('/'))
+        this.props.login(this.props.demoUser)//.then(() => this.props.closeModal());
     }
     sessionErrors(){
         return(
             <ul >
-                {Object.keys(this.state.errors).map((error,i)=>(
+                {Object.keys(this.props.errors).map((error,i)=>(
                     <li key={`error-${i}`}>
-                        {this.state.errors[error]}
+                        Invalid login credentials: {error}
                     </li>
                 ))}
             </ul>
@@ -72,26 +70,26 @@ class SessionForm extends React.Component{
             
         )
     }
-    
 
     render(){
+        const { formType, navLink } = this.props;
         return (
-            <div className='session-form-container' >
+            <div className='session-form-container'>
                 <div className="session-form">
 
-                    {this.props.formType === 'Sign up'?
+                    {formType === 'Sign up'?
                         <div className="form-item">
-                            <h3 className="line-below">Have an account? {this.props.navLink}</h3>
+                            <h3 className="line-below">Have an account? {navLink}</h3>
                         </div>: 
                         null
                     }
                     
-                    {this.props.formType === 'Sign up'?
+                    {formType === 'Sign up'?
                         <div className="form-item">
-                            <h3 className="form-item">{this.props.formType}</h3>
+                            <h3 className="form-item">{formType}</h3>
                         </div>: 
                         <div>
-                            <h3 className="form-item session-form-title">{this.props.formType}</h3>
+                            <h3 className="form-item session-form-title">{formType}</h3>
                         </div>
                     }
                     {this.sessionErrors()}
@@ -100,7 +98,7 @@ class SessionForm extends React.Component{
 
 
                     <form className="form-session">
-                        {this.props.formType === 'Sign up'?
+                        {formType === 'Sign up'?
                             <div className="form-item">
                             <input 
                                 type="text"
@@ -130,7 +128,7 @@ class SessionForm extends React.Component{
                             onChange={this.update('password')}
                         />
                         </div>
-                        {this.props.formType === 'Sign up'?
+                        {formType === 'Sign up'?
                             <div className="form-item">
                             <input 
                                 type="password"
@@ -145,20 +143,21 @@ class SessionForm extends React.Component{
 
 
                         
-                        {this.props.formType === 'Sign up' ?
+                        {formType === 'Sign up' ?
                         null : <div className="form-item">
-                            <p>New to EcoRoute? {this.props.navLink}</p>
+                            <p>New to EcoRoute? {navLink}</p>
                         </div>}
 
-                        {this.props.formType === 'Sign up'?
+                        {formType === 'Sign up'?
                             <div className="form-item">
                                 <LoginGeocoder setParentState={geoObject => this.setState(geoObject)}/>
                             </div>
                         : null}
 
                         
-                        {this.props.formType === 'Sign up'?<button className="form-button form-item session-form-submit translatey-med" onClick={this.handleSubmit} value={this.props.formType}>Create account</button>:<button className="form-button form-item session-form-submit" onClick={this.handleSubmit} value={this.props.formType}>{this.props.formType}</button> }
-                        {<button className="form-item demo-button translatey-med" onClick={this.demoUser} value={'Demo User'}>Demo User</button>}
+                        {formType === 'Sign up'?<button className="form-button form-item session-form-submit translatey-med" onClick={this.handleSubmit} value={formType}>Create account</button>:<button className="form-button form-item session-form-submit" onClick={this.handleSubmit} value={formType}>{formType}</button> }
+                        
+                        <button className="form-item demo-button translatey-med" onClick={this.demoUser}>Demo User</button>
                         
                     </form>
                 </div>
