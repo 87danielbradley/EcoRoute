@@ -4,6 +4,7 @@ import axios from "axios";
 //     return axios.get('api/events')
 // };
 export const getUserEvents = userId => {
+    debugger
     return axios.get(`/api/events/user/${userId}`)
 };
 
@@ -15,7 +16,7 @@ export const createEvent = event => {
 }
 
 export const updateEvent = event => {
-    return axios.put(`/api/events/${event.id}`, event)
+    return axios.put(`/api/events/${event._id}`, event)
 }
 
 export const deleteEvent = eventId => {

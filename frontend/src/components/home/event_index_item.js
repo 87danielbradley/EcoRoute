@@ -38,7 +38,7 @@ const EventIndexItem = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small">
-          <Link to={`/events/${event.id}`}>Edit Event</Link>
+          <Link to={`/events/${event._id}`}>Edit Event</Link>
           </Button>
         <Button onClick={() => deleteEvent(event.id)} size="small">Delete Event</Button>
       </CardActions>
