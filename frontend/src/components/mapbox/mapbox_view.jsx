@@ -14,7 +14,7 @@ export default class MapboxView extends React.PureComponent{
             lng: -73.906021,
           
             lat: 40.745541,
-            zoom: 10
+            zoom: 14
 
             
         };
@@ -34,7 +34,7 @@ export default class MapboxView extends React.PureComponent{
         );
     }
 
-    renderMap(){
+    renderMap(eventIndex=0){
         
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
@@ -42,14 +42,20 @@ export default class MapboxView extends React.PureComponent{
             // style: 'mapbox://styles/mapbox/dark-v10',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
-            zoom: 14
+            zoom: zoom
         });
         if (this.props.events.length > 0){
             
             const featuresArray = []
-            this.props.events[0].attendees.map((attendee,i) => {
-                    featuresArray.push({type: 'Feature', geometry: `${attendee.geometry}`, properties: {id: `${attendee.id}`}})
-                    }) 
+            this.props.events[eventIndex].attendees.map((attendee,i) => {
+                    featuresArray.push({type: 'Feature', 
+                                        geometry: {
+                                            type: 'Point',
+                                            coordinates: attendee.location
+                                            }
+                                        }) 
+                                    })
+
             const friends = {
                 type: "FeatureCollection",
                 features: featuresArray
@@ -66,7 +72,7 @@ export default class MapboxView extends React.PureComponent{
                     source: 'attendees',
                     
                     paint: {
-                        "circle-radius": 500000,
+                        "circle-radius": 5,
                         "circle-color": "#5b94c6",
                         "circle-opacity": 1
                     }
