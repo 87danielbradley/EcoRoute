@@ -20,6 +20,7 @@ export default class MapboxView extends React.PureComponent{
             
         };
         this.mapContainer = React.createRef();
+        this.renderMap = this.renderMap.bind(this);
         
     }
     componentDidMount() {
@@ -32,7 +33,7 @@ export default class MapboxView extends React.PureComponent{
                 <div id="map" ref={this.mapContainer} className="map-container">
                     <div id="left" className="sidebar flex-center left">
                         <div className="sidebar-content rounded-rect flex-center">
-                            <EventIndexContainer />
+                            <EventIndexContainer renderMap={(index)=> this.renderMap(index)} />
                             <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
                                 &#10513;
                             </div>
