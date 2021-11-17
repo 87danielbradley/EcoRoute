@@ -20,7 +20,7 @@ export const updateEvent = event => {
 }
 
 export const deleteEvent = eventId => {
-    debugger
+    // debugger
     return axios.delete(`/api/events/${eventId}`)
 }
 

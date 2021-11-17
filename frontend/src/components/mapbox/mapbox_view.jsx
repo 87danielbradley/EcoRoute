@@ -76,7 +76,7 @@ export default class MapboxView extends React.PureComponent{
                 type: "FeatureCollection",
                 features: featuresArray
             };
-            debugger
+            // debugger
 
             
 

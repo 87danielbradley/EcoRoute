@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import MapboxView from "./mapbox_view"
 
 const mSTP = (state ={}, ownProps) => {
-    debugger
+    // debugger
     return {events: Object.values(state.events),
     eventType: 'event'}
 }
