@@ -3,8 +3,9 @@ EventIndexContainer{
     overflow: auto;
 }
 .map-container {
-margin-top: 800px;
-height: 100vh;
+margin: 2%;
+max-height: 96vh;
+max-width: 96vw;
 }
 .event-index-item{
     overflow-y: scroll !important;

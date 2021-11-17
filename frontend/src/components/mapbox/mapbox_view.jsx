@@ -20,6 +20,7 @@ export default class MapboxView extends React.PureComponent{
             
         };
         this.mapContainer = React.createRef();
+        
     }
     componentDidMount() {
         this.renderMap()
