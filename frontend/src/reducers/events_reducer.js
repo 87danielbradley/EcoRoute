@@ -30,10 +30,13 @@ const EventsReducer = (oldState = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_USER_EVENTS:
-            return {...action.events} 
+            action.events.data.forEach(event => {
+                 nextState[event._id] = event
+                });
+            return nextState
 
         case RECEIVE_EVENT:
-             nextState[action.event.id] = action.event;
+             nextState[action.event.data._id] = action.event.data;
             return nextState;
 
         case REMOVE_EVENT:
