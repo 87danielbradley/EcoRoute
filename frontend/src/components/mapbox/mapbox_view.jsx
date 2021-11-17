@@ -29,11 +29,11 @@ export default class MapboxView extends React.PureComponent{
         return (
             <div>
                 <div id="map" ref={this.mapContainer} className="map-container">
-                    <div id="left" class="sidebar flex-center left collapsed">
+                    <div id="left" class="sidebar flex-center left">
                         <div class="sidebar-content rounded-rect flex-center">
                             <EventIndexContainer />
                             <div class="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
-                                &rarr;
+                                &#10513;
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ export default class MapboxView extends React.PureComponent{
                         <div class="sidebar-content rounded-rect flex-center">
                             Right Sidebar
                             <div class="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
-                                &larr;
+                                &#11064;
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ export default class MapboxView extends React.PureComponent{
         const collapsed = elem.classList.toggle('collapsed');
         const padding = {};
         // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
-        padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
+        padding[id] = !collapsed ? 300 : 0; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
         // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
         // // debugger
         // this.state.map.easeTo({
