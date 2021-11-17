@@ -22,12 +22,12 @@ const UserSchema = new Schema({
         }
     ],
 
-    location: {
-        geometry: {
+
+    geometry: {
             type: {type: String},
             coordinates:[]
-        }
     }
+
 },
 
 {
