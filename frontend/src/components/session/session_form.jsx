@@ -55,7 +55,7 @@ class SessionForm extends React.Component{
     }
     demoUser(e){
         e.preventDefault();
-        this.props.login(this.props.demoUser)//.then(() => this.props.closeModal());
+        this.props.login(this.props.demoUser).then(() => this.props.closeModal());
     }
     sessionErrors(){
         return(
@@ -66,8 +66,6 @@ class SessionForm extends React.Component{
                     </li>
                 ))}
             </ul>
-           
-            
         )
     }
 
@@ -94,10 +92,7 @@ class SessionForm extends React.Component{
                     }
                     {this.sessionErrors()}
                     
-                    
-
-
-                    <form className="form-session">
+                    <form onSubmit={this.handleSubmit} className="form-session">
                         {formType === 'Sign up'?
                             <div className="form-item">
                             <input 
@@ -140,9 +135,6 @@ class SessionForm extends React.Component{
                             </div>
                         : null}
 
-
-
-                        
                         {formType === 'Sign up' ?
                         null : <div className="form-item">
                             <p>New to EcoRoute? {navLink}</p>
@@ -154,8 +146,9 @@ class SessionForm extends React.Component{
                             </div>
                         : null}
 
-                        
-                        {formType === 'Sign up'?<button className="form-button form-item session-form-submit translatey-med" onClick={this.handleSubmit} value={formType}>Create account</button>:<button className="form-button form-item session-form-submit" onClick={this.handleSubmit} value={formType}>{formType}</button> }
+                        <button className="form-button form-item session-form-submit">
+                            {formType === "login" ? formType : "Create account"}
+                        </button>
                         
                         <button className="form-item demo-button translatey-med" onClick={this.demoUser}>Demo User</button>
                         
