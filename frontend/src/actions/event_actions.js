@@ -21,12 +21,15 @@ export const removeEvent = eventId => ({
 })
 
 
-export const fetchUserEvents = (userId) => dispatch => (
+export const fetchUserEvents = (userId) => dispatch => {
     // console.log('fetching user events')
-    APIUtil.getUserEvents(userId)
-    .then(events => dispatch(receiveUserEvents(events)))
-    .catch(error => console.log(error))
-)
+    debugger
+    return (
+        APIUtil.getUserEvents(userId)
+        .then(events => dispatch(receiveUserEvents(events)))
+        .catch(error => console.log(error))
+    )
+}
 
 export const fetchEvent = eventId => dispatch => {
     return APIUtil.getEvent(eventId)

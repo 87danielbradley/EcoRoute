@@ -40,7 +40,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserEvents: () => dispatch(fetchUserEvents()),
+        fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId))
     }
 
