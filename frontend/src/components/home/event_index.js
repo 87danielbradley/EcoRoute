@@ -7,10 +7,13 @@ class EventIndex extends React.Component{
     componentDidMount(){
      
         this.props.fetchUserEvents(this.props.currentUser.id);
+        // this.props.currentUser.friends.map( friend => {
+        //     this.props.fetchUser(friend)
+        // })
     }
 
     render(){
-
+        debugger
         const {events, deleteEvent} = this.props;
         // console.log(events)
 

@@ -124,17 +124,17 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             const savedRequest = FriendRequest.findById(save.id).populate('sender')
             
             // this is the quick fix to automatically add someone as a friend
-            sender.friends.push(savedRequest.receiver)
+            sender.friends.push(receiver)
             await sender.save()
 
-            receiver.friends.push(savedRequest.sender)
+            receiver.friends.push(sender)
             await receiver.save()
-
+            debugger
             await FriendRequest.deleteOne({ _id: savedRequest._id })
-            response.status(200).json({ message: 'Friend Request Accepted'})
+            response.status(200).json({ message: 'Friend Request Accepted', save })
 
 
-            response.status(200).json({ savedRequest })
+            // response.status(200).json({ savedRequest })
 
         } catch (err) {
             console.log(err)
@@ -206,6 +206,20 @@ router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {s
     }
 );
 
+// router.get('/friends', passport.authenticate('jwt', { session: false }),
+//      async (req, res) => {
+//         try {
+//             const currentUser = await User.findById(jwt.decode(request.get('authorization').split('Bearer ')[1]).id)
+        
+//             const friends = currentUser.friends.map( id => {
+//                 User.findById(id)
+//             })
+//         } catch (err) {
+//             console.log(err)
+//         }
+
+   
+// })
 
 //private auth route
 router.get('/current', passport.authenticate('jwt', {session: false}), (request, response) => {
