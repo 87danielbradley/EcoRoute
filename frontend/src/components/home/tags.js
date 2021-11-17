@@ -13,11 +13,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Tags({ onOptionsChange, attendees}) {
-
+export default function Tags({ onOptionsChange, attendees, formType}) {
   const classes = useStyles();
   const [options, setOptions] = useState(["mickey", "tyler", "daniel", "sydney"]); //options=initialalueof the array, setOptions is settting people
-  const [selectedOptions, setSelectedOptions] = useState([]) 
+  const [selectedOptions, setSelectedOptions] = useState(attendees) 
   
   const handleOptionsChange = (e) => {
     setOptions(options.concat(e.target.value));
@@ -34,6 +33,7 @@ export default function Tags({ onOptionsChange, attendees}) {
         multiple
         id="tags-outlined"
         options={options}
+        value={selectedOptions}
         onChange={(e, selectedOptions) => {
           setSelectedOptions(selectedOptions)
           onOptionsChange(selectedOptions)

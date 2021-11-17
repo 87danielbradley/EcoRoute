@@ -27,6 +27,7 @@ router.post('/',
 )
 
 router.get('/user/:user_id', (req, res) => {
+    // debugger
     Event.find({user: req.params.user_id})
         .sort({ date: -1 })
         .then( events => res.json(events))
@@ -45,6 +46,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+    
     const {id} = req.params
     Event.findOneAndDelete({_id: id})
         .then(() => res.status(200).json({sucess: "Event successfully deleted"}))

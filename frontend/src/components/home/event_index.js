@@ -5,20 +5,21 @@ import { fetchUserEvents, deleteAnEvent} from "../../actions/event_actions";
 class EventIndex extends React.Component{
 
     componentDidMount(){
-        this.props.fetchUserEvents();
+     
+        this.props.fetchUserEvents(this.props.currentUser.id);
     }
 
     render(){
 
         const {events, deleteEvent} = this.props;
-        console.log(events)
+        // console.log(events)
 
         return(
             <div>
                 <h1>Events</h1>
 
                 {
-                    events.reverse().map((event, i) => {
+                    events.map((event, i) => {
                         return (event !== undefined && <EventIndexItem key={i} event={event} deleteEvent={deleteEvent} />)
                     })
                 }
@@ -33,14 +34,16 @@ class EventIndex extends React.Component{
 const mapStateToProps = state => {
     return {
         // events: state.events.events
-        events: Object.values(state.events)
+        events: Object.values(state.events),
+        currentUser: state.session.user
+        // currentUser: state.session.user
     }
 }
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserEvents: () => dispatch(fetchUserEvents()),
+        fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId))
     }
 
