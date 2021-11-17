@@ -4,6 +4,7 @@ import React from 'react';
 import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
+import EventIndexContainer from '../home/event_index'
 const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
@@ -48,6 +49,7 @@ export default class MapboxView extends React.PureComponent{
                     source: { type: 'geojson', data: friends}
                 });
             });
+          
 
             //attempt to add user image
             // for (const marker of friends.features){
@@ -88,10 +90,46 @@ export default class MapboxView extends React.PureComponent{
 
         }
     }
+
+    toggleSidebar = (id) => {
+
+        const elem = document.getElementById(id);
+        // Add or remove the 'collapsed' CSS class from the sidebar element.
+        // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
+        const collapsed = elem.classList.toggle('collapsed');
+        const padding = {};
+        // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
+        padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
+        // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
+        // // debugger
+        // this.state.map.easeTo({
+        //     padding: padding,
+        //     duration: 1000 // In ms. This matches the CSS transition duration property.
+        // });
+    }
+
     render(){
+
         return (
             <div>
-                <div ref={this.mapContainer} className="map-container" />
+                <div id="map" ref={this.mapContainer} className="map-container">
+                <div id="left" class="sidebar flex-center left collapsed">
+        <div class="sidebar-content rounded-rect flex-center">
+            <EventIndexContainer />
+            <div class="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
+                &rarr;
+            </div>
+        </div>
+    </div>
+ <div id="right" class="sidebar flex-center right collapsed">
+        <div class="sidebar-content rounded-rect flex-center">
+            Right Sidebar
+            <div class="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
+                &larr;
+            </div>
+        </div>
+    </div>
+                </div>
             </div>
         );
     }
