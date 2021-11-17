@@ -11,9 +11,9 @@ export default class MapboxView extends React.PureComponent{
     constructor(props) {
         super(props);
         this.state = {
-            lng: -73.876549,
+            lng: -73.906021,
           
-            lat: 40.733959,
+            lat: 40.745541,
             zoom: 10
 
             
@@ -35,7 +35,7 @@ export default class MapboxView extends React.PureComponent{
     }
 
     renderMap(){
-        debugger
+        
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
@@ -45,14 +45,14 @@ export default class MapboxView extends React.PureComponent{
             zoom: 14
         });
         if (this.props.events.length > 0){
-            debugger
+            
             const featuresArray = []
             this.props.events[0].attendees.map((attendee,i) => {
                     featuresArray.push({type: 'Feature', geometry: `${attendee.geometry}`, properties: {id: `${attendee.id}`}})
                     }) 
             const friends = {
-                "type": "FeatureCollection",
-                "features": featuresArray
+                type: "FeatureCollection",
+                features: featuresArray
             };
             debugger
 
