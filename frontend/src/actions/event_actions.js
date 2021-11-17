@@ -23,7 +23,7 @@ export const removeEvent = eventId => ({
 
 export const fetchUserEvents = (userId) => dispatch => {
     // console.log('fetching user events')
-    debugger
+
     return (
         APIUtil.getUserEvents(userId)
         .then(events => dispatch(receiveUserEvents(events)))
@@ -55,6 +55,7 @@ export const updateAnEvent = (event) => dispatch => {
     .then(event => dispatch(receiveEvent(event)))
 }
 export const deleteAnEvent = (eventId) => dispatch => {
+    debugger
 
     // const fakeDelete = Promise.resolve(eventId)
     // fakeDelete.then(() => dispatch(removeEvent(eventId)))

@@ -30,9 +30,9 @@ const EventsReducer = (oldState = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_USER_EVENTS:
-            debugger
+       
             action.events.data.forEach(event => {
-                debugger
+               
                  nextState[event._id] = event
                 });
             return nextState
@@ -42,6 +42,7 @@ const EventsReducer = (oldState = {}, action) => {
             return nextState;
 
         case REMOVE_EVENT:
+            debugger
             delete nextState[action.eventId];
             return nextState;
         

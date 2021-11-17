@@ -5,7 +5,7 @@ import { fetchUserEvents, deleteAnEvent} from "../../actions/event_actions";
 class EventIndex extends React.Component{
 
     componentDidMount(){
-        debugger
+     
         this.props.fetchUserEvents(this.props.currentUser.id);
     }
 
