@@ -8,3 +8,6 @@ package-lock.json
 frontend/src/config/keys.js
 
 config/keys_dev.js
+frontend/package-lock.json
+package-lock.json
+frontend/package-lock.json

@@ -45,8 +45,8 @@ class EventForm extends Component {
     }
     
     render() {
-    
-        console.log(this.state.attendees)
+      
+        // console.log(this.state.attendees)
         const {title, attendees, date, category} = this.state;
     
         return (
