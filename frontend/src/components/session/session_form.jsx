@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter} from 'react-router-dom';
+import LoginGeocoder from "../mapbox/login_geocoder";
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -9,6 +10,7 @@ class SessionForm extends React.Component{
         email: '',
         password: '',
         password2: '',
+        geometry: {},
         errors: {}
     };
     this.sessionErrors = this.sessionErrors.bind(this);
@@ -16,6 +18,8 @@ class SessionForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoUser = this.demoUser.bind(this)
     this.clearedErrors = false;
+
+    this.setState = this.setState.bind(this)
     }
     componentWillReceiveProps(nextProps) {
         if( nextProps.currentUser === true) {
@@ -145,6 +149,13 @@ class SessionForm extends React.Component{
                         null : <div className="form-item">
                             <p>New to EcoRoute? {this.props.navLink}</p>
                         </div>}
+
+                        {this.props.formType === 'Sign up'?
+                            <div className="form-item">
+                                <LoginGeocoder setParentState={geoObject => this.setState(geoObject)}/>
+                            </div>
+                        : null}
+
                         
                         {this.props.formType === 'Sign up'?<button className="form-button form-item session-form-submit translatey-med" onClick={this.handleSubmit} value={this.props.formType}>Create account</button>:<button className="form-button form-item session-form-submit" onClick={this.handleSubmit} value={this.props.formType}>{this.props.formType}</button> }
                         {<button className="form-item demo-button translatey-med" onClick={this.demoUser} value={'Demo User'}>Demo User</button>}
