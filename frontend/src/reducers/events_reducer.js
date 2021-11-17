@@ -5,7 +5,14 @@ const initialState = {
     title: 'Beethoven Concert',
     category: 'Music',
     user: 100,
-    attendees: [],
+    attendees: [
+        {geometry: {coordinates: [-73.9054, 40.7445], type: "Point"}},
+        {geometry: {coordinates: [-73.9063, 40.7466], type: "Point"}},
+        {geometry: {coordinates: [-73.9072, 40.7457], type: "Point"}},
+        {geometry: {coordinates: [-73.9053, 40.7434], type: "Point"}},
+        {geometry: {coordinates: [-73.9054, 40.7444], type: "Point"}},
+        {geometry: {coordinates: [-73.9054, 40.7450], type: "Point"}}
+    ],
     id: 1,
     date: 'November 24, 2021',
 
@@ -15,7 +22,14 @@ const initialState = {
    title: 'Dinner Pary',
     category: '',
       user: 101,
-    attendees: [],
+    attendees: [
+        {geometry: {coordinates: [-73.9054, 40.7445], type: "Point"}},
+        {geometry: {coordinates: [-73.9063, 40.7466], type: "Point"}},
+        {geometry: {coordinates: [-73.9072, 40.7457], type: "Point"}},
+        {geometry: {coordinates: [-73.9053, 40.7434], type: "Point"}},
+        {geometry: {coordinates: [-73.9054, 40.7444], type: "Point"}},
+        {geometry: {coordinates: [-73.9054, 40.7450], type: "Point"}}
+    ],
     id: 2,
     date: 'November 24, 2021',
   

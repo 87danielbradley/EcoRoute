@@ -16,7 +16,7 @@ export default class LoginGeocoder extends React.PureComponent{
             lng: -77.10853099823,
           
             lat: 38.880100922392,
-            zoom: 10
+            zoom: 1
 
             
         };
@@ -40,22 +40,34 @@ export default class LoginGeocoder extends React.PureComponent{
             container: this.mapContainer.current,
             style: 'mapbox://styles/mapbox/dark-v10',
             center: [lng, lat],
-            zoom: zoom
+            zoom: zoom,
+            bearing: 0
         });
         const geocoder = new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 flyTo:{
-                    bearing: 27,
+                    bearing: (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 20),
                     speed: 2,
                     curve: 0.75,
-                    pitch: 20,
+                    pitch: 60,
                     essential: true
                     
                 },
-                mapboxgl: mapboxgl
+                mapboxgl: mapboxgl,
+                className: "geocoder"
+            })
+            const geolocator= new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: false
+                },
+                trackUserLocation: true,
+                className: "geolocator"
             })
         map.addControl(
             geocoder, 'top-left'
+            )
+        map.addControl(
+            geolocator
         )
         let that = this;
         geocoder.on('result', function(e) {
@@ -63,6 +75,17 @@ export default class LoginGeocoder extends React.PureComponent{
             console.log(e.result.geometry)
 
             that.props.setParentState({"geometry": e.result.geometry})
+            // that.props.setParentState({"geometry": JSON.parse(geocoder.lastSelected).geometry})
+            // this.props.setState{"geometry": JSON.parse(geocoder.lastSelected).geometry}
+        })
+        geolocator.on('geolocate', function(e) {
+            // debugger
+            console.log(e.coords.latitude)
+            console.log(e.coords.longitude)
+            
+
+            that.props.setParentState({"geometry": {"type": "Point",
+            "coordinates": [e.coords.latitude, e.coords.longitude]}})
             // that.props.setParentState({"geometry": JSON.parse(geocoder.lastSelected).geometry})
             // this.props.setState{"geometry": JSON.parse(geocoder.lastSelected).geometry}
         })

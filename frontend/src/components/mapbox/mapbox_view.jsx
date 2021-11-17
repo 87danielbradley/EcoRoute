@@ -11,9 +11,9 @@ export default class MapboxView extends React.PureComponent{
     constructor(props) {
         super(props);
         this.state = {
-            lng: -77.10853099823,
+            lng: -73.876549,
           
-            lat: 38.880100922392,
+            lat: 40.733959,
             zoom: 10
 
             
@@ -21,31 +21,50 @@ export default class MapboxView extends React.PureComponent{
         this.mapContainer = React.createRef();
     }
     componentDidMount() {
+        this.renderMap()
+    }
+    render(){
+        return (
+            <div>
+                <div ref={this.mapContainer} className="map-container" >
+                    <div id="left-sidebar" className="left-sidebar"></div>
+                    <div id="right-sidebar"className="right-sidebar"></div>
+                </div>
+            </div>
+        );
+    }
+
+    renderMap(){
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
-            style: 'mapbox://styles/mapbox/dark-v10',
+            // style: 'mapbox://styles/mapbox/dark-v10',
+            style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
             zoom: zoom
         });
         if (this.props.events.length > 0){
+            const featuresArray = []
+            this.props.events[0].attendees.map((attendee,i) => {
+                    featuresArray.push({type: 'Feature', geometry: `${attendee.geometry}`, properties: {id: `${attendee.id}`}})
+                    }) 
             const friends = {
                 "type": "FeatureCollection",
-                "features": [
-                    this.props.events[0].attendees.map(attendee => {
-                        return (
-                            `{"type": "Feature",${attendee.location},"properties": {'id':"${attendee.id}"}}`
-                        )
-                    })  
-                ]
+                "features": featuresArray
             };
+            debugger
 
 
             map.on('load', () => {
                 map.addLayer({
                     id: `${this.props.eventType}`,
                     type: 'circle',
-                    source: { type: 'geojson', data: friends}
+                    source: { type: 'geojson', data: friends},
+                    paint: {
+                        "circle-radius": 500000,
+                        "circle-color": "#5b94c6",
+                        "circle-opacity": 0.6
+                    }
                 });
             });
 
@@ -87,13 +106,6 @@ export default class MapboxView extends React.PureComponent{
 
 
         }
-    }
-    render(){
-        return (
-            <div>
-                <div ref={this.mapContainer} className="map-container" />
-            </div>
-        );
     }
 }
 
