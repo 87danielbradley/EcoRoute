@@ -1,9 +1,6 @@
 import React from "react";
 import * as APIUtil from "../../util/friends_api_util";
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Divider from '@mui/material/Divider';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
@@ -38,9 +35,6 @@ class FriendsIndexItem extends React.Component {
                 name += this.state.friend.username[i]
             }
         }
-
-    //    console.log( name);
-
 
         return (
             <div>

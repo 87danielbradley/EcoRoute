@@ -6,8 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
-import CreateEventModal from './create_event_modal';
+
 
 
 

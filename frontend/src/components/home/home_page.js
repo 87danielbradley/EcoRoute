@@ -20,7 +20,7 @@ class HomePage extends React.Component{
 
                         <div className="column is-two-thirds">
                             <div className="createEvent">
-                            <FriendIndexContainer/>
+                        
                             <CreateEventModal />
                             </div>
                             
