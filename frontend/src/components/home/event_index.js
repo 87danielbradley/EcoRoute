@@ -18,12 +18,12 @@ class EventIndex extends React.Component{
         // console.log(events)
 
         return(
-            <div>
+            <div className="event-index-item">
                 <h1>Events</h1>
 
                 {
                     events.map((event, i) => {
-                        return (event !== undefined && <EventIndexItem key={i} event={event} deleteEvent={deleteEvent} />)
+                        return (event !== undefined && <EventIndexItem key={i} eventIndex={i} event={event} deleteEvent={deleteEvent} renderMap={index => this.props.renderMap(index)}/>)
                     })
                 }
 

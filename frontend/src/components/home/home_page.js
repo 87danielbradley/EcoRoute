@@ -12,20 +12,17 @@ class HomePage extends React.Component{
         return(
             
                 <div>
-                    Home Page
-
+                    {/* Home Page
                     <div className="columns">
                         <div className="column"></div>
-
                         <div className="column is-two-thirds">
                             <EventFormContainer/>
                             <EventIndex/>
                             
                         </div>
                         <div className="column">  </div>
-
             
-                    </div>
+                    </div> */}
                     <MapboxContainer />
                 </div>
             
