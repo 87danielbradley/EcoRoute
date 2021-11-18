@@ -323,5 +323,5 @@ The toggleSidebar() function removes this class from the element in order to exp
 }
 .message{
     min-width: 100%;
-    overflow: hidden;
+   
 }
