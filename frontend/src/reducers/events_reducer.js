@@ -2,7 +2,7 @@ import { RECEIVE_USER_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/eve
 
 const initialState = {
    1: {
-    title: 'Beethoven Concert',
+    title: 'Clam Chowder Cookoff',
     category: 'Music',
     user: 100,
     attendees: [ 
@@ -39,54 +39,75 @@ const initialState = {
   },
   
   2: {
-   title: 'Dinner Pary',
+   title: 'Tyler\'s Exclusive',
     category: 'Food',
       user: 101,
     attendees: [
-      {location: [-72.906021, 41.745541]},
-        {location: [-72.906022, 41.745541]},
-        {location: [-72.906023, 41.745541]}
+      {location: [-75.1330394, 39.93935085]},
+      {location: [-75.13305, 39.93936]},
+      {location: [-75.13308, 39.93938]},
+      {location: [-75.13310, 39.93935085]},
+      {location: [-75.132, 39.93935085]},
+      {location: [-75.1330394, 39.9394]}
     ],
     _id: 2,
     date: 'November 24, 2021',
   
     },
     3: {
-    title: 'test',
+    title: 'Phili Cheesesteak Annual',
     category: 'Music',
     user: 100,
     attendees: [
-      {location: [-70.906005, 40.745541]},
-        {location: [-70.906110, 40.745541]},
-        {location: [-70.906215, 40.745541]},
-        {location: [-70.906320, 40.745541]},
-        {location: [-70.906425, 40.745541]},
-        {location: [-70.906530, 40.745541]},
-        {location: [-70.906635, 40.745541]},
-        {location: [-70.906740, 40.745541]},
-        {location: [-70.906845, 40.745541]},
-        {location: [-70.906950, 40.745541]},
-        {location: [-70.907055, 40.745541]},
-        {location: [-70.907160, 40.745541]},
-        {location: [-70.907265, 40.745541]},
-        {location: [-70.906005, 40.745041]},
-        {location: [-70.906110, 40.745141]},
-        {location: [-70.906215, 40.745241]},
-        {location: [-70.906320, 40.745341]},
-        {location: [-70.906425, 40.745441]},
-        {location: [-70.906530, 40.745541]},
-        {location: [-70.906635, 40.745641]},
-        {location: [-70.906740, 40.745741]},
-        {location: [-70.906845, 40.745841]},
-        {location: [-70.906950, 40.745941]},
-        {location: [-70.907055, 40.741041]},
-        {location: [-70.907160, 40.741141]},
-        {location: [-70.907265, 40.741241]}
+      {location: [-83.1137366, 32.3293809]},
+        {location: [-83.906110, 32.745541]},
+        {location: [-83.906215, 32.745541]},
+        {location: [-83.906320, 32.745541]},
+        {location: [-83.906425, 32.745541]},
+        {location: [-83.906530, 32.745541]},
+        {location: [-83.906635, 32.745541]},
+        {location: [-83.906732, 32.745541]},
+        {location: [-83.906845, 32.745541]},
+        {location: [-83.906950, 32.745541]},
+        {location: [-83.908355, 32.745541]},
+        {location: [-83.907160, 32.745541]},
+        {location: [-83.907265, 32.745541]},
+        {location: [-83.906005, 32.745041]},
+        {location: [-83.906110, 32.745141]},
+        {location: [-83.906215, 32.745241]},
+        {location: [-83.906320, 32.745341]},
+        {location: [-83.906425, 32.745441]},
+        {location: [-83.906530, 32.745541]},
+        {location: [-83.906635, 32.745641]},
+        {location: [-83.906732, 32.745741]},
+        {location: [-83.906845, 32.745841]},
+        {location: [-83.906950, 32.745941]},
+        {location: [-83.908355, 32.741041]},
+        {location: [-83.907160, 32.741141]},
+        {location: [-83.907265, 32.741241]}
     ],
     _id: 3,
     date: 'November 24, 2021',
 
-  }
+  },
+  4: {
+   title: 'Woodside Block Party',
+    category: 'Food',
+      user: 101,
+    attendees: [
+      {location: [-72.042366, 42.3708774]},
+      {location: [-72.032366, 42.3718774]},
+      {location: [-72.012366, 42.3728774]},
+      {location: [-72.022366, 42.3738774]},
+      {location: [-72.042366, 42.3748774]},
+      {location: [-72.052366, 42.3758774]},
+      {location: [-72.002366, 42.3768774]}
+      
+    ],
+    _id: 4,
+    date: 'November 24, 2021',
+  
+    }
 }
 
 
