@@ -4,7 +4,8 @@ import React from 'react';
 import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
-import EventIndexContainer from '../home/event_index'
+import EventIndexContainer from '../home/event_index';
+import FriendsIndexContainer from '../friends/friends_index_container';
 // const accessToken = process.env.mapbox;
 const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
@@ -42,7 +43,7 @@ export default class MapboxView extends React.PureComponent{
                     </div>
                     <div id="right" className="sidebar flex-center right collapsed">
                         <div className="sidebar-content rounded-rect flex-center">
-                            Right Sidebar
+                            <FriendsIndexContainer/>
                             <div className="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
                                 &#11064;
                             </div>

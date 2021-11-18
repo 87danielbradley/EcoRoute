@@ -92,3 +92,24 @@ height: 3em !important;
 
 
 }
+
+.avatarName{
+ 
+  display: flex;
+  justify-content:flex-start;
+  vertical-align: top;
+}
+
+.avatar{
+
+  background-color: rgba(58, 113, 216, 0.9) !important;
+  margin-right: 30px;
+}
+
+.friendName{
+  height: 20px;  
+  font-size: 20px !important;
+  color: rgb(228, 160, 13) !important;
+
+
+}

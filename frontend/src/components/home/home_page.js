@@ -29,7 +29,7 @@ class HomePage extends React.Component{
 
             
                     </div>
-                    {/* <MapboxContainer /> */}
+                    <MapboxContainer />
                     
                 </div>
             
