@@ -70,15 +70,23 @@ export default class MapboxView extends React.PureComponent{
     }
 
     renderMap(eventIndex=0){
+        let attendees = this.props.events[eventIndex].attendees;
+        let lng = attendees.reduce((total, next) => total + next.location[0],0)/attendees.length;
+        let lat = attendees.reduce((total, next) => total + next.location[1],0)/attendees.length;
+
         
-        const { lng, lat, zoom } = this.state;
+        
+        // const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             // style: 'mapbox://styles/mapbox/dark-v10',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
-            zoom: zoom
+            zoom: 10
         });
+        map.setCenter([lng,lat])
+        console.log([lng,lat])
+        console.log(eventIndex)
         if (this.props.events.length > 0){
             
             const featuresArray = []
