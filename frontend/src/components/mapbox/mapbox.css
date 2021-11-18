@@ -31,13 +31,12 @@ body { margin: 0; padding: 0; }
     align-items: center;
 }
 
+
 .flex-center.left {
     left: 0px;
 }
 
-.flex-center.right {
-    right: 0px;
-}
+
 
 .sidebar-content {
     position: absolute;
@@ -65,9 +64,6 @@ body { margin: 0; padding: 0; }
     right: -1.5em;
 }
 
-.sidebar-toggle.right {
-    left: -1.5em;
-}
 
 .sidebar-toggle:hover {
     color: #0aa1cf;
@@ -89,9 +85,6 @@ The toggleSidebar() function removes this class from the element in order to exp
     transform: translateX(-295px);
 }
 
-.right.collapsed {
-    transform: translateX(295px);
-}
 
 
 .sidebar-content{
@@ -103,4 +96,190 @@ The toggleSidebar() function removes this class from the element in order to exp
     z-index: 5;
     overflow-y: scroll !important;
     max-height: 100%;
+}
+
+
+
+
+
+.flex-center {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar-content {
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    color: gray;
+    
+}
+
+.sidebar-toggle {
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.sidebar-toggle:hover {
+    color: #0aa1cf;
+    cursor: pointer;
+}
+
+.sidebar {
+    transition: transform 1s;
+    z-index: 1;
+    width: 300px;
+    height: 100%;
+}
+.sidebar-upper {
+    transition: transform 1s;
+    z-index: 1;
+    width: 30%;
+    height: 55%;
+}
+
+
+/*
+The sidebar styling has them "expanded" by default, we use CSS transforms to push them offscreen
+The toggleSidebar() function removes this class from the element in order to expand it.
+*/
+
+
+.upper.collapsed {
+    transform: translateY(55%);
+    transform: translateX(25%);
+    
+}
+
+
+.sidebar-toggle.upper {
+    left: -1.5em;
+    
+}
+.flex-upper {
+    position: absolute;
+    display: flex;
+    justify-content: top;
+    align-items: top;
+    right: 0px;
+    top: 0px;
+}
+
+
+
+.sidebar-toggle-upper {
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -1.5em;
+    
+}
+
+
+
+.upper.collapsed {
+    transform: translateY(-320px);
+    
+}
+
+
+.flex-upper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+}
+
+
+
+/* .lower.collapsed {
+    transform: translateX(295px);
+} */
+
+
+.sidebar-toggle.lower {
+    left: -1.5em;
+}
+.flex-lower {
+    position: absolute;
+    display: flex;
+    justify-content: top;
+    align-items: top;
+    right: 0px;
+    bottom: 0px;
+}
+
+
+
+.sidebar-toggle-lower {
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -1.5em;
+    top: -1.5em;
+    
+}
+
+
+
+.lower.collapsed {
+    transform: translate(20%, 70%)
+}
+
+
+.flex-lower {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+}
+
+
+.sidebar-lower {
+    transition: transform 1s;
+    z-index: 1;
+    width: 500px;
+    height: 40%;
+}
+
+
+.sidebar-content {
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    color: gray;
+    
+}
+
+.sidebar-toggle-lower {
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }

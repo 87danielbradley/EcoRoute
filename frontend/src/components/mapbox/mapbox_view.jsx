@@ -44,15 +44,23 @@ export default class MapboxView extends React.PureComponent{
                             </div>
                         </div>
                     </div>
-                    <div id="right" className="sidebar flex-center right collapsed">
-                        <div className="sidebar-content rounded-rect flex-center">
-                            Right Sidebar
+                    <div id="upper" className="sidebar sidebar-upper flex-upper upper collapsed">
+                        <div className="sidebar-content rounded-rect flex-upper">
+                            Friends
                             <FriendsIndexContainer />
-                            <div className="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
+                            <div className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
                                 &#11064;
-                                {/* &#xf0c0; */}
-                                {/* &#xf2b9; */}
-                                {/* <i className="fa-solid fa-user"></i> */}
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
+                        <div className="sidebar-content rounded-rect flex-center">
+                            Chat
+                            
+                            <div className="sidebar-toggle-lower rounded-rect lower" onClick={() => this.toggleSidebar('lower')}>
+                                &#11064;
+                                
                             </div>
                         </div>
                     </div>
@@ -152,6 +160,22 @@ export default class MapboxView extends React.PureComponent{
         const padding = {};
         // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
         padding[id] = !collapsed ? 300 : 0; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
+        // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
+        // 
+        // this.state.map.easeTo({
+        //     padding: padding,
+        //     duration: 1000 // In ms. This matches the CSS transition duration property.
+        // });
+    }
+    toggleMessagebar = (id) => {
+
+        const elem = document.getElementById(id);
+        // Add or remove the 'collapsed' CSS class from the sidebar element.
+        // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
+        const collapsed = elem.classList.toggle('collapsed-lower');
+        const padding = {};
+        // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
+        padding[id] = !collapsed ? 500 : 0; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
         // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
         // 
         // this.state.map.easeTo({
