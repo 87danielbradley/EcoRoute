@@ -11,6 +11,15 @@ min-width: 80vw;
 max-width: 96vw;
 margin-top: 6%;
 }
+.map-container-login {
+margin: 2%;
+height: 400px;
+min-height: 80%;
+max-height: 100%;
+min-width: 80%;
+max-width: 100%;
+margin-top: 1%;
+}
 .event-index-item{
     overflow-y: scroll !important;
 }
