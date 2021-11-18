@@ -21,7 +21,7 @@ class HomePage extends React.Component{
                         <div className="column is-two-thirds">
                             <div className="createEvent">
 
-                            <CreateEventModal/>
+                            <CreateEventModal />
                             </div>
                             
                         </div>

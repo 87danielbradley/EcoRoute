@@ -4,10 +4,11 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import EventFormContainer from './event_form_container';
-
-
+import EditEventFormContainer from './edit_event_from_container'
+import { connect } from 'react-redux'
+import { setModalStatus, clearEditingEventId } from '../../actions/app_actions'
+ 
 const style = {
   position: 'absolute',
   top: '50%',
@@ -20,10 +21,16 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+function TransitionsModal(props) {
+  const { setModalOpenStatus, modalOpenStatus, isEditingEvent, clearEditEventId } = props
+  console.log("MODAL OPEN STATUS", modalOpenStatus)
+  const handleOpen = () => { 
+    setModalOpenStatus(true)
+  } ;
+  const handleClose = () => { 
+    setModalOpenStatus(false);
+    clearEditingEventId()
+  };
 
   return (
     <div>
@@ -31,7 +38,7 @@ export default function TransitionsModal() {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
+        open={modalOpenStatus}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -39,9 +46,13 @@ export default function TransitionsModal() {
           timeout: 500,
         }}
       >
-        <Fade in={open}>
+        <Fade in={modalOpenStatus}>
           <Box sx={style}>
-          <EventFormContainer/>
+            {isEditingEvent ? 
+            <EditEventFormContainer /> :
+            <EventFormContainer/>
+          }
+        
          
           </Box>
         </Fade>
@@ -49,3 +60,18 @@ export default function TransitionsModal() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  modalOpenStatus: state.appState.eventModalOpen,
+  isEditingEvent: state.appState.currentEditEventId
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setModalOpenStatus: (status) => dispatch(setModalStatus(status)),
+    clearEditEventId: () => dispatch(clearEditingEventId())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransitionsModal)
+

@@ -33,7 +33,7 @@ const initialState = {
         {location: [-73.907160, 40.741141]},
         {location: [-73.907265, 40.741241]}
     ],
-    id: 1,
+    _id: 1,
     date: 'November 24, 2021',
 
   },
@@ -57,7 +57,7 @@ const initialState = {
         {location: [-73.906032, 40.745541]},
         {location: [-73.906033, 40.745541]}
     ],
-    id: 2,
+    _id: 2,
     date: 'November 24, 2021',
   
     },
@@ -93,11 +93,10 @@ const initialState = {
         {location: [-73.907160, 40.741141]},
         {location: [-73.907265, 40.741241]}
     ],
-    id: 3,
+    _id: 3,
     date: 'November 24, 2021',
 
   }
-
 }
 
 

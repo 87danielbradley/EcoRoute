@@ -86,4 +86,9 @@ height: 3em !important;
 
 .createEvent{
   margin-bottom: 900px;
+/* position: relative; */
+  color:lightslategray!important;
+  /* font-size: 70px !important;/ */
+
+
 }

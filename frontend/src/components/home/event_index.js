@@ -2,6 +2,7 @@ import React from "react";
 import EventIndexItem from "./event_index_item";
 import { connect } from "react-redux";
 import { fetchUserEvents, deleteAnEvent, updateAnEvent} from "../../actions/event_actions";
+import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
 class EventIndex extends React.Component{
 
     componentDidMount(){
@@ -11,7 +12,7 @@ class EventIndex extends React.Component{
 
     render(){
 
-        const {events, deleteEvent} = this.props;
+        const {events, deleteEvent, openModalAndEditEvent} = this.props;
         // console.log(events)
 
         return(
@@ -20,7 +21,13 @@ class EventIndex extends React.Component{
 
                 {
                     events.reverse().map((event, i) => {
-                        return (event !== undefined && <EventIndexItem key={i} event={event} deleteEvent={deleteEvent} />)
+                        return (event !== undefined && 
+                        <EventIndexItem 
+                            key={i} event={event} 
+                            deleteEvent={deleteEvent}
+                            openModalAndEditEvent={openModalAndEditEvent}
+                            
+                        />)
                     })
                 }
 
@@ -36,7 +43,6 @@ const mapStateToProps = state => {
         // events: state.events.events
         events: Object.values(state.events),
         currentUser: state.session.user
-        // currentUser: state.session.user
     }
 }
 
@@ -45,7 +51,11 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
-        updateEvent: (event) => dispatch(updateAnEvent(event))
+        openModalAndEditEvent: (eventId) => { 
+            console.log("EVENT ID", eventId)
+            dispatch(setEditingEvent(eventId));
+            dispatch(setModalStatus(true))
+        }
     }
 
 }
