@@ -9,7 +9,15 @@ class FriendsIndexItem extends React.Component {
         this.props.fetchFriend(this.props.friendId)
     }
     render() {
-        return null
+        const id = this.props.friendId
+        const friend = this.props.friends.id
+        return (
+            <div>
+                <div>
+                    {friend.username}
+                </div>
+            </div>
+        )
     }
 };
 

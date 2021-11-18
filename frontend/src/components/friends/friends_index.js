@@ -10,6 +10,7 @@ class FriendsIndex extends React.Component {
                     <FriendsIndexItem 
                         key={idx} 
                         friendId={friend}
+                        friends={this.props.friends}
                         fetchFriend={this.props.fetchFriend}
                     />
                 </li>

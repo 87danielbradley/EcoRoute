@@ -4,7 +4,8 @@ import { sendRequest, fetchFriend } from "../../actions/friend_actions";
 
 const mapStepToProps = state => {
     return({
-        friends: state.session.user.friends
+        friendIds: state.session.user.friends,
+        friends: state.friends
     })
 };
 
