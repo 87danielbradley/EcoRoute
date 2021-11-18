@@ -15,7 +15,6 @@ const mapStateToProps = (state, ownProps) => {
     };
 return {
     event: !eventId ? emptyEvent : state.events[eventId],
-    // event: emptyEvent,
     formType: "Update Event"
 }
 }
