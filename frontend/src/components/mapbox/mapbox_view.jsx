@@ -50,6 +50,9 @@ export default class MapboxView extends React.PureComponent{
                             <FriendsIndexContainer />
                             <div className="sidebar-toggle rounded-rect right" onClick={() => this.toggleSidebar('right')}>
                                 &#11064;
+                                {/* &#xf0c0; */}
+                                {/* &#xf2b9; */}
+                                {/* <i className="fa-solid fa-user"></i> */}
                             </div>
                         </div>
                     </div>

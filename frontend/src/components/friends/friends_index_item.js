@@ -16,6 +16,7 @@ class FriendsIndexItem extends React.Component {
         if(this.state.friend === null) return null
         const friend = this.state.friend
         return (
+            
             <div>
                 <div>
                     {friend.username}
