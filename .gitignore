@@ -11,4 +11,3 @@ config/keys_dev.js
 frontend/package-lock.json
 package-lock.json
 frontend/package-lock.json
-.env
