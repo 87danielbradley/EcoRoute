@@ -16,5 +16,13 @@ export const fetchFriend = userId => dispatch => {
     )
 };
 
+export const sendRequest = userId => {
+    return (
+        APIUtil.sendFriendRequest(userId)
+        .then(() => console.log('friend request sent') )
+        .catch(err => console.log(err))
+    )
+};
+
 
 
