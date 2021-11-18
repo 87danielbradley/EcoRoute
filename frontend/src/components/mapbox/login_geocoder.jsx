@@ -6,16 +6,13 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
-require("dotenv").config();
-window.test = process;
-window.test2 = process.env;
-console.log(process.env)
-debugger
+// require("dotenv").config();
+
 const accessToken = process.env.REACT_APP_MAPBOX;
 // const accessToken = require('../../config/keys').mapbox;
 
 mapboxgl.accessToken = accessToken
-debugger
+
 
 export default class LoginGeocoder extends React.PureComponent{
     constructor(props) {
