@@ -4,17 +4,24 @@ import { signup } from "../../actions/session_actions";
 import SessionForm from './session_form';
 import { Link } from "react-router-dom";
 import { login } from "../../actions/session_actions";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 const mSTP = (state ={}, ownProps) => ({
     loggedIn: state.session.isAuthenticated,
     errors: state.errors.session,
     navLink: <Link to={'/login'}>Log in</Link>,
-    formType: 'Sign up'
+    formType: 'Sign up',
+    demoUser: {
+        email: 'demo@demo.com',
+        password: 'demodemo'
+    }
 })
 
 const mDTP = (dispatch, ownProps) => ({
     login: (user) => dispatch(login(user)),
-    action: (newFormUser) => dispatch(signup(newFormUser))
+    action: (newFormUser) => dispatch(signup(newFormUser)),
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal())
 })
 
 export default connect(mSTP,mDTP)(SessionForm);
