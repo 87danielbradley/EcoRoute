@@ -11,4 +11,9 @@ config/keys_dev.js
 frontend/package-lock.json
 package-lock.json
 frontend/package-lock.json
+<<<<<<< Updated upstream
+=======
+
+/.env
+>>>>>>> Stashed changes
 frontend/.env
