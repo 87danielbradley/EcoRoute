@@ -2,8 +2,11 @@ import { connect } from "react-redux";
 import { createAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 
-const mapStateToProps = (state) => ({
-    event: {
+const mapStateToProps = (state) => {
+
+  return (
+  
+    {event: {
         title: '',
         category: '',
         date: new Date(),
@@ -11,14 +14,17 @@ const mapStateToProps = (state) => ({
         hidden: false
     },
     formType: "Create Event",
-    // friends: state.session.user.friends
-})
+    friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined)
+  }
+  )
+
+}
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: (event) => dispatch(createAnEvent(event)), 
-  
+    action: (event) => dispatch(createAnEvent(event))
+   
     
   }
 }
