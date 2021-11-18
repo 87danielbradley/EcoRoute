@@ -12,14 +12,14 @@ export const fetchFriend = userId => dispatch => {
     return (
         APIUtil.getFriend(userId)
             .then( friend => dispatch(receiveFriend(friend)))
-            .catch(err => console.log(err))
+            .catch(err => console.log("ERROR FRIENDS!",err))
     )
 };
 
-export const sendRequest = userId => {
+export const sendRequest = userId => (dispatch) =>  {
     return (
         APIUtil.sendFriendRequest(userId)
-        .then(() => console.log('friend request sent') )
+        .then((args) => console.log('friend request sent',args) )
         .catch(err => console.log(err))
     )
 };

@@ -9,6 +9,7 @@ min-height: 80vh;
 max-height: 96vh;
 min-width: 80vw;
 max-width: 96vw;
+margin-top: 6%;
 }
 .event-index-item{
     overflow-y: scroll !important;

@@ -233,5 +233,25 @@ router.get('/:user_id', (req, res) => {
         }).catch(err => console.log(err))
 })
 
+// router.get('/all_friends', (req, res) => {
+//     console.log(req)
+//     const currentUserId = jwt.decode(req.get('authorization').split('Bearer ')[1]).id;
+//     console.log(currentUserId)
+//     if (currentUser) {
+//         User.findById(currentUserId)
+//         .then(user => {
+//             if (user) {
+//                 res.json({
+//                     friends: user.friends
+//                 })
+//             } else {
+//                 res.json([])
+//             }
+//         })
+//     } else {
+//         res.json([])
+//     }
+// })
+
 
 module.exports = router;

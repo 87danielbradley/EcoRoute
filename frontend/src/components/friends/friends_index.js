@@ -8,6 +8,7 @@ class FriendsIndex extends React.Component {
 
         const friend = this.props.friendIds.map( (friend, idx) => {
             return (
+                <div>
                 <li>
                     <FriendsIndexItem 
                         key={idx} 
@@ -15,6 +16,7 @@ class FriendsIndex extends React.Component {
                         fetchFriend={this.props.fetchFriend}
                     />
                 </li>
+                </div>
             )
         })
 

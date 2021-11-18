@@ -26,10 +26,10 @@ class NavBar extends React.Component{
         } else {
             return (
                 <div>
-                    <button onClick={() => this.props.openModal('login')} id="login-button">Log In</button>
-                    <button onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</button>
-                    {/* <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link> */}
+                    {/* <button onClick={() => this.props.openModal('login')} id="login-button">Log In</button>
+                    <button onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</button> */}
+                    <Link to={'/signup'}>Signup</Link>
+                    <Link to={'/login'}>Login</Link>
                 </div>
             )
         }

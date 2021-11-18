@@ -6,8 +6,12 @@ export const sendFriendRequest = userId => {
 };
 
 export const getFriend = user_Id => {
-    return axios.get(`/api/user/${user_Id}`)
+    return axios.get(`/api/users/${user_Id}`)
 };
+
+export const getAllFriends = () => {
+    return axios.get(`/api/users/all_friends`)
+}
 
 // export const acceptFriendRequest = requestId => {
 //     return axios.get(`/api/users/friend_request/${requestId}/accept`)

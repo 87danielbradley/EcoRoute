@@ -83,3 +83,33 @@ height: 3em !important;
   margin-top: 30px !important;
   margin-right: 20px !important;
 }
+
+.createEvent{
+  margin-bottom: 900px;
+/* position: relative; */
+  color:lightslategray!important;
+  /* font-size: 70px !important;/ */
+
+
+}
+
+.avatarName{
+ 
+  display: flex;
+  justify-content:flex-start;
+  vertical-align: top;
+}
+
+.avatar{
+
+  background-color: rgba(58, 113, 216, 0.9) !important;
+  margin-right: 30px;
+}
+
+.friendName{
+  height: 20px;  
+  font-size: 20px !important;
+  color: rgb(58, 14, 216) !important;
+
+
+}

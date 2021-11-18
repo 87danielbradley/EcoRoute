@@ -1,20 +1,24 @@
 import React from "react";
 import EventIndexItem from "./event_index_item";
 import { connect } from "react-redux";
-import { fetchUserEvents, deleteAnEvent} from "../../actions/event_actions";
+import { fetchUserEvents, deleteAnEvent, updateAnEvent} from "../../actions/event_actions";
+import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
+import { fetchFriend, sendRequest } from '../../actions/friend_actions'
 class EventIndex extends React.Component{
 
     componentDidMount(){
-     
-        this.props.fetchUserEvents(this.props.currentUser.id);
+        const { currentUser} = this.props
+        this.props.fetchFriendRequest('619536e7cc98bcda226fcff3');
+        this.props.fetchFriends(currentUser.id);
+        this.props.fetchUserEvents(currentUser.id);
         // this.props.currentUser.friends.map( friend => {
         //     this.props.fetchUser(friend)
         // })
     }
 
     render(){
-        
-        const {events, deleteEvent} = this.props;
+
+        const {events, deleteEvent, openModalAndEditEvent} = this.props;
         // console.log(events)
 
         return(
@@ -22,8 +26,14 @@ class EventIndex extends React.Component{
                 <h1>Events</h1>
 
                 {
-                    events.map((event, i) => {
-                        return (event !== undefined && <EventIndexItem key={i} eventIndex={i} event={event} deleteEvent={deleteEvent} renderMap={index => this.props.renderMap(index)}/>)
+                    events.reverse().map((event, i) => {
+                        return (event !== undefined && 
+                        <EventIndexItem 
+                            key={i} event={event} 
+                            deleteEvent={deleteEvent}
+                            openModalAndEditEvent={openModalAndEditEvent}
+                            
+                        />)
                     })
                 }
 
@@ -40,15 +50,21 @@ const mapStateToProps = state => {
         events: Object.values(state.events),
         // events: Object.values(state.events).filter(event => event.attendees.includes(state.session.user.id)),
         currentUser: state.session.user
-        // currentUser: state.session.user
     }
 }
 
 
 const mapDispatchToProps = dispatch => {
     return {
+        fetchFriendRequest: (userId) => dispatch(sendRequest(userId)),
+        fetchFriends: (userId) => dispatch(fetchFriend(userId)),
         fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
-        deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId))
+        deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
+        openModalAndEditEvent: (eventId) => { 
+            console.log("EVENT ID", eventId)
+            dispatch(setEditingEvent(eventId));
+            dispatch(setModalStatus(true))
+        }
     }
 
 }

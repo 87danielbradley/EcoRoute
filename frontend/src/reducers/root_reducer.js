@@ -5,6 +5,7 @@ import messageApiReducer from "./message_api_reducer"
 import EventsReducer from './events_reducer';
 import friendsReducer from './friends_reducer';
 import ModalReducer from './modal_reducer';
+import AppStateReducer from './app_state_reducer';
 
 const RootReducer = combineReducers({
     messages: messageApiReducer,
@@ -12,7 +13,8 @@ const RootReducer = combineReducers({
     errors: ErrorsReducer, 
     events: EventsReducer,
     friends: friendsReducer,
-    modal: ModalReducer
+    modal: ModalReducer,
+    appState: AppStateReducer
 })
 
 export default RootReducer;
