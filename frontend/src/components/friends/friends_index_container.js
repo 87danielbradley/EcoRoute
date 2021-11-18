@@ -10,7 +10,9 @@ const mapStepToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchFriend: userId => dispatch(fetchFriend(userId))
+    fetchFriend: userId => dispatch(fetchFriend(userId)),
+    sendRequest: userId => dispatch(sendRequest(userId))
+    
 });
 
 export default connect(mapStepToProps, mapDispatchToProps)(FriendsIndex);
