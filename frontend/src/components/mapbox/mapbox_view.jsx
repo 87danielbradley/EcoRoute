@@ -41,7 +41,7 @@ export default class MapboxView extends React.PureComponent{
                         <div className="sidebar-content rounded-rect flex-center">
                             <EventIndexContainer renderMap={(index)=> this.renderMap(index)} />
                             <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
-                                &#10513;
+                                 &#10513;
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export default class MapboxView extends React.PureComponent{
                             Friends
                             <FriendsIndexContainer />
                             <div className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
-                                &#11064;
+                                &#x263B;
                                 
                             </div>
                         </div>
@@ -60,7 +60,7 @@ export default class MapboxView extends React.PureComponent{
                             Chat
                             
                             <div className="sidebar-toggle-lower rounded-rect lower" onClick={() => this.toggleSidebar('lower')}>
-                                &#11064;
+                                &#x270D;
                                 
                             </div>
                         </div>
