@@ -1,0 +1,17 @@
+
+
+.sfc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin: 15px 0px; */
+    /* width: 500px; */
+    text-align: center;
+}
+
+/* .sf {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5px;
+} */

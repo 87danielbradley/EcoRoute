@@ -8,7 +8,7 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 const mSTP = (state ={}, ownProps) => ({
     errors: state.errors.session,
     navLink: <Link to={'/signup'}>Sign up</Link>,
-    formType: 'login',
+    formType: 'Login',
     demoUser: {
         email: 'demo@demo.com',
         password: 'demodemo'

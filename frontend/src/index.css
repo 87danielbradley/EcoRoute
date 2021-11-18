@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,29 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input {
+  border-radius: 15px;
+  border: .5px solid grey;
+  padding: 5px 5px 5px 5px; 
+  margin: 4px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
 }
