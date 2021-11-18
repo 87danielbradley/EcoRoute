@@ -6,8 +6,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
-// const accessToken = process.env.mapbox;
-const accessToken = require('../../config/keys').mapbox;
+require("dotenv").config();
+// window.test = process;
+// debugger
+const accessToken = process.env.REACT_APP_MAPBOX; 
+// const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
 

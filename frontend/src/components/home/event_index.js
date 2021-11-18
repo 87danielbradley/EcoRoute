@@ -13,7 +13,7 @@ class EventIndex extends React.Component{
     }
 
     render(){
-        debugger
+        
         const {events, deleteEvent} = this.props;
         // console.log(events)
 

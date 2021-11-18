@@ -8,7 +8,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login")
-debugger
+
 router.get("/test", (request, response) => response.json({msg: "The users route is working"}));
 
 router.post('/register', (request, response) => {

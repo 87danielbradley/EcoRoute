@@ -4,6 +4,7 @@ height: 500px;
 } */
 .map-container {
 margin: 2%;
+margin-top: 8%;
 min-height: 80vh;
 max-height: 96vh;
 min-width: 80vw;
