@@ -4,6 +4,7 @@
   "description": "Route optimizer for carpools events errands etc",
   "main": "app.js",
   "scripts": {
+    "postinstall": "webpack",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
@@ -33,6 +34,10 @@
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
     "validator": "^13.7.0"
+  },
+  "engines": {
+    "node": "16.10.0",
+    "npm": "7.24.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

@@ -6,6 +6,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
+// const accessToken = process.env.mapbox;
 const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
@@ -71,7 +72,7 @@ export default class LoginGeocoder extends React.PureComponent{
         )
         let that = this;
         geocoder.on('result', function(e) {
-            // debugger
+           
             console.log(e.result.geometry)
 
             that.props.setParentState({location: e.result.geometry.coordinates})
@@ -79,7 +80,7 @@ export default class LoginGeocoder extends React.PureComponent{
             // this.props.setState{"geometry": JSON.parse(geocoder.lastSelected).geometry}
         })
         geolocator.on('geolocate', function(e) {
-            // debugger
+            
             console.log(e.coords.latitude)
             console.log(e.coords.longitude)
             

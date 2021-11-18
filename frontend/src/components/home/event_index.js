@@ -3,11 +3,17 @@ import EventIndexItem from "./event_index_item";
 import { connect } from "react-redux";
 import { fetchUserEvents, deleteAnEvent, updateAnEvent} from "../../actions/event_actions";
 import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
+import { fetchFriend, sendRequest } from '../../actions/friend_actions'
 class EventIndex extends React.Component{
 
     componentDidMount(){
-     
-        this.props.fetchUserEvents(this.props.currentUser.id);
+        const { currentUser} = this.props
+        this.props.fetchFriendRequest('619536e7cc98bcda226fcff3');
+        this.props.fetchFriends(currentUser.id);
+        this.props.fetchUserEvents(currentUser.id);
+        // this.props.currentUser.friends.map( friend => {
+        //     this.props.fetchUser(friend)
+        // })
     }
 
     render(){
@@ -49,6 +55,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        fetchFriendRequest: (userId) => dispatch(sendRequest(userId)),
+        fetchFriends: (userId) => dispatch(fetchFriend(userId)),
         fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
         openModalAndEditEvent: (eventId) => { 

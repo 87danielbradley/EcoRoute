@@ -17,6 +17,7 @@ const EventIndexItem = (props) => {
     // console.log(event.date)
     const dateString = moment(event.date).format('MM/DD/YYYY HH:mm:ss');
     // console.log("moment date", dateString)
+    
     return (
         <div style={{marginTop: "20px"}}>
              <Card sx={{ maxWidth: 345 }}>
@@ -50,8 +51,6 @@ const EventIndexItem = (props) => {
 
 }
 
-
-//onClick = {() => updateAnEvent(event._id) }
 
 
 

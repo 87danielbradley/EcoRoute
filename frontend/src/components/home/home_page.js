@@ -4,7 +4,7 @@ import React from 'react';
 import CreateEventModal from './create_event_modal'
 import MapboxContainer from '../mapbox/mapbox_container';
 import EventFormContainer from './event_form_container';
-
+import FriendIndexContainer from '../friends/friends_index_container'
 class HomePage extends React.Component{
 
 
@@ -20,7 +20,7 @@ class HomePage extends React.Component{
 
                         <div className="column is-two-thirds">
                             <div className="createEvent">
-
+                            <FriendIndexContainer/>
                             <CreateEventModal />
                             </div>
                             
@@ -29,7 +29,8 @@ class HomePage extends React.Component{
 
             
                     </div>
-                    <MapboxContainer />
+                    {/* <MapboxContainer /> */}
+                    
                 </div>
             
         )
