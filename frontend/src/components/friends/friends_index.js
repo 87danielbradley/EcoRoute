@@ -14,7 +14,7 @@ class FriendsIndex extends React.Component {
     }
 
     render() {
-        if(!this.props.friendId) return null
+        // if(!this.props.friendId) return null
         const friend = this.props.friendIds.map( (friend, idx) => (
                 <div>
                 <li>

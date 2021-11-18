@@ -1,12 +1,16 @@
 import * as APIUtil from "../util/friends_api_util";
 
 export const RECEIVE_FRIEND = "RECEIVE_FRIEND";
-export const REMOVE_FRIEND_REQUEST = "REMOVE_FRIEND_REQUEST";
+export const FRIEND_REQUEST = "FRIEND_REQUEST";
 
 const receiveFriend = friend => ({
     type: RECEIVE_FRIEND,
     friend
 });
+
+const receiveFriendRequest = () => ({
+    type: FRIEND_REQUEST
+})
 
 export const fetchFriend = userId => dispatch => {
     return (
@@ -17,9 +21,10 @@ export const fetchFriend = userId => dispatch => {
 };
 
 export const sendRequest = userId => (dispatch) =>  {
+    // debugger
     return (
         APIUtil.sendFriendRequest(userId)
-        .then((args) => console.log('friend request sent',args) )
+        .then(() => dispatch(receiveFriendRequest()))
         .catch(err => console.log(err))
     )
 };
