@@ -5,6 +5,7 @@ import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
+// const accessToken = process.env.mapbox;
 const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 

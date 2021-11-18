@@ -6,6 +6,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
+// const accessToken = process.env.mapbox;
 const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
