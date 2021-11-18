@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { fetchUserEvents, deleteAnEvent, updateAnEvent} from "../../actions/event_actions";
 import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
 import { fetchFriend, sendRequest } from '../../actions/friend_actions'
+import CreateEventModal from './create_event_modal'
+import './home.css'
 class EventIndex extends React.Component{
 
     componentDidMount(){
@@ -23,7 +25,10 @@ class EventIndex extends React.Component{
 
         return(
             <div className="event-index-item">
-                <h1>Events</h1>
+                <div className="events-header">
+                    <h1>Events</h1>
+                    <span><CreateEventModal /></span>
+                </div>
 
                 {
                     events.reverse().map((event, i) => {

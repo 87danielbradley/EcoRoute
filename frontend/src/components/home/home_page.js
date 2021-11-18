@@ -13,7 +13,7 @@ class HomePage extends React.Component{
         return(
             
                 <div>
-                    Home Page
+                    {/* Home Page
 
                     <div className="columns">
                         <div className="column"></div>
@@ -28,7 +28,7 @@ class HomePage extends React.Component{
                         <div className="column">  </div>
 
             
-                    </div>
+                    </div> */}
                     <MapboxContainer />
                     
                 </div>
