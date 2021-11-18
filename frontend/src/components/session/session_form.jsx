@@ -56,7 +56,8 @@ class SessionForm extends React.Component{
     }
     demoUser(e){
         e.preventDefault();
-        this.props.login(this.props.demoUser)
+        // this.props.login(this.props.demoUser)
+        this.props.login({email: "guest@email.com",password: "daniel"})
             .then(() => this.props.closeModal());
     }
     sessionErrors(){
@@ -147,7 +148,7 @@ class SessionForm extends React.Component{
                         : null}
 
                         <button className="form-button form-item session-form-submit">
-                            {formType === "login" ? formType : "Create account"}
+                            {formType === "Login" ? formType : "Create account"}
                         </button>
                         
                         <button className="form-item demo-button translatey-med" onClick={this.demoUser}>Demo User</button>
