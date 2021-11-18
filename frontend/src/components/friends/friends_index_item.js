@@ -3,14 +3,18 @@ import React from "react";
 class FriendsIndexItem extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            friend: null
+        }
     }
 
     componentDidMount() {
         this.props.fetchFriend(this.props.friendId)
+            .then( friend => this.setState({ friend: friend }))
     }
     render() {
-        const id = this.props.friendId
-        const friend = this.props.friends.id
+        if(this.state.friend === null) return null
+        const friend = this.state.friend
         return (
             <div>
                 <div>
