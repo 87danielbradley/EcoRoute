@@ -145,7 +145,7 @@ The toggleSidebar() function removes this class from the element in order to exp
 .sidebar-upper {
     transition: transform 1s;
     z-index: 1;
-    width: 30%;
+    width: 15%;
     height: 55%;
 }
 
@@ -180,14 +180,14 @@ The toggleSidebar() function removes this class from the element in order to exp
 
 .sidebar-toggle-upper {
     position: absolute;
-    width: 1.3em;
+    /* width: 1em; */
     height: 1.3em;
     overflow: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     bottom: -1.5em;
-    
+
 }
 
 

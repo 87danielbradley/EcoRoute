@@ -102,14 +102,26 @@ height: 3em !important;
 
 .avatar{
 
-  background-color: rgba(58, 113, 216, 0.9) !important;
+  background-color: rgba(216, 103, 58, 0.9) !important;
   margin-right: 30px;
 }
 
-.friendName{
-  height: 20px;  
-  font-size: 20px !important;
-  color: rgb(58, 14, 216) !important;
 
-
+.cardFriends{
+  background-color: rgba(252, 245, 237, 0.8) !important;
+  
 }
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+
+
+.friendName {
+
+  /* color: rgb(207, 32, 32); */
+  font-family: 'Righteous', serif;
+  font-size: 0.5em; 
+  text-shadow: .03em .03em 0 rgb(80, 179, 77) !important;
+  }
+
+
+

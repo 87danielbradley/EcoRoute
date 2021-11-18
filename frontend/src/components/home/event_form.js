@@ -13,6 +13,7 @@ import Tags from './tags';
 class EventForm extends Component {
 
     constructor(props){
+
         super(props);
           console.log("props here", this.props.eventId)
             this.state = this.props.event;  
@@ -45,6 +46,8 @@ class EventForm extends Component {
 
         // console.log(this.state.attendees)
         const {title, attendees, date, category} = this.state;
+        const {friends} = this.props;
+        console.log("HELLO", friends)
     
         return (
             <div>
@@ -61,7 +64,7 @@ class EventForm extends Component {
                   value={title}
                 />
                 <div>
-                  <Tags friends={this.props.friends} attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
+                  <Tags friends={friends} attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
                   </div>
                   
                   <div className="formCalendar">
