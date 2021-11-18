@@ -32,6 +32,7 @@ class EventIndex extends React.Component{
                             key={i} event={event} 
                             deleteEvent={deleteEvent}
                             openModalAndEditEvent={openModalAndEditEvent}
+                             renderMap={index => this.props.renderMap(index)}
                             
                         />)
                     })
