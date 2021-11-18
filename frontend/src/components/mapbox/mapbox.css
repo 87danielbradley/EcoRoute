@@ -4,9 +4,9 @@ height: 500px;
 } */
 .map-container {
 margin: 2%;
-min-height: 96vh;
+min-height: 80vh;
 max-height: 96vh;
-min-width: 96vw;
+min-width: 80vw;
 max-width: 96vw;
 }
 .event-index-item{
