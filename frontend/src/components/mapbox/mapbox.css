@@ -70,6 +70,14 @@ body { margin: 0; padding: 0; }
     color: #0aa1cf;
     cursor: pointer;
 }
+.sidebar-toggle-upper:hover {
+    color: #0aa1cf;
+    cursor: pointer;
+}
+.sidebar-toggle-lower:hover {
+    color: #0aa1cf;
+    cursor: pointer;
+}
 
 .sidebar {
     transition: transform 1s;
@@ -186,8 +194,18 @@ The toggleSidebar() function removes this class from the element in order to exp
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: -1.5em;
-    
+    bottom: -1.5em;  
+}
+#create-friend{
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -1.5em;  
+    right: 2vw;
 }
 
 
@@ -283,4 +301,14 @@ The toggleSidebar() function removes this class from the element in order to exp
     justify-content: center;
     align-items: center;
     
+}
+
+
+#temp-input{
+    top: 5px;
+    width: 40vw;
+    position: absolute;
+}
+.message{
+    min-width: 100%;
 }

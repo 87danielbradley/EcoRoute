@@ -43,7 +43,7 @@ const EventIndexItem = (props) => {
         <Button size="small" onClick={() => openModalAndEditEvent(event._id)}>
           Edit Event
           </Button>
-        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i class="fa-solid fa-x"></i></Button>
+        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i className="fa-solid fa-x"></i></Button>
       </CardActions>
     </Card>
 
