@@ -13,3 +13,4 @@ package-lock.json
 frontend/package-lock.json
 
 /.env
+frontend/.env
