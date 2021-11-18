@@ -4,7 +4,7 @@
   "description": "Route optimizer for carpools events errands etc",
   "main": "app.js",
   "scripts": {
-    "postinstall": "webpack",
+    
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
