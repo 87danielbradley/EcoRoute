@@ -206,6 +206,18 @@ router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {s
     }
 );
 
+router.get('/search', async (req, res) => {
+    try {
+        const users = await User.find({ email: req.body.email})
+        const user = users[0]
+        res.status(200).json({
+            id: user._id,
+            username: user.username
+        })
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 
 //private auth route

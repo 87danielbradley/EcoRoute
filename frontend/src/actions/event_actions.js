@@ -55,7 +55,7 @@ export const updateAnEvent = (event) => dispatch => {
     .then(event => dispatch(receiveEvent(event)))
 }
 export const deleteAnEvent = (eventId) => dispatch => {
-    // debugger
+    
 
     // const fakeDelete = Promise.resolve(eventId)
     // fakeDelete.then(() => dispatch(removeEvent(eventId)))
