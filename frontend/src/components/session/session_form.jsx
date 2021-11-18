@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter} from 'react-router-dom';
 import LoginGeocoder from "../mapbox/login_geocoder";
+import './session_form.css'
 
 class SessionForm extends React.Component{
     constructor(props){
@@ -24,8 +25,8 @@ class SessionForm extends React.Component{
     componentWillReceiveProps(nextProps) {
         if( nextProps.currentUser === true) {
             (this.props.formType === "Sign up") ?
-                this.props.histry.push('/login') :
-                this.props.histry.push('/')
+                this.props.history.push('/login') :
+                this.props.history.push('/')
                 
         }
         this.setState({errors: nextProps.errors})
@@ -50,57 +51,49 @@ class SessionForm extends React.Component{
             email: this.state.email
         }
         this.props.action(this.state, this.props.history)
-            .then( () => this.props.history.push('/'))
+            .then( () => this.props.closeModal())
 
     }
     demoUser(e){
         e.preventDefault();
-        
-        this.props.login({email: "starwars",password: "starwars"})
-            .then( () => this.props.history.push('/'))
+        this.props.login(this.props.demoUser)
+            .then(() => this.props.closeModal());
     }
     sessionErrors(){
         return(
             <ul >
-                {Object.keys(this.state.errors).map((error,i)=>(
+                {Object.keys(this.props.errors).map((error,i)=>(
                     <li key={`error-${i}`}>
-                        {this.state.errors[error]}
+                        Invalid login credentials: {error}
                     </li>
                 ))}
             </ul>
-           
-            
         )
     }
-    
 
     render(){
+        const { formType, navLink, openModal } = this.props;
         return (
-            <div className='session-form-container' >
-                <div className="session-form">
+            <div className='sfc'>
+                <div className="sf">
 
-                    {this.props.formType === 'Sign up'?
-                        <div className="form-item">
-                            <h3 className="line-below">Have an account? {this.props.navLink}</h3>
-                        </div>: 
-                        null
-                    }
-                    
-                    {this.props.formType === 'Sign up'?
-                        <div className="form-item">
-                            <h3 className="form-item">{this.props.formType}</h3>
+                    {formType === 'Sign up'?
+                        <div className="sf-header">
+                            <span>
+                                Have an account? 
+                                <a onClick={() => openModal('login')}> Login </a>
+                            </span>
+                            <h3>{formType}</h3>
                         </div>: 
                         <div>
-                            <h3 className="form-item session-form-title">{this.props.formType}</h3>
+                            <h3 className="sf-header">Welcome!</h3>
                         </div>
                     }
+                    
                     {this.sessionErrors()}
                     
-                    
-
-
-                    <form className="form-session">
-                        {this.props.formType === 'Sign up'?
+                    <form onSubmit={this.handleSubmit} className="sf-form">
+                        {formType === 'Sign up'?
                             <div className="form-item">
                             <input 
                                 type="text"
@@ -130,7 +123,7 @@ class SessionForm extends React.Component{
                             onChange={this.update('password')}
                         />
                         </div>
-                        {this.props.formType === 'Sign up'?
+                        {formType === 'Sign up'?
                             <div className="form-item">
                             <input 
                                 type="password"
@@ -142,23 +135,22 @@ class SessionForm extends React.Component{
                             </div>
                         : null}
 
+                        {formType === 'Sign up' ?
+                            null : <div>New to EcoRoute?
+                                <a onClick={() => openModal('signup')}> Sign up </a>
+                            </div>}
 
-
-                        
-                        {this.props.formType === 'Sign up' ?
-                        null : <div className="form-item">
-                            <p>New to EcoRoute? {this.props.navLink}</p>
-                        </div>}
-
-                        {this.props.formType === 'Sign up'?
+                        {formType === 'Sign up'?
                             <div className="form-item">
                                 <LoginGeocoder setParentState={geoObject => this.setState(geoObject)}/>
                             </div>
                         : null}
 
+                        <button className="form-button form-item session-form-submit">
+                            {formType === "login" ? formType : "Create account"}
+                        </button>
                         
-                        {this.props.formType === 'Sign up'?<button className="form-button form-item session-form-submit translatey-med" onClick={this.handleSubmit} value={this.props.formType}>Create account</button>:<button className="form-button form-item session-form-submit" onClick={this.handleSubmit} value={this.props.formType}>{this.props.formType}</button> }
-                        {<button className="form-item demo-button translatey-med" onClick={this.demoUser} value={'Demo User'}>Demo User</button>}
+                        <button className="form-item demo-button translatey-med" onClick={this.demoUser}>Demo User</button>
                         
                     </form>
                 </div>

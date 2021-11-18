@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import '../App.css';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import ModalContainer from './modal/modal_container';
 import HomePage from "./home/home_page";
 import NavBarContainer from './navbar/navbar_container'
 import SignupContainer from "./session/signup_container";
@@ -12,7 +13,7 @@ import MessagesContainer from "./messages/messages_container"
 import EditEventContainer from '../components/home/edit_event_from_container'
 const App = () => (
     <div>
-
+        <ModalContainer/>
         <Route to="/" component={NavBarContainer} />
         <Switch> 
             <ProtectedRoute exact path="/" component={HomePage} />

@@ -1,0 +1,23 @@
+.nb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.nb h1 {
+    margin-left: 2%;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.nb a {
+    display: flex;
+    text-decoration: none;
+    /* border-radius: 1vw; */
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+}
