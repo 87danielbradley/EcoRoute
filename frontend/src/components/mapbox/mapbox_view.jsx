@@ -20,7 +20,8 @@ export default class MapboxView extends React.PureComponent{
             lng: -73.906021,
           
             lat: 40.745541,
-            zoom: 14
+            zoom: 14,
+            initialized: false
 
             
         };
@@ -84,7 +85,8 @@ export default class MapboxView extends React.PureComponent{
             center: [lng, lat],
             zoom: 10
         });
-        map.setCenter([lng,lat])
+        map.flyTo([lng,lat])
+        // map.setCenter([lng,lat])
         console.log([lng,lat])
         console.log(eventIndex)
         if (this.props.events.length > 0){
