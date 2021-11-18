@@ -7,11 +7,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import CreateEventModal from './create_event_modal';
+import { updateAnEvent } from "../../actions/event_actions";
 
 
 
 const EventIndexItem = (props) => {
-    const {event, deleteEvent} = props;
+    const {event, deleteEvent, updateAnEvent} = props;
     console.log(event)
     // console.log(event.date)
     const dateString = moment(event.date).format('MM/DD/YYYY HH:mm:ss');
@@ -36,11 +38,11 @@ const EventIndexItem = (props) => {
           Date: {dateString}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions> 
         <Button size="small">
           <Link to={`/events/${event._id}`}>Edit Event</Link>
           </Button>
-        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event</Button>
+        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i class="fa-solid fa-x"></i></Button>
       </CardActions>
     </Card>
 
@@ -50,7 +52,7 @@ const EventIndexItem = (props) => {
 }
 
 
-
+//onClick = {() => updateAnEvent(event._id) }
 
 
 

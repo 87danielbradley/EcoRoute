@@ -1,7 +1,7 @@
 import React from "react";
 import EventIndexItem from "./event_index_item";
 import { connect } from "react-redux";
-import { fetchUserEvents, deleteAnEvent} from "../../actions/event_actions";
+import { fetchUserEvents, deleteAnEvent, updateAnEvent} from "../../actions/event_actions";
 class EventIndex extends React.Component{
 
     componentDidMount(){
@@ -19,7 +19,7 @@ class EventIndex extends React.Component{
                 <h1>Events</h1>
 
                 {
-                    events.map((event, i) => {
+                    events.reverse().map((event, i) => {
                         return (event !== undefined && <EventIndexItem key={i} event={event} deleteEvent={deleteEvent} />)
                     })
                 }
@@ -44,7 +44,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
-        deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId))
+        deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
+        updateEvent: (event) => dispatch(updateAnEvent(event))
     }
 
 }

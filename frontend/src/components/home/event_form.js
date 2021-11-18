@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import DatePicker from './date_picker';
-// import { createAnEvent, updateAnEvent } from '../../actions/event_actions';
-// import { connect } from 'react-redux';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -45,7 +43,7 @@ class EventForm extends Component {
     }
     
     render() {
-      
+
         // console.log(this.state.attendees)
         const {title, attendees, date, category} = this.state;
     
@@ -94,17 +92,5 @@ class EventForm extends Component {
         )
     }
 }
-
-// const mapStateToProps = state => {
-
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     createEvent: (event) => dispatch(createAnEvent(event)), 
-//     updateEvent: (event) => dispatch(updateAnEvent(event))
-    
-//   }
-// }
 
 export default EventForm;

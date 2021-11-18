@@ -1,10 +1,10 @@
 EventIndexContainer{
-    height: 50%;
+    height: 100%;
     overflow: auto;
 }
 .map-container {
-margin-top: 800px;
-height: 100vh;
+margin-top: 90px;
+height: 55vh;
 }
 .event-index-item{
     overflow-y: scroll !important;
