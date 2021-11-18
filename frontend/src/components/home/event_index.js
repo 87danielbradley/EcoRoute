@@ -38,6 +38,7 @@ const mapStateToProps = state => {
     return {
         // events: state.events.events
         events: Object.values(state.events),
+        // events: Object.values(state.events).filter(event => event.attendees.includes(state.session.user.id)),
         currentUser: state.session.user
         // currentUser: state.session.user
     }
