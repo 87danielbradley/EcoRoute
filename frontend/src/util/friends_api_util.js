@@ -13,6 +13,10 @@ export const getAllFriends = () => {
     return axios.get(`/api/users/all_friends`)
 }
 
+export const searchUsersByEmail = (formEmail) => (
+    axios.get('/api/users/search', formEmail)
+);
+
 // export const acceptFriendRequest = requestId => {
 //     return axios.get(`/api/users/friend_request/${requestId}/accept`)
 // };
