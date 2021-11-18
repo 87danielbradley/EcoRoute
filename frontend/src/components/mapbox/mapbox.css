@@ -180,6 +180,7 @@ The toggleSidebar() function removes this class from the element in order to exp
 }
 
 
+
 .sidebar-toggle.upper {
     left: -1.5em;
     
@@ -317,9 +318,10 @@ The toggleSidebar() function removes this class from the element in order to exp
 
 #temp-input{
     top: 5px;
-    width: 40vw;
+    width: 30vw;
     position: absolute;
 }
 .message{
     min-width: 100%;
+    overflow: hidden;
 }
