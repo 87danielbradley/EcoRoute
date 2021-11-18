@@ -5,10 +5,12 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: null
+            email: null,
+            user: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleAddFriend = this.handleAddFriend.bind(this)
     }
 
     handleChange(type) {
@@ -20,10 +22,13 @@ class SearchBar extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.searchForFriend(this.state)
+            .then(user => {
+                this.setState({ user: user })
+            })
     }
     
     handleAddFriend() {
-        this.props.sendRequest(userId)
+        this.props.sendRequest(this.state.user.id)
     }
 
     render() {
@@ -38,3 +43,5 @@ class SearchBar extends React.Component {
         )
     }
 }
+
+export default SearchBar;
