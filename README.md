@@ -128,8 +128,6 @@ router.get('/user/:user_id', (req, res) => {
 });
 
 ```
-
-
   
  
 ## Group Members and Work Breakdown
