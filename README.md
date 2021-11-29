@@ -15,16 +15,22 @@ Users will be able to create events where invitees can accept or decline the inv
 * Bcrypt for salting and hashing passwords
 * Mongoose to connect and interact with MongoDB
 * Axios
+* MapBox API
 
 ## Features
-The Map feature at the sign up page allows users to enter their home address where they will likely be doing most of their travels from.
+The Map feature at the sign up page allows users to enter their home address where they will likely be doing most of their travels from. This feature utilizes the MapBox API functionality. This is demonstrated here:
 
 
+ 
 https://user-images.githubusercontent.com/88467155/143927285-e1cfebb1-369c-4887-8908-3442583d38ac.mp4
-
-
-
-
+  
+  
+  
+  The CRUD functionality for events allows users to create new events, which are then displayed on the homepage, update and delete events as needed. This is demonstrated here:
+  
+  
+  
+ 
 ## Group Members and Work Breakdown
 * Sydney Parsons - Backend/Flex
 * Daniel Bradley - Backend
