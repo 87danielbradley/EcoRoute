@@ -134,6 +134,6 @@ router.get('/user/:user_id', (req, res) => {
  
 ## Group Members and Work Breakdown
 * Sydney Parsons - Backend/Flex
-* Daniel Bradley - Backend
-* Tyler Koh - Frontend
+* Daniel Bradley - Backend/Flex
+* Tyler Koh - Frontend/Flex
 * Mickey Addai - Frontend/Flex
