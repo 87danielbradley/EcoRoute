@@ -36,12 +36,12 @@ class NavBar extends React.Component{
     }
     render(){
         return(
-            <div className="nb">
+            <nav className="nb">
 
                 <h1>Eco Route</h1>
                 {this.getLinks()}
 
-            </div>
+            </nav>
         )
     }
 }
