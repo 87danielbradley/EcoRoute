@@ -6,11 +6,11 @@ import MessagesView from "./messages_view";
 
 
 const mSTP = (state ={}, ownProps) => {
-    // debugger
+    debugger
     
     return ({loggedIn: state.session.isAuthenticated,
     currentUser: state.session.user,
-    messages: Object.values(state.messages.all),
+    messages: Object.values(state.messages.all).filter(message => message.eventId === ownProps.eventId),
     newMessage: state.messages.new,
     eventId: ownProps.eventId
 })

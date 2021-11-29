@@ -38,7 +38,8 @@ router.post('/',
 
         const newMessage = new Message({
             text: request.body.text,
-            user: request.user.id
+            sender: request.user.id,
+            eventId: request.body.eventId
         });
         newMessage.save().then(message => response.json(message))
     })
