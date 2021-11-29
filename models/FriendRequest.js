@@ -12,16 +12,18 @@ const FriendRequestSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-    isPending: {
-      type: Boolean,
-      default: false, // sending the friend request becomes true
-    },
-    isAccepted: {
-      type: Boolean,
-      default: false, // accepting the friend request because true
-    },
+
+    status: {
+      type: Number,
+      nums: [
+        0, // add a Friend
+        1, // friend requested
+        2, // pending request
+        3 // friendship accepted
+      ]
+    }
   },
-  { timestamps: true },
+  { timestamps: true }
 )
 
 module.exports = mongoose.model('FriendRequest', FriendRequestSchema)
