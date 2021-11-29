@@ -262,7 +262,7 @@ router.get('/:user_id', (req, res) => {
 })
 
 router.get('/all_friends/:userId', (req, res) => {
-  User.aggregate([
+  const friendArray = User.aggregate([
       { $lookup: {
           from: FriendRequest.collection.name,
           let: { friends: $friends },
@@ -281,6 +281,10 @@ router.get('/all_friends/:userId', (req, res) => {
           }
       }}
   ])
+
+  if(friendArray) {
+      res.json(frinedArray)
+  }
 })
 
 
