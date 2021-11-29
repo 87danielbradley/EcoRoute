@@ -125,9 +125,11 @@ height: 3em !important;
 
 
 .eventHeader{
-  margin-left: 220px !important;
+  margin-left: 170px !important;
+  margin-top: 40px !important;
+  margin-bottom: 10px !important;
   color:lightslategray!important;
-  font-size: 20px !important;
+  font-size: 25px !important;
   font-weight: bold;
   color: #fff;
 
