@@ -7,7 +7,8 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login")
+const validateLoginInput = require("../../validation/login");
+const mongoose = require("mongoose");
 
 router.get("/test", (request, response) => response.json({msg: "The users route is working"}));
 
@@ -170,10 +171,19 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
     }
 );
 // accept friend request
-router.get('/friend_request/:requestId/accept', passport.authenticate('jwt', {session: false}),
+router.get('/friend_request/accept', passport.authenticate('jwt', {session: false}),
     async (request, response) => {
         try {
-            
+            FriendRequest.findOneAndUpdate(
+                { sender: request.body.userA, receiver: request.body.userB },
+                { $set: { status: 3 }}
+            )
+
+            FriendRequest.findOneAndUpdate(
+                { receiver: request.body.userA, sender: request.body.userB},
+                { $set: { status: 3 } }
+            )
+
         } catch (err) {
             console.log(err)
             return response.status(500).json({ error: "whoops" })
@@ -181,31 +191,28 @@ router.get('/friend_request/:requestId/accept', passport.authenticate('jwt', {se
     }
 );
 // cancel friend request 
-router.get('/friend_request/:requestId/cancel', passport.authenticate('jwt', {session: false}),
-    async (request, response) => {
-        try {
-            const friendsRequest = await FriendRequest.findById(request.params.requestId,)
-            if (!friendsRequest) {
-                return response.status(404).json({ error: 'Request does not exist' })
-            }
-            await FriendRequest.deleteOne({ _id: request.params.requestId })
 
-            response.status(200).json({ message: 'Friend Request Canceled' })
-        } catch (err) {
-            console.log(err)
-            return response.status(500).json({ error: "whoops" })
-        }
-    }
-);
 // decline friend request 
-router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {session: false}),
+router.get('/friend_request/decline', passport.authenticate('jwt', {session: false}),
     async (request, response) => {
         try {
-            const friendsRequest = await FriendRequest.findById(request.params.requestId,)
-            if (!friendsRequest) {
-                return response.status(404).json({ error: 'Request does not exist' })
-            }
-            await FriendRequest.deleteOne({ _id: request.params.requestId })
+            const friendOne = await FriendRequest.findOneAndRemove(
+                { sender: request.body.userA, receiver: request.body.userB}
+            )
+
+            const friendTwo = await FriendRequest.findOneAndRemove(
+                { sender: request.body.userB, receiver: request.body.userA }
+            )
+
+            const updateFriendOne = await User.findOneAndUpdate(
+                { _id: request.body.userA },
+                { $pull: { friends: friendOne._id } }
+            )
+
+            const updateFriendTwo = await User.findOneAndUpdate(
+                { _id: request.body.userB },
+                { $pull: { friends: friendTwo._id } }
+            )
 
             response.status(200).json({ message: 'Friend request declined' })
         } catch (err) {
@@ -254,25 +261,27 @@ router.get('/:user_id', (req, res) => {
         }).catch(err => console.log(err))
 })
 
-// router.get('/all_friends', (req, res) => {
-//     console.log(req)
-//     const currentUserId = jwt.decode(req.get('authorization').split('Bearer ')[1]).id;
-//     console.log(currentUserId)
-//     if (currentUser) {
-//         User.findById(currentUserId)
-//         .then(user => {
-//             if (user) {
-//                 res.json({
-//                     friends: user.friends
-//                 })
-//             } else {
-//                 res.json([])
-//             }
-//         })
-//     } else {
-//         res.json([])
-//     }
-// })
+router.get('/all_friends/:userId', (req, res) => {
+  User.aggregate([
+      { $lookup: {
+          from: FriendRequest.collection.name,
+          let: { friends: $friends },
+          pipeline: [
+              { $match: {
+                  receiver: mongoose.Types.ObjectId(req.params.userId),
+                  $expr: { $in: [ $_id, $$friends ]}
+              }},
+              { $projects: { status: 1 }}
+          ],
+          as: friends
+      }},
+      {$addFields: {
+          friendsStatus: {
+              $ifNull: [{ $min: $friends.status }, 0]
+          }
+      }}
+  ])
+})
 
 
 module.exports = router;
