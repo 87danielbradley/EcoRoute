@@ -19,7 +19,7 @@ export default class MapboxView extends React.PureComponent{
         super(props);
         this.state = {
             lng: -73.906021,
-            eventId: this.props.events[0],
+            eventId: this.props.events[0]._id,
             lat: 40.745541,
             zoom: 14,
             initialized: false
@@ -64,7 +64,7 @@ export default class MapboxView extends React.PureComponent{
                 
                             {/* <input id="temp-input" type="text"></input> */}
                             <div id="chat-box">
-                                <MessageContainer eventIndex={this.state.eventId}/>
+                                <MessageContainer eventId={this.state.eventId}/>
                             </div>
                             <div className="sidebar-toggle-lower rounded-rect lower" onClick={() => this.toggleSidebar('lower')}>
                                 &#x270D;

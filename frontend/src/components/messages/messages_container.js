@@ -5,13 +5,16 @@ import { logout } from "../../actions/session_actions";
 import MessagesView from "./messages_view";
 
 
-const mSTP = (state ={}, ownProps) => ({
-    loggedIn: state.session.isAuthenticated,
+const mSTP = (state ={}, ownProps) => {
+    debugger
+    
+    return ({loggedIn: state.session.isAuthenticated,
     currentUser: state.session.user,
     messages: Object.values(state.messages.all),
-    newMessage: state.messages.new
-
+    newMessage: state.messages.new,
+    eventId: ownProps.eventId
 })
+}
 
 const mDTP = (dispatch, ownProps) => ({
     fetchMessages: () => dispatch(fetchMessages()),

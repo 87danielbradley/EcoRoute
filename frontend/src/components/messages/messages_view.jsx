@@ -17,6 +17,7 @@ class MessagesView extends React.Component{
     }
     componentDidMount(){
         // this.props.fetchMessages()
+        // debugger
         this.props.fetchEventMessages(this.state.eventId)
             .then(response => {
                 
