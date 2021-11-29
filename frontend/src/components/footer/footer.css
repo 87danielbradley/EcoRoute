@@ -13,10 +13,11 @@
     margin: 0px 10px 0px 10px;
     border-bottom: 1px solid transparent;
     cursor: default;
+    color: #015163;
+    font-weight: 500;
 }
 
 .tech-stack li:hover {
-    transition: 0.2s ease-in;
-    border-bottom: 1px solid rgb(20, 104, 169);
-    color: rgb(20, 104, 169);
+    font-weight: 500;
+    color: #C38A00;
 }

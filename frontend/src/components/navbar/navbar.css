@@ -10,12 +10,13 @@
 .nb h1 {
     margin-left: 2%;
     font-weight: 600;
-    font-size: larger;
+    font-size: x-large;
+    color: #015163;
 }
 
 .nb a {
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    padding: 0px 5px 0px 5px;
+    margin: 0px 5px 0px 5px;
 }
