@@ -10,8 +10,8 @@ const mSTP = (state ={}, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     logout: () => dispatch(logout()),
-    login: () => dispatch(login()),
-    signup: () => dispatch(signup()),
+    login: (formUser) => dispatch(login(formUser)),
+    signup: (formUser) => dispatch(signup(formUser)),
     openModal: (modal) => dispatch(openModal(modal))
 })
 

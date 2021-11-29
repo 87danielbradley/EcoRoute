@@ -25,7 +25,7 @@ export default class LoginGeocoder extends React.PureComponent{
 
             
         };
-        this.mapContainer = React.createRef();
+        this.mapContainerLogin = React.createRef();
     }
     componentDidMount() {
         this.renderMap()
@@ -34,7 +34,7 @@ export default class LoginGeocoder extends React.PureComponent{
     render(){
         return (
             <div>
-                <div ref={this.mapContainer} className="map-container" />
+                <div ref={this.mapContainerLogin} className="map-container-login" />
             </div>
         );
     }
@@ -42,7 +42,7 @@ export default class LoginGeocoder extends React.PureComponent{
     renderMap(){
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
-            container: this.mapContainer.current,
+            container: this.mapContainerLogin.current,
             style: 'mapbox://styles/mapbox/dark-v10',
             center: [lng, lat],
             zoom: zoom,

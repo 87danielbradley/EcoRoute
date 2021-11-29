@@ -6,6 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
+import MessageContainer from "../messages/messages_container"
 // require("dotenv").config();
 
 const accessToken = process.env.REACT_APP_MAPBOX; 
@@ -18,14 +19,15 @@ export default class MapboxView extends React.PureComponent{
         super(props);
         this.state = {
             lng: -73.906021,
-          
+            eventId: this.props.events[0]._id,
             lat: 40.745541,
-            zoom: 14
+            zoom: 14,
+            initialized: false
 
             
         };
         this.mapContainer = React.createRef();
-        this.renderMap = this.renderMap.bind(this);
+        this.updateMap = this.updateMap.bind(this);
         
     }
     componentDidMount() {
@@ -38,9 +40,9 @@ export default class MapboxView extends React.PureComponent{
                 <div id="map" ref={this.mapContainer} className="map-container">
                     <div id="left" className="sidebar flex-center left">
                         <div className="sidebar-content rounded-rect flex-center">
-                            <EventIndexContainer renderMap={(index)=> this.renderMap(index)} />
+                            <EventIndexContainer updateMap={(index)=> this.updateMap(index)} />
                             <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
-                                &#10513;
+                                 &#10513;
                             </div>
                         </div>
                     </div>
@@ -48,18 +50,24 @@ export default class MapboxView extends React.PureComponent{
                         <div className="sidebar-content rounded-rect flex-upper">
                             <FriendsIndexContainer />
                             <div className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
-                          
-                                &#11064;
+                                &#x263B;
+                                
+                            </div>
+                            <div id="create-friend" className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
+                                &#x2B;
                                 
                             </div>
                         </div>
                     </div>
                     <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
-                        <div className="sidebar-content rounded-rect flex-center">
-                            Chat
-                            
+                        <div className="sidebar-content rounded-rect flex-center message">
+                
+                            {/* <input id="temp-input" type="text"></input> */}
+                            <div id="chat-box">
+                                <MessageContainer eventId={this.state.eventId}/>
+                            </div>
                             <div className="sidebar-toggle-lower rounded-rect lower" onClick={() => this.toggleSidebar('lower')}>
-                                &#11064;
+                                &#x270D;
                                 
                             </div>
                         </div>
@@ -68,17 +76,31 @@ export default class MapboxView extends React.PureComponent{
             </div>
         );
     }
+    updateMap(eventIndex=0) {
+        this.renderMap(eventIndex);
+        
+        this.setState({eventId: this.props.events[eventIndex]._id})
+    }
 
     renderMap(eventIndex=0){
+        let attendees = this.props.events[eventIndex].attendees;
+        let lng = attendees.reduce((total, next) => total + next.location[0],0)/attendees.length;
+        let lat = attendees.reduce((total, next) => total + next.location[1],0)/attendees.length;
+
         
-        const { lng, lat, zoom } = this.state;
+        
+        // const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             // style: 'mapbox://styles/mapbox/dark-v10',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
-            zoom: zoom
+            zoom: 10
         });
+        map.flyTo([lng,lat])
+        // map.setCenter([lng,lat])
+        console.log([lng,lat])
+        console.log(eventIndex)
         if (this.props.events.length > 0){
             
             const featuresArray = []

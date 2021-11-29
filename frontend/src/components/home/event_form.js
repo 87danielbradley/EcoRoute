@@ -73,7 +73,7 @@ class EventForm extends Component {
                 </FormControl>
 
                 <FormControl className="selectCategory">
-                {/* <InputLabel id="demo-simple-select-filled-label">Category</InputLabel> */}
+                <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"

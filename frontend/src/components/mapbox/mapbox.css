@@ -11,6 +11,15 @@ min-width: 80vw;
 max-width: 96vw;
 margin-top: 6%;
 }
+.map-container-login {
+margin: 2%;
+height: 400px;
+min-height: 80%;
+max-height: 100%;
+min-width: 80%;
+max-width: 100%;
+margin-top: 1%;
+}
 .event-index-item{
     overflow-y: scroll !important;
 }
@@ -67,6 +76,14 @@ body { margin: 0; padding: 0; }
 
 
 .sidebar-toggle:hover {
+    color: #0aa1cf;
+    cursor: pointer;
+}
+.sidebar-toggle-upper:hover {
+    color: #0aa1cf;
+    cursor: pointer;
+}
+.sidebar-toggle-lower:hover {
     color: #0aa1cf;
     cursor: pointer;
 }
@@ -163,6 +180,7 @@ The toggleSidebar() function removes this class from the element in order to exp
 }
 
 
+
 .sidebar-toggle.upper {
     left: -1.5em;
     
@@ -186,6 +204,18 @@ The toggleSidebar() function removes this class from the element in order to exp
     display: flex;
     justify-content: center;
     align-items: center;
+    bottom: -1.5em;  
+}
+#create-friend{
+    position: absolute;
+    width: 1.3em;
+    height: 1.3em;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -1.5em;  
+    right: 2vw;
     bottom: -1.5em;
 
 }
@@ -283,4 +313,22 @@ The toggleSidebar() function removes this class from the element in order to exp
     justify-content: center;
     align-items: center;
     
+}
+
+
+#temp-input{
+    top: 5px;
+    width: 30vw;
+    position: absolute;
+}
+.message{
+    min-width: 100%;
+   
+}
+#chat-box{
+    margin-top: 13px;
+    display: flex;
+    overflow: auto;
+    gap: 5px;
+    justify-content: left;
 }

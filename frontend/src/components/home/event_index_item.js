@@ -20,7 +20,7 @@ const EventIndexItem = (props) => {
     return (
         <div style={{marginTop: "20px"}}>
              <Card sx={{ maxWidth: 345 }}>
-               <button onClick={() => props.renderMap(props.eventIndex)}>
+               <button onClick={() => props.updateMap(props.eventIndex)}>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -43,7 +43,7 @@ const EventIndexItem = (props) => {
         <Button size="small" onClick={() => openModalAndEditEvent(event._id)}>
           Edit Event
           </Button>
-        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i class="fa-solid fa-x"></i></Button>
+        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i className="fa-solid fa-x"></i></Button>
       </CardActions>
     </Card>
 
@@ -67,7 +67,7 @@ const EventIndexItem = (props) => {
 //     return (
 //         <div style={{marginTop: "20px"}}>
 //           <Card sx={{ maxWidth: 345 }}>
-//             <button onClick={() => props.renderMap(props.eventIndex)}>
+//             <button onClick={() => props.updateMap(props.eventIndex)}>
 //               <CardMedia
 //                 component="img"
 //                 alt="green iguana"
