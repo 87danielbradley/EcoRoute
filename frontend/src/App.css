@@ -125,10 +125,14 @@ height: 3em !important;
 
 
 .eventHeader{
-  margin-left: 90px !important;
+  margin-left: 220px !important;
   color:lightslategray!important;
   font-size: 20px !important;
   font-weight: bold;
   color: #fff;
 
+}
+
+.selectCategory{
+  /* height: -50px !important; */
 }

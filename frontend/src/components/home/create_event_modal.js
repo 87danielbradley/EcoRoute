@@ -14,11 +14,11 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 700,
   bgcolor: '',
-  border: '1px solid #000',
-  boxShadow: 24,
-  p: 4,
+  // border: '1px solid #000',
+  boxShadow: 12,
+  p: 5,
 };
 
 function TransitionsModal(props) {
