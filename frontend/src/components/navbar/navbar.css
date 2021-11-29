@@ -14,10 +14,8 @@
 }
 
 .nb a {
-    display: flex;
     text-decoration: none;
-    /* border-radius: 1vw; */
-    border-radius: 30px;
     text-align: center;
     cursor: pointer;
+    padding: 0px 5px 0px 5px;
 }
