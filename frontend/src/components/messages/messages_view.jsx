@@ -30,7 +30,7 @@ class MessagesView extends React.Component{
 
 
     update() {
-        debugger
+        // debugger
         return (event) => this.setState({
             text: event.currentTarget.value
         })
