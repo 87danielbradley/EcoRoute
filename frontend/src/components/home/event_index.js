@@ -38,7 +38,7 @@ class EventIndex extends React.Component{
                             eventIndex={i}
                             deleteEvent={deleteEvent}
                             openModalAndEditEvent={openModalAndEditEvent}
-                             renderMap={index => this.props.renderMap(index)}
+                             updateMap={index => this.props.updateMap(index)}
                             
                         />)
                     })

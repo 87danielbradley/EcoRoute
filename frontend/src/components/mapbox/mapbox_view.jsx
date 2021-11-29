@@ -19,7 +19,7 @@ export default class MapboxView extends React.PureComponent{
         super(props);
         this.state = {
             lng: -73.906021,
-            eventId: 0,
+            eventId: this.props.events[0],
             lat: 40.745541,
             zoom: 14,
             initialized: false
@@ -27,7 +27,7 @@ export default class MapboxView extends React.PureComponent{
             
         };
         this.mapContainer = React.createRef();
-        this.renderMap = this.renderMap.bind(this);
+        this.updateMap = this.updateMap.bind(this);
         
     }
     componentDidMount() {
@@ -40,7 +40,7 @@ export default class MapboxView extends React.PureComponent{
                 <div id="map" ref={this.mapContainer} className="map-container">
                     <div id="left" className="sidebar flex-center left">
                         <div className="sidebar-content rounded-rect flex-center">
-                            <EventIndexContainer renderMap={(index)=> this.renderMap(index)} />
+                            <EventIndexContainer updateMap={(index)=> this.updateMap(index)} />
                             <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
                                  &#10513;
                             </div>
@@ -75,6 +75,11 @@ export default class MapboxView extends React.PureComponent{
                 </div>
             </div>
         );
+    }
+    updateMap(eventIndex=0) {
+        this.renderMap(eventIndex);
+        
+        this.setState({eventId: this.props.events[eventIndex]._id})
     }
 
     renderMap(eventIndex=0){

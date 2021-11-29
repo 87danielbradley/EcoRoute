@@ -16,7 +16,8 @@ class MessagesView extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
-        this.props.fetchMessages()
+        // this.props.fetchMessages()
+        this.props.fetchEventMessages(this.state.eventId)
             .then(response => {
                 
                 return(this.setState({messages: response.messages.data}))
@@ -35,9 +36,9 @@ class MessagesView extends React.Component{
     };
     handleSubmit(event){
         event.preventDefault();
-        this.props.createMessage({text: this.state.text});
-        this.setState({text: this.state.text,
-                        eventId: this.state.eventId})
+        this.props.createMessage({text: this.state.text,
+        eventId: this.state.eventId});
+        this.setState({text: this.state.text})
         
     }
     render(){
