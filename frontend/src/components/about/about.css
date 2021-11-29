@@ -1,0 +1,51 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    color: #015163;
+}
+
+.about-container h1 {
+    font-weight: 400;
+    font-size: x-large;
+}
+.team-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.team-member {
+    width: 25%;
+    margin: 0px 10px 30px 20px;
+}
+
+.team-member h2 {
+    font-weight: 400;
+    font-size: larger;
+}
+
+.team-bio {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(190, 213, 230);
+    /* line-height: 1.5; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.team-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.team-links img {
+    height: 35px;
+    width: 35px;
+}

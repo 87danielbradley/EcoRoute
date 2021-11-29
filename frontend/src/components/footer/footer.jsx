@@ -3,7 +3,7 @@ import './footer.css'
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className="tech-stack-container">
             <ul className="tech-stack">
                 <li>MongoDB</li>
                 <li>Express</li>
