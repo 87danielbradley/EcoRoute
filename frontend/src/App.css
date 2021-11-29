@@ -124,4 +124,11 @@ height: 3em !important;
   }
 
 
+.eventHeader{
+  margin-left: 90px !important;
+  color:lightslategray!important;
+  font-size: 20px !important;
+  font-weight: bold;
+  color: #fff;
 
+}

@@ -41,6 +41,7 @@ class FriendsIndexItem extends React.Component {
         return (
             
             <div>
+             
                 <Card className="cardFriends" sx={{ maxWidth: 345 }} >
                     {/* <Divider> */}
 

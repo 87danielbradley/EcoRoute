@@ -52,7 +52,7 @@ class EventForm extends Component {
         return (
             <div>
               <Card sx={{ minWidth: 2 }}>
-            <h1>Create An Event </h1>
+            <h1 className="eventHeader">Create An Event </h1>
             <CardContent>
               <FormControl fullWidth >
                 <TextField className="eventTitle"
