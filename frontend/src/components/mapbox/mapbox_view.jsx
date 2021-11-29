@@ -6,6 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
+import MessageContainer from "../messages/messages_container"
 // require("dotenv").config();
 
 const accessToken = process.env.REACT_APP_MAPBOX; 
@@ -18,7 +19,7 @@ export default class MapboxView extends React.PureComponent{
         super(props);
         this.state = {
             lng: -73.906021,
-          
+            eventId: 0,
             lat: 40.745541,
             zoom: 14,
             initialized: false
@@ -61,7 +62,10 @@ export default class MapboxView extends React.PureComponent{
                     <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
                         <div className="sidebar-content rounded-rect flex-center message">
                 
-                            <input id="temp-input" type="text"></input>
+                            {/* <input id="temp-input" type="text"></input> */}
+                            <div id="chat-box">
+                                <MessageContainer eventIndex={this.state.eventId}/>
+                            </div>
                             <div className="sidebar-toggle-lower rounded-rect lower" onClick={() => this.toggleSidebar('lower')}>
                                 &#x270D;
                                 

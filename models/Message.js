@@ -6,11 +6,11 @@ const MessageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    conversationId: {
+    eventId: {
         type: Schema.Types.ObjectId,
-        ref: 'conversations'
+        ref: 'events'
     },
-    body: {
+    text: {
         type: String,
         required: true
     },

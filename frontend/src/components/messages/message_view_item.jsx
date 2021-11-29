@@ -8,7 +8,7 @@ class MessagesViewItem extends React.Component{
     render(){
         return(
             <div>
-                {this.props.body}
+                {this.props.text}
             </div>
         )
     }
