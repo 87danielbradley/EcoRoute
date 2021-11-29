@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css"
+import SearchBar from "../search/searchbar";
 
 class NavBar extends React.Component{
     constructor(props){
@@ -39,6 +40,7 @@ class NavBar extends React.Component{
             <div className="nb">
 
                 <h1>Eco Route</h1>
+                <SearchBar />
                 {this.getLinks()}
 
             </div>

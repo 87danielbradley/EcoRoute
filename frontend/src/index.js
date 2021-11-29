@@ -9,7 +9,7 @@ import './index.css';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import axios from "axios";
-
+import { sendFriendRequest } from "./util/friends_api_util";
 
 
 
@@ -43,19 +43,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
   const root = document.getElementById('root')
-
+  window.sendFriendRequest = sendFriendRequest;
 
  ReactDOM.render(<Root store={store} />, root)
 
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   root
-// );
-const ax = axios;
-window.axios = ax;
+
+  const ax = axios;
+  window.axios = ax;
 
 
 })

@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import { touchRippleClasses } from "@mui/material";
 
 
 
@@ -18,23 +19,28 @@ class FriendsIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        APIUtil.getFriend()
-         APIUtil.getFriend(this.props.friendId)
-            .then( response => {
-                console.log("friends!!!", response.data)
-                this.setState({ friend: response.data })
-            })
+        this.props.fetchFriend(this.props.friendId)
+            .then( friend => (
+                this.setState({ friend: friend })
+            ));
+        // APIUtil.getFriend()
+        //  APIUtil.getFriend(this.props.friendId)
+        //     .then( response => {
+        //         console.log("friends!!!", response.data)
+        //         this.setState({ friend: response.data })
+        //     })
     }
     render() {
+        debugger
         if(!this.state.friend) return null
-        const friend = this.state.friend
-
+        const friend = this.state.friend.friend.data
+        debugger
         let name = '';
-        for (let i = 0; i < this.state.friend.username.length; i++){
-            if (this.state.friend.username[i] === '@'){
+        for (let i = 0; i < friend.length; i++){
+            if (friend.username[i] === '@'){
                 break;
             } else {
-                name += this.state.friend.username[i]
+                name += friend.username[i]
             }
         }
 

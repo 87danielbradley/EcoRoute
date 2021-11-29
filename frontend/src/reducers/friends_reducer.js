@@ -1,4 +1,4 @@
-import { RECEIVE_FRIEND } from "../actions/friend_actions";
+import { RECEIVE_FRIEND, FRIEND_REQUEST } from "../actions/friend_actions";
 
 const initialState = {
    1: {
@@ -32,7 +32,9 @@ const friendsReducer = (state = initialState, action) => {
     const nextState = Object.assign({}, state)
     switch(action.type) {
         case RECEIVE_FRIEND:
-            nextState[action.friend.id] = action.friend
+            nextState[action.friend.data.id] = action.friend.data
+            return nextState
+          case FRIEND_REQUEST:
             return nextState
         default:
             return state
