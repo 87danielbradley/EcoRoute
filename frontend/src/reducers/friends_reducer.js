@@ -34,7 +34,7 @@ const friendsReducer = (state = initialState, action) => {
     switch(action.type) {
         case RECEIVE_FRIEND:
           // look closely at what this out puts may or may not need data
-            nextState[action.friend.data._id] = action.friend
+            nextState[action.friend.id] = action.friend
             return nextState;
 
 
