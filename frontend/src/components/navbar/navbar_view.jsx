@@ -48,7 +48,7 @@ class NavBar extends React.Component{
                 <nav className="nb">
                     <h1>Eco Route</h1>
                     <section>
-                        <button className="navbar-logout" onClick={this.props.logout}>Log Out</button>
+                        <a className="navbar-logout" onClick={this.props.logout}>Log Out</a>
                     </section>
 
                 </nav>

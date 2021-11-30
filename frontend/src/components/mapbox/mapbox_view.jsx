@@ -8,8 +8,8 @@ import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
 // require("dotenv").config();
 
-const accessToken = process.env.REACT_APP_MAPBOX; 
-// const accessToken = require('../../config/keys').mapbox;
+// const accessToken = process.env.REACT_APP_MAPBOX; 
+const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
 

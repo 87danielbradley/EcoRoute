@@ -16,7 +16,7 @@ class HomePage extends React.Component{
         if (this.props.loggedIn) {
             return(
                 <div>
-                    <NavBar logout={this.props.logout}/>
+                    <NavBar logout={this.props.logout} loggedIn={this.props.loggedIn}/>
                     <MapboxContainer />
                     <Footer />
                 </div>
@@ -24,7 +24,7 @@ class HomePage extends React.Component{
         } else {
             return(
                 <div>
-                    <NavBar openModal={this.props.openModal} />
+                    <NavBar openModal={this.props.openModal} loggedIn={this.props.loggedIn}/>
                     {/* <NavBar></NavBar> */}
                     <About />
                     <Footer />
