@@ -6,7 +6,7 @@ class FriendsIndex extends React.Component {
         super(props)
     }
     componentDidMount() {
-        debugger
+        // debugger
         this.props.fetchAllFriends(this.props.currentUser)
     }
 
