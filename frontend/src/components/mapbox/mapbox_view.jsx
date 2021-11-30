@@ -11,8 +11,8 @@ import MessageContainer from "../messages/messages_container"
 
 // require("dotenv").config();
 
-const accessToken = process.env.REACT_APP_MAPBOX; 
-// const accessToken = require('../../config/keys').mapbox;
+// const accessToken = process.env.REACT_APP_MAPBOX; 
+const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
 
@@ -80,9 +80,9 @@ export default class MapboxView extends React.PureComponent{
         );
     }
     updateMap(eventIndex=0) {
-        this.setState({eventId: this.props.events[eventIndex]._id})
-
         this.renderMap(eventIndex);
+        this.setState({eventId: this.props.events[eventIndex]._id})
+        
     }
 
     renderMap(eventIndex=0){
@@ -102,8 +102,8 @@ export default class MapboxView extends React.PureComponent{
         });
         map.flyTo([lng,lat])
         // map.setCenter([lng,lat])
-        console.log([lng,lat])
-        console.log(eventIndex)
+        // console.log([lng,lat])
+        // console.log(eventIndex)
         if (this.props.events.length > 0){
             
             const featuresArray = []
