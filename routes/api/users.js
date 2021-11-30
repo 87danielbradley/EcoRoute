@@ -186,7 +186,7 @@ router.get('/all_friends/:userId', async (req, res) => {
               "as": "friends"
             }},
             {
-                "$project": { "_id": 1, "username": 1, "email": 1, "friends": 1 }
+                "$project": { "_id": 1, "username": 1, "email": 1, "location": 1, "friends": 1 }
             },
             { "$addFields": {
               "friendsState": {
