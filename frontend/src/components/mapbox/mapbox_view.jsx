@@ -41,7 +41,7 @@ export default class MapboxView extends React.PureComponent{
                 <div id="map" ref={this.mapContainer} className="map-container">
                     <div id="left" className="sidebar flex-center left">
                         <div className="sidebar-content rounded-rect flex-center">
-                            <EventIndexContainer updateMap={(index)=> this.updateMap(index)} />
+                            <EventIndexContainer updateMap={(index)=> this.updateMap(index)} events={this.props.events} />
                             <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
                                  &#10513;
                             </div>
@@ -78,9 +78,9 @@ export default class MapboxView extends React.PureComponent{
         );
     }
     updateMap(eventIndex=0) {
-        this.renderMap(eventIndex);
-        
         this.setState({eventId: this.props.events[eventIndex]._id})
+
+        this.renderMap(eventIndex);
     }
 
     renderMap(eventIndex=0){
