@@ -10,24 +10,24 @@ import About from '../about/about';
 import Footer from '../footer/footer';
 
 class HomePage extends React.Component{
-
-
-
+    
+    
     render(){
         if (this.props.loggedIn) {
             return(
                 <div>
-                    <NavBar></NavBar>
+                    <NavBar logout={this.props.logout}/>
                     <MapboxContainer />
-                    <Footer></Footer>
+                    <Footer />
                 </div>
             )
         } else {
             return(
                 <div>
-                    <NavBar></NavBar>
-                    <About></About>
-                    <Footer></Footer>
+                    <NavBar openModal={this.props.openModal} />
+                    {/* <NavBar></NavBar> */}
+                    <About />
+                    <Footer />
                 </div>
             )
         }

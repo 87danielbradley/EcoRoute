@@ -17,8 +17,8 @@ const App = () => (
         <Route to="/" component={HomePageContainer} />
         <Switch> 
             {/* <ProtectedRoute exact path="/" component={HomePage} /> */}
-            <AuthRoute path="/login" component={LoginContainer} />
-            <AuthRoute path="/signup" component={SignupContainer}/>
+            {/* <AuthRoute path="/login" component={LoginContainer} />
+            <AuthRoute path="/signup" component={SignupContainer}/> */}
             <ProtectedRoute path="/messages" component={MessagesContainer} />
             {/* change below to protected route */}
             <Route path="/events/:eventId" component={EditEventContainer} />

@@ -23,7 +23,7 @@ const About = () => {
                     <h2>Sydney Parsons</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureSP} />
+                            <img src={pictureSP} alt="SP"/>
                         </div>
                         {/* <p>
                             BIO GOES HERE
@@ -45,7 +45,7 @@ const About = () => {
                     <h2>Tyler Koh</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureTK} />
+                            <img src={pictureTK} alt="TK"/>
                         </div>
                         {/* <p>
                             BIO GOES HERE
@@ -67,7 +67,7 @@ const About = () => {
                     <h2>Daniel Bradley</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureDB} />
+                            <img src={pictureDB} alt="DB"/>
                         </div>
                         {/* <p>
                             BIO GOES HERE
@@ -89,7 +89,7 @@ const About = () => {
                     <h2>Michelle Addai</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureMA} />
+                            <img src={pictureMA} alt="MA"/>
                         </div>
                         {/* <p>
                             Michelle Addai has a background in Chemical Engineering and Fire Protection Engineering. As a Software Engineer she has experience building fullstack apps with React on the front end, Ruby on Rails or Express on the backend, and for databases Postgresql or MongoDB. 
