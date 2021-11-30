@@ -1,12 +1,27 @@
 import * as APIUtil from "../util/friends_api_util";
 
 export const RECEIVE_FRIEND = "RECEIVE_FRIEND";
-export const REMOVE_FRIEND_REQUEST = "REMOVE_FRIEND_REQUEST";
+export const REMOVE_FRIEND = "REMOVE_FRIEND";
+export const RECEIVE_ALL_FRIENDS = "RECEIVE_ALL_FRIENDS";
+
+const receiveAllFriends = (friends) => ({
+    type: RECEIVE_ALL_FRIENDS,
+    friends
+})
 
 const receiveFriend = friend => ({
     type: RECEIVE_FRIEND,
     friend
 });
+
+const removeFriend = userB => ({
+    type: REMOVE_FRIEND,
+    userB
+})
+
+
+
+
 
 export const fetchFriend = userId => dispatch => {
     return (
@@ -16,9 +31,9 @@ export const fetchFriend = userId => dispatch => {
     )
 };
 
-export const sendRequest = userId => (dispatch) =>  {
+export const sendRequest = (userId, userB) => (dispatch) =>  {
     return (
-        APIUtil.sendFriendRequest(userId)
+        APIUtil.sendFriendRequest(userId, userB)
         .then((args) => console.log('friend request sent',args) )
         .catch(err => console.log(err))
     )
@@ -31,6 +46,21 @@ export const searchForFriend = email => dispatch => {
         .catch(err => console.log(err))
     )
 };
+
+export const fetchAllFriends = userId => dispatch => {
+    return (
+        APIUtil.getAllFriends(userId)
+        .then(friends => dispatch(receiveAllFriends(friends)))
+        .catch(err => console.log(err))
+    )
+}
+
+export const declineFriend = (userId, userB) => dispatch => { //userId => current User, userB=> other person being declined
+    return (
+        APIUtil.declineFriend(userId, userB)
+        .then(() => dispatch(removeFriend(userB))) 
+    )
+}
 
 
 
