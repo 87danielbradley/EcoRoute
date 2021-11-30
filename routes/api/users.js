@@ -109,7 +109,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             const CurrentUserisSender = await FriendRequest.findOneAndUpdate(
                 {
                     sender: sender._id,
-                    receiver: request.params.userId,
+                    receiver: receiver._id,
                 },
                 {
                     $set: { status: 1}
@@ -122,7 +122,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             
             const otherUserSeesPending = await FriendRequest.findOneAndUpdate(
                 {
-                    sender: request.params.userId,
+                    sender: receiver._id,
                     receiver: sender._id
                 },
 
@@ -142,7 +142,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             )
 
             const updateSoonToBeFriend = await User.findOneAndUpdate(
-                { _id: request.params.userId },
+                { _id: receiver._id },
                 { $push: { friends: otherUserSeesPending._id }}
             )
             // will no longer need this because we will use findoneandupdate 
