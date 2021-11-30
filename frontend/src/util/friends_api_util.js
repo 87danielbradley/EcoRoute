@@ -9,7 +9,7 @@ export const getFriend = user_Id => {
     return axios.get(`/api/users/${user_Id}`)
 };
 
-export const getAllFriends = ({userId}) => {
+export const getAllFriends = (userId) => {
     return axios.get(`/api/users/all_friends/${userId}`) //gets all the friends for the userId we input
 }
 

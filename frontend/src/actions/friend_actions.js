@@ -48,6 +48,7 @@ export const searchForFriend = email => dispatch => {
 };
 
 export const fetchAllFriends = userId => dispatch => {
+    debugger
     return (
         APIUtil.getAllFriends(userId)
         .then(friends => dispatch(receiveAllFriends(friends)))
