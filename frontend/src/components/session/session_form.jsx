@@ -99,9 +99,9 @@ class SessionForm extends React.Component{
                             <input 
                                 type="text"
                                 className="form-item form-input"
-                                placeholder="Name"
+                                placeholder="Username"
                                 value={this.state.username}
-                                onChange={this.update('name')}
+                                onChange={this.update('username')}
                             />
                             </div>
                         : null}
