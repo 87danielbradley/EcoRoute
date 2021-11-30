@@ -3,8 +3,8 @@ import { RECEIVE_USER_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/eve
 const initialState = {
    1: {
     title: 'Clam Chowder Cookoff',
-    category: 'Music',
-    user: 100,
+    category: 'Food',
+    user: "6191d63c0900114e7bfdfba1",
     attendees: [ 
        {location: [-73.906005, 40.745541]},
         {location: [-73.906110, 40.745541]},
@@ -33,15 +33,15 @@ const initialState = {
         {location: [-73.907160, 40.741141]},
         {location: [-73.907265, 40.741241]}
     ],
-    _id: 1,
-    date: 'November 24, 2021',
+    _id: "61a549e4badb7deff58b0906",
+    date: '2021-11-29T21:45:08.233Z',
 
   },
   
   2: {
    title: 'Tyler\'s Exclusive',
-    category: 'Food',
-      user: 101,
+    category: 'Games',
+      user: "6191d63c0900114e7bfdfba1",
     attendees: [
       {location: [-75.1330394, 39.93935085]},
       {location: [-75.13305, 39.93936]},
@@ -50,14 +50,14 @@ const initialState = {
       {location: [-75.132, 39.93935085]},
       {location: [-75.1330394, 39.9394]}
     ],
-    _id: 2,
-    date: 'November 24, 2021',
+    _id: "61a5499f315a985ae1e26c8e",
+    date: '2021-11-29T21:43:59.113Z',
   
     },
     3: {
     title: 'Phili Cheesesteak Annual',
     category: 'Music',
-    user: 100,
+    user: "6191d63c0900114e7bfdfba1",
     attendees: [
       {location: [-83.1137366, 32.3293809]},
         {location: [-83.906110, 32.745541]},
@@ -86,14 +86,14 @@ const initialState = {
         {location: [-83.907160, 32.741141]},
         {location: [-83.907265, 32.741241]}
     ],
-    _id: 3,
-    date: 'November 24, 2021',
+    _id: "61a54952f92a79a1cd663c67",
+    date: '2021-11-29T21:42:42.989Z',
 
   },
   4: {
    title: 'Woodside Block Party',
-    category: 'Food',
-      user: 101,
+    category: 'Music',
+      user: "6191d63c0900114e7bfdfba1",
     attendees: [
       {location: [-72.042366, 42.3708774]},
       {location: [-72.032366, 42.3718774]},
@@ -104,8 +104,8 @@ const initialState = {
       {location: [-72.002366, 42.3768774]}
       
     ],
-    _id: 4,
-    date: 'November 24, 2021',
+    _id: "61a548c9f804db47ed3080e5",
+    date: "2021-11-29T21:40:25.585Z",
   
     }
 }

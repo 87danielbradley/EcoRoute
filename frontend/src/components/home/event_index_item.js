@@ -20,7 +20,7 @@ const EventIndexItem = (props) => {
     return (
         <div style={{marginTop: "20px"}}>
              <Card sx={{ maxWidth: 345 }}>
-               <button onClick={() => props.renderMap(props.eventIndex)}>
+               <button onClick={() => props.updateMap(props.eventIndex)}>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -67,7 +67,7 @@ const EventIndexItem = (props) => {
 //     return (
 //         <div style={{marginTop: "20px"}}>
 //           <Card sx={{ maxWidth: 345 }}>
-//             <button onClick={() => props.renderMap(props.eventIndex)}>
+//             <button onClick={() => props.updateMap(props.eventIndex)}>
 //               <CardMedia
 //                 component="img"
 //                 alt="green iguana"

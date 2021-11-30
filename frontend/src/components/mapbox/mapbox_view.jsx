@@ -6,10 +6,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
+import MessageContainer from "../messages/messages_container"
 // require("dotenv").config();
 
-const accessToken = process.env.REACT_APP_MAPBOX; 
-// const accessToken = require('../../config/keys').mapbox;
+// const accessToken = process.env.REACT_APP_MAPBOX; 
+const accessToken = require('../../config/keys').mapbox;
 mapboxgl.accessToken = accessToken
 
 
@@ -18,7 +19,7 @@ export default class MapboxView extends React.PureComponent{
         super(props);
         this.state = {
             lng: -73.906021,
-          
+            eventId: this.props.events[0]._id,
             lat: 40.745541,
             zoom: 14,
             initialized: false
@@ -26,20 +27,21 @@ export default class MapboxView extends React.PureComponent{
             
         };
         this.mapContainer = React.createRef();
-        this.renderMap = this.renderMap.bind(this);
+        this.updateMap = this.updateMap.bind(this);
         
     }
     componentDidMount() {
         this.renderMap()
+        this.props.getPlaces( 'starbucks',[this.state.lng,this.state.lat])
     }
      render(){
-
+       
         return (
             <div>
                 <div id="map" ref={this.mapContainer} className="map-container">
                     <div id="left" className="sidebar flex-center left">
                         <div className="sidebar-content rounded-rect flex-center">
-                            <EventIndexContainer renderMap={(index)=> this.renderMap(index)} />
+                            <EventIndexContainer updateMap={(index)=> this.updateMap(index)} />
                             <div className="sidebar-toggle rounded-rect left" onClick={() => this.toggleSidebar('left')}>
                                  &#10513;
                             </div>
@@ -61,7 +63,10 @@ export default class MapboxView extends React.PureComponent{
                     <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
                         <div className="sidebar-content rounded-rect flex-center message">
                 
-                            <input id="temp-input" type="text"></input>
+                            {/* <input id="temp-input" type="text"></input> */}
+                            <div id="chat-box">
+                                <MessageContainer eventId={this.state.eventId}/>
+                            </div>
                             <div className="sidebar-toggle-lower rounded-rect lower" onClick={() => this.toggleSidebar('lower')}>
                                 &#x270D;
                                 
@@ -71,6 +76,11 @@ export default class MapboxView extends React.PureComponent{
                 </div>
             </div>
         );
+    }
+    updateMap(eventIndex=0) {
+        this.renderMap(eventIndex);
+        
+        this.setState({eventId: this.props.events[eventIndex]._id})
     }
 
     renderMap(eventIndex=0){

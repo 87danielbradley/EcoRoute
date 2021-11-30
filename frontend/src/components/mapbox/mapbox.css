@@ -325,3 +325,10 @@ The toggleSidebar() function removes this class from the element in order to exp
     min-width: 100%;
    
 }
+#chat-box{
+    margin-top: 13px;
+    display: flex;
+    overflow: auto;
+    gap: 5px;
+    justify-content: left;
+}
