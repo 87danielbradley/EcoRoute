@@ -124,4 +124,17 @@ height: 3em !important;
   }
 
 
+.eventHeader{
+  margin-left: 170px !important;
+  margin-top: 40px !important;
+  margin-bottom: 10px !important;
+  color:lightslategray!important;
+  font-size: 25px !important;
+  font-weight: bold;
+  color: #fff;
 
+}
+
+.selectCategory{
+  /* height: -50px !important; */
+}

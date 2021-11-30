@@ -169,12 +169,13 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 );
 // get all friends
 router.get('/all_friends/:userId', async (req, res) => {
-    // debugger
+    
     try {
         const friends =  await User.aggregate([
             { "$lookup": {
               "from": FriendRequest.collection.name,
               "let": { "friends": "$friends" },
+            //   in friendRequest collection
               "pipeline": [
                 { "$match": {
                   "receiver": mongoose.Types.ObjectId(req.params.userId),
@@ -184,13 +185,17 @@ router.get('/all_friends/:userId', async (req, res) => {
               ],
               "as": "friends"
             }},
+            {
+                "$project": { "_id": 1, "username": 1, "email": 1, "friends": 1 }
+            },
             { "$addFields": {
-              "friendsStatus": {
+              "friendsState": {
                 "$ifNull": [ { "$min": "$friends.status" }, 0 ]
               }
             }}
           ])
-        // debugger
+        
+    
         res.status(200).json(friends)
 
     } catch (err) {

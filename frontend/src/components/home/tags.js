@@ -43,7 +43,7 @@ export default function Tags({ onOptionsChange, attendees, formType, friends}) {
           <TextField
             {...params}
             variant="outlined"
-            label="Add Attendees"
+            // label="Add Attendees"
             placeholder="Attendees"
             onChange={(e) => {
               console.log(e)

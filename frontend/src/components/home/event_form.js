@@ -51,15 +51,15 @@ class EventForm extends Component {
     
         return (
             <div>
-              <Card sx={{ minWidth: 2 }}>
-            <h1>Create An Event </h1>
+              <Card>
+            <h1 className="eventHeader">Create An Event </h1>
             <CardContent>
-              <FormControl fullWidth >
+              <FormControl >
                 <TextField className="eventTitle"
                   onChange={(e)=> this.onTextFieldChange("title", e)}
                   id="standard-required"
                   label="Event Title"
-                  variant="filled"
+                  // variant="filled"
                   placeholder="Add Title"
                   value={title}
                 />
@@ -72,12 +72,13 @@ class EventForm extends Component {
                   </div>
                 </FormControl>
 
-                <FormControl className="selectCategory" variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                <FormControl className="selectCategory">
                 <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
                   value={category}
+                  placeholder="Category"
                   onChange={(e) => this.onTextFieldChange("category", e)}
                   >
                   <MenuItem value={'Music'}>Music</MenuItem>
