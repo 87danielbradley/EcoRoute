@@ -8,15 +8,17 @@
 }
 
 .nb h1 {
-    margin-left: 2%;
     font-weight: 600;
+    margin-left: 2%;
     font-size: x-large;
     color: #015163;
 }
 
 .nb a {
+    font-weight: 600;
+    margin: 0px 5px 0px 5px;
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    margin: 0px 5px 0px 5px;
+    color: #015163;
 }

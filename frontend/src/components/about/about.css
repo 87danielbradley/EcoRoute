@@ -7,9 +7,23 @@
     color: #015163;
 }
 
-.about-container h1 {
-    font-weight: 400;
+.mission {
+    background-color: #0151633f;
+    padding: 10%;
+}
+
+.mission h1 {
+    font-size: xx-large;
+}
+
+.mission h2 {
     font-size: x-large;
+}
+
+.about-container h1 {
+    font-weight: 500;
+    font-size: xx-large;
+    padding: 5%;
 }
 .team-container {
     display: flex;
@@ -35,8 +49,7 @@
     width: 100%;
     padding: 10px;
     border-radius: 20px;
-    background-color: rgb(190, 213, 230);
-    /* line-height: 1.5; */
+    background-color: #0151633f;
     height: 100%;
     display: flex;
     flex-direction: column;

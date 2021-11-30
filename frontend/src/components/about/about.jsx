@@ -1,5 +1,6 @@
 import React from 'react'
 import './about.css'
+import Logo from '../../assets/logo.svg'
 import GitHub from '../../assets/github_logo.png';
 import LinkedIn from '../../assets/linkedin_logo.png'
 import Angel from "../../assets/angel.png";
@@ -11,13 +12,18 @@ import pictureMA from "../../assets/profile-pic-ma.png";
 const About = () => {
     return (
         <div className="about-container">
-            <h1>Meet the Creators!</h1>
+            <div className="mission">
+                <img src={Logo} />
+                <h1>Dive in and explore!</h1>
+                <h2>Connect with friends, plan your next event, gather</h2>
+            </div>
+            <h1>Meet the Creators</h1>
             <div className="team-container">
                 <div className="team-member">
                     <h2>Sydney Parsons</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureSP} alt="" />
+                            <img src={pictureSP} />
                         </div>
                         {/* <p>
                             BIO GOES HERE
@@ -39,7 +45,7 @@ const About = () => {
                     <h2>Tyler Koh</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureTK} alt="" />
+                            <img src={pictureTK} />
                         </div>
                         {/* <p>
                             BIO GOES HERE
@@ -61,7 +67,7 @@ const About = () => {
                     <h2>Daniel Bradley</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureDB} alt="" />
+                            <img src={pictureDB} />
                         </div>
                         {/* <p>
                             BIO GOES HERE
@@ -83,7 +89,7 @@ const About = () => {
                     <h2>Michelle Addai</h2>
                     <div className="team-bio">
                         <div className="team-pic">
-                            <img src={pictureMA} alt="" />
+                            <img src={pictureMA} />
                         </div>
                         {/* <p>
                             Michelle Addai has a background in Chemical Engineering and Fire Protection Engineering. As a Software Engineer she has experience building fullstack apps with React on the front end, Ruby on Rails or Express on the backend, and for databases Postgresql or MongoDB. 

@@ -14,32 +14,23 @@ class HomePage extends React.Component{
 
 
     render(){
-        return(
-            
-            <div>
-                {/* Home Page
-
-                <div className="columns">
-                    <div className="column"></div>
-
-                    <div className="column is-two-thirds">
-                        <div className="createEvent">
-                    
-                        <CreateEventModal />
-                        </div>
-                        
-                    </div>
-                    <div className="column">  </div>
-
-        
-                </div> */}
-                {/* <MapboxContainer /> */}
-                <NavBar></NavBar>
-                <About></About>
-                <Footer></Footer>
-            </div>
-            
-        )
+        if (this.props.loggedIn) {
+            return(
+                <div>
+                    <NavBar></NavBar>
+                    <MapboxContainer />
+                    <Footer></Footer>
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    <NavBar></NavBar>
+                    <About></About>
+                    <Footer></Footer>
+                </div>
+            )
+        }
     }
 }
 
