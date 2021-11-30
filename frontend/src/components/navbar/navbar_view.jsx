@@ -6,7 +6,7 @@ class NavBar extends React.Component{
     constructor(props){
         super(props);
         this.logoutUser = this.logoutUser.bind(this);
-        this.getLinks = this.getLinks.bind(this);
+        // this.getLinks = this.getLinks.bind(this);
     }
 
     logoutUser(e) {
@@ -14,35 +14,56 @@ class NavBar extends React.Component{
         this.props.logout();
     }
 
-    getLinks(){
-        
-        if (this.props.loggedIn) {
-            return(
-                <div>
-                    <button className="navbar-logout" onClick={this.props.logout}>Log Out</button>
+    // getLinks(){
+    //     // debugger
+    //     if (this.props.loggedIn) {
+    //         return(
+    //             <div>
+    //                 <button className="navbar-logout" onClick={this.props.logout}>Log Out</button>
 
-                </div>
+    //             </div>
+    //         );
+    //     } else {
+    //         return (
+    //             <div>
+    //                 <button onClick={() => this.props.openModal('login')} id="login-button">Log In</button>
+    //                 <button onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</button>
+    //                 {/* <Link to={'/signup'}>Signup</Link>
+    //                 <Link to={'/login'}>Login</Link> */}
+    //             </div>
+    //         )
+    //     }
+    // }
+    render(){
+        // return(
+        //     <nav className="nb">
+
+        //         <h1>Eco Route</h1>
+        //         {this.getLinks()}
+
+        //     </nav>
+        // )
+        if (this.props.loggedIn) {
+            return (
+                <nav className="nb">
+                    <h1>Eco Route</h1>
+                    <section>
+                        <a className="navbar-logout" onClick={this.props.logout}>Log Out</a>
+                    </section>
+
+                </nav>
             );
         } else {
             return (
-                <div>
-                    {/* <button onClick={() => this.props.openModal('login')} id="login-button">Log In</button>
-                    <button onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</button> */}
-                    <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
-                </div>
+                <nav className="nb">
+                    <h1>Eco Route</h1>
+                    <section>
+                        <a onClick={() => this.props.openModal('login')} id="login-button">Log In</a>
+                        <a onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</a>
+                    </section>
+                </nav>
             )
         }
-    }
-    render(){
-        return(
-            <div className="nb">
-
-                <h1>Eco Route</h1>
-                {this.getLinks()}
-
-            </div>
-        )
     }
 }
 
