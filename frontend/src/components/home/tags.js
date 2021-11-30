@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Tags({ onOptionsChange, attendees, formType, friends}) {
+export default function Tags({ onOptionsChange, attendees, formType, friends}) {  
   const classes = useStyles();
-  const [options, setOptions] = useState(["mickey", "tyler", "daniel", "sydney"]); //options=initialalueof the array, setOptions is settting people
+  const [options, setOptions] = useState(friends); //friends are coming in as usernames so we need a way to return it to the backend as an object. See event selectors
   const [selectedOptions, setSelectedOptions] = useState(attendees) 
   
   const handleOptionsChange = (e) => {

@@ -48,11 +48,18 @@ export const searchForFriend = email => dispatch => {
 };
 
 export const fetchAllFriends = userId => dispatch => {
-    debugger
+    // debugger
+    console.log("entered")
     return (
         APIUtil.getAllFriends(userId)
-        .then(friends => dispatch(receiveAllFriends(friends)))
-        .catch(err => console.log(err))
+        .then(friends => { 
+            console.log(friends)
+            dispatch(receiveAllFriends(friends))
+        })
+        .catch(err => {
+            console.log("enteredErr")
+            console.log(err)}
+            )
     )
 }
 

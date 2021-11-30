@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/events_api_util';
+import { getFriendsByUsername } from '../selectors/event_selectors';
 
 export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
@@ -36,7 +37,16 @@ export const fetchEvent = eventId => dispatch => {
     .then(event => dispatch(receiveEvent(event)))
 }
 
-export const createAnEvent = (event) => dispatch => {
+export const createAnEvent = (event) => (dispatch, getState) => {
+    const state = getState() //gives redux state, this is a redux thunk
+    const usernames = event.attendees
+    const attendees = getFriendsByUsername(state, usernames)
+    console.log(attendees)
+
+    event.attendees = attendees;
+    console.log(event)
+
+
     // const fakeCreate = Promise.resolve(event)
     // fakeCreate.then(event => {
     //     event.id = Math.floor(Math.random()*100)

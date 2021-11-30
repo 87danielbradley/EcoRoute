@@ -21,7 +21,8 @@ class MessagesView extends React.Component{
         this.props.fetchEventMessages(this.state.eventId)
             .then(response => {
                 
-                return(this.setState({messages: response.messages.data}))
+                // return(this.setState({messages: response.messages.data}))
+                console.log(response)
                 });
     }
     // componentWillReceiveProps(newState) {
