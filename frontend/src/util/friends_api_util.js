@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // adds friends
-export const sendFriendRequest = (userId, userB) => {
-    return axios.get(`/api/users/friend_request/${userId}`, userB)
+export const sendFriendRequest = (userId) => {
+    return axios.get(`/api/users/friend_request/${userId}`)
 };
 
 export const getFriend = user_Id => {

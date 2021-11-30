@@ -31,9 +31,9 @@ export const fetchFriend = userId => dispatch => {
     )
 };
 
-export const sendRequest = (userId, userB) => (dispatch) =>  {
+export const sendRequest = (userId) => (dispatch) =>  {
     return (
-        APIUtil.sendFriendRequest(userId, userB)
+        APIUtil.sendFriendRequest(userId)
         .then((args) => console.log('friend request sent',args) )
         .catch(err => console.log(err))
     )

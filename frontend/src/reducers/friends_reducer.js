@@ -5,23 +5,23 @@ const initialState = {
   //  1: {
   //   username: 'daniel',
   //   email: 'daniel@email.com',
-  //   _id: '6191d63c0900114e7bfdfba1'
+  //   _id: '61a694e530c1e433c5717a10'
 
   // },
   //  2: {
   //   username: 'sydney',
   //   email: 'sydney@email.com',
-  //   _id: "6195e7591d02468955c8bcab"
+  //   _id: "61a694fd30c1e433c5717a14"
   // },
   //  3: {
   //   username: 'tyler',
   //   email: 'tyler@email.com',
-  //   _id: "6195e7811d02468955c8bcae"
+  //   _id: "61a6954230c1e433c5717a1c"
   // },
   //  4: {
   //   username: 'mickey',
   //   email: 'mickey@email.com',
-  //   _id: "6195e7e6ff51e61a1df8b0b1"
+  //   _id: "61a6951730c1e433c5717a18"
   // }
   
 }
@@ -33,6 +33,7 @@ const friendsReducer = (state = initialState, action) => {
     const nextState = Object.assign({}, state)
     switch(action.type) {
         case RECEIVE_FRIEND:
+          // look closely at what this out puts may or may not need data
             nextState[action.friend.id] = action.friend
             return nextState;
 
