@@ -8,7 +8,7 @@ class MessagesView extends React.Component{
         super(props);
 
         this.state = {
-            messages: [],
+            messages: props.messages,
             text: '',
             eventId: props.eventId
         }
@@ -17,7 +17,7 @@ class MessagesView extends React.Component{
     }
     componentDidMount(){
         // this.props.fetchMessages()
-        // debugger
+        
         this.props.fetchEventMessages(this.state.eventId)
             .then(response => {
                 
@@ -30,6 +30,7 @@ class MessagesView extends React.Component{
 
 
     update() {
+        
         return (event) => this.setState({
             text: event.currentTarget.value
         })

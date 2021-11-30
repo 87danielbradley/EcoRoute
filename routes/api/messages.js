@@ -22,7 +22,7 @@ router.get('/user/:user_id', (request, response) => {
 });
 
 router.get('/event/:event_id', (request, response) => {
-    Message.find({event: request.params.event_id})
+    Message.find({eventId: request.params.event_id})
     .then(messages => response.json(messages))
     .catch(error => response.status(404).json({ nomessagesfound: "No messages yet from event"}))
 });
@@ -38,7 +38,8 @@ router.post('/',
 
         const newMessage = new Message({
             text: request.body.text,
-            user: request.user.id
+            sender: request.user.id,
+            eventId: request.body.eventId
         });
         newMessage.save().then(message => response.json(message))
     })

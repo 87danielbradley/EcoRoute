@@ -57,7 +57,7 @@ export const fetchAllFriends = userId => dispatch => {
 
 export const declineFriend = (userId, userB) => dispatch => { //userId => current User, userB=> other person being declined
     return (
-        APIUtil.declineFriend(userId, userB)
+        APIUtil.declineFriendRequest(userId, userB)
         .then(() => dispatch(removeFriend(userB))) 
     )
 }

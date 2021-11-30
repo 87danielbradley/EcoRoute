@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import MapboxView from "./mapbox_view"
+import {findPlacesNearby} from "../../actions/matrix_actions"
+import { getPlaces } from "../../util/matrix_api_util";
 
 const mSTP = (state ={}, ownProps) => {
    
@@ -9,6 +11,9 @@ const mSTP = (state ={}, ownProps) => {
 }
 
 const mDTP = (dispatch, ownProps) => ({
+    findPlacesNearby: (query, nearby) => findPlacesNearby(query, nearby),
+    getPlaces: (query, nearby) => getPlaces(query, nearby)
+
     
 })
 
