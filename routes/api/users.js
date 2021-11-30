@@ -168,29 +168,37 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
     }
 );
 // get all friends
-router.get('/all_friends/:userId', (req, res) => {
-    User.aggregate([
-        { $lookup: {
-            from: FriendRequest.collection.name,
-            let: { friends: "$friends" },
-            pipeline: [
-                { $match: {
-                    receiver: mongoose.Types.ObjectId(req.params.userId),
-                    $expr: { $in: [ "$_id", "$$friends" ]}
+router.get('/all_friends/:userId', async (req, res) => {
+    try {
+        const friends =  await User.aggregate([
+            { "$lookup": {
+              "from": FriendRequest.collection.name,
+              "let": { "friends": "$friends" },
+              "pipeline": [
+                { "$match": {
+                  "recipient": mongoose.Types.ObjectId(req.params.userId),
+                  "$expr": { "$in": [ "$_id", "$$friends" ] }
                 }},
-                { $projects: { status: 1 }}
-            ],
-            as: "friends"
-        }},
-        {$addFields: {
-            friendsStatus: {
-                $ifNull: [{ $min: "$friends.status" }, 0]
-            }
-        }}
-    ]).then(res => console.log(res.json)).catch(err => console.log(err))
-  
+                { "$project": { "status": 1 } }
+              ],
+              "as": "friends"
+            }},
+            { "$addFields": {
+              "friendsStatus": {
+                "$ifNull": [ { "$min": "$friends.status" }, 0 ]
+              }
+            }}
+          ])
 
-  })
+        res.status(200).json(friends)
+
+    } catch (err) {
+        console.log(err)
+    }
+})
+  
+    
+
   
 // accept friend request
 router.patch('/friend_request/:userId/accept', passport.authenticate('jwt', {session: false}),
