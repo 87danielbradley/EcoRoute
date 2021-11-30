@@ -5,7 +5,7 @@ import {findPlacesNearby} from "../../actions/matrix_actions"
 import { getPlaces } from "../../util/matrix_api_util";
 
 const mSTP = (state ={}, ownProps) => {
-   debugger
+  //  debugger
     return {events: Object.values(state.events).sort(function (a, b) {
   return new Date(a.date) - new Date(b.date);
 }),

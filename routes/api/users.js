@@ -169,7 +169,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 );
 // get all friends
 router.get('/all_friends/:userId', async (req, res) => {
-    debugger
+    // debugger
     try {
         const friends =  await User.aggregate([
             { "$lookup": {
@@ -190,7 +190,7 @@ router.get('/all_friends/:userId', async (req, res) => {
               }
             }}
           ])
-        debugger
+        // debugger
         res.status(200).json(friends)
 
     } catch (err) {

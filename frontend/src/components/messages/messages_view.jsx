@@ -43,6 +43,14 @@ class MessagesView extends React.Component{
         this.setState({text: this.state.text})
         
     }
+    componentDidUpdate(prevProps){
+        
+        if (this.props.eventId !== prevProps.eventId){
+            // debugger
+            this.setState({eventId: this.props.eventId,
+            messages: this.props.messages})
+        }
+    }
     render(){
         
         if (this.state.messages.length === 0) {
