@@ -29,7 +29,8 @@ class MessagesView extends React.Component{
             .then(response => {
             // .then(response => console.log(response));
                 
-                return(this.setState({messages: response.messages.data}))
+                // return(this.setState({messages: response.messages.data}))
+                console.log(response)
                 });
     }
     // componentWillReceiveProps(newState) {

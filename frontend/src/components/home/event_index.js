@@ -6,10 +6,11 @@ import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
 import { fetchFriend, sendRequest } from '../../actions/friend_actions'
 import CreateEventModal from './create_event_modal'
 import './home.css'
+import { hi } from "date-fns/locale";
 class EventIndex extends React.Component{
 
     componentDidMount(){
-        const { currentUser} = this.props
+        // const { currentUser} = this.props
         // this.props.fetchFriendRequest('619536e7cc98bcda226fcff3');
         // this.props.fetchFriends(currentUser.id);
         // this.props.fetchUserEvents(currentUser.id);
@@ -20,11 +21,13 @@ class EventIndex extends React.Component{
 
     render(){
 
-        const {events, deleteEvent, openModalAndEditEvent} = this.props;
+        const {events, deleteEvent, openModalAndEditEvent, friends} = this.props;
+               console.log(friends)
         // console.log(events)
        
 
         return(
+     
             <div className="event-index-item">
                 <div className="events-header">
                     <h1>Events</h1>
@@ -59,7 +62,8 @@ const mapStateToProps = state => {
 //   return new Date(a.date) - new Date(b.date);
 // }),
         // events: Object.values(state.events).filter(event => event.attendees.includes(state.session.user.id)),
-        currentUser: state.session.user
+        currentUser: state.session.user,
+        friends: Object.values(state.friends).filter(friend => friend.username).filter(name => name !== undefined)
     }
 }
 

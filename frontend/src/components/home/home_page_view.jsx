@@ -8,9 +8,17 @@ import FriendIndexContainer from '../friends/friends_index_container'
 import NavBar from '../navbar/navbar_view';
 import About from '../about/about';
 import Footer from '../footer/footer';
+import { fetchAllFriends } from '../../actions/friend_actions';
 
 class HomePage extends React.Component{
-    
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount(){
+        this.props.fetchAllFriends(this.props.userId)
+        console.log(this.props.allState)
+    }
     
     render(){
         if (this.props.loggedIn) {
