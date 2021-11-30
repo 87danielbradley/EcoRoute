@@ -2,7 +2,7 @@ import { RECEIVE_USER_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from "../actions/eve
 
 const initialState = {
    1: {
-    title: 'Clam Chowder Cookoff',
+    title: 'Woodside Block Party',
     category: 'Food',
     user: "6191d63c0900114e7bfdfba1",
     attendees: [ 
@@ -34,12 +34,12 @@ const initialState = {
         {location: [-73.907265, 40.741241]}
     ],
     _id: "61a549e4badb7deff58b0906",
-    date: '2021-11-29T21:45:08.233Z',
+    date: '2030-11-29T21:45:08.233Z',
 
   },
   
   2: {
-   title: 'Tyler\'s Exclusive',
+   title: 'Phili Cheesesteak Annual',
     category: 'Games',
       user: "6191d63c0900114e7bfdfba1",
     attendees: [
@@ -51,11 +51,11 @@ const initialState = {
       {location: [-75.1330394, 39.9394]}
     ],
     _id: "61a5499f315a985ae1e26c8e",
-    date: '2021-11-29T21:43:59.113Z',
+    date: '2019-11-29T21:43:59.113Z',
   
     },
     3: {
-    title: 'Phili Cheesesteak Annual',
+    title: 'Tyler\'s Exclusive',
     category: 'Music',
     user: "6191d63c0900114e7bfdfba1",
     attendees: [
@@ -86,8 +86,8 @@ const initialState = {
         {location: [-83.907160, 32.741141]},
         {location: [-83.907265, 32.741241]}
     ],
-    _id: "61a54952f92a79a1cd663c67",
-    date: '2021-11-29T21:42:42.989Z',
+    _id: "61a65cc15071d6cf82d69c30",
+    date: '2022-11-29T21:42:42.989Z',
 
   },
   // 4: {

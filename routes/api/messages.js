@@ -15,11 +15,11 @@ router.get("/", (request, response) => {
         .catch(error => response.status(404).json({ nomessagesfound: 'No messages yet'}));
 });
 
-router.get('/user/:user_id', (request, response) => {
-    Message.find({user: request.params.user_id})
-    .then(messages => response.json(messages))
-    .catch(error => response.status(404).json({ nomessagesfound: "No messages yet from user"}))
-});
+// router.get('/user/:user_id', (request, response) => {
+//     Message.find({user: request.params.user_id})
+//     .then(messages => response.json(messages))
+//     .catch(error => response.status(404).json({ nomessagesfound: "No messages yet from user"}))
+// });
 
 router.get('/event/:event_id', (request, response) => {
     Message.find({eventId: request.params.event_id})

@@ -22,6 +22,7 @@ class EventIndex extends React.Component{
 
         const {events, deleteEvent, openModalAndEditEvent} = this.props;
         // console.log(events)
+       
 
         return(
             <div className="event-index-item">
@@ -31,7 +32,7 @@ class EventIndex extends React.Component{
                 </div>
 
                 {
-                    events.reverse().map((event, i) => {
+                    events.map((event, i) => {
                         return (event !== undefined && 
                         <EventIndexItem 
                             key={i} event={event} 
@@ -54,7 +55,9 @@ class EventIndex extends React.Component{
 const mapStateToProps = state => {
     return {
         // events: state.events.events
-        events: Object.values(state.events),
+//         events: Object.values(state.events).sort(function (a, b) {
+//   return new Date(a.date) - new Date(b.date);
+// }),
         // events: Object.values(state.events).filter(event => event.attendees.includes(state.session.user.id)),
         currentUser: state.session.user
     }
