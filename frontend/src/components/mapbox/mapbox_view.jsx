@@ -7,6 +7,8 @@ import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
 import MessageContainer from "../messages/messages_container"
+
+
 // require("dotenv").config();
 
 const accessToken = process.env.REACT_APP_MAPBOX; 
@@ -107,6 +109,9 @@ export default class MapboxView extends React.PureComponent{
             const featuresArray = []
             this.props.events[eventIndex].attendees.map((attendee,i) => {
                     featuresArray.push({type: 'Feature', 
+                                        properties: {
+                                            description: `${attendee.username}`
+                                        },
                                         geometry: {
                                             type: 'Point',
                                             coordinates: attendee.location
@@ -136,6 +141,25 @@ export default class MapboxView extends React.PureComponent{
                     }
                 });
             });
+            const popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: true
+            })
+            map.on('mouseenter','attendees', event => {
+                map.getCanvas().style.cursor = 'pointer';
+                const coordinates = event.features[0].geometry.coordinates.slice();
+                const description = event.features[0].properties.description;
+                while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+                popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+
+            })
+            map.on('mouseleave', 'attendees', () => {
+                map.getCanvas().style.cursor = '';
+                popup.remove();
+            })
           
 
             //attempt to add user image
