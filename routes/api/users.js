@@ -7,7 +7,8 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login")
+const validateLoginInput = require("../../validation/login");
+const mongoose = require("mongoose");
 
 router.get("/test", (request, response) => response.json({msg: "The users route is working"}));
 
@@ -99,42 +100,66 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
             if (!receiver) {
                 return response.status(404).json({ error: 'User not found' })
             }
+            // not needed baecause friend button wont be there
+            // if (receiver.friends.includes(request.userId)) {
+            //     return response.status(400).json({ error: "Y'all already friends" })
+            // }
 
-            if (receiver.friends.includes(request.userId)) {
-                return response.status(400).json({ error: "Y'all already friends" })
-            }
-
-            const friendRequest = await FriendRequest.findOne({
-                sender: sender._id,
-                receiver: request.params.userId,
-            })
-
-            if (friendRequest) {
-                return response.status(400).json({ error: 'Already sent friend request' })
-            }
-
-            const newFriendRequest = new FriendRequest({
-                sender: sender._id, // note the difference
-                receiver: request.params.userId, // note the difference
-            })
+            // used to be called friendRequest 
+            const CurrentUserisSender = await FriendRequest.findOneAndUpdate(
+                {
+                    sender: sender._id,
+                    receiver: request.params.userId,
+                },
+                {
+                    $set: { status: 1}
+                },
+                {
+                    upsert: true,
+                    new: true
+                }
+            )
             
-            const save = await newFriendRequest.save()
+            const otherUserSeesPending = await FriendRequest.findOneAndUpdate(
+                {
+                    sender: request.params.userId,
+                    receiver: sender._id
+                },
 
-            FriendRequest.findById(save.id).populate('receiver')
-            const savedRequest = FriendRequest.findById(save.id).populate('sender')
+                {
+                    $set: { status: 2 }
+                },
+
+                {
+                    upsert: true,
+                    new: true
+                }
+            )
+
+            const updatCurrentUser = await User.findOneAndUpdate(
+                { _id: sender._id },
+                { $push: { friends: CurrentUserisSender._id}}
+            )
+
+            const updateSoonToBeFriend = await User.findOneAndUpdate(
+                { _id: request.params.userId },
+                { $push: { friends: otherUserSeesPending._id }}
+            )
+            // will no longer need this because we will use findoneandupdate 
+            // const newFriendRequest = new FriendRequest({
+            //     sender: sender._id, // note the difference
+            //     receiver: request.params.userId, // note the difference
+            // })
+            
+            
+
+            
             
             // this is the quick fix to automatically add someone as a friend
-            sender.friends.push(receiver)
-            await sender.save()
 
-            receiver.friends.push(sender)
-            await receiver.save()
             
-            await FriendRequest.deleteOne({ _id: savedRequest._id })
-            response.status(200).json({ message: 'Friend Request Accepted', save })
 
-
-            // response.status(200).json({ savedRequest })
+            response.status(200).json({ success: 'success' })
 
         } catch (err) {
             console.log(err)
@@ -142,28 +167,55 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
         }
     }
 );
+// get all friends
+router.get('/all_friends/:userId', async (req, res) => {
+    debugger
+    try {
+        const friends =  await User.aggregate([
+            { "$lookup": {
+              "from": FriendRequest.collection.name,
+              "let": { "friends": "$friends" },
+              "pipeline": [
+                { "$match": {
+                  "receiver": mongoose.Types.ObjectId(req.params.userId),
+                  "$expr": { "$in": [ "$_id", "$$friends" ] }
+                }},
+                { "$project": { "status": 1 } }
+              ],
+              "as": "friends"
+            }},
+            { "$addFields": {
+              "friendsStatus": {
+                "$ifNull": [ { "$min": "$friends.status" }, 0 ]
+              }
+            }}
+          ])
+        debugger
+        res.status(200).json(friends)
+
+    } catch (err) {
+        console.log(err)
+    }
+})
+  
+    
+
+  
 // accept friend request
-router.get('/friend_request/:requestId/accept', passport.authenticate('jwt', {session: false}),
+router.patch('/friend_request/:userId/accept', passport.authenticate('jwt', {session: false}),
     async (request, response) => {
         try {
-            const friendsRequest = await FriendRequest.findById(request.params.requestId)
-            if (!friendsRequest) {
-                return response.status(404).json({ error: 'Request not found/Request already accepted' })
-            }
+            const friendOne = await FriendRequest.findOneAndUpdate(
+                { sender: request.params.userId, receiver: request.body.userB },
+                { $set: { status: 3 } },
+            )
 
-            const sender = await User.findById(friendsRequest.sender)
-            if (sender.friends.includes(friendsRequest.receiver)) {
-                return response.status(400).json({ error: "Already in sender's friend list" })
-            }
-            sender.friends.push(friendsRequest.receiver)
-            await sender.save()
-
-            const receiver = await User.findById(friendsRequest.receiver)
-            receiver.friends.push(friendsRequest.sender)
-            await receiver.save()
-
-            await FriendRequest.deleteOne({ _id: request.params.requestId })
-            response.status(200).json({ message: 'Friend Request Accepted', friendsRequest: friendsRequest })
+           const friendTwo = await FriendRequest.findOneAndUpdate(
+                { receiver: request.params.userId, sender: request.body.userB},
+                { $set: { status: 3 } },
+            )
+            
+            response.status(200).json({ success: 'success' })
 
         } catch (err) {
             console.log(err)
@@ -172,31 +224,28 @@ router.get('/friend_request/:requestId/accept', passport.authenticate('jwt', {se
     }
 );
 // cancel friend request 
-router.get('/friend_request/:requestId/cancel', passport.authenticate('jwt', {session: false}),
-    async (request, response) => {
-        try {
-            const friendsRequest = await FriendRequest.findById(request.params.requestId,)
-            if (!friendsRequest) {
-                return response.status(404).json({ error: 'Request does not exist' })
-            }
-            await FriendRequest.deleteOne({ _id: request.params.requestId })
 
-            response.status(200).json({ message: 'Friend Request Canceled' })
-        } catch (err) {
-            console.log(err)
-            return response.status(500).json({ error: "whoops" })
-        }
-    }
-);
 // decline friend request 
-router.get('/friend_request/:requestId/decline', passport.authenticate('jwt', {session: false}),
+router.delete('/friend_request/:userId/decline', passport.authenticate('jwt', {session: false}),
     async (request, response) => {
         try {
-            const friendsRequest = await FriendRequest.findById(request.params.requestId,)
-            if (!friendsRequest) {
-                return response.status(404).json({ error: 'Request does not exist' })
-            }
-            await FriendRequest.deleteOne({ _id: request.params.requestId })
+            const friendOne = await FriendRequest.findOneAndRemove(
+                { sender: request.params.userId, receiver: request.body.userB}
+            )
+
+            const friendTwo = await FriendRequest.findOneAndRemove(
+                { sender: request.body.userB, receiver: request.params.userId }
+            )
+            
+            User.findOneAndUpdate(
+                { _id: request.params.userId },
+                { $pull: { friends: friendOne._id } }
+            )
+
+            User.findOneAndUpdate(
+                { _id: request.body.userB },
+                { $pull: { friends: friendTwo._id } }
+            )
 
             response.status(200).json({ message: 'Friend request declined' })
         } catch (err) {
@@ -245,25 +294,6 @@ router.get('/:user_id', (req, res) => {
         }).catch(err => console.log(err))
 })
 
-// router.get('/all_friends', (req, res) => {
-//     console.log(req)
-//     const currentUserId = jwt.decode(req.get('authorization').split('Bearer ')[1]).id;
-//     console.log(currentUserId)
-//     if (currentUser) {
-//         User.findById(currentUserId)
-//         .then(user => {
-//             if (user) {
-//                 res.json({
-//                     friends: user.friends
-//                 })
-//             } else {
-//                 res.json([])
-//             }
-//         })
-//     } else {
-//         res.json([])
-//     }
-// })
 
 
 module.exports = router;
