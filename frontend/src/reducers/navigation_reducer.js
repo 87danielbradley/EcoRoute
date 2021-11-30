@@ -5,7 +5,7 @@ const intitalState = {
    
 };
 
-const messageApiReducer = (state = intitalState, action) => {
+const matrixApiReducer = (state = intitalState, action) => {
     Object.freeze(state);
     let nextState; 
     switch(action.type){

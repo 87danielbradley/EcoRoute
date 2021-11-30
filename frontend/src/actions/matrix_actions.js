@@ -1,4 +1,4 @@
-import * as APIutil from "../util/messages_api_util";
+import * as APIutil from "../util/matrix_api_util";
 import jwt_decode from "jwt-decode"
 
 export const RECEIVE_MATRIX = "RECEIVE_MATRIX";
