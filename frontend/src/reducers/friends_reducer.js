@@ -41,7 +41,7 @@ const friendsReducer = (state = initialState, action) => {
           //  const friends = action.friends.filter(friend => (
           //     friend.friendsState > 0
           //   ))
-           action.friends.forEach(friend => {
+           action.friends.data.forEach(friend => {
               if (friend.friendsState > 0){
                 nextState[friend._id] = friend
               }
