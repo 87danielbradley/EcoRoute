@@ -79,7 +79,7 @@ export default class MapboxView extends React.PureComponent{
     }
     updateMap(eventIndex=0) {
         this.setState({eventId: this.props.events[eventIndex]._id})
-
+        
         this.renderMap(eventIndex);
     }
 
