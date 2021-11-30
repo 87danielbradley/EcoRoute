@@ -6,7 +6,7 @@ import MessagesView from "./messages_view";
 
 
 const mSTP = (state ={}, ownProps) => {
-    // debugger
+    
     
     return ({loggedIn: state.session.isAuthenticated,
     currentUser: state.session.user,

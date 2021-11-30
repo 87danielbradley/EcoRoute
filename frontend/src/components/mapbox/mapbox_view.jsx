@@ -35,7 +35,7 @@ export default class MapboxView extends React.PureComponent{
         this.props.getPlaces( 'starbucks',[this.state.lng,this.state.lat])
     }
      render(){
-        // debugger
+       
         return (
             <div>
                 <div id="map" ref={this.mapContainer} className="map-container">
