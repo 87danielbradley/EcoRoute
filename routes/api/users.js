@@ -169,6 +169,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 );
 // get all friends
 router.get('/all_friends/:userId', async (req, res) => {
+    debugger
     try {
         const friends =  await User.aggregate([
             { "$lookup": {
@@ -176,7 +177,7 @@ router.get('/all_friends/:userId', async (req, res) => {
               "let": { "friends": "$friends" },
               "pipeline": [
                 { "$match": {
-                  "recipient": mongoose.Types.ObjectId(req.params.userId),
+                  "receiver": mongoose.Types.ObjectId(req.params.userId),
                   "$expr": { "$in": [ "$_id", "$$friends" ] }
                 }},
                 { "$project": { "status": 1 } }
@@ -189,7 +190,7 @@ router.get('/all_friends/:userId', async (req, res) => {
               }
             }}
           ])
-
+        debugger
         res.status(200).json(friends)
 
     } catch (err) {
