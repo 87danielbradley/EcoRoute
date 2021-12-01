@@ -5,11 +5,15 @@ import { openModal } from "../../actions/modal_actions";
 import HomePage from "./home_page_view";
 import { fetchAllFriends } from "../../actions/friend_actions";
 
-const mSTP = (state = {}, ownProps) => ({
-    loggedIn: state.session.isAuthenticated,
-    userId: state.session.user.id,
-    allState: state
-})
+const mSTP = (state = {}, ownProps) => {
+    
+    const userId = (state.session.user ? state.session.user.id: null)
+    return{
+        loggedIn: state.session.isAuthenticated,
+        userId: userId,
+        allState: state
+    }
+}
 
 const mDTP = (dispatch, ownProps) => ({
     logout: () => dispatch(logout()),
