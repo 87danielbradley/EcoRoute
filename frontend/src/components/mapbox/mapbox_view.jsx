@@ -112,7 +112,7 @@ export default class MapboxView extends React.PureComponent{
             this.props.events[eventIndex].attendees.map((attendee,i) => {
                     featuresArray.push({type: 'Feature', 
                                         properties: {
-                                            description: `${attendee.username}`
+                                            description: `<p>${attendee.username}</p>`
                                         },
                                         geometry: {
                                             type: 'Point',
@@ -145,7 +145,7 @@ export default class MapboxView extends React.PureComponent{
             });
             const popup = new mapboxgl.Popup({
                 closeButton: false,
-                closeOnClick: true
+                closeOnClick: false
             })
             map.on('mouseenter','attendees', event => {
                 map.getCanvas().style.cursor = 'pointer';
