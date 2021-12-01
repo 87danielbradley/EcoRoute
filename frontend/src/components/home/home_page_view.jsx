@@ -14,6 +14,7 @@ class HomePage extends React.Component{
     
     render(){
         if (this.props.loggedIn) {
+            this.props.fetchAllFriends(this.props.currentUserId)
             return(
                 <div>
                     <NavBar logout={this.props.logout} loggedIn={this.props.loggedIn}/>

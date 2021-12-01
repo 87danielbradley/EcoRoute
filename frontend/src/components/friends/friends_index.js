@@ -5,17 +5,22 @@ class FriendsIndex extends React.Component {
     constructor(props) {
         super(props)
     }
-    componentDidMount() {
-        debugger
-        this.props.fetchAllFriends(this.props.currentUser)
-    }
 
     render() {
-
+        debugger
+        const friend = Object.values(this.props.friends).map( (friend, idx) => (
+            <FriendsIndexItem 
+                key={idx} 
+                friend={friend} 
+                removeFriend={this.props.removeFriend} 
+                acceptFriend={this.props.acceptFriend}
+                currentUserId ={this.props.currentUser}
+            />
+        ))
 
         return (
             <ul>
-                <FriendsIndexItem/>
+                {friend}
             </ul>
         )
     }

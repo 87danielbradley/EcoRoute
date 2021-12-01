@@ -63,5 +63,13 @@ export const declineFriend = (userId, userB) => dispatch => { //userId => curren
     )
 }
 
+//userId => current User, userB=> other person being accepted
+export const acceptFriend = ( userId, userB ) => dispatch => { 
+    return (
+        APIUtil.acceptFriendRequest(userId, userB)
+            .then(() => dispatch(receiveFriend(userB)))
+            .catch(err => console.log(err))
+    )
+}
 
 
