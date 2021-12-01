@@ -211,12 +211,12 @@ router.patch('/friend_request/:userId/accept', passport.authenticate('jwt', {ses
     async (request, response) => {
         try {
             const friendOne = await FriendRequest.findOneAndUpdate(
-                { sender: request.params.userId, receiver: request.body.userB },
+                { sender: request.params.userId, receiver: request.body.userB._id },
                 { $set: { status: 3 } },
             )
 
            const friendTwo = await FriendRequest.findOneAndUpdate(
-                { receiver: request.params.userId, sender: request.body.userB},
+                { receiver: request.params.userId, sender: request.body.userB._id},
                 { $set: { status: 3 } },
             )
             

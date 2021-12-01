@@ -21,7 +21,6 @@ const mDTP = (dispatch, ownProps) => ({
     signup: (formUser) => dispatch(signup(formUser)),
     openModal: (modal) => dispatch(openModal(modal)),
     fetchAllFriends: (userId) => dispatch(fetchAllFriends(userId))
-
 })
 
 export default connect(mSTP, mDTP)(HomePage);
