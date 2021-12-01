@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
  * parseAttendees into username 
  * meaning go thru attendee objects and get array of usernames
  * and use the resulting array of usernames to initialize selectedOptions 
- * @param {*} param0 
- * @returns 
  */
 
  function Tags({ onOptionsChange, attendees, formType, friends, allFriends}) {  
@@ -33,18 +31,20 @@ const useStyles = makeStyles((theme) => ({
   */
  let attendeeUsername = []
  if (formType === 'Update Event') {
+    
    const mappedUsernames = attendees.map(attendeeId => {
-
-      return allFriends[attendeeId].username
+        const username = (allFriends[attendeeId] && allFriends[attendeeId].username) || 'no name'
+      return username
    });
    attendeeUsername = mappedUsernames
    console.log("MAPPED", mappedUsernames)
  } else {
+   attendeeUsername = attendees
     
  }
   const classes = useStyles();
   const [options, setOptions] = useState(friends); //friends are coming in as usernames so we need a way to return it to the backend as an object. See event selectors
-  const [selectedOptions, setSelectedOptions] = useState(attendees) 
+  const [selectedOptions, setSelectedOptions] = useState(attendeeUsername) 
   
   const handleOptionsChange = (e) => {
     setOptions(options.concat(e.target.value));
