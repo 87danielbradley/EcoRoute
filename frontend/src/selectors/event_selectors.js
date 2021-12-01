@@ -17,15 +17,6 @@ export const getFriendsByUsername = (state, usernames = []) => { //usernames are
 
 }
 
-export const buildUsernameById = (state) => {
-    // state.friends.reduce((acc, friend) => {
 
-    // }, {})
-
-
-    /**
-     * {id: username}
-     */
-}
 
 //see createEvent in actions

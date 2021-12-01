@@ -4,7 +4,7 @@ import Autocomplete from "@mui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
-import { } from '../../selectors/event_selectors'
+import { getFriends} from '../../selectors/event_selectors'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,13 +24,24 @@ const useStyles = makeStyles((theme) => ({
  * @returns 
  */
 
- function Tags({ onOptionsChange, attendees, formType, friends, idToUsernameMap}) {  
+ function Tags({ onOptionsChange, attendees, formType, friends, allFriends}) {  
  /**
   * if formType === update
   *  loop over attendees 
   *   attendees.map(attendee => idToUsernameMap[attendee])
+  * 
   */
+ let attendeeUsername = []
+ if (formType === 'Update Event') {
+   const mappedUsernames = attendees.map(attendeeId => {
 
+      return allFriends[attendeeId].username
+   });
+   attendeeUsername = mappedUsernames
+   console.log("MAPPED", mappedUsernames)
+ } else {
+    
+ }
   const classes = useStyles();
   const [options, setOptions] = useState(friends); //friends are coming in as usernames so we need a way to return it to the backend as an object. See event selectors
   const [selectedOptions, setSelectedOptions] = useState(attendees) 
@@ -79,11 +90,8 @@ const useStyles = makeStyles((theme) => ({
 }
 
 const mapStateToProps = (state)=>  ({
-  idToUsernameMap: {}
-  // selector takes state.friends and returns {id: "username"}
-  /**
-   * { idididididi: "mimi", }
-   */
+  allFriends: getFriends(state)
+
 })
 
 export default connect(mapStateToProps, null) (Tags)
