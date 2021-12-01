@@ -7,6 +7,8 @@ import './mapbox.css'
 import EventIndexContainer from '../home/event_index'
 import FriendsIndexContainer from "../friends/friends_index_container"
 import MessageContainer from "../messages/messages_container"
+
+
 // require("dotenv").config();
 
 const accessToken = process.env.REACT_APP_MAPBOX; 
@@ -32,7 +34,7 @@ export default class MapboxView extends React.PureComponent{
     }
     componentDidMount() {
         this.renderMap()
-        this.props.getPlaces( 'starbucks',[this.state.lng,this.state.lat])
+        this.props.getPlaces( 'dunkin donuts',[this.state.lng,this.state.lat])
     }
      render(){
        
@@ -78,16 +80,17 @@ export default class MapboxView extends React.PureComponent{
         );
     }
     updateMap(eventIndex=0) {
-        this.setState({eventId: this.props.events[eventIndex]._id})
-
         this.renderMap(eventIndex);
+        this.setState({eventId: this.props.events[eventIndex]._id})
+        
     }
 
     renderMap(eventIndex=0){
         let attendees = this.props.events[eventIndex].attendees;
         let lng = attendees.reduce((total, next) => total + next.location[0],0)/attendees.length;
         let lat = attendees.reduce((total, next) => total + next.location[1],0)/attendees.length;
-
+        this.setState({lng: lng})
+        this.setState({lat: lat})
         
         
         // const { lng, lat, zoom } = this.state;
@@ -100,13 +103,16 @@ export default class MapboxView extends React.PureComponent{
         });
         map.flyTo([lng,lat])
         // map.setCenter([lng,lat])
-        console.log([lng,lat])
-        console.log(eventIndex)
+        // console.log([lng,lat])
+        // console.log(eventIndex)
         if (this.props.events.length > 0){
             
             const featuresArray = []
             this.props.events[eventIndex].attendees.map((attendee,i) => {
                     featuresArray.push({type: 'Feature', 
+                                        properties: {
+                                            description: `${attendee.username}`
+                                        },
                                         geometry: {
                                             type: 'Point',
                                             coordinates: attendee.location
@@ -136,6 +142,25 @@ export default class MapboxView extends React.PureComponent{
                     }
                 });
             });
+            const popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: true
+            })
+            map.on('mouseenter','attendees', event => {
+                map.getCanvas().style.cursor = 'pointer';
+                const coordinates = event.features[0].geometry.coordinates.slice();
+                const description = event.features[0].properties.description;
+                while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+                popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+
+            })
+            map.on('mouseleave', 'attendees', () => {
+                map.getCanvas().style.cursor = '';
+                popup.remove();
+            })
           
 
             //attempt to add user image
