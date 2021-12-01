@@ -51,7 +51,6 @@ function TransitionsModal(props) {
             <EditEventFormContainer /> :
             <EventFormContainer/>
           }
-       
         
          
           </Box>

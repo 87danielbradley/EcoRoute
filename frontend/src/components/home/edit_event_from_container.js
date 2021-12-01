@@ -22,10 +22,6 @@ const mapStateToProps = (state, ownProps) => {
           hidden: false
       }      
       const event =  state.events[eventId]
-      console.log("EVENT", event)
-      event.attendees  = Object.values(event.attendees).map(attendee=> attendee.username).filter(name => name !== undefined);
-      console.log(event.attendees)
-
     return {
       event:  event, //!eventId ? emptyEvent : state.events[eventId],
       formType: "Update Event",

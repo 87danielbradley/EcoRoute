@@ -21,9 +21,10 @@ class EventIndex extends React.Component{
 
     render(){
 
-        const {events, deleteEvent, openModalAndEditEvent, friends} = this.props;
+        const {events, eventsL, deleteEvent, openModalAndEditEvent, friends} = this.props;
                console.log(friends)
-        console.log("INDEXXX", events)
+            
+        console.log("INDEXXX", this.props.eventsL)
        
 
         return(
@@ -35,7 +36,7 @@ class EventIndex extends React.Component{
                 </div>
 
                 {
-                    events.map((event, i) => {
+                    eventsL.map((event, i) => {
                         return (event !== undefined && 
                         <EventIndexItem 
                             key={i} event={event} 
@@ -57,7 +58,7 @@ class EventIndex extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        // events: state.events.events
+        eventsL: Object.values(state.events),
 //         events: Object.values(state.events).sort(function (a, b) {
 //   return new Date(a.date) - new Date(b.date);
 // }),

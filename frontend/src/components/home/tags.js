@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Autocomplete from "@mui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { connect } from "react-redux";
+import { } from '../../selectors/event_selectors'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 /**
- * if we are in updateForm means pass forn type to this compoonent
+ * if we are in updateForm means pass form type to this component
  * parseAttendees into username 
  * meaning go thru attendee objects and get array of usernames
  * and use the resulting array of usernames to initialize selectedOptions 
@@ -22,8 +24,12 @@ const useStyles = makeStyles((theme) => ({
  * @returns 
  */
 
-export default function Tags({ onOptionsChange, attendees, formType, friends}) {  
-
+ function Tags({ onOptionsChange, attendees, formType, friends, idToUsernameMap}) {  
+ /**
+  * if formType === update
+  *  loop over attendees 
+  *   attendees.map(attendee => idToUsernameMap[attendee])
+  */
 
   const classes = useStyles();
   const [options, setOptions] = useState(friends); //friends are coming in as usernames so we need a way to return it to the backend as an object. See event selectors
@@ -71,3 +77,13 @@ export default function Tags({ onOptionsChange, attendees, formType, friends}) {
     </div>
   );
 }
+
+const mapStateToProps = (state)=>  ({
+  idToUsernameMap: {}
+  // selector takes state.friends and returns {id: "username"}
+  /**
+   * { idididididi: "mimi", }
+   */
+})
+
+export default connect(mapStateToProps, null) (Tags)
