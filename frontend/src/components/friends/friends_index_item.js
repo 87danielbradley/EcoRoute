@@ -26,13 +26,13 @@ class FriendsIndexItem extends React.Component {
 
     handleAccept(e) {
         e.preventDefault()
-        debugger
+        // debugger
         this.props.acceptFriend(this.props.currentUserId, this.state)
         this.setState({ friendsState: 3 })
     }
 
     render() {
-        // debugger
+        // // debugger
         
 
         const friend = this.state

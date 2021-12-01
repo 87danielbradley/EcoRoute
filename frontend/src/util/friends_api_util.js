@@ -29,6 +29,6 @@ export const acceptFriendRequest = (userId, userB) => {
 // };
 
 export const declineFriendRequest = (userId, userB)=> {
-    debugger
+    // debugger
     return axios.delete(`/api/users/friend_request/${userId}/decline`, userB)
 };
