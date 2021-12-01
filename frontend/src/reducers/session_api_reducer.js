@@ -7,7 +7,6 @@ const intitalState = {
 
 const sessionApiReducer = (state = intitalState, action) => {
     Object.freeze(state);
-
     switch(action.type){
         case RECIEVE_USER_LOGOUT: 
             return{

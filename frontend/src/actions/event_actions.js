@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/events_api_util';
 import { getFriendsByUsername } from '../selectors/event_selectors';
-
+import { getPlaces,  getMatrix } from '../util/matrix_api_util'
 export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
@@ -37,6 +37,15 @@ export const fetchEvent = eventId => dispatch => {
     .then(event => dispatch(receiveEvent(event)))
 }
 
+export const searchEventLocation = (query, userLocation, attendees) => (dispatch, getState) => {
+    // ensure user object has location
+    //42.239690   -71.815211 
+    const nearbyString = ['42.239690', '-71.815211 '].join(',')
+    getPlaces(query, nearbyString).then(response => {
+        console.log(response)
+    })
+}
+
 export const createAnEvent = (event) => (dispatch, getState) => {
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
@@ -57,6 +66,7 @@ export const createAnEvent = (event) => (dispatch, getState) => {
     .catch(error => console.log(error))
 }
 export const updateAnEvent = (event) => dispatch => {
+    // debugger
     // const fakeUpdate = Promise.resolve(event);
     // fakeUpdate.then(event => {
     //     dispatch(receiveEvent(event))

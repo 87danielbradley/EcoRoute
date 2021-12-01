@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
         hidden: false
     },
     formType: "Create Event",
-    friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined)
+    friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
+    allState: state
   }
   )
 
@@ -24,7 +25,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     action: (event) => dispatch(createAnEvent(event))
-   
     
   }
 }
