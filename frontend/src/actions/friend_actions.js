@@ -50,9 +50,11 @@ export const searchForFriend = email => dispatch => {
 export const fetchAllFriends = userId => dispatch => {
     
     console.log("entered")
+    
     return (
         APIUtil.getAllFriends(userId)
         .then(friends => { 
+            debugger
             console.log(friends)
             dispatch(receiveAllFriends(friends))
         })
