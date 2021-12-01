@@ -75,6 +75,10 @@ class FriendsIndexItem extends React.Component {
                     </Card> 
                 </div>
             )
+        } else {
+            return (
+                null
+            )
         }
 
 
