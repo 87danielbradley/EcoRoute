@@ -3,7 +3,7 @@ import { updateAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 
 const mapStateToProps = (state, ownProps) => {
-  const eventId = ownProps.match && ownProps.match.params.eventId;
+  const eventId = state.appState.currentEditEventId;
   console.log(eventId)
   console.log("state.events[eventId]", state.events[eventId])
   const emptyEvent = {
