@@ -43,12 +43,12 @@ const initialState = {
     category: 'Games',
       user: "6191d63c0900114e7bfdfba1",
     attendees: [
-      {location: [-75.1330394, 39.93935085]},
-      {location: [-75.13305, 39.93936]},
-      {location: [-75.13308, 39.93938]},
-      {location: [-75.13310, 39.93935085]},
-      {location: [-75.132, 39.93935085]},
-      {location: [-75.1330394, 39.9394]}
+      {location: [-75.1330394, 39.93935085], username: "philifan1"},
+      {location: [-75.13305, 39.93936], username: "philifan2"},
+      {location: [-75.13308, 39.93938], username: "philifan3"},
+      {location: [-75.13310, 39.93935085], username: "philifan4"},
+      {location: [-75.132, 39.93935085], username: "philifan5"},
+      {location: [-75.1330394, 39.9394], username: "philifan6"}
     ],
     _id: "61a5499f315a985ae1e26c8e",
     date: '2019-11-29T21:43:59.113Z',

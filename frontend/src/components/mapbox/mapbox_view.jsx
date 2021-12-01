@@ -126,7 +126,9 @@ export default class MapboxView extends React.PureComponent{
             this.props.events[eventIndex].attendees.map((attendee,i) => {
                     featuresArray.push({type: 'Feature', 
                                         properties: {
-                                            description: `<p>${attendee.username}</p>`
+                                            description: `<p>${attendee.username}</p>
+                                            <p>Distance to event</p>
+                                            <p>Travel time to event</p>`
                                         },
                                         geometry: {
                                             type: 'Point',
@@ -150,11 +152,12 @@ export default class MapboxView extends React.PureComponent{
                         source: 'attendees',
                         
                         paint: {
-                            "circle-radius": 5,
+                            "circle-radius": 10,
                             "circle-color": "#5b94c6",
                             "circle-opacity": 1
                         }
                     });
+                
 
 
 
@@ -167,13 +170,34 @@ export default class MapboxView extends React.PureComponent{
                         source: 'attendees',
                         
                         paint: {
-                            "circle-radius": 5,
+                            "circle-radius": 10,
                             "circle-color": "#5b94c6",
                             "circle-opacity": 1
                         }
                     });
                 });
             }
+            const popup = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: true
+                })
+                
+
+                window.map.on('mouseenter','event', event => {
+                    window.map.getCanvas().style.cursor = 'pointer';
+                    const coordinates = event.features[0].geometry.coordinates.slice();
+                    const description = event.features[0].properties.description;
+                    while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+                    popup.setLngLat(coordinates).setHTML(description).addTo(window.map);
+
+
+                })
+                window.map.on('mouseleave', 'event', () => {
+                    window.map.getCanvas().style.cursor = '';
+                    popup.remove();
+                })
            
 
             
