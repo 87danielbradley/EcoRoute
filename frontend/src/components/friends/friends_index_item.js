@@ -21,17 +21,18 @@ class FriendsIndexItem extends React.Component {
 
     handleDelete(e) {
         e.preventDefault()
-        this.props.removeFriend(this.props.curentUserId, this.state._id )
+        this.props.removeFriend(this.props.currentUserId, this.state)
     }
 
     handleAccept(e) {
         e.preventDefault()
+        debugger
+        this.props.acceptFriend(this.props.currentUserId, this.state)
         this.setState({ friendsState: 3 })
-        this.props.acceptFriend(this.props.curentUserId, this.state._id)
     }
 
     render() {
-        debugger
+        // debugger
         
 
         const friend = this.state
@@ -75,6 +76,8 @@ class FriendsIndexItem extends React.Component {
                     </Card> 
                 </div>
             )
+        } else {
+            return null
         }
 
 

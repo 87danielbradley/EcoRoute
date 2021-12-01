@@ -20,7 +20,8 @@ export const searchUsersByEmail = (formEmail) => (
 );
 
 export const acceptFriendRequest = (userId, userB) => {
-    return axios.get(`/api/users/friend_request/${userId}/accept`, userB)
+    
+    return axios.patch(`/api/users/friend_request/${userId}/accept`, userB)
 };
 
 // export const cancelFriendRequest = requestId => {
@@ -28,5 +29,6 @@ export const acceptFriendRequest = (userId, userB) => {
 // };
 
 export const declineFriendRequest = (userId, userB)=> {
-    return axios.get(`/api/users/friend_request/${userId}/decline`, userB)
+    debugger
+    return axios.delete(`/api/users/friend_request/${userId}/decline`, userB)
 };

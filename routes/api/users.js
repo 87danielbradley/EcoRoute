@@ -209,14 +209,16 @@ router.get('/all_friends/:userId', async (req, res) => {
 // accept friend request
 router.patch('/friend_request/:userId/accept', passport.authenticate('jwt', {session: false}),
     async (request, response) => {
+        // debugger
         try {
+            // when tessting change request.body._id to request.body.variable
             const friendOne = await FriendRequest.findOneAndUpdate(
-                { sender: request.params.userId, receiver: request.body.userB._id },
+                { sender: request.params.userId, receiver: request.body._id },
                 { $set: { status: 3 } },
             )
 
            const friendTwo = await FriendRequest.findOneAndUpdate(
-                { receiver: request.params.userId, sender: request.body.userB._id},
+                { receiver: request.params.userId, sender: request.body._id},
                 { $set: { status: 3 } },
             )
             
@@ -234,23 +236,29 @@ router.patch('/friend_request/:userId/accept', passport.authenticate('jwt', {ses
 router.delete('/friend_request/:userId/decline', passport.authenticate('jwt', {session: false}),
     async (request, response) => {
         try {
-            const friendOne = await FriendRequest.findOneAndRemove(
-                { sender: request.params.userId, receiver: request.body.userB}
+                        // when tessting change request.body._id to request.body.variable
+
+            const friendOne = await FriendRequest.findOneAndDelete(
+                { sender: request.params.userId, receiver: request.body._id},
+                // { $rawResult: true }
             )
 
-            const friendTwo = await FriendRequest.findOneAndRemove(
-                { sender: request.body.userB, receiver: request.params.userId }
+            const friendTwo = await FriendRequest.findOneAndDelete(
+                { sender: request.body._id, receiver: request.params.userId },
+                // { $rawResult: true }
             )
-            
+            debugger 
             User.findOneAndUpdate(
                 { _id: request.params.userId },
                 { $pull: { friends: friendOne._id } }
             )
 
             User.findOneAndUpdate(
-                { _id: request.body.userB },
+                { _id: request.body._id },
                 { $pull: { friends: friendTwo._id } }
             )
+
+            
 
             response.status(200).json({ message: 'Friend request declined' })
         } catch (err) {
