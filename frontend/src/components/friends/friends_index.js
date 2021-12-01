@@ -12,19 +12,6 @@ class FriendsIndex extends React.Component {
 
     render() {
 
-        // const friend = this.props.friendIds.map( (friend, idx) => {
-        //     return (
-        //         <div>
-        //         <li>
-        //             <FriendsIndexItem 
-        //                 key={idx} 
-        //                 friendId={friend}
-        //                 fetchFriend={this.props.fetchFriend}
-        //             />
-        //         </li>
-        //         </div>
-        //     )
-        // })
 
         return (
             <ul>
