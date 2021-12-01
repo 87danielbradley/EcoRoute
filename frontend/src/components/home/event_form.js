@@ -43,7 +43,7 @@ class EventForm extends Component {
     createEventHandler = (e) => {
       e.preventDefault()
 
-      const {title, category,date, attendees} = this.state;
+      const {title, category,date, attendees, _id} = this.state;
 
       const event = {
         title, 
@@ -51,8 +51,11 @@ class EventForm extends Component {
         date, 
         attendees
       }
+      if (this.props.formType === 'Update Event'){
+        event._id = _id
+      }
 
-      debugger
+      // debugger
 
       this.props.action(event);
 
