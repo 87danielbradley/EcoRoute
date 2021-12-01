@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 import { connect } from "react-redux";
 import { fetchMessages, createMessage, fetchEventMessages } from "../../actions/message_actions";
-import { logout } from "../../actions/session_actions";
+// import { logout } from "../../actions/session_actions";
 import MessagesView from "./messages_view";
 
 

@@ -44,12 +44,12 @@ class SessionForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
 
-        let user = {
-            username: this.state.username,
-            password: this.state.password,
-            password2: this.state.password2,
-            email: this.state.email
-        }
+        // let user = {
+        //     username: this.state.username,
+        //     password: this.state.password,
+        //     password2: this.state.password2,
+        //     email: this.state.email
+        // }
         this.props.action(this.state, this.props.history)
             .then( () => this.props.closeModal())
 
@@ -73,7 +73,7 @@ class SessionForm extends React.Component{
     }
 
     render(){
-        const { formType, navLink, openModal } = this.props;
+        const { formType, openModal } = this.props;
         return (
             <div className='sfc'>
                 <div className="sf">
@@ -82,7 +82,7 @@ class SessionForm extends React.Component{
                         <div className="sf-header">
                             <span>
                                 Have an account? 
-                                <a onClick={() => openModal('login')}> Login </a>
+                                <span onClick={() => openModal('login')}> Login </span>
                             </span>
                             <h3>{formType}</h3>
                         </div>: 
@@ -138,7 +138,7 @@ class SessionForm extends React.Component{
 
                         {formType === 'Sign up' ?
                             null : <div>New to EcoRoute?
-                                <a onClick={() => openModal('signup')}> Sign up </a>
+                                <span onClick={() => openModal('signup')}> Sign up </span>
                             </div>}
 
                         {formType === 'Sign up'?

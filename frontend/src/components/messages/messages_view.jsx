@@ -109,8 +109,8 @@ class MessagesView extends React.Component{
                     <input type="submit" value="&#9998;"></input>
                 </form>
                
-                {this.state.messages.map((message) =>(
-                    <MessagesViewItem text={message.text} />
+                {this.state.messages.map((message, i) =>(
+                    <MessagesViewItem key={`message-${i}`} text={message.text} />
                 ))}
             </div>
         )

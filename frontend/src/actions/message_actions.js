@@ -1,5 +1,5 @@
 import * as APIutil from "../util/messages_api_util";
-import jwt_decode from "jwt-decode"
+// import jwt_decode from "jwt-decode"
 
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
 export const RECEIVE_USER_MESSAGES = "RECEIVE_USER_MESSAGES";

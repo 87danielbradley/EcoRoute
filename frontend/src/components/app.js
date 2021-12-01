@@ -3,12 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 // import { Routes } from 'react-router-dom'; //v6
 import '../App.css';
 
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { ProtectedRoute } from '../util/route_util';
+// import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import ModalContainer from './modal/modal_container';
 import HomePageContainer from "./home/home_page_container";
-import NavBarContainer from './navbar/navbar_container'
-import SignupContainer from "./session/signup_container";
-import LoginContainer from "./session/login_container"
+// import NavBarContainer from './navbar/navbar_container'
+// import SignupContainer from "./session/signup_container";
+// import LoginContainer from "./session/login_container"
 import MessagesContainer from "./messages/messages_container"
 import EditEventContainer from '../components/home/edit_event_from_container'
 const App = () => (
