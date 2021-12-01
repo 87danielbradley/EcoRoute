@@ -66,6 +66,7 @@ export const createAnEvent = (event) => (dispatch, getState) => {
     .catch(error => console.log(error))
 }
 export const updateAnEvent = (event) => dispatch => {
+    // debugger
     // const fakeUpdate = Promise.resolve(event);
     // fakeUpdate.then(event => {
     //     dispatch(receiveEvent(event))

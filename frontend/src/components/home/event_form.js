@@ -38,9 +38,22 @@ class EventForm extends Component {
     }
 
 
+
+
     createEventHandler = (e) => {
       e.preventDefault()
-      this.props.action(this.state);
+
+      const {title, category,date, attendees} = this.state;
+
+      const event = {
+        title, 
+        category,
+        date, 
+        attendees
+      }
+
+
+      this.props.action(event);
 
     }
 
@@ -48,7 +61,7 @@ class EventForm extends Component {
 
       this.setState({attendees: options}, () => {
         
-       this.handleSearch()
+      //  this.handleSearch()
         
       
       })
@@ -59,17 +72,22 @@ class EventForm extends Component {
       const state = this.props.allState; // from container 
       const attendeeUsernames = this.state.attendees;
       const attendeeObjects = getFriendsByUsername(state, attendeeUsernames);
+  
 
-      const nearbyString = [ '-73.9855', '40.7580'];
-      const query = this.state.location;
+      const nearbyString = [ -73.9855, 40.7580]; //nearby is current location
+      const query = this.state.location;   //from what i input
+
+
       getPlaces(query, nearbyString).then(({data}) => {
-          console.log(data)
+          console.log("data", data)
           const features = data.features;
           const places = features.map(place => place.geometry.coordinates)
-          console.log(attendeeObjects)
+          console.log("attendee objects", attendeeObjects)
           getMatrix(attendeeObjects, places).then(response => {
             console.log(response)
           })
+
+          return places
       })
     }
     
@@ -78,7 +96,7 @@ class EventForm extends Component {
         // console.log(this.state.attendees)
         const {title, attendees, date, category, location} = this.state;
         const {friends} = this.props;
-        console.log("HELLO", friends)
+        // console.log("HELLO", friends)
     
         return (
             <div>
@@ -90,21 +108,21 @@ class EventForm extends Component {
                   onChange={(e)=> this.onTextFieldChange("title", e)}
                   id="standard-required"
                   label="Event Title"
-                  // variant="filled"
                   placeholder="Add Title"
                   value={title}
-                />
-                 <TextField className="eventTitle"
-                  onChange={(e)=> this.onTextFieldChange("location", e)}
-                  id="standard-required"
-                  label="Location"
-                  // variant="filled"
-                  placeholder="Search Location"
-                  value={location}
                 />
                 <div>
                   <Tags friends={friends} attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
                   </div>
+                
+                  <br/>
+                 <TextField className="eventTitle"
+                  onChange={(e)=> this.onTextFieldChange("location", e)}
+                  id="standard-required"
+                  label="Location"
+                  placeholder="Search Location"
+                  value={location}
+                />
                   
                   <div className="formCalendar">
                      <DatePicker date={date} onDateChange={this.onDateChange}/>

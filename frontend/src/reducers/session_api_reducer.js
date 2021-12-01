@@ -7,7 +7,6 @@ const intitalState = {
 
 const sessionApiReducer = (state = intitalState, action) => {
     Object.freeze(state);
-    console.log("TIMSESSION", action)
     switch(action.type){
         case RECIEVE_USER_LOGOUT: 
             return{
