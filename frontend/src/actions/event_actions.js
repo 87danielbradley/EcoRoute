@@ -47,6 +47,8 @@ export const searchEventLocation = (query, userLocation, attendees) => (dispatch
 }
 
 export const createAnEvent = (event) => (dispatch, getState) => {
+    
+console.log("CREATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
@@ -62,17 +64,34 @@ export const createAnEvent = (event) => (dispatch, getState) => {
     //     dispatch(receiveEvent(event))
     // })
     return APIUtil.createEvent(event)
-    .then(event => dispatch(receiveEvent(event)))
+    .then(eventRes => {
+        console.log(eventRes)
+
+        dispatch(receiveEvent(eventRes))
+    })
     .catch(error => console.log(error))
 }
-export const updateAnEvent = (event) => dispatch => {
-    // debugger
+export const updateAnEvent = (event) => (dispatch, getState)=> {
+console.log("UPDATE EVENT PAYLOAD",event)
+    debugger
+    const state = getState() //gives redux state, this is a redux thunk
+    const usernames = event.attendees
+    const attendees = getFriendsByUsername(state, usernames)
+    console.log(attendees)
+
+    event.attendees = attendees;
+    console.log(event)
+
+    
     // const fakeUpdate = Promise.resolve(event);
     // fakeUpdate.then(event => {
     //     dispatch(receiveEvent(event))
     // })
     return APIUtil.updateEvent(event)
-    .then(event => dispatch(receiveEvent(event)))
+    .then(eventRes => {
+        console.log(eventRes)
+        dispatch(receiveEvent(eventRes))
+    })
 }
 export const deleteAnEvent = (eventId) => dispatch => {
     

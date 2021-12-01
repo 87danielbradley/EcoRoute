@@ -5,6 +5,7 @@ const validateEventInput = require("../../validation/events");
 const Event = require("../../models/Event");
 const { Passport } = require('passport');
 
+
 router.post('/', 
     passport.authenticate('jwt', { session: false }),
     (req, res) => {

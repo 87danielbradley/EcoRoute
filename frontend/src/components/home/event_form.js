@@ -52,6 +52,7 @@ class EventForm extends Component {
         attendees
       }
 
+      debugger
 
       this.props.action(event);
 

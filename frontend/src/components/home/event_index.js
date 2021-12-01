@@ -6,7 +6,7 @@ import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
 import { fetchFriend, sendRequest } from '../../actions/friend_actions'
 import CreateEventModal from './create_event_modal'
 import './home.css'
-import { hi } from "date-fns/locale";
+
 class EventIndex extends React.Component{
 
     componentDidMount(){
@@ -23,7 +23,7 @@ class EventIndex extends React.Component{
 
         const {events, deleteEvent, openModalAndEditEvent, friends} = this.props;
                console.log(friends)
-        // console.log(events)
+        console.log("INDEXXX", events)
        
 
         return(

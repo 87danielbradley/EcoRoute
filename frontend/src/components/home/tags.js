@@ -13,7 +13,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+/**
+ * if we are in updateForm means pass forn type to this compoonent
+ * parseAttendees into username 
+ * meaning go thru attendee objects and get array of usernames
+ * and use the resulting array of usernames to initialize selectedOptions 
+ * @param {*} param0 
+ * @returns 
+ */
+
 export default function Tags({ onOptionsChange, attendees, formType, friends}) {  
+
+
   const classes = useStyles();
   const [options, setOptions] = useState(friends); //friends are coming in as usernames so we need a way to return it to the backend as an object. See event selectors
   const [selectedOptions, setSelectedOptions] = useState(attendees) 

@@ -20,9 +20,14 @@ const mapStateToProps = (state, ownProps) => {
           date: new Date(),
           attendees: [],
           hidden: false
-      };
+      }      
+      const event =  state.events[eventId]
+      console.log("EVENT", event)
+      event.attendees  = Object.values(event.attendees).map(attendee=> attendee.username).filter(name => name !== undefined);
+      console.log(event.attendees)
+
     return {
-      event: !eventId ? emptyEvent : state.events[eventId],
+      event:  event, //!eventId ? emptyEvent : state.events[eventId],
       formType: "Update Event",
       friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
       allState: state
@@ -41,7 +46,7 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = dispatch => {
-  // debugger
+  
   return {
     action: (event) => dispatch(updateAnEvent(event)), 
   }
