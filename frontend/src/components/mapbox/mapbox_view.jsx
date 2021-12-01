@@ -34,7 +34,7 @@ export default class MapboxView extends React.PureComponent{
     }
     componentDidMount() {
         this.renderMap()
-        this.props.getPlaces( 'starbucks',[this.state.lng,this.state.lat])
+        this.props.getPlaces( 'dunkin donuts',[this.state.lng,this.state.lat])
     }
      render(){
        
@@ -89,7 +89,8 @@ export default class MapboxView extends React.PureComponent{
         let attendees = this.props.events[eventIndex].attendees;
         let lng = attendees.reduce((total, next) => total + next.location[0],0)/attendees.length;
         let lat = attendees.reduce((total, next) => total + next.location[1],0)/attendees.length;
-
+        this.setState({lng: lng})
+        this.setState({lat: lat})
         
         
         // const { lng, lat, zoom } = this.state;
