@@ -16,13 +16,14 @@ class HomePage extends React.Component{
     }
 
     componentDidMount(){
+        debugger
         this.props.fetchAllFriends(this.props.userId)
         console.log(this.props.allState)
     }
     
     render(){
         if (this.props.loggedIn) {
-            // this.props.fetchAllFriends(this.props.currentUserId)
+            // this.props.fetchAllFriends(this.props.userId)
             return(
                 <div>
                     <NavBar logout={this.props.logout} loggedIn={this.props.loggedIn}/>

@@ -54,7 +54,7 @@ class FriendsIndexItem extends React.Component {
                             <CardContent className="avatarName"> 
                                 <Avatar className="avatar">{friend.username[0].toUpperCase()}</Avatar>
                                 <Typography className="friendName">{name}</Typography>
-                                <button onSubmit={this.handleDelete}>Delete Friend</button>
+                                <button onClick={this.handleDelete}>Delete Friend</button>
                             </CardContent>    
                         </Divider>
                     </Card> 
@@ -69,7 +69,7 @@ class FriendsIndexItem extends React.Component {
                             <CardContent className="avatarName"> 
                                 <Avatar className="avatar">{friend.username[0].toUpperCase()}</Avatar>
                                 <Typography className="friendName">{name}</Typography>
-                                <button onSubmit={this.handleAccept}>Accept Friend</button>
+                                <button onClick={this.handleAccept}>Accept Friend</button>
                             </CardContent>    
                         </Divider>
                     </Card> 
