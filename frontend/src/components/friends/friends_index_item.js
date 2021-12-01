@@ -75,7 +75,22 @@ class FriendsIndexItem extends React.Component {
                     </Card> 
                 </div>
             )
-        } else {
+        }else if (friend.friendsState == 1) {
+            return (
+                <div>
+                    <Card className="cardFriends" sx={{ maxWidth: 345 }} >
+                        <Divider>
+
+                            <CardContent className="avatarName"> 
+                                <Avatar className="avatar">{friend.username[0].toUpperCase()}</Avatar>
+                                <Typography className="friendName">{name}</Typography>
+                                <button onClick={this.handleAccept}>Accept Friend</button>
+                            </CardContent>    
+                        </Divider>
+                    </Card> 
+                </div>
+            ) 
+        }else {
             return (
                 null
             )
