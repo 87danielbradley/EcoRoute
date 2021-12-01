@@ -117,7 +117,7 @@ const EventsReducer = (oldState = initialState, action) => {
 
     switch (action.type) {
         case RECEIVE_USER_EVENTS:
-       
+            // debugger
             action.events.data.forEach(event => {
                
                  nextState[event._id] = event
@@ -125,6 +125,7 @@ const EventsReducer = (oldState = initialState, action) => {
             return nextState
 
         case RECEIVE_EVENT:
+          // debugger
              nextState[action.event.data._id] = action.event.data;
             return nextState;
 

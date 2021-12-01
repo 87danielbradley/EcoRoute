@@ -29,6 +29,7 @@ router.post('/',
 router.get('/user/:user_id', (req, res) => {
     
     Event.find({user: req.params.user_id})
+        .populate('attendees', '-password')
         .sort({ date: -1 })
         .then( events => res.json(events))
         .catch( err => {

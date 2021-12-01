@@ -87,6 +87,7 @@ export default class MapboxView extends React.PureComponent{
 
     renderMap(eventIndex=0){
         let attendees = this.props.events[eventIndex].attendees;
+        debugger
         let lng = attendees.reduce((total, next) => total + next.location[0],0)/attendees.length;
         let lat = attendees.reduce((total, next) => total + next.location[1],0)/attendees.length;
         this.setState({lng: lng})
