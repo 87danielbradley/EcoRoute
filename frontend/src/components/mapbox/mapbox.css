@@ -332,3 +332,21 @@ The toggleSidebar() function removes this class from the element in order to exp
     gap: 5px;
     justify-content: left;
 }
+
+.graph-container{
+    width: 100%;
+    max-width: 100%;
+    height: 5px;
+    min-height: 5px;
+    max-height: 5px;
+    
+    
+}
+
+.temp-graph{
+    
+    background: green;
+    height: 100%;
+
+
+}

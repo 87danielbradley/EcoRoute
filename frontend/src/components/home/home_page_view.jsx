@@ -16,7 +16,7 @@ class HomePage extends React.Component{
     }
 
     componentDidMount(){
-        debugger
+        // debugger
         this.props.fetchAllFriends(this.props.userId)
         console.log(this.props.allState)
     }

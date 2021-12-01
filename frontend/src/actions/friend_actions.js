@@ -54,7 +54,7 @@ export const fetchAllFriends = userId => dispatch => {
     return (
         APIUtil.getAllFriends(userId)
         .then(friends => { 
-            debugger
+            // debugger
             console.log(friends)
             dispatch(receiveAllFriends(friends))
         })

@@ -7,7 +7,7 @@ class FriendsIndex extends React.Component {
     }
 
     render() {
-        debugger
+        // debugger
         const friend = Object.values(this.props.friends).map( (friend, idx) => (
             <FriendsIndexItem 
                 key={idx} 

@@ -128,7 +128,13 @@ export default class MapboxView extends React.PureComponent{
                                         properties: {
                                             description: `<p>${attendee.username}</p>
                                             <p>Distance to event</p>
-                                            <p>Travel time to event</p>`
+                                            <div class="graph-container">
+                                                <div class="temp-graph" style="width:${Math.random()*100}%;"></div>
+                                            </div>
+                                            <p>Travel time to event</p>
+                                            <div class="graph-container">
+                                                <div class="temp-graph" style="width:${Math.random()*100}%;"></div>
+                                            </div>`
                                         },
                                         geometry: {
                                             type: 'Point',
@@ -179,9 +185,14 @@ export default class MapboxView extends React.PureComponent{
             }
             const popup = new mapboxgl.Popup({
                 closeButton: false,
-                closeOnClick: true
+                closeOnClick: false
                 })
-                
+                window.map.on('click', 'event', event => {
+                    window.map.flyTo({
+                        center: event.features[0].geometry.coordinates,
+                        zoom: 12
+                    })
+                })
 
                 window.map.on('mouseenter','event', event => {
                     window.map.getCanvas().style.cursor = 'pointer';
@@ -200,31 +211,6 @@ export default class MapboxView extends React.PureComponent{
                 })
            
 
-            
-
-            // window.map.on('load', () => {
-                
-           
-            // const popup = new mapboxgl.Popup({
-            //     closeButton: false,
-            //     closeOnClick: false
-            // })
-            // window.map.on('mouseenter','attendees', event => {
-            //     window.map.getCanvas().style.cursor = 'pointer';
-            //     const coordinates = event.features[0].geometry.coordinates.slice();
-            //     const description = event.features[0].properties.description;
-            //     while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
-            //         coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
-            //     }
-            //     popup.setLngLat(coordinates).setHTML(description).addTo(window.map);
-
-
-            // })
-            // window.map.on('mouseleave', 'attendees', () => {
-            //     window.map.getCanvas().style.cursor = '';
-            //     popup.remove();
-            // })
-          
 
             //attempt to add user image
             // for (const marker of friends.features){

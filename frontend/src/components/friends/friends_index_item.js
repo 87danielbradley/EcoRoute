@@ -31,7 +31,7 @@ class FriendsIndexItem extends React.Component {
     }
 
     render() {
-        debugger
+        // debugger
         
 
         const friend = this.state
