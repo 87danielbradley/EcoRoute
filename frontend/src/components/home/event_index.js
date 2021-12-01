@@ -22,9 +22,8 @@ class EventIndex extends React.Component{
     render(){
 
         const {events, eventsL, deleteEvent, openModalAndEditEvent, friends} = this.props;
-               console.log(friends)
-            
-        console.log("INDEXXX", this.props.eventsL)
+           
+  
        
 
         return(

@@ -22,7 +22,7 @@ class MessagesView extends React.Component{
     }
     componentDidMount(){
         // this.props.fetchMessages()
-        console.log(`componentDidMount`)
+        // console.log(`componentDidMount`)
         console.log(this.state)
         console.log(this.props)
         this.props.fetchEventMessages(this.props.eventId)

@@ -80,7 +80,7 @@ export const updateAnEvent = (event) => (dispatch, getState)=> {
     console.log(attendees)
 
     event.attendees = attendees;
-    console.log(event)
+    
 
     return APIUtil.updateEvent(event)
     .then(eventRes => {
