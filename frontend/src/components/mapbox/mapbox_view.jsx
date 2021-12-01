@@ -33,8 +33,17 @@ export default class MapboxView extends React.PureComponent{
         
     }
     componentDidMount() {
+        window.map = new mapboxgl.Map({
+            container: this.mapContainer.current,
+            // style: 'mapbox://styles/mapbox/dark-v10',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [this.state.lng, this.state.lat],
+            zoom: 10
+        });
+       
         this.renderMap()
-        this.props.getPlaces( 'dunkin donuts',[this.state.lng,this.state.lat])
+        
+        // this.props.getPlaces( 'dunkin donuts',[this.state.lng,this.state.lat])
     }
      render(){
        
@@ -93,19 +102,24 @@ export default class MapboxView extends React.PureComponent{
         this.setState({lng: lng})
         this.setState({lat: lat})
         
-        
         // const { lng, lat, zoom } = this.state;
-        const map = new mapboxgl.Map({
-            container: this.mapContainer.current,
-            // style: 'mapbox://styles/mapbox/dark-v10',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [lng, lat],
-            zoom: 10
-        });
-        map.flyTo([lng,lat])
+        // const map = new mapboxgl.Map({
+        //     container: this.mapContainer.current,
+        //     // style: 'mapbox://styles/mapbox/dark-v10',
+        //     style: 'mapbox://styles/mapbox/streets-v11',
+        //     center: [lng, lat],
+        //     zoom: 10
+        // });
+        window.map.flyTo({center: [lng,lat], zoom: 9})
+        
         // map.setCenter([lng,lat])
         // console.log([lng,lat])
         // console.log(eventIndex)
+        // if (window.map.getStyle().layers.length > 111){
+        //     window.map.removeLayer('event')
+        // }
+        
+
         if (this.props.events.length > 0){
             
             const featuresArray = []
@@ -125,43 +139,67 @@ export default class MapboxView extends React.PureComponent{
                 type: "FeatureCollection",
                 features: featuresArray
             };
+
+            try{ 
+                window.map.removeLayer('event')
+                window.map.removeSource('attendees')
+                window.map.addSource('attendees', { type: 'geojson', data: friends})
+                    window.map.addLayer({
+                        id: `${this.props.eventType}`,
+                        type: 'circle',
+                        source: 'attendees',
+                        
+                        paint: {
+                            "circle-radius": 5,
+                            "circle-color": "#5b94c6",
+                            "circle-opacity": 1
+                        }
+                    });
+
+
+
+            }catch(err){
+                window.map.on('load', () => {
+                    window.map.addSource('attendees', { type: 'geojson', data: friends})
+                    window.map.addLayer({
+                        id: `${this.props.eventType}`,
+                        type: 'circle',
+                        source: 'attendees',
+                        
+                        paint: {
+                            "circle-radius": 5,
+                            "circle-color": "#5b94c6",
+                            "circle-opacity": 1
+                        }
+                    });
+                });
+            }
            
 
             
 
-            map.on('load', () => {
-                map.addSource('attendees', { type: 'geojson', data: friends})
-                map.addLayer({
-                    id: `${this.props.eventType}`,
-                    type: 'circle',
-                    source: 'attendees',
-                    
-                    paint: {
-                        "circle-radius": 5,
-                        "circle-color": "#5b94c6",
-                        "circle-opacity": 1
-                    }
-                });
-            });
-            const popup = new mapboxgl.Popup({
-                closeButton: false,
-                closeOnClick: false
-            })
-            map.on('mouseenter','attendees', event => {
-                map.getCanvas().style.cursor = 'pointer';
-                const coordinates = event.features[0].geometry.coordinates.slice();
-                const description = event.features[0].properties.description;
-                while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
-                    coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
-                popup.setLngLat(coordinates).setHTML(description).addTo(map);
+            // window.map.on('load', () => {
+                
+           
+            // const popup = new mapboxgl.Popup({
+            //     closeButton: false,
+            //     closeOnClick: false
+            // })
+            // window.map.on('mouseenter','attendees', event => {
+            //     window.map.getCanvas().style.cursor = 'pointer';
+            //     const coordinates = event.features[0].geometry.coordinates.slice();
+            //     const description = event.features[0].properties.description;
+            //     while (Math.abs(event.lngLat.lng - coordinates[0]) > 180) {
+            //         coordinates[0] += event.lngLat.lng > coordinates[0] ? 360 : -360;
+            //     }
+            //     popup.setLngLat(coordinates).setHTML(description).addTo(window.map);
 
 
-            })
-            map.on('mouseleave', 'attendees', () => {
-                map.getCanvas().style.cursor = '';
-                popup.remove();
-            })
+            // })
+            // window.map.on('mouseleave', 'attendees', () => {
+            //     window.map.getCanvas().style.cursor = '';
+            //     popup.remove();
+            // })
           
 
             //attempt to add user image
@@ -175,7 +213,7 @@ export default class MapboxView extends React.PureComponent{
             //     container.style.backgroundSize = '100%';
             //     new mapboxgl.Marker(container)
             //         .setLngLat(marker.geometry.coordinates)
-            //         .addTo(map);
+            //         .addTo(window.map);
             // }
 
             //attempt to add user image
@@ -194,7 +232,7 @@ export default class MapboxView extends React.PureComponent{
             //     
             //     new mapboxgl.Marker(svgEl)
             //         .setLngLat(marker.geometry.coordinates)
-            //         .addTo(map);
+            //         .addTo(this.map);
             // }
 
         } 
