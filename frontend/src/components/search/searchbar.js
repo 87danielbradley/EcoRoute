@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
                     />
                     <button onClick={this.handleSubmit} > Search </button>
                 </form>
-                <SearchTags />
+                {/* <SearchTags /> */}
             </div>
         )
     }
