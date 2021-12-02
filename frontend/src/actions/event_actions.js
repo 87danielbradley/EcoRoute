@@ -81,7 +81,7 @@ console.log("CREATE EVENT PAYLOAD",event)
     .catch(error => console.log(error))
 }
 export const updateAnEvent = (event) => (dispatch, getState)=> {
-    debugger
+    // debugger
     console.log("UPDATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees

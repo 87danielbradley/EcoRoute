@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
                       feature.time = reduced[idx]}
                       return feature}
                     )
-      debugger
+      // debugger
     }
     return {
       event:  event, //!eventId ? emptyEvent : state.events[eventId],

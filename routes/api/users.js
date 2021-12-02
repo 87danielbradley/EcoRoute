@@ -267,8 +267,8 @@ router.delete('/friend_request/:userId/decline', passport.authenticate('jwt', {s
                             // { $rawResult: true }
                 )
 
-                debugger
-            
+                // debugger
+            // 
                 await User.findOneAndUpdate(
                     { _id: request.params.userId },
                     { $pull: { friends: friendOne._id } })

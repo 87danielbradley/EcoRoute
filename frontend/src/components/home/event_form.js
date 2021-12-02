@@ -12,6 +12,7 @@ import Tags from './tags';
 import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
 import EventFormItem from './event_form_item';
+import LocationTags from './location_tags';
 
 class EventForm extends Component {
 

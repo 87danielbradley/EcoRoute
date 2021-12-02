@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
                     feature.time = reduced[idx]}
                     return feature}
                   )
-    debugger
+    // debugger
   }
   
   return (
