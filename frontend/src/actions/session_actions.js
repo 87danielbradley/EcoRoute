@@ -12,9 +12,10 @@ const recieveCurrentUser = (user) => ({
     type: RECEIVE_CURRENT_USER,
     user
 });
-const recieveUserSignIn = () => ({
-    type: RECIEVE_USER_SIGN_IN
-});
+
+// const recieveUserSignIn = () => ({
+//     type: RECIEVE_USER_SIGN_IN
+// });
 
 const logoutCurrentUser = () => ({
     type: RECIEVE_USER_LOGOUT

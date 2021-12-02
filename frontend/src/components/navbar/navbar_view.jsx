@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./navbar.css"
 
 class NavBar extends React.Component{
@@ -48,7 +47,7 @@ class NavBar extends React.Component{
                 <nav className="nb">
                     <h1>Eco Route</h1>
                     <section>
-                        <a className="navbar-logout" onClick={this.props.logout}>Log Out</a>
+                        <span className="navbar-logout" onClick={this.props.logout}>Log Out</span>
                     </section>
 
                 </nav>
@@ -58,8 +57,8 @@ class NavBar extends React.Component{
                 <nav className="nb">
                     <h1>Eco Route</h1>
                     <section>
-                        <a onClick={() => this.props.openModal('login')} id="login-button">Log In</a>
-                        <a onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</a>
+                        <span onClick={() => this.props.openModal('login')} id="login-button">Log In</span>
+                        <span onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</span>
                     </section>
                 </nav>
             )
