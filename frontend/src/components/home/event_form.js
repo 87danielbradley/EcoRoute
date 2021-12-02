@@ -91,6 +91,7 @@ class EventForm extends Component {
             console.log(response)
           })
 
+          console.log("PLACCES!!!!", places)
           return places
       })
     }
