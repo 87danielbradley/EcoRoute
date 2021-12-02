@@ -12,7 +12,7 @@ import Tags from './tags';
 import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
 import EventFormItem from './event_form_item';
-import LocationTags from './location_tags';
+
 
 class EventForm extends Component {
 
@@ -95,7 +95,7 @@ class EventForm extends Component {
 
       })
       //attendeesArray, placesArray
-      debugger
+      // debugger
       
     //   getPlaces(query, nearbyString).then(({data}) => {
     //       console.log("data", data)
@@ -109,9 +109,13 @@ class EventForm extends Component {
     //       return places
     //   })
     }
+
+    handleLocationSelect = (coordinates) => {
+      console.log("value", coordinates)
+    }
     
     render() {
-
+     
         // console.log(this.state.attendees)
         const {title, attendees, date, category, location} = this.state;
         const {friends, sortedPlaces} = this.props;
@@ -133,6 +137,7 @@ class EventForm extends Component {
                 <div>
                   <Tags friends={friends} attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
                   </div>
+                  
                 
                   <br/>
                  <TextField className="eventTitle"
@@ -142,9 +147,14 @@ class EventForm extends Component {
                   placeholder="Search Location"
                   value={location}
                 />
-                {sortedPlaces.map(place =>{
-                  return <EventFormItem sortedPlaces={this.state.search} key={this.state.search.length+1}/>
-                })}
+                {/* {sortedPlaces.map(place =>{
+                  return <EventFormItem place={place} sortedPlaces={this.state.search} />
+                })} */}
+
+                {
+                  sortedPlaces && sortedPlaces.length > 0 && (<EventFormItem sortedPlaces={this.state.search} onLocationSelect={this.handleLocationSelect}/> )
+                }
+
                 
                   
                   <div className="formCalendar">
