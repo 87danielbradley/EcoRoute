@@ -276,10 +276,11 @@ router.delete('/friend_request/:userId/decline', passport.authenticate('jwt', {s
 
 router.get('/search', async (req, res) => {
     try {
-        const users = await User.find({ email: req.body.email})
+        const users = await User.find({ email: { $regex: req.query.email, $options: 'i' } })
         const user = users[0]
+        
         res.status(200).json({
-            id: user._id,
+            id: user.id,
             username: user.username
         })
     } catch (err) {

@@ -6,7 +6,8 @@ const SearchReducer = (state={}, action) => {
 
     switch (action.type) {
         case RECEIVE_SEARCHED_USER:
-            nextState[action.user.data._id] = action.user.data
+            debugger
+            nextState[action.user.data.id] = action.user.data
 
             return nextState;
         default:

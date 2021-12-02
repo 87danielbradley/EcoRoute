@@ -1,12 +1,12 @@
+import { dividerClasses } from "@mui/material";
 import React from "react";
-
+import SearchTags from './search_tags';
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: null,
-            user: null
+            email: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,10 +21,7 @@ class SearchBar extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.fetchSearchedUser(this.state)
-            .then(user => {
-                this.setState({ user: user })
-            })
+        this.props.fetchSearchedUser(this.state.email)
     }
     
     handleAddFriend() {
@@ -32,14 +29,19 @@ class SearchBar extends React.Component {
     }
 
     render() {
+        
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="email"
-                    onChange={this.handleChange('email')}
-                />
-            </form>
+            <div className="search-bar">
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="find friends by email"
+                        onChange={this.handleChange('email')}
+                    />
+                    <button onClick={this.handleSubmit} > Search </button>
+                </form>
+                <SearchTags />
+            </div>
         )
     }
 }

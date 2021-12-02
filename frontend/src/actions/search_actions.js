@@ -12,7 +12,8 @@ const receiveSearchedUser = user => ({
 export const fetchSearchedUser = email => dispatch => {
     return (
         APIUtil.searchUsers(email)
-            .then((user) => dispatch(receiveSearchedUser(user)))
+            .then((user) => {  
+                dispatch(receiveSearchedUser(user))})
             .catch(err => console.log(err))
     )
 }
