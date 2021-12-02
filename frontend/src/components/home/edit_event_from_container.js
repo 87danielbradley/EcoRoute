@@ -22,11 +22,38 @@ const mapStateToProps = (state, ownProps) => {
           hidden: false
       }      
       const event =  state.events[eventId]
+
+       const featureArray = []
+    if (state.navigation.places.features){
+      
+      state.navigation.places.features.map(feature => featureArray.push(feature.center))
+      debugger
+    }
+    let sortedPlaces = []
+    if (state.navigation.matrix.durations){
+      
+      const transposed = state.navigation.matrix.durations[0].map((ele,idx) => state.navigation.matrix.durations.map(ele => ele[idx]))
+      const reduced = transposed.map(array => array.reduce((acc, val) => (acc+val))/ array.length)
+      
+
+      sortedPlaces = state.navigation.places.features.map((feature,idx) => {
+                    if (!feature.time){
+                      feature.time = reduced[idx]}
+                      return feature}
+                    )
+      debugger
+    }
     return {
       event:  event, //!eventId ? emptyEvent : state.events[eventId],
       formType: "Update Event",
       friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
-      allState: state
+      allState: state,
+      placesPojo: state.navigation.places,
+      placesLocation: featureArray,
+      sortedPlaces: sortedPlaces.sort(function (a, b) {
+                      return a.time - b.time
+                    })
+    
     }
 
     

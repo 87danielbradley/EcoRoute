@@ -11,6 +11,7 @@ import Select from '@mui/material/Select';
 import Tags from './tags';
 import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
+import EventFormItem from './event_form_item';
 
 class EventForm extends Component {
 
@@ -20,7 +21,8 @@ class EventForm extends Component {
           // console.log("props here", this.props.eventId)
             this.state = { 
               ...this.props.event, 
-              location: '' 
+              location: '',
+              search: []
             }  
     }
     
@@ -88,6 +90,7 @@ class EventForm extends Component {
       this.props.findPlacesNearby(query, nearbyString)
       .then(() => {
         this.props.fetchMatrix( attendeeObjects, this.props.placesLocation)
+        .then(() => {this.setState({search: this.props.sortedPlaces})})
 
       })
       //attendeesArray, placesArray
@@ -110,7 +113,7 @@ class EventForm extends Component {
 
         // console.log(this.state.attendees)
         const {title, attendees, date, category, location} = this.state;
-        const {friends} = this.props;
+        const {friends, sortedPlaces} = this.props;
     
     
         return (
@@ -138,6 +141,10 @@ class EventForm extends Component {
                   placeholder="Search Location"
                   value={location}
                 />
+                {sortedPlaces.map(place =>{
+                  return <EventFormItem sortedPlaces={this.state.search} key={this.state.search.length+1}/>
+                })}
+                
                   
                   <div className="formCalendar">
                      <DatePicker date={date} onDateChange={this.onDateChange}/>
