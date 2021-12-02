@@ -91,6 +91,24 @@ router.post('/login', (request, response) => {
                 })
         })
 })
+
+// get all events in any users event feild 
+
+router.get('/events/:userId', passport.authenticate('jwt', {session: false }), async (req, res) => {
+    try {
+        const user = await User.
+            findById(req.params.userId).
+            populate({path: "events" }).
+            exec();
+
+        res.status(200).json({ events: user.events })
+
+    } catch (err) {
+        console.log(err)
+        return response.status(500).json({ error: "whoops" })
+    }
+});
+
 // send friend request
 router.get('/friend_request/:userId', passport.authenticate('jwt', {session: false}), 
     async (request, response) => {
