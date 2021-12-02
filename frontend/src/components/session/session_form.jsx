@@ -44,16 +44,17 @@ class SessionForm extends React.Component{
     }
     handleSubmit(e){
         e.preventDefault();
+        this.props.action(this.state) 
+            .then( () => this.checkThenClose())
 
-        // let user = {
-        //     username: this.state.username,
-        //     password: this.state.password,
-        //     password2: this.state.password2,
-        //     email: this.state.email
-        // }
-        this.props.action(this.state, this.props.history) 
-            .then( () => this.props.closeModal())
-
+    }
+    checkThenClose() {
+        if (this.props.errors.length === undefined) {
+            console.log("there are errors")
+        } else if (this.props.errors.length === 0) {
+            this.props.closeModal()
+            console.log("checkingThenClosing")
+        }
     }
     demoUser(e){
         e.preventDefault();
