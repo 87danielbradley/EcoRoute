@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/events_api_util';
 import { getFriendsByUsername } from '../selectors/event_selectors';
-import { getPlaces,  getMatrix } from '../util/matrix_api_util'
+import { getPlaces } from '../util/matrix_api_util'
 export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";

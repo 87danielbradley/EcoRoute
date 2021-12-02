@@ -16,7 +16,7 @@ const EventIndexItem = (props) => {
     // console.log(event.date)
     const dateString = moment(event.date).format('MM/DD/YYYY HH:mm:ss');
     // console.log("moment date", dateString)
-    
+    debugger
     return (
         <div style={{marginTop: "20px"}}>
              <Card sx={{ maxWidth: 345 }}>
@@ -39,19 +39,22 @@ const EventIndexItem = (props) => {
         </Typography>
       </CardContent>
       </button>
-
-      {
-       ( this.props.currentUser === this.props.event.user._id ? (
-          <CardActions> 
-            <Button size="small" onClick={() => openModalAndEditEvent(event._id)}>
-              Edit Event
-            </Button>
-            <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i className="fa-solid fa-x"></i></Button>
-          </CardActions>
-        ) : (
-          null
-        ))
-      }
+      <div>
+        {
+        ( props.currentUser === props.event.user ? (
+            <CardActions> 
+              <Button size="small" onClick={() => openModalAndEditEvent(event._id)}>
+                Edit Event
+              </Button>
+              <Button onClick={() => deleteEvent(event._id)} 
+                size="small">Delete Event <i className="fa-solid fa-x"></i>
+              </Button>
+            </CardActions>
+          ) : (
+            null
+          ))
+        }
+      </div>
       
     </Card>
 

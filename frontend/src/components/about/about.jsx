@@ -13,7 +13,7 @@ const About = () => {
     return (
         <div className="about-container">
             <div className="mission">
-                <img src={Logo} />
+                <img src={Logo} alt="logo"/>
                 <h1>Dive in and explore!</h1>
                 <h2>Connect with friends, plan your next event, gather</h2>
             </div>

@@ -170,11 +170,11 @@ export default class MapboxView extends React.PureComponent{
                 for (const marker of friends.features){
                 const container = document.createElement('div');
                 container.className = 'marker';
-                // container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
-                container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+                container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+50)}/${Math.floor(Math.random()*10+50)})`
+                // container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
     
-                container.style.width = '20px';
-                container.style.height = '20px';
+                container.style.width = '50px';
+                container.style.height = '50px';
                 container.style.backgroundSize = '100%';
                 new mapboxgl.Marker(container)
                     .setLngLat(marker.geometry.coordinates)
@@ -203,10 +203,10 @@ export default class MapboxView extends React.PureComponent{
                 for (const marker of friends.features){
                 const container = document.createElement('div');
                 container.className = 'marker';
-                container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+                container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+50)}/${Math.floor(Math.random()*10+50)})`
     
-                container.style.width = '20px';
-                container.style.height = '20px';
+                container.style.width = '50px';
+                container.style.height = '50px';
                 container.style.backgroundSize = '100%';
                 new mapboxgl.Marker(container)
                     .setLngLat(marker.geometry.coordinates)
