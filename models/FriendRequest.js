@@ -17,8 +17,8 @@ const FriendRequestSchema = new Schema(
       type: Number,
       nums: [
         0, // add a Friend
-        1, // friend requested
-        2, // pending request
+        1, // pending request 
+        2, // friend requested
         3 // friendship accepted
       ]
     }

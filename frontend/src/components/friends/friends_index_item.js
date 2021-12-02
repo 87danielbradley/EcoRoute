@@ -65,6 +65,7 @@ class FriendsIndexItem extends React.Component {
                 </div>
             ) 
         } else if (friend.friendsState == 1) {
+            // these are people who requested current user
             return (
                 <div>
                     <Card className="cardFriends" sx={{ maxWidth: 345 }} >

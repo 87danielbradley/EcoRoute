@@ -39,12 +39,20 @@ const EventIndexItem = (props) => {
         </Typography>
       </CardContent>
       </button>
-      <CardActions> 
-        <Button size="small" onClick={() => openModalAndEditEvent(event._id)}>
-          Edit Event
-          </Button>
-        <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i className="fa-solid fa-x"></i></Button>
-      </CardActions>
+
+      {
+       ( this.props.currentUser === this.props.event.user._id ? (
+          <CardActions> 
+            <Button size="small" onClick={() => openModalAndEditEvent(event._id)}>
+              Edit Event
+            </Button>
+            <Button onClick={() => deleteEvent(event._id)} size="small">Delete Event <i className="fa-solid fa-x"></i></Button>
+          </CardActions>
+        ) : (
+          null
+        ))
+      }
+      
     </Card>
 
         </div>

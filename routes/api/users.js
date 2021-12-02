@@ -91,6 +91,24 @@ router.post('/login', (request, response) => {
                 })
         })
 })
+
+// get all events in any users event field 
+
+router.get('/events/:userId', passport.authenticate('jwt', {session: false }), async (req, res) => {
+    try {
+        const user = await User.
+            findById(req.params.userId).
+            populate({path: "events", populate: { path: 'attendees', select: '-password'} }).
+            exec();
+
+        res.status(200).json(user.events)
+
+    } catch (err) {
+        console.log(err)
+        return response.status(500).json({ error: "whoops" })
+    }
+});
+
 // send friend request
 router.get('/friend_request/:userId', passport.authenticate('jwt', {session: false}), 
     async (request, response) => {
@@ -273,7 +291,7 @@ router.delete('/friend_request/:userId/decline', passport.authenticate('jwt', {s
         }
     }
 );
-
+// search users
 router.get('/search', async (req, res) => {
     try {
         const users = await User.find({ email: req.body.email})
@@ -297,7 +315,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (request,
   });
 })
 
-router.get('/:user_id', (req, res) => {
+router.get('/:user_id', passport.authenticate('jwt', {session: false}), (req, res) => {
     User.findById(req.params.user_id)
         .then(user => {
             if(user) {
