@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
   if (state.navigation.places.features){
     
     state.navigation.places.features.map(feature => featureArray.push(feature.center))
+    debugger
   }
   
   return (
