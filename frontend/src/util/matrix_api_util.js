@@ -3,7 +3,7 @@ const accessToken = process.env.REACT_APP_MAPBOX;
 
 
 export const getMatrix = (attendees, places) => {
-
+    debugger
     let locations = []
     attendees.map(attendee => locations.push(...attendee.location))
     places.map(place => locations.push(...place))
