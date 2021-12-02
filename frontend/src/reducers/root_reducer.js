@@ -23,6 +23,7 @@ const RootReducer = combineReducers({
     searchResult: SearchReducer,
 })
 
+
 export default RootReducer;
 
 
