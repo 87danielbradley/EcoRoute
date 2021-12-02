@@ -3,7 +3,6 @@ const accessToken = process.env.REACT_APP_MAPBOX;
 
 
 export const getMatrix = (attendees, places) => {
-    
     let locations = []
     attendees.map(attendee => locations.push(...attendee.location))
     let sources = [...Array(locations.length/2).keys()]
@@ -16,6 +15,8 @@ export const getMatrix = (attendees, places) => {
    
     // return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
     return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?sources=${sources.join(';')}&destinations=${destinations.join(';')}&access_token=${accessToken}`)
+
+   
 };
 
 //updated example
@@ -41,6 +42,7 @@ function semiColon(arr){
     
     for (let i = 0; i < arr.length - 1; i += 2){
         newArr.push(`${arr[i]},${arr[i + 1]}`)
+
     }
     return newArr
 }
@@ -57,6 +59,6 @@ export const getDirections = (attendees, places) => {
     console.log("LOCATIONATTT", locationAt)
     // return Promise.resolve()
     
-    return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
-    
+    return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?access_token=${accessToken}`)
+
 };
