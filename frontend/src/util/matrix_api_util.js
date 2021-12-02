@@ -3,14 +3,14 @@ const accessToken = process.env.REACT_APP_MAPBOX;
 
 
 export const getMatrix = (attendees, places) => {
-    debugger
+
     let locations = []
     attendees.map(attendee => locations.push(...attendee.location))
     places.map(place => locations.push(...place))
     console.log("LOCATIONS", locations)
     const locationAt = semiColon(locations)
     // return Promise.resolve()
-    debugger
+
     return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
 };
 // location example
@@ -32,8 +32,9 @@ export const getPlaces = (query, nearby) => {
 function semiColon(arr){
     let newArr = [];
     
-    for (let i = 0; i < arr.length - 1; i++){
+    for (let i = 0; i < arr.length - 1; i += 2){
         newArr.push(`${arr[i]},${arr[i + 1]}`)
+
     }
     return newArr
 }
