@@ -49,7 +49,7 @@ export const sendRequest = (userId) => (dispatch) =>  {
 
 export const fetchAllFriends = userId => dispatch => {
     
-    console.log("entered")
+    // console.log("entered")
     
     return (
         APIUtil.getAllFriends(userId)

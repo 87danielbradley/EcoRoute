@@ -51,11 +51,11 @@ export const getDirections = (attendees, places) => {
     
     let locations = []
     attendees.map(attendee => locations.push(...attendee.location))
-    let sources = [...Array(locations.length/2).keys()]
+    // let sources = [...Array(locations.length/2).keys()]
     places.map(place => locations.push(...place))
     console.log("LOCATIONS", locations)
     const locationAt = semiColon(locations)
-    let destinations = [...Array(locations.length/2).keys()].filter(n => !sources.includes(n))
+    // let destinations = [...Array(locations.length/2).keys()].filter(n => !sources.includes(n))
     console.log("LOCATIONATTT", locationAt)
     // return Promise.resolve()
     

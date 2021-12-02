@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { sendRequest } from "../../actions/friend_actions";
-import { fetchSearchedUser } from "../../actions/search_actions";
+// import { fetchSearchedUser } from "../../actions/search_actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {

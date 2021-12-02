@@ -1,7 +1,7 @@
 import React from "react";
 import EventIndexItem from "./event_index_item";
 import { connect } from "react-redux";
-import { fetchUserEvents, deleteAnEvent, updateAnEvent, fetchEventsUserIsInvitedTo} from "../../actions/event_actions";
+import { fetchUserEvents, deleteAnEvent, fetchEventsUserIsInvitedTo} from "../../actions/event_actions";
 import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
 import { fetchFriend, sendRequest } from '../../actions/friend_actions'
 import CreateEventModal from './create_event_modal'
@@ -23,7 +23,7 @@ class EventIndex extends React.Component{
 
     render(){
 
-        const {events, eventsL, deleteEvent, openModalAndEditEvent, friends} = this.props;
+        const {events, deleteEvent, openModalAndEditEvent} = this.props;
            
   
        
