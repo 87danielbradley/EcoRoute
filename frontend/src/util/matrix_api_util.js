@@ -9,9 +9,12 @@ export const getMatrix = (attendees, places) => {
     places.map(place => locations.push(...place))
     console.log("LOCATIONS", locations)
     const locationAt = semiColon(locations)
+    console.log("LOCATIONATTT", locationAt)
     // return Promise.resolve()
 
-    return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
+    // return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
+    return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?access_token=${accessToken}`)
+
 };
 // location example
 // -122.42,37.78;-122.45,37.91;-122.48,37.73
