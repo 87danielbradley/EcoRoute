@@ -8,6 +8,10 @@ export const getUserEvents = userId => {
     return axios.get(`/api/events/user/${userId}`)
 };
 
+export const getEventsUserIsInvitedTo = userId => {
+    return axios.get(`/api/users/events/${userId}`)
+}
+
 export const getEvent = eventId => {
     return axios.get(`/api/events/${eventId}`)
 }

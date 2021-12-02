@@ -21,7 +21,16 @@ export const removeEvent = eventId => ({
     eventId
 })
 
+// fetch all events in the users events array
+export const fetchEventsUserIsInvitedTo = userId => dispatch => {
+    return (
+        APIUtil.getEventsUserIsInvitedTo(userId)
+            .then(events => dispatch(receiveUserEvents(events)))
+            .catch(err => console.log(err)) 
+    )
+}
 
+// fetches all events the user created
 export const fetchUserEvents = (userId) => dispatch => {
     // console.log('fetching user events')
 

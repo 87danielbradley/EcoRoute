@@ -1,7 +1,7 @@
 import React from "react";
 import EventIndexItem from "./event_index_item";
 import { connect } from "react-redux";
-import { fetchUserEvents, deleteAnEvent, updateAnEvent} from "../../actions/event_actions";
+import { fetchUserEvents, deleteAnEvent, updateAnEvent, fetchEventsUserIsInvitedTo} from "../../actions/event_actions";
 import { setEditingEvent, setModalStatus }  from '../../actions/app_actions'
 import { fetchFriend, sendRequest } from '../../actions/friend_actions'
 import CreateEventModal from './create_event_modal'
@@ -13,7 +13,8 @@ class EventIndex extends React.Component{
         // const { currentUser} = this.props
         // this.props.fetchFriendRequest('619536e7cc98bcda226fcff3');
         // this.props.fetchFriends(currentUser.id);
-        this.props.fetchUserEvents(this.props.currentUser.id);
+        this.props.fetchUserEvents(this.props.currentUser.id)
+            .then(() => this.props.fetchEventsUserIsInvitedTo(this.props.currentUser.id))
         // this.props.currentUser.friends.map( friend => {
         //     this.props.fetchUser(friend)
         // })
@@ -39,11 +40,12 @@ class EventIndex extends React.Component{
                     events.map((event, i) => {
                         return (event !== undefined && 
                         <EventIndexItem 
-                            key={i} event={event} 
+                            key={i} event={event}
+                            currentUser={this.props.currentUser.id} 
                             eventIndex={i}
                             deleteEvent={deleteEvent}
                             openModalAndEditEvent={openModalAndEditEvent}
-                             updateMap={index => this.props.updateMap(index)}
+                            updateMap={index => this.props.updateMap(index)}
                             
                         />)
                     })
@@ -75,6 +77,7 @@ const mapDispatchToProps = dispatch => {
         fetchFriends: (userId) => dispatch(fetchFriend(userId)),
         fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
+        fetchEventsUserIsInvitedTo: (userId) => dispatch(fetchEventsUserIsInvitedTo(userId)),
         openModalAndEditEvent: (eventId) => { 
             console.log("EVENT ID", eventId)
             dispatch(setEditingEvent(eventId));
