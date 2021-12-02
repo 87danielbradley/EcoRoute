@@ -1,9 +1,11 @@
 import { connect } from "react-redux"
-import { searchForFriend, sendRequest } from "../../actions/friend_actions"
+import { sendRequest } from "../../actions/friend_actions"
+import { fetchSearchedUser } from "../../actions/search_actions";
 import SearchBar from './searchbar';
 
+
 const mapDispatchToProps = dispatch => ({
-    searchForFriend: email => dispatch(searchForFriend(email)),
+    fetchSearchedUser: email => dispatch(fetchSearchedUser(email)),
     sendRequest: userId => dispatch(sendRequest(userId))
 });
 

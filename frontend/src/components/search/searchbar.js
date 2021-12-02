@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.searchForFriend(this.state)
+        this.props.fetchSearchedUser(this.state)
             .then(user => {
                 this.setState({ user: user })
             })
