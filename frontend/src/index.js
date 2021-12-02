@@ -15,11 +15,11 @@ import axios from "axios";
 
 document.addEventListener('DOMContentLoaded', ()=>{
   let store = configureStore();
-  console.log(store)
+  // console.log(store)
   window.store = store;
 
   if(localStorage.jwtToken){
-    console.log("running")
+    // console.log("running")
     setAuthToken(localStorage.jwtToken);
     const decodedUser = jwt_decode(localStorage.jwtToken)
 

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Autocomplete from "@mui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { connect } from "react-redux";
+import { getFriends} from '../../selectors/event_selectors'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,10 +15,36 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Tags({ onOptionsChange, attendees, formType, friends}) {  
+/**
+ * if we are in updateForm means pass form type to this component
+ * parseAttendees into username 
+ * meaning go thru attendee objects and get array of usernames
+ * and use the resulting array of usernames to initialize selectedOptions 
+ */
+
+ function Tags({ onOptionsChange, attendees, formType, friends, allFriends}) {  
+ /**
+  * if formType === update
+  *  loop over attendees 
+  *   attendees.map(attendee => idToUsernameMap[attendee])
+  * 
+  */
+ let attendeeUsername = []
+ if (formType === 'Update Event') {
+    
+   const mappedUsernames = attendees.map(attendeeId => {
+        const username = (allFriends[attendeeId] && allFriends[attendeeId].username) || 'no name'
+      return username
+   });
+   attendeeUsername = mappedUsernames
+   console.log("MAPPED", mappedUsernames)
+ } else {
+   attendeeUsername = attendees
+    
+ }
   const classes = useStyles();
   const [options, setOptions] = useState(friends); //friends are coming in as usernames so we need a way to return it to the backend as an object. See event selectors
-  const [selectedOptions, setSelectedOptions] = useState(attendees) 
+  const [selectedOptions, setSelectedOptions] = useState(attendeeUsername) 
   
   const handleOptionsChange = (e) => {
     setOptions(options.concat(e.target.value));
@@ -60,3 +88,10 @@ export default function Tags({ onOptionsChange, attendees, formType, friends}) {
     </div>
   );
 }
+
+const mapStateToProps = (state)=>  ({
+  allFriends: getFriends(state)
+
+})
+
+export default connect(mapStateToProps, null) (Tags)

@@ -22,8 +22,9 @@ class MessagesView extends React.Component{
     }
     componentDidMount(){
         // this.props.fetchMessages()
-        // console.log("mounted state", this.state)
-        // console.log("mounted props", this.props)
+        // console.log(`componentDidMount`)
+        console.log(this.state)
+        console.log(this.props)
         this.props.fetchEventMessages(this.props.eventId)
             .then(response => {
                 // console.log("mounted response", response)

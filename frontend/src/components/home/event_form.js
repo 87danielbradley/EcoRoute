@@ -16,7 +16,7 @@ class EventForm extends Component {
     constructor(props){
 
         super(props);
-          console.log("props here", this.props.eventId)
+          // console.log("props here", this.props.eventId)
             this.state = { 
               ...this.props.event, 
               location: '' 
@@ -24,7 +24,7 @@ class EventForm extends Component {
     }
     
     onTextFieldChange = (fieldName, event) => {
-      console.log(event.target.value)
+      // console.log(event.target.value)
       this.setState({[fieldName]: event.target.value}, () => {
         if (fieldName === 'location') {
           this.handleSearch()
@@ -43,7 +43,7 @@ class EventForm extends Component {
     createEventHandler = (e) => {
       e.preventDefault()
 
-      const {title, category,date, attendees} = this.state;
+      const {title, category,date, attendees, _id} = this.state;
 
       const event = {
         title, 
@@ -51,7 +51,11 @@ class EventForm extends Component {
         date, 
         attendees
       }
+      if (this.props.formType === 'Update Event'){
+        event._id = _id
+      }
 
+      // debugger
 
       this.props.action(event);
 
@@ -96,7 +100,7 @@ class EventForm extends Component {
         // console.log(this.state.attendees)
         const {title, attendees, date, category, location} = this.state;
         const {friends} = this.props;
-        // console.log("HELLO", friends)
+    
     
         return (
             <div>

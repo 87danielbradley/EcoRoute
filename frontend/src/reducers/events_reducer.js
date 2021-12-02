@@ -112,12 +112,14 @@ const initialState = {
 
 
 const EventsReducer = (oldState = initialState, action) => {
+  // debugger
     Object.freeze(oldState);
     let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
         case RECEIVE_USER_EVENTS:
-          
+          console.log(" RECEIVE_USER_EVENTS", action)
+       
             action.events.data.forEach(event => {
                
                  nextState[event._id] = event
