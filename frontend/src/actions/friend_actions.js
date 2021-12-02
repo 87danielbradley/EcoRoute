@@ -39,13 +39,13 @@ export const sendRequest = (userId) => (dispatch) =>  {
     )
 };
 
-export const searchForFriend = email => dispatch => {
-    return (
-        APIUtil.searchUsersByEmail(email)
-        .then(user => dispatch(receiveFriend(user)))
-        .catch(err => console.log(err))
-    )
-};
+// export const searchForFriend = email => dispatch => {
+//     return (
+//         APIUtil.searchUsersByEmail(email)
+//         .then(user => dispatch(receiveFriend(user)))
+//         .catch(err => console.log(err))
+//     )
+// };
 
 export const fetchAllFriends = userId => dispatch => {
     

@@ -1,11 +1,18 @@
 import { connect } from "react-redux"
-import { searchForFriend, sendRequest } from "../../actions/friend_actions"
+import { sendRequest } from "../../actions/friend_actions"
+import { fetchSearchedUser } from "../../actions/search_actions";
 import SearchBar from './searchbar';
 
+const mapStateToProps = state => ({
+    currentUser: state.session.user,
+    friends: state.friends,
+    searchedUser: state.searchResult
+})
+
 const mapDispatchToProps = dispatch => ({
-    searchForFriend: email => dispatch(searchForFriend(email)),
+    fetchSearchedUser: email => dispatch(fetchSearchedUser(email)),
     sendRequest: userId => dispatch(sendRequest(userId))
 });
 
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect( mapStateToProps, mapDispatchToProps)(SearchBar);
