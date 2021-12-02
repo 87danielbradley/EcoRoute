@@ -158,11 +158,24 @@ export default class MapboxView extends React.PureComponent{
                         source: 'attendees',
                         
                         paint: {
-                            "circle-radius": 10,
-                            "circle-color": "#5b94c6",
-                            "circle-opacity": 1
+                            "circle-radius": 15,
+                            "circle-color": "#000000",
+                            "circle-opacity": .15
                         }
                     });
+                for (const marker of friends.features){
+                const container = document.createElement('div');
+                container.className = 'marker';
+                // container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+                container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+    
+                container.style.width = '20px';
+                container.style.height = '20px';
+                container.style.backgroundSize = '100%';
+                new mapboxgl.Marker(container)
+                    .setLngLat(marker.geometry.coordinates)
+                    .addTo(window.map);
+            }
                 
 
 
@@ -176,12 +189,25 @@ export default class MapboxView extends React.PureComponent{
                         source: 'attendees',
                         
                         paint: {
-                            "circle-radius": 10,
-                            "circle-color": "#5b94c6",
-                            "circle-opacity": 1
+                            "circle-radius": 15,
+                            "circle-color": "#000000",
+                            "circle-opacity": 0.15
                         }
                     });
                 });
+
+                for (const marker of friends.features){
+                const container = document.createElement('div');
+                container.className = 'marker';
+                container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+    
+                container.style.width = '20px';
+                container.style.height = '20px';
+                container.style.backgroundSize = '100%';
+                new mapboxgl.Marker(container)
+                    .setLngLat(marker.geometry.coordinates)
+                    .addTo(window.map);
+            }
             }
             const popup = new mapboxgl.Popup({
                 closeButton: false,
@@ -212,34 +238,22 @@ export default class MapboxView extends React.PureComponent{
            
 
 
-            //attempt to add user image
-            // for (const marker of friends.features){
-            //     const container = document.createElement('div');
-            //     container.className = 'marker';
-            //     container.style.backgroundImage = `${this.props.events[0].attendees[marker.properties.id]}`
-    
-            //     container.style.width = '5vw';
-            //     container.style.height = '5vw';
-            //     container.style.backgroundSize = '100%';
-            //     new mapboxgl.Marker(container)
-            //         .setLngLat(marker.geometry.coordinates)
-            //         .addTo(window.map);
-            // }
+            
+            
 
-            //attempt to add user image
             // for (const marker of friends.features){
-                //      const svgCircle = document.createElementNS("http://www.w3.org/2000/svg","circle")
-                //     svgCircle.style.width = '5vw';
-                //     svgCircle.style.height = '5vw';
-                //      svgCircle.setAttribute()
+            //          const svgCircle = document.createElementNS("http://www.w3.org/2000/svg","circle")
+            //         svgCircle.style.width = '5vw';
+            //         svgCircle.style.height = '5vw';
+            //          svgCircle.setAttribute()
 
             //     const svgEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
             //      svgEl.appendChild(svgCircle)
             //     svgEl.className = 'marker';
-            //      setAttributeNS..setAttribute("r", "5")
+            //      svgEl.setAttributeNS("r", "5")
             //     svgEl.style.width = '5vw';
             //     svgEl.style.height = '5vw';
-            //     
+            // //     
             //     new mapboxgl.Marker(svgEl)
             //         .setLngLat(marker.geometry.coordinates)
             //         .addTo(this.map);
