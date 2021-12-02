@@ -3,14 +3,15 @@ const accessToken = process.env.REACT_APP_MAPBOX;
 
 
 export const getMatrix = (attendees, places) => {
-
+    debugger
     let locations = []
     attendees.map(attendee => locations.push(...attendee.location))
     places.map(place => locations.push(...place))
     console.log("LOCATIONS", locations)
     const locationAt = semiColon(locations)
+    console.log("ATTT", locationAt)
     // return Promise.resolve()
-
+    debugger
     return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
 };
 // location example
@@ -33,8 +34,28 @@ function semiColon(arr){
     let newArr = [];
     
     for (let i = 0; i < arr.length - 1; i++){
-        newArr.push(`${arr[i]},${arr[i + 1]}`)
+        if (newArr[newArr.length - 1] !== arr[i]){
+
+            newArr.push(`${arr[i]},${arr[i + 1]}`) 
+        }
+       
     }
     return newArr
 }
 
+// let perChunk = 2 // items per chunk    
+
+// var inputArray = locations
+
+// var result = inputArray.reduce((resultArray, item, index) => { 
+//   const chunkIndex = Math.floor(index/perChunk)
+
+//   if(!resultArray[chunkIndex]) {
+//     resultArray[chunkIndex] = [] // start a new chunk
+//   }
+
+//   resultArray[chunkIndex].push(item)
+
+//   return resultArray
+// }, [])
+//  console.log(result)

@@ -11,6 +11,7 @@ import Select from '@mui/material/Select';
 import Tags from './tags';
 import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
+
 class EventForm extends Component {
 
     constructor(props){
@@ -26,7 +27,7 @@ class EventForm extends Component {
     onTextFieldChange = (fieldName, event) => {
       // console.log(event.target.value)
       this.setState({[fieldName]: event.target.value}, () => {
-        if (fieldName === 'location') {
+        if (fieldName === 'location' && event.target.value.length > 5) {
           this.handleSearch()
         }
       })
@@ -81,19 +82,22 @@ class EventForm extends Component {
       const nearbyString = [ -73.9855, 40.7580]; //nearby is current location
       const query = this.state.location;   //from what i input
 
+      this.props.findPlacesNearby(query, nearbyString)
+      //attendeesArray, placesArray
+      
+      this.props.fetchMatrix( attendeeObjects, this.props.placesLocation).then(response => console.log(response))
 
-      getPlaces(query, nearbyString).then(({data}) => {
-          console.log("data", data)
-          const features = data.features;
-          const places = features.map(place => place.geometry.coordinates)
-          console.log("attendee objects", attendeeObjects)
-          getMatrix(attendeeObjects, places).then(response => {
-            console.log(response)
-          })
+      // getPlaces(query, nearbyString).then(({data}) => {
+      //     console.log("data", data)
+      //     const features = data.features;
+      //     const places = features.map(place => place.geometry.coordinates)
+      //     console.log("attendee objects", attendeeObjects)
+      //     getMatrix(attendeeObjects, places).then(response => {
+      //       console.log(response)
+      //     })
 
-          console.log("PLACCES!!!!", places)
-          return places
-      })
+      //     return places
+      // })
     }
     
     render() {
