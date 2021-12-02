@@ -22,15 +22,16 @@ class SessionForm extends React.Component{
 
     this.setState = this.setState.bind(this)
     }
-    componentWillReceiveProps(nextProps) {
-        if( nextProps.currentUser === true) {
-            (this.props.formType === "Sign up") ?
-                this.props.history.push('/login') :
-                this.props.history.push('/')
+
+    // componentWillReceiveProps(nextProps) {
+    //     if( nextProps.currentUser === true) {
+    //         (this.props.formType === "Sign up") ?
+    //             this.props.history.push('/login') :
+    //             this.props.history.push('/')
                 
-        }
-        this.setState({errors: nextProps.errors})
-    }
+    //     }
+    //     this.setState({errors: nextProps.errors})
+    // }
 
     // componentDidMount(){
     //     this.props.resetErrors()
@@ -44,13 +45,13 @@ class SessionForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
 
-        let user = {
-            username: this.state.username,
-            password: this.state.password,
-            password2: this.state.password2,
-            email: this.state.email
-        }
-        this.props.action(this.state, this.props.history)
+        // let user = {
+        //     username: this.state.username,
+        //     password: this.state.password,
+        //     password2: this.state.password2,
+        //     email: this.state.email
+        // }
+        this.props.action(this.state, this.props.history) 
             .then( () => this.props.closeModal())
 
     }
@@ -63,7 +64,7 @@ class SessionForm extends React.Component{
     sessionErrors(){
         return(
             <ul >
-                {Object.keys(this.props.errors).map((error,i)=>(
+                {Object.values(this.props.errors).map((error,i)=>(
                     <li key={`error-${i}`}>
                         Invalid login credentials: {error}
                     </li>
@@ -73,7 +74,7 @@ class SessionForm extends React.Component{
     }
 
     render(){
-        const { formType, navLink, openModal } = this.props;
+        const { formType, openModal } = this.props;
         return (
             <div className='sfc'>
                 <div className="sf">
