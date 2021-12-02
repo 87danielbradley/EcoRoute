@@ -82,22 +82,28 @@ class EventForm extends Component {
       const nearbyString = [ -73.9855, 40.7580]; //nearby is current location
       const query = this.state.location;   //from what i input
 
+
+
+
       this.props.findPlacesNearby(query, nearbyString)
+      .then(() => {
+        this.props.fetchMatrix( attendeeObjects, this.props.placesLocation)
+
+      })
       //attendeesArray, placesArray
+      debugger
       
-      this.props.fetchMatrix( attendeeObjects.map(attendee => attendee.location), this.props.placesLocation)
+    //   getPlaces(query, nearbyString).then(({data}) => {
+    //       console.log("data", data)
+    //       const features = data.features;
+    //       const places = features.map(place => place.geometry.coordinates)
+    //       console.log("attendee objects", attendeeObjects)
+    //       getMatrix(attendeeObjects, places).then(response => {
+    //         console.log(response)
+    //       })
 
-      // getPlaces(query, nearbyString).then(({data}) => {
-      //     console.log("data", data)
-      //     const features = data.features;
-      //     const places = features.map(place => place.geometry.coordinates)
-      //     console.log("attendee objects", attendeeObjects)
-      //     getMatrix(attendeeObjects, places).then(response => {
-      //       console.log(response)
-      //     })
-
-      //     return places
-      // })
+    //       return places
+    //   })
     }
     
     render() {
