@@ -9,6 +9,7 @@ export const getMatrix = (attendees, places) => {
     places.map(place => locations.push(...place))
     console.log("LOCATIONS", locations)
     const locationAt = semiColon(locations)
+    console.log("LOCATIONATTT", locationAt)
     // return Promise.resolve()
     debugger
     return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
@@ -32,7 +33,7 @@ export const getPlaces = (query, nearby) => {
 function semiColon(arr){
     let newArr = [];
     
-    for (let i = 0; i < arr.length - 1; i++){
+    for (let i = 0; i < arr.length - 1; i += 2){
         newArr.push(`${arr[i]},${arr[i + 1]}`)
     }
     return newArr

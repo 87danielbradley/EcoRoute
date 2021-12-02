@@ -31,7 +31,7 @@ class MessagesView extends React.Component{
             // .then(response => console.log(response));
                 
                 // return(this.setState({eventId: this.props.eventId, messages: this.props.messages}))
-                return(this.setState({eventId: this.props.eventId, messages: response.messages.data}))
+                // return(this.setState({eventId: this.props.eventId, messages: response.messages.data}))
                 });
     }
     // componentWillReceiveProps(newState) {
