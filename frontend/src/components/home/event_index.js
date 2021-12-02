@@ -36,7 +36,7 @@ class EventIndex extends React.Component{
                 </div>
 
                 {
-                    eventsL.map((event, i) => {
+                    events.map((event, i) => {
                         return (event !== undefined && 
                         <EventIndexItem 
                             key={i} event={event} 
@@ -58,7 +58,7 @@ class EventIndex extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        eventsL: Object.values(state.events),
+        // eventsL: Object.values(state.events),
 //         events: Object.values(state.events).sort(function (a, b) {
 //   return new Date(a.date) - new Date(b.date);
 // }),

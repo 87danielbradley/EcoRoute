@@ -147,6 +147,10 @@ export default class MapboxView extends React.PureComponent{
                 type: "FeatureCollection",
                 features: featuresArray
             };
+            const elements = document.getElementsByClassName('marker');
+            while(elements.length>0){
+                elements[0].parentNode.removeChild(elements[0])
+            }
 
             try{ 
                 window.map.removeLayer('event')
