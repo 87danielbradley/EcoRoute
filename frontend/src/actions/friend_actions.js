@@ -54,7 +54,7 @@ export const fetchAllFriends = userId => dispatch => {
     return (
         APIUtil.getAllFriends(userId)
         .then(friends => { 
-            // // debugger
+            // // 
             console.log(friends)
             dispatch(receiveAllFriends(friends))
         })
@@ -67,17 +67,18 @@ export const fetchAllFriends = userId => dispatch => {
 
 //userId => current User, userB=> other person being declined
 export const declineFriend = (userId, userB) => dispatch => { 
-    // debugger
+    // 
     return (
-        APIUtil.declineFriendRequest(userId, userB)
-        .then(() =>  dispatch(removeFriend(userB)))
+        APIUtil.declineFriendRequest(userId)
+        .then(() => {
+            dispatch(removeFriend(userB))})
         .catch(err => console.log(err)) 
     )
 }
 
 //userId => current User, userB=> other person being accepted
 export const acceptFriend = ( userId, userB ) => dispatch => { 
-    // debugger
+    // 
     return (
         APIUtil.acceptFriendRequest(userId, userB)
             .then(() => dispatch(receiveFriend(userB)))

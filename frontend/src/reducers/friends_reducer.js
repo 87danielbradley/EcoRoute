@@ -33,6 +33,7 @@ const friendsReducer = (state = initialState, action) => {
     const nextState = Object.assign({}, state)
     switch(action.type) {
         case RECEIVE_FRIEND:
+          debugger
           // look closely at what this out puts may or may not need data
             nextState[action.friend._id] = action.friend
             return nextState;
@@ -42,9 +43,9 @@ const friendsReducer = (state = initialState, action) => {
           //  const friends = action.friends.filter(friend => (
           //     friend.friendsState > 0
           //   ))
-          // // debugger
+          // // 
            action.friends.data.forEach(friend => {
-             // // debugger
+             // // 
               if (friend.friendsState > 0){
                 nextState[friend._id] = friend
               }
