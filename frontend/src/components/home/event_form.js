@@ -13,6 +13,7 @@ import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
 import EventFormItem from './event_form_item';
 
+
 class EventForm extends Component {
 
     constructor(props){
@@ -108,9 +109,13 @@ class EventForm extends Component {
     //       return places
     //   })
     }
+
+    handleLocationSelect = (coordinates) => {
+      console.log("value", coordinates)
+    }
     
     render() {
-
+     
         // console.log(this.state.attendees)
         const {title, attendees, date, category, location} = this.state;
         const {friends, sortedPlaces} = this.props;
@@ -132,6 +137,7 @@ class EventForm extends Component {
                 <div>
                   <Tags friends={friends} attendees={attendees}  onOptionsChange={this.onOptionsChange} formType={this.props.formType}/>
                   </div>
+                  
                 
                   <br/>
                  <TextField className="eventTitle"
@@ -141,9 +147,14 @@ class EventForm extends Component {
                   placeholder="Search Location"
                   value={location}
                 />
-                {sortedPlaces.map(place =>{
+                {/* {sortedPlaces.map(place =>{
                   return <EventFormItem place={place} sortedPlaces={this.state.search} />
-                })}
+                })} */}
+
+                {
+                  sortedPlaces && sortedPlaces.length > 0 && (<EventFormItem sortedPlaces={this.state.search} onLocationSelect={this.handleLocationSelect}/> )
+                }
+
                 
                   
                   <div className="formCalendar">

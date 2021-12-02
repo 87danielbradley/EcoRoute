@@ -1,11 +1,37 @@
-import React from "react";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import moment from 'moment';
+
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+// export default function EventFormItem() {
+//   const [, setPlaces] = React.useState('');
+
+//  
+
+//   return (
+//     <Box sx={{ minWidth: 120 }}>
+//       <FormControl fullWidth>
+//         <InputLabel id="demo-simple-select-label">Age</InputLabel>
+//         <Select
+//           labelId="demo-simple-select-label"
+//           id="demo-simple-select"
+//           value={age}
+//           label="Age"
+//           onChange={handleChange}
+//         >
+//           <MenuItem value={10}>Ten</MenuItem>
+//           <MenuItem value={20}>Twenty</MenuItem>
+//           <MenuItem value={30}>Thirty</MenuItem>
+//         </Select>
+//       </FormControl>
+//     </Box>
+//   );
+// }
+
+
 
 
 
@@ -15,22 +41,49 @@ class EventFormItem extends React.Component {
    constructor(props){
        super(props);
        this.state = {
-           places: this.props.sortedPlaces
+           places: this.props.sortedPlaces,
+           currentPlace: ''
        }
 
    }
 
+   componentDidMount(){
+       const firstPlace = this.props.sortedPlaces[0];
+        console.log("FIRST PLACE", firstPlace)
+       if (firstPlace){
+           this.setState({currentPlace: firstPlace.center})
+       }
+
+   }
+
+   
+
+    handleChange = (event) => {
+        this.setState({currentPlace: event.target.value})
+        this.props.onLocationSelect(event.target.value)
+  };
+
     render(){
-        debugger
+        
         return(
             <div>
-                <button>
-                    <p>{this.props.place.place_name}</p>
-                    
-                    <p>Averge time: {this.props.place.time}</p>
-                    
-                    <p>{`${this.props.place.center}`}</p>
-                </button>
+                   <Box>
+                       <FormControl fullWidth>
+                           <InputLabel id="demo-simple-select-label">Choose the Location</InputLabel>
+                           <Select
+                           labelId="demo-simple-select-label"
+                           id="demo-simple-select"
+                           value={this.state.currentPlace}
+                           label="Age"
+                           onChange={this.handleChange}>
+                               {this.props.sortedPlaces.map(place => (
+                                   <MenuItem value={place.center}>{place.place_name}</MenuItem>
+
+                               ))}
+                            </Select>
+                        </FormControl>
+                    </Box>
+               
             </div>
         )
     }
