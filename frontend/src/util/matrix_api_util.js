@@ -10,6 +10,7 @@ export const getMatrix = (attendees, places) => {
     console.log("LOCATIONS", locations)
     const locationAt = semiColon(locations)
     // return Promise.resolve()
+    debugger
     return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
 };
 // location example
