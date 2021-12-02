@@ -94,7 +94,7 @@ class EventForm extends Component {
 
       })
       //attendeesArray, placesArray
-      debugger
+      // debugger
       
     //   getPlaces(query, nearbyString).then(({data}) => {
     //       console.log("data", data)
@@ -142,7 +142,7 @@ class EventForm extends Component {
                   value={location}
                 />
                 {sortedPlaces.map(place =>{
-                  return <EventFormItem sortedPlaces={this.state.search} key={this.state.search.length+1}/>
+                  return <EventFormItem place={place} sortedPlaces={this.state.search} />
                 })}
                 
                   

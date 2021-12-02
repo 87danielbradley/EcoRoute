@@ -21,10 +21,15 @@ class EventFormItem extends React.Component {
    }
 
     render(){
+        debugger
         return(
             <div>
                 <button>
-                    click here
+                    <p>{this.props.place.place_name}</p>
+                    
+                    <p>Averge time: {this.props.place.time}</p>
+                    
+                    <p>{`${this.props.place.center}`}</p>
                 </button>
             </div>
         )
