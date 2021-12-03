@@ -46,8 +46,8 @@ class SessionForm extends React.Component{
         e.preventDefault();
         this.props.action(this.state) 
             .then( () => {
-                
-                ((this.propsformType==='Login'?(this.props.currentUser ? this.props.fetchAllFriends(this.props.currentUser): console.log('temp fix')): console.log('temp fix')))
+                debugger
+                this.props.currentUser ? this.props.fetchAllFriends(this.props.currentUser): console.log('temp fix')
                 this.checkThenClose()
             })
 

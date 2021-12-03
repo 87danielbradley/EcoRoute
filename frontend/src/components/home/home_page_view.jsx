@@ -14,15 +14,15 @@ import { set } from 'date-fns';
 class HomePage extends React.Component{
     constructor(props){
         super(props)
-        // this.state = {
-        //     num: null
-        // }
+        this.state = {
+            num: null
+        }
     }
 
     componentDidMount(){
         if(this.props.loggedIn) {
             this.props.fetchAllFriends(this.props.userId)
-                // .then(() => this.setState({ num: 1 }))
+                .then(() => this.setState({ num: 1 }))
         }
         console.log(this.props.allState)
     }
@@ -35,7 +35,6 @@ class HomePage extends React.Component{
                 <div>
                     <NavBar logout={this.props.logout} loggedIn={this.props.loggedIn}/>
                     <MapboxContainer />
-                    <Footer />
                 </div>
             )
         } else {

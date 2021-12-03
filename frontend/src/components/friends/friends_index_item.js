@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import { toggleButtonGroupClasses } from "@mui/material";
 
 
 
@@ -25,6 +26,8 @@ class FriendsIndexItem extends React.Component {
         e.preventDefault()
         
         this.props.removeFriend(this.state._id, this.state)
+            .then(() => this.setState({ friendsState: 0 }))
+        
     }
 
     handleAccept(e) {
