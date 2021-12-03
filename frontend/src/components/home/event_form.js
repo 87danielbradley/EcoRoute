@@ -64,7 +64,7 @@ class EventForm extends Component {
 
       // debugger
 
-      this.props.action(event);
+      this.props.action(event,this.props.currentUser);
 
     }
 
@@ -84,6 +84,8 @@ class EventForm extends Component {
       const attendeeUsernames = this.state.attendees;
   
       const attendeeObjects = getFriendsByUsername(state, attendeeUsernames)
+
+      attendeeObjects.unshift(this.props.currentUser)
       
       let lng = attendeeObjects.reduce((total, next) => total + next.location[0],0)/attendeeObjects.length;
       let lat = attendeeObjects.reduce((total, next) => total + next.location[1],0)/attendeeObjects.length;

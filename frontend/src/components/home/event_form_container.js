@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
         attendees: [],
         hidden: false
     },
+    currentUser: state.session.user,
     formType: "Create Event",
     friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
     allState: state,
@@ -49,8 +50,9 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = dispatch => {
+  
   return {
-    action: (event) => dispatch(createAnEvent(event)),
+    action: (event,currentUser) => dispatch(createAnEvent(event, currentUser)),
     findPlacesNearby: (query, nearby) => dispatch(findPlacesNearby(query, nearby)),
     fetchMatrix: (attendeesArray, placesArray) => dispatch(fetchMatrix(attendeesArray, placesArray))
     

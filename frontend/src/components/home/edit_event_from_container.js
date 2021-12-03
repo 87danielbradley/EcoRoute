@@ -50,6 +50,7 @@ const mapStateToProps = (state, ownProps) => {
       allState: state,
       placesPojo: state.navigation.places,
       placesLocation: featureArray,
+      currentUser: state.session.user,
       sortedPlaces: sortedPlaces.sort(function (a, b) {
                       return a.time - b.time
                     })
@@ -71,7 +72,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   
   return {
-    action: (event) => dispatch(updateAnEvent(event)), 
+    action: (event, currentUser) => dispatch(updateAnEvent(event, currentUser)), 
   }
 }
 
