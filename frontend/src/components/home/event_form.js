@@ -65,7 +65,7 @@ class EventForm extends Component {
       
 
       this.props.action(event,this.props.currentUser);
-
+      this.props.closeModalEvent();
     }
 
     onOptionsChange = (options) => {
