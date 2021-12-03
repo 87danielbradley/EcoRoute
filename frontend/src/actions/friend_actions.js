@@ -7,7 +7,7 @@ export const RECEIVE_ALL_FRIENDS = "RECEIVE_ALL_FRIENDS";
 const receiveAllFriends = (friends) => ({
     type: RECEIVE_ALL_FRIENDS,
     friends
-})
+});
 
 const receiveFriend = friend => ({
     type: RECEIVE_FRIEND,
@@ -17,7 +17,7 @@ const receiveFriend = friend => ({
 const removeFriend = userB => ({
     type: REMOVE_FRIEND,
     userB
-})
+});
 
 
 
