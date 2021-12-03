@@ -20,17 +20,17 @@
 }
 
 #menu-item0{
-    background: green;
+    background: rgba(44, 255, 1, 0.4);
 }
 #menu-item1{
-    background: greenyellow;
+    background: rgba(175, 255, 2, 0.4);
 }
 #menu-item2{
-    background: yellow;
+    background: rgba(223, 238, 7, 0.4);
 }
 #menu-item3{
-    background: orange;
+    background: rgba(245, 212, 2, 0.4);
 }
 #menu-item4{
-    background: orangered;
+    background: rgba(249, 167, 1, 0.4);
 }

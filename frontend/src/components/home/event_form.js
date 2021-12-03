@@ -62,7 +62,7 @@ class EventForm extends Component {
         event._id = _id
       }
 
-      // debugger
+      
 
       this.props.action(event,this.props.currentUser);
 
@@ -106,7 +106,7 @@ class EventForm extends Component {
 
       })
       //attendeesArray, placesArray
-      // debugger
+      
       
     //   getPlaces(query, nearbyString).then(({data}) => {
     //       console.log("data", data)
