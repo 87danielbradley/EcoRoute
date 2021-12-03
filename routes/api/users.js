@@ -190,6 +190,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 router.get('/all_friends/:userId', async (req, res) => {
     
     try {
+        
         const friends =  await User.aggregate([
             { "$lookup": {
               "from": FriendRequest.collection.name,

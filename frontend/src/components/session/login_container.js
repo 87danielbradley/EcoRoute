@@ -4,6 +4,7 @@ import { login } from "../../actions/session_actions";
 import SessionForm from './session_form';
 import { Link } from "react-router-dom";
 import { openModal, closeModal } from "../../actions/modal_actions";
+import { fetchAllFriends } from "../../actions/friend_actions";
 
 const mSTP = (state ={}, ownProps) => ({
     errors: state.errors.session,
@@ -18,6 +19,7 @@ const mSTP = (state ={}, ownProps) => ({
 const mDTP = (dispatch, ownProps) => ({
     login: (user) => dispatch(login(user)),
     action: (formUser) => dispatch(login(formUser)),
+    fetchAllFriends: (userId) => dispatch(fetchAllFriends(userId)),
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal())
 })

@@ -9,19 +9,26 @@ import NavBar from '../navbar/navbar_view';
 import About from '../about/about';
 import Footer from '../footer/footer';
 import { fetchAllFriends } from '../../actions/friend_actions';
+import { set } from 'date-fns';
 
 class HomePage extends React.Component{
     constructor(props){
         super(props)
+        // this.state = {
+        //     num: null
+        // }
     }
 
     componentDidMount(){
-        // // 
-        this.props.fetchAllFriends(this.props.userId)
+        if(this.props.loggedIn) {
+            this.props.fetchAllFriends(this.props.userId)
+                // .then(() => this.setState({ num: 1 }))
+        }
         console.log(this.props.allState)
     }
     
     render(){
+        debugger
         if (this.props.loggedIn) {
             // this.props.fetchAllFriends(this.props.userId)
             return(

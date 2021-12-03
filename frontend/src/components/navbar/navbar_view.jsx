@@ -1,5 +1,6 @@
 import React from "react";
 import "./navbar.css"
+import SearchBarContainer from '../search/searchbar_container';
 
 class NavBar extends React.Component{
     constructor(props){
@@ -46,6 +47,7 @@ class NavBar extends React.Component{
             return (
                 <nav className="nb">
                     <h1>Eco Route</h1>
+                    <SearchBarContainer/>
                     <section>
                         <span className="navbar-logout" onClick={this.props.logout}>Log Out</span>
                     </section>

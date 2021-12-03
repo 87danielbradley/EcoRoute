@@ -11,11 +11,9 @@ import SignupContainer from "./session/signup_container";
 import LoginContainer from "./session/login_container"
 import MessagesContainer from "./messages/messages_container"
 import EditEventContainer from '../components/home/edit_event_from_container'
-import SearchBarContainer from "./search/searchbar_container";
 const App = () => (
-    <div>
+    <div className='app'>
         <ModalContainer/>
-        <SearchBarContainer />
         <Route to="/" component={HomePageContainer} />
         
         <Switch> 
