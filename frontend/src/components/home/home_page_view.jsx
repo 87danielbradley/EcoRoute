@@ -28,7 +28,7 @@ class HomePage extends React.Component{
     }
     
     render(){
-        debugger
+       
         if (this.props.loggedIn) {
             // this.props.fetchAllFriends(this.props.userId)
             return(

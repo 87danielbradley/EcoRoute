@@ -8,7 +8,7 @@ import {fetchAllFriends} from "../../actions/friend_actions"
 
 const mSTP = (state ={}, ownProps) => {
     const currentUser = (state.session.user ? state.session.user.id : state.session.user)
-    debugger
+    
     return{
     errors: state.errors.session,
     navLink: <Link to={'/signup'}>Sign up</Link>,
