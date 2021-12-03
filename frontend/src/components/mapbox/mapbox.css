@@ -192,6 +192,7 @@ The toggleSidebar() function removes this class from the element in order to exp
     align-items: top;
     right: 0px;
     top: 0px;
+    width: 30vw;
 }
 
 
@@ -353,4 +354,10 @@ The toggleSidebar() function removes this class from the element in order to exp
 
 .marker{
     border-radius: 50%;
+}
+
+
+.avatarName{
+    
+    
 }
