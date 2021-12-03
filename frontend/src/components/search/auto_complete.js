@@ -34,10 +34,9 @@ class AutoComplete extends React.Component {
         // does the keyCode match the enter key?
         if (e.keyCode === 13) {
             this.setState({
-                currentIndex: 0,
-                filteredSuggestions: [filteredSuggestions[currentIndex]],
-                showSuggestions: true,
-                input: filteredSuggestions[currentIndex]
+                activeSuggestion: 0,
+                showSuggestions: false,
+                userInput: filteredSuggestions[currentIndex]
             });
             // does the keyCode match the up arrow?
         } else if (e.keyCode === 38) {
@@ -58,8 +57,8 @@ class AutoComplete extends React.Component {
     onSelect = e => {
         this.setState({
             currentIndex: 0,
-            filteredSuggestions: [e.currentTarget.innerText],
-            showSuggestions: true,
+            filteredSuggestions: [],
+            showSuggestions: false,
             input: e.currentTarget.innerText
         })
     };
@@ -82,7 +81,7 @@ class AutoComplete extends React.Component {
                                 className = "suggestion-active";
                             }
                             return (
-                                <li className={className} key={suggestion} >
+                                <li className={className} key={suggestion} onClick={this.props.handleSubmit}>
                                     <span onClick={onSelect}>{suggestion}</span> 
                                 </li> 
                             );
