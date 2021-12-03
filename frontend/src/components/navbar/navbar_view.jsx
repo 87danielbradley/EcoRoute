@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBarContainer from "../search/searchbar_container";
 import "./navbar.css"
-import SearchBarContainer from '../search/searchbar_container';
+
 
 class NavBar extends React.Component{
     constructor(props){
@@ -59,7 +59,7 @@ class NavBar extends React.Component{
             return (
                 <nav className="nb">
                     <h1>Eco Route</h1>
-                    <SearchBarContainer />
+                   
                     <section>
                         <span onClick={() => this.props.openModal('login')} id="login-button">Log In</span>
                         <span onClick={() => this.props.openModal('signup')} id="signup-button">Sign Up</span>
