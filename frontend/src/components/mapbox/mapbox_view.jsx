@@ -72,7 +72,7 @@ export default class MapboxView extends React.PureComponent{
                         </div>
                     </div>
                     <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
-                        <div className="sidebar-content rounded-rect flex-center message">
+                        <div className="sidebar-content rounded-rect message">
                 
                             {/* <input id="temp-input" type="text"></input> */}
                             <div id="chat-box">

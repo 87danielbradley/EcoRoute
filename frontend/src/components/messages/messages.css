@@ -4,6 +4,7 @@
     border-radius: 5%;
     margin-top: 5px;
     position: relative;
+    overflow: auto;
 }
 
 .message-item-left{

@@ -49,7 +49,9 @@ class MessagesView extends React.Component{
         event.preventDefault();
         this.props.createMessage({text: this.state.text,
         eventId: this.state.eventId});
-        this.setState({text: ""})
+        this.setState({text: ""});
+        
+        document.getElementById('temp-input').value = '';
         // this.props.fetchEventMessages(this.state.eventId)
         //     .then(response => {
         //         return (this.setState({ eventId: this.state.eventId, messages: response.messages.data }))
@@ -107,7 +109,7 @@ class MessagesView extends React.Component{
                         placeholder="Send a message"
                         onChange={this.update()}>
                     </input>
-                    <input type="submit" value="&#9998;"></input>
+                   
                 </form>
                
                 {this.state.messages.map((message) =>(
