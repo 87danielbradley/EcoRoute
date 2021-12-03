@@ -8,11 +8,11 @@ import ModalContainer from './modal/modal_container';
 import HomePageContainer from "./home/home_page_container";
 import MessagesContainer from "./messages/messages_container"
 import EditEventContainer from '../components/home/edit_event_from_container'
-import SearchBarContainer from "./search/searchbar_container";
+
 const App = () => (
     <div>
         <ModalContainer/>
-        <SearchBarContainer />
+        
         <Route to="/" component={HomePageContainer} />
         
         <Switch> 

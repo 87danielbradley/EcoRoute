@@ -16,9 +16,10 @@ class HomePage extends React.Component{
     }
 
     componentDidMount(){
-        // // 
-        this.props.fetchAllFriends(this.props.userId)
-        console.log(this.props.allState)
+        if (this.props.loggedIn) {
+            this.props.fetchAllFriends(this.props.userId)
+            console.log(this.props.allState)
+        }
     }
     
     render(){
