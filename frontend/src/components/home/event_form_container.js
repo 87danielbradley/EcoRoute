@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { createAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
-import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions"
+import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions";
+import { setModalStatus } from "../../actions/app_actions";
 
 const mapStateToProps = (state) => {
   
@@ -54,7 +55,10 @@ const mapDispatchToProps = dispatch => {
   return {
     action: (event,currentUser) => dispatch(createAnEvent(event, currentUser)),
     findPlacesNearby: (query, nearby) => dispatch(findPlacesNearby(query, nearby)),
-    fetchMatrix: (attendeesArray, placesArray) => dispatch(fetchMatrix(attendeesArray, placesArray))
+    fetchMatrix: (attendeesArray, placesArray) => dispatch(fetchMatrix(attendeesArray, placesArray)),
+    closeModalEvent: () => { 
+            dispatch(setModalStatus(false))
+        }
     
   }
 }

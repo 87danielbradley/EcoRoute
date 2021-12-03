@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { updateAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
+import { setModalStatus } from "../../actions/app_actions";
 
 const mapStateToProps = (state, ownProps) => {
    const emptyEvent = {
@@ -73,6 +74,9 @@ const mapDispatchToProps = dispatch => {
   
   return {
     action: (event, currentUser) => dispatch(updateAnEvent(event, currentUser)), 
+      closeModalEvent: () => { 
+            dispatch(setModalStatus(false))
+        }
   }
 }
 
