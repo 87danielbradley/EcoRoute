@@ -59,8 +59,9 @@ class EventFormItem extends React.Component {
    
 
     handleChange = (event) => {
-        this.setState({currentPlace: event.target.value})
         this.props.onLocationSelect(event.target.value)
+        // this.setState({currentPlace: event.target.value})
+        debugger
   };
 
     render(){

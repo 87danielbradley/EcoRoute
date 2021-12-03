@@ -23,14 +23,16 @@ class EventForm extends Component {
             this.state = { 
               ...this.props.event, 
               location: '',
+              locationSearch: '',
               search: []
             }  
+          this.handleLocationSelect = this.handleLocationSelect.bind(this)
     }
     
     onTextFieldChange = (fieldName, event) => {
       // console.log(event.target.value)
       this.setState({[fieldName]: event.target.value}, () => {
-        if (fieldName === 'location' && event.target.value.length > 5) {
+        if (fieldName === 'locationSearch' && event.target.value.length > 5) {
           this.handleSearch()
         }
       })
@@ -47,13 +49,14 @@ class EventForm extends Component {
     createEventHandler = (e) => {
       e.preventDefault()
 
-      const {title, category,date, attendees, _id} = this.state;
+      const {title, category,date, attendees, _id, location} = this.state;
 
       const event = {
         title, 
         category,
         date, 
-        attendees
+        attendees,
+        location
       }
       if (this.props.formType === 'Update Event'){
         event._id = _id
@@ -89,7 +92,7 @@ class EventForm extends Component {
       
 
       const nearbyString = [ lng, lat]; //nearby is average* location
-      const query = this.state.location;   //from what i input
+      const query = this.state.locationSearch;   //from what i input
 
 
 
@@ -118,12 +121,13 @@ class EventForm extends Component {
 
     handleLocationSelect = (coordinates) => {
       console.log("value", coordinates)
+      this.setState({location: coordinates}) //attempt to set state
     }
     
     render() {
      
         // console.log(this.state.attendees)
-        const {title, attendees, date, category, location} = this.state;
+        const {title, attendees, date, category, locationSearch} = this.state;
         const {friends, sortedPlaces} = this.props;
     
     
@@ -147,18 +151,18 @@ class EventForm extends Component {
                 
                   <br/>
                  <TextField className="eventTitle"
-                  onChange={(e)=> this.onTextFieldChange("location", e)}
+                  onChange={(e)=> this.onTextFieldChange("locationSearch", e)}
                   id="standard-required"
                   label="Location"
                   placeholder="Search Location"
-                  value={location}
+                  value={locationSearch}
                 />
                 {/* {sortedPlaces.map(place =>{
                   return <EventFormItem place={place} sortedPlaces={this.state.search} />
                 })} */}
 
                 {
-                  sortedPlaces && sortedPlaces.length > 0 && (<EventFormItem sortedPlaces={this.state.search} onLocationSelect={this.handleLocationSelect}/> )
+                  sortedPlaces && sortedPlaces.length > 0 && (<EventFormItem sortedPlaces={this.state.search} onLocationSelect={(coordinates)=>this.handleLocationSelect(coordinates)}/> )
                 }
 
                 
