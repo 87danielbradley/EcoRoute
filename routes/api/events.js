@@ -20,6 +20,7 @@ router.post('/',
             category: req.body.category,
             date: req.body.date,
             attendees: req.body.attendees,
+            location: req.body.location,
             hidden: req.body.hidden
         });
 
