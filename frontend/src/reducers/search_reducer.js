@@ -6,6 +6,7 @@ const SearchReducer = (state={}, action) => {
 
     switch (action.type) {
         case RECEIVE_SEARCHED_USER:
+            
             nextState[action.user.data.id] = action.user.data
             return nextState;
         case RESET_SEARCHED_USER:

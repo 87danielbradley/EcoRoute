@@ -1,5 +1,8 @@
 .tech-stack-container {
     margin: 15px;
+    position: absolute;
+    top: 96%;
+    left: 20%
 }
 
 .tech-stack {
