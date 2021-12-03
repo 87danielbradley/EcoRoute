@@ -9,7 +9,8 @@ import * as React from 'react';
 import { Tooltip, Select, FormControl, MenuItem, Box, InputLabel } from '@mui/material'
 import './home.css'
 
-
+//<Tooltip title={`Average Attendee Arrival Time: ${Math.round(this.props.sortedPlaces[idx].time/60)} minutes`} key={this.props.sortedPlaces.time}>
+//</Tooltip>
 
 // export default function EventFormItem() {
 //   const [, setPlaces] = React.useState('');
@@ -83,9 +84,8 @@ class EventFormItem extends React.Component {
                            label="Age"
                            onChange={this.handleChange}>
                                {this.props.sortedPlaces.map((place, idx) => (
-                                   <Tooltip title={`Average Attendee Arrival Time: ${Math.round(this.props.sortedPlaces[idx].time/60)} minutes`} key={this.props.sortedPlaces.time}>
+                                   
                                         <MenuItem id={`menu-item${idx}`} value={place.center}>{place.place_name}</MenuItem>
-                                    </Tooltip>
                                ))}
                             </Select>
                         </FormControl>
@@ -97,6 +97,8 @@ class EventFormItem extends React.Component {
       
 
 }
+
+
 
 
 export default EventFormItem;
