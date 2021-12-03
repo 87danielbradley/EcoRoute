@@ -14,13 +14,13 @@ const mapStateToProps = (state, ownProps) => {
     const eventId = state.appState.currentEditEventId;
     console.log(eventId)
     console.log("state.events[eventId]", state.events[eventId])
-    const emptyEvent = {
-          title: '',
-          category: '',
-          date: new Date(),
-          attendees: [],
-          hidden: false
-      }      
+    // const emptyEvent = {
+    //       title: '',
+    //       category: '',
+    //       date: new Date(),
+    //       attendees: [],
+    //       hidden: false
+    //   }      
       const event =  state.events[eventId]
 
        const featureArray = []

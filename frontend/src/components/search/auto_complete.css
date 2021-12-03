@@ -1,0 +1,34 @@
+.auto-complete {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    width: 300px;
+}
+
+.suggestions-inactive {
+    background-color: #0151633f;
+    color: #015163;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.suggestions {
+    border: 1px solid #a7a7a73f;
+    list-style: none;
+    overflow-y: auto;
+    width: 315px;
+}
+
+.suggestions li {
+    padding: 0.5rem;
+}
+
+.suggestion-active, .suggestions li:hover {
+    background-color: #0151633f;
+    color: #015163;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #5e5d5d5b;
+}
