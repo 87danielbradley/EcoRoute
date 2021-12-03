@@ -55,14 +55,25 @@ export const searchEventLocation = (query, userLocation, attendees) => (dispatch
     })
 }
 
-export const createAnEvent = (event) => (dispatch, getState) => {
+export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
     // debugger
 console.log("CREATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
     console.log(attendees)
+debugger
+    const {email, location, id, username, friends} = currentUser
+    const curUser = {
+        email, 
+        location, 
+        username, 
+        friends, 
+        _id: id
+    }
+    attendees.unshift(curUser)
 
+    debugger
     event.attendees = attendees;
     console.log(event)
 
@@ -87,6 +98,8 @@ export const updateAnEvent = (event) => (dispatch, getState)=> {
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
     console.log(attendees)
+    debugger
+
 
     event.attendees = attendees;
     

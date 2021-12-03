@@ -1,10 +1,16 @@
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+// import Box from '@mui/material/Box';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select from '@mui/material/Select';
+// import Tooltip from '@mui/material/Tooltip'
+import { Tooltip, Select, FormControl, MenuItem, Box, InputLabel } from '@mui/material'
+import './home.css'
+
+//<Tooltip title={`Average Attendee Arrival Time: ${Math.round(this.props.sortedPlaces[idx].time/60)} minutes`} key={this.props.sortedPlaces.time}>
+//</Tooltip>
 
 // export default function EventFormItem() {
 //   const [, setPlaces] = React.useState('');
@@ -59,8 +65,9 @@ class EventFormItem extends React.Component {
    
 
     handleChange = (event) => {
-        this.setState({currentPlace: event.target.value})
         this.props.onLocationSelect(event.target.value)
+        this.setState({currentPlace: event.target.value})
+        // debugger
   };
 
     render(){
@@ -76,9 +83,9 @@ class EventFormItem extends React.Component {
                            value={this.state.currentPlace}
                            label="Age"
                            onChange={this.handleChange}>
-                               {this.props.sortedPlaces.map(place => (
-                                   <MenuItem value={place.center}>{place.place_name}</MenuItem>
-
+                               {this.props.sortedPlaces.map((place, idx) => (
+                                   
+                                        <MenuItem id={`menu-item${idx}`} value={place.center}>{place.place_name}</MenuItem>
                                ))}
                             </Select>
                         </FormControl>
@@ -90,6 +97,8 @@ class EventFormItem extends React.Component {
       
 
 }
+
+
 
 
 export default EventFormItem;

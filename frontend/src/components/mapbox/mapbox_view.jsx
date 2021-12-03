@@ -110,7 +110,17 @@ export default class MapboxView extends React.PureComponent{
         //     center: [lng, lat],
         //     zoom: 10
         // });
-        window.map.flyTo({center: [lng,lat], zoom: 9})
+        window.map.flyTo({
+            center: [lng,lat], 
+            zoom: 9,
+            bearing: (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 20),
+            speed: 2,
+            curve: 0.75,
+            pitch: 60,
+            essential: true
+        
+        
+        })
         
         // map.setCenter([lng,lat])
         // console.log([lng,lat])
@@ -220,7 +230,12 @@ export default class MapboxView extends React.PureComponent{
                 window.map.on('click', 'event', event => {
                     window.map.flyTo({
                         center: event.features[0].geometry.coordinates,
-                        zoom: 12
+                        zoom: 12,
+                        bearing: (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 20),
+                        speed: 2,
+                        curve: 1,
+                        pitch: 60,
+                        essential: true
                     })
                 })
 
