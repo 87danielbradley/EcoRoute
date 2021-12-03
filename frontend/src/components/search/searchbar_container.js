@@ -6,7 +6,7 @@ import SearchBar from './searchbar';
 const mapStateToProps = state => ({
     currentUser: state.session.user,
     friends: state.friends,
-    searchedUser: state.searchResult
+    searchedUser: Object.values(state.searchResult)
 })
 
 const mapDispatchToProps = dispatch => ({

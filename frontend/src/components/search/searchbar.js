@@ -1,6 +1,5 @@
-import { dividerClasses } from "@mui/material";
 import React from "react";
-import SearchTags from './search_tags';
+import AutoComplete from "./auto_complete"
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -21,26 +20,31 @@ class SearchBar extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.fetchSearchedUser(this.state.email)
+        this.props.fetchSearchedUser(e.currentTarget.innerText)
+        console.log(this.props.searchedUser)
     }
     
     handleAddFriend() {
-        this.props.sendRequest(this.state.user.id)
+        debugger
+        this.props.sendRequest(this.props.searchedUser[0].id)
+        // reset searchedUser
     }
 
     render() {
-        
+        let addButton;
+        if (this.props.searchedUser.length) {
+            addButton = (
+                <button>Add Friend</button>
+            )
+        } else {
+            addButton = (<div className="nothing-searched"></div>)
+        }
         return (
             <div className="search-bar">
                 <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="find friends by email"
-                        onChange={this.handleChange('email')}
-                    />
-                    <button onClick={this.handleSubmit} > Search </button>
+                    <AutoComplete handleAddFriend={this.handleAddFriend} suggestions={['tyler@tyler.com', 'lillybean@lillybean.com']}/>
                 </form>
-                {/* <SearchTags /> */}
+                {addButton}
             </div>
         )
     }
