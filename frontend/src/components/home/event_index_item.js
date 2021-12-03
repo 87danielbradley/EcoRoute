@@ -16,7 +16,7 @@ const EventIndexItem = (props) => {
     // console.log(event.date)
     const dateString = moment(event.date).format('MM/DD/YYYY HH:mm:ss');
     // console.log("moment date", dateString)
-    debugger
+    // debugger
     const gameUrls=["https://images.unsplash.com/photo-1611996575749-79a3a250f948?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGdhbWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
                     "https://images.unsplash.com/photo-1616574808712-5cf60f175073?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGdhbWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
                     "https://images.unsplash.com/photo-1539387893102-c0e198446a35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGdhbWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
