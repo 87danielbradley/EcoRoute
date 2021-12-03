@@ -79,10 +79,16 @@ class EventForm extends Component {
     handleSearch = () => {
       const state = this.props.allState; // from container 
       const attendeeUsernames = this.state.attendees;
-      const attendeeObjects = getFriendsByUsername(state, attendeeUsernames);
   
+      const attendeeObjects = getFriendsByUsername(state, attendeeUsernames)
+      
+      let lng = attendeeObjects.reduce((total, next) => total + next.location[0],0)/attendeeObjects.length;
+      let lat = attendeeObjects.reduce((total, next) => total + next.location[1],0)/attendeeObjects.length;
+      
+      
+      
 
-      const nearbyString = [ -73.9855, 40.7580]; //nearby is current location
+      const nearbyString = [ lng, lat]; //nearby is average* location
       const query = this.state.location;   //from what i input
 
 
