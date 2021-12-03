@@ -79,6 +79,8 @@ class AutoComplete extends React.Component {
                             // Flag the active suggestion with a class
                             if (index === currentIndex) {
                                 className = "suggestion-active";
+                            } else {
+                                className = "suggestion-inactive"; 
                             }
                             return (
                                 <li className={className} key={suggestion} onClick={this.props.handleSubmit}>
@@ -90,9 +92,9 @@ class AutoComplete extends React.Component {
                 );
             } else {
                 suggestionsListComponent = (
-                    <div className="suggestion-inactive">
-                        <em>No suggestions available</em>
-                    </div>
+                    <ul className="suggestions">
+                        <li className="suggestion-inactive">No suggestions available</li>
+                    </ul>
                 );
             }
         }

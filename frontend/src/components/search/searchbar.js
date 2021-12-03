@@ -18,6 +18,11 @@ class SearchBar extends React.Component {
     //         this.setState({[type]: e.currentTarget.value})
     //     )
     // }
+    componentDidUpdate(prevProps) {
+        if (prevProps.friends !== this.props.friends) {
+            this.setState( {searchFriends: this.props.friends} )
+        }
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -32,7 +37,7 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        // console.log("searchFriends", this.state.searchFriends)
+        console.log("searchFriends", this.state.searchFriends)
         let addButton;
         if (this.props.searchedUser.length) {
             addButton = (
