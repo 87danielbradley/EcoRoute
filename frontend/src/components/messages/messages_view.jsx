@@ -111,7 +111,7 @@ class MessagesView extends React.Component{
                 </form>
                
                 {this.state.messages.map((message) =>(
-                    <MessagesViewItem text={message.text} />
+                    <MessagesViewItem text={message.text} message={message} currentUser={this.props.currentUser} />
                 ))}
             </div>
         )

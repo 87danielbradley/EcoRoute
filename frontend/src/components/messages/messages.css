@@ -1,0 +1,39 @@
+.message-container{
+    
+    border-radius: 5%;
+    margin-top: 5px;
+    position: relative;
+}
+
+.message-item-left{
+    display: flex;
+    justify-content: space-between;
+    
+    border-radius: 30px;
+    font-size-adjust: none; 
+}
+.message-item-left-child{
+    display: inline-block;
+    background: blue;
+    border-radius: 30px;
+    font-size-adjust: none; 
+    font-size: 20px;
+}
+.message-item-right{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+   
+    border-radius: 30px;
+    
+    margin-left: auto; 
+    
+}
+.message-item-right-child{
+    display: inline-block;
+    background: yellow;
+    border-radius: 30px;
+    font-size: 20px;
+    margin-left: auto; 
+    
+}

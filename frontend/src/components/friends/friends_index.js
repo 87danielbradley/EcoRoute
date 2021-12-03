@@ -1,6 +1,6 @@
 import React from "react";
 import FriendsIndexItem from "./friends_index_item";
-
+import './friends.css'
 class FriendsIndex extends React.Component {
     constructor(props) {
         super(props)
