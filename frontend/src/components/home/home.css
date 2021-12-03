@@ -15,22 +15,22 @@
 
 }
 
-.events-header *{
+#events-header *{
     margin: auto;
 }
 
-.menu-item0{
+#menu-item0{
     background: green;
 }
-.menu-item1{
+#menu-item1{
     background: greenyellow;
 }
-.menu-item2{
+#menu-item2{
     background: yellow;
 }
-.menu-item3{
+#menu-item3{
     background: orange;
 }
-.menu-item4{
+#menu-item4{
     background: orangered;
 }
