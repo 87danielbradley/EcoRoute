@@ -23,15 +23,15 @@ class MessagesView extends React.Component{
     componentDidMount(){
         // this.props.fetchMessages()
         // console.log(`componentDidMount`)
-        console.log(this.state)
-        console.log(this.props)
+        // console.log(this.state)
+        // console.log(this.props)
         this.props.fetchEventMessages(this.props.eventId)
             .then(response => {
                 // console.log("mounted response", response)
             // .then(response => console.log(response));
                 
                 // return(this.setState({eventId: this.props.eventId, messages: this.props.messages}))
-                // return(this.setState({eventId: this.props.eventId, messages: response.messages.data}))
+                return(this.setState({eventId: this.props.eventId, messages: response.messages.data}))
                 });
     }
     // componentWillReceiveProps(newState) {

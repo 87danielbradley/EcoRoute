@@ -18,7 +18,7 @@ class HomePage extends React.Component{
     componentDidMount(){
         if (this.props.loggedIn) {
             this.props.fetchAllFriends(this.props.userId)
-            console.log(this.props.allState)
+            // console.log(this.props.allState)
         }
     }
     
