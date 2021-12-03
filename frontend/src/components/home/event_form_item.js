@@ -83,7 +83,7 @@ class EventFormItem extends React.Component {
                            label="Age"
                            onChange={this.handleChange}>
                                {this.props.sortedPlaces.map((place, idx) => (
-                                   <Tooltip title={`Average Attendee Arrival Time: ${this.props.sortedPlaces[idx].time}`} key={this.props.sortedPlaces.time}>
+                                   <Tooltip title={`Average Attendee Arrival Time: ${Math.round(this.props.sortedPlaces[idx].time/60)} minutes`} key={this.props.sortedPlaces.time}>
                                         <MenuItem id={`menu-item${idx}`} value={place.center}>{place.place_name}</MenuItem>
                                     </Tooltip>
                                ))}
