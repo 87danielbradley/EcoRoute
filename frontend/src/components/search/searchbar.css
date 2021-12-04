@@ -1,0 +1,14 @@
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.search-bar-button{
+    background: rgb(10, 247, 120);
+    border-radius: 20px;
+    position: absolute;
+    top: -1vh;
+    left: 25vw;
+    z-index: 1000;
+}

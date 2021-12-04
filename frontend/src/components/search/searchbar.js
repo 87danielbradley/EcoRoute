@@ -1,5 +1,6 @@
 import React from "react";
 import AutoComplete from "./auto_complete"
+import "./searchbar.css"
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class SearchBar extends React.Component {
         let addButton;
         if (this.props.searchedUser.length) {
             addButton = (
-                <button onClick={this.handleAddFriend}>Add Friend</button>
+                <button className="search-bar-button" onClick={this.handleAddFriend}>Add Friend</button>
             )
         } else {
             addButton = (<div className="nothing-searched"></div>)
