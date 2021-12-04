@@ -62,8 +62,7 @@ export default class MapboxView extends React.PureComponent{
                         <div className="sidebar-content rounded-rect flex-upper">
                             <FriendsIndexContainer />
                             <div className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
-                                {/* &#x263B; */}
-                                <img src="./center.svg" height="50" width="50"/>
+                                &#x263B;
                                 
                             </div>
                             
@@ -176,19 +175,29 @@ export default class MapboxView extends React.PureComponent{
                         }
                     });
                 for (const marker of friends.features){
-                const container = document.createElement('div');
-                container.className = 'marker';
-                container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+50)}/${Math.floor(Math.random()*10+50)})`
-                // container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
-    
-                container.style.width = '50px';
-                container.style.height = '50px';
-                container.style.backgroundSize = '100%';
-                new mapboxgl.Marker(container)
-                    .setLngLat(marker.geometry.coordinates)
-                    .addTo(window.map);
-            }
+                    const container = document.createElement('div');
+                    container.className = 'marker';
+                    container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+50)}/${Math.floor(Math.random()*10+50)})`
+                    // container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+        
+                    container.style.width = '50px';
+                    container.style.height = '50px';
+                    container.style.backgroundSize = '100%';
+                    new mapboxgl.Marker(container)
+                        .setLngLat(marker.geometry.coordinates)
+                        .addTo(window.map);
+                }
                 
+                const eventContainer = document.createElement('div');
+                eventContainer.className = 'marker';
+                eventContainer.style.backgroundImage = 'url(https://raw.githubusercontent.com/87danielbradley/EcoRoute/b3e95cb9380a1d569179cbeaa20d265de7762a52/frontend/src/components/mapbox/center.svg)'
+                eventContainer.style.width = '50px';
+                eventContainer.style.height = '50px';
+                eventContainer.style.backgroundSize = '100%';
+                new mapboxgl.Marker(eventContainer)
+                    .setLngLat(this.props.events[eventIndex].location)
+                    .addTo(window.map);
+
 
 
 
