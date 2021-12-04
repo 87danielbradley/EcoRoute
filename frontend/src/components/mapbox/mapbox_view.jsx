@@ -308,6 +308,7 @@ export default class MapboxView extends React.PureComponent{
         // this.state.map.easeTo({
         //     padding: padding,
         //     duration: 1000 // In ms. This matches the CSS transition duration property.
+        
         // });
     }
 

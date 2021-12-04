@@ -85,6 +85,7 @@ class MessagesView extends React.Component{
         }
     }
     render(){
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
         // if (!this.state.messages) {
         if (this.state.messages === null || this.state.messages.length === 0) {
         // if (this.state.messages.length === 0) {
