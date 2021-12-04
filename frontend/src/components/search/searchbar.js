@@ -19,15 +19,15 @@ class SearchBar extends React.Component {
     //     )
     // }
     componentDidUpdate(prevProps) {
-        if (prevProps.friends !== this.props.friends) {
+        if (prevProps.friends !== this.props.friends || prevProps.searchedUser !== this.props.searchedUser) {
             this.setState( {searchFriends: this.props.friends} )
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.resetSearchedUser()
         this.props.fetchSearchedUser(e.currentTarget.innerText)
-        console.log(this.props.searchedUser)
     }
     
     handleAddFriend() {
@@ -37,7 +37,6 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        console.log("searchFriends", this.state.searchFriends)
         let addButton;
         if (this.props.searchedUser.length) {
             addButton = (
