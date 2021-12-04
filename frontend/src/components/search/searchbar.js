@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.fetchSearchedUser(e.currentTarget.innerText)
-        console.log(this.props.searchedUser)
+        // console.log(this.props.searchedUser)
     }
     
     handleAddFriend() {

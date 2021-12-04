@@ -19,7 +19,7 @@ class FriendsIndex extends React.Component {
         ))
 
         return (
-            <ul>
+            <ul id='friend-container'>
                 {friend}
             </ul>
         )

@@ -122,7 +122,7 @@ class EventForm extends Component {
     }
 
     handleLocationSelect = (coordinates) => {
-      console.log("value", coordinates)
+      // console.log("value", coordinates)
       this.setState({location: coordinates}) //attempt to set state
     }
     

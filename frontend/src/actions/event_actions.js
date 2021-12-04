@@ -32,7 +32,7 @@ export const fetchEventsUserIsInvitedTo = userId => dispatch => {
 
 // fetches all events the user created
 export const fetchUserEvents = (userId) => dispatch => {
-    // console.log('fetching user events')
+    
 
     return (
         APIUtil.getUserEvents(userId)
@@ -57,11 +57,11 @@ export const searchEventLocation = (query, userLocation, attendees) => (dispatch
 
 export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
    
-console.log("CREATE EVENT PAYLOAD",event)
+// console.log("CREATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
-    console.log(attendees)
+    // console.log(attendees)
 
     const {email, location, id, username, friends} = currentUser
     const curUser = {
@@ -75,7 +75,7 @@ console.log("CREATE EVENT PAYLOAD",event)
 
     
     event.attendees = attendees;
-    console.log(event)
+    // console.log(event)
 
 
     // const fakeCreate = Promise.resolve(event)
@@ -85,7 +85,7 @@ console.log("CREATE EVENT PAYLOAD",event)
     // })
     return APIUtil.createEvent(event)
     .then(eventRes => {
-        console.log(eventRes)
+        // console.log(eventRes)
 
         dispatch(receiveEvent(eventRes))
     })
@@ -93,11 +93,11 @@ console.log("CREATE EVENT PAYLOAD",event)
 }
 export const updateAnEvent = (event) => (dispatch, getState)=> {
     
-    console.log("UPDATE EVENT PAYLOAD",event)
+    // console.log("UPDATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
-    console.log(attendees)
+    // console.log(attendees)
     
 
 
@@ -106,7 +106,7 @@ export const updateAnEvent = (event) => (dispatch, getState)=> {
 
     return APIUtil.updateEvent(event)
     .then(eventRes => {
-        console.log(eventRes)
+        // console.log(eventRes)
         dispatch(receiveEvent(eventRes))
     })
 }

@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
       return username
    });
    attendeeUsername = mappedUsernames
-   console.log("MAPPED", mappedUsernames)
+  //  console.log("MAPPED", mappedUsernames)
  } else {
    attendeeUsername = attendees
     
