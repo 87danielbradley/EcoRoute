@@ -62,7 +62,8 @@ export default class MapboxView extends React.PureComponent{
                         <div className="sidebar-content rounded-rect flex-upper">
                             <FriendsIndexContainer />
                             <div className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
-                                &#x263B;
+                                {/* &#x263B; */}
+                                <img src="./center.svg" height="50" width="50"/>
                                 
                             </div>
                             
