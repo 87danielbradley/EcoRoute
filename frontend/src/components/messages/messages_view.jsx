@@ -89,7 +89,7 @@ class MessagesView extends React.Component{
         if (this.state.messages === null || this.state.messages.length === 0) {
         // if (this.state.messages.length === 0) {
             return (
-            <div>
+            <div id='chat-box'>
                 <form onSubmit={this.handleSubmit} >
                     <input id="temp-input" 
                         type="text"
@@ -102,7 +102,7 @@ class MessagesView extends React.Component{
             </div>)
         } else {
         return(
-            <div>
+            <div id='message-view-box'>
                 <form onSubmit={this.handleSubmit} >
                     <input id="temp-input" 
                         type="text"

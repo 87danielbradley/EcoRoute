@@ -332,6 +332,7 @@ The toggleSidebar() function removes this class from the element in order to exp
     overflow: auto;
     gap: 5px;
     justify-content: left;
+    width: 100%;
 }
 
 .graph-container{
