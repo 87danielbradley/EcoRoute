@@ -36,7 +36,7 @@ class AutoComplete extends React.Component {
             this.setState({
                 activeSuggestion: 0,
                 showSuggestions: false,
-                userInput: filteredSuggestions[currentIndex]
+                input: filteredSuggestions[currentIndex]
             });
             // does the keyCode match the up arrow?
         } else if (e.keyCode === 38) {
