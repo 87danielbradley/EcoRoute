@@ -65,10 +65,7 @@ export default class MapboxView extends React.PureComponent{
                                 &#x263B;
                                 
                             </div>
-                            <div id="create-friend" className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
-                                &#x2B;
-                                
-                            </div>
+                            
                         </div>
                     </div>
                     <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
