@@ -15,11 +15,6 @@ const mSTP = (state ={}, ownProps) => {
     errors: state.errors.session,
     navLink: <Link to={'/login'}>Log in</Link>,
     formType: 'Sign up',
-    demoUser: {
-        email: 'demo@demo.com',
-        password: 'demodemo'
-    },
-
     currentUser: currentUser,
     
 }}
