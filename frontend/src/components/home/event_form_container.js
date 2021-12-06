@@ -37,6 +37,7 @@ const mapStateToProps = (state) => {
         attendees: [],
         hidden: false
     },
+    events: state.events,
     currentUser: state.session.user,
     formType: "Create Event",
     friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),

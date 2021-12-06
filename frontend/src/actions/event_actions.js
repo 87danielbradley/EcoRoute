@@ -86,7 +86,10 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
     return APIUtil.createEvent(event)
     .then(eventRes => {
         // console.log(eventRes)
-
+        eventRes.data.attendees.forEach( attendee => {
+            APIUtil.appendEventToAttendees(eventRes.data._id, attendee)
+        })
+        // debugger
         dispatch(receiveEvent(eventRes))
     })
     .catch(error => console.log(error))

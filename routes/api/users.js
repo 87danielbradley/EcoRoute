@@ -308,6 +308,17 @@ router.get('/search', async (req, res) => {
     }
 })
 
+router.patch('/attendees/:eventId', (req, res) => {
+    debugger
+    const eventId = req.params.eventId
+    const person = User.findOneAndUpdate(
+        { _id: req.body.id },
+        { $push: { events: eventId } }
+    ).then(() => res.status(200).json( { success: 'success' }
+    )).catch(err => console.log(err))
+    
+})
+
 
 //private auth route
 router.get('/current', passport.authenticate('jwt', {session: false}), (request, response) => {

@@ -28,4 +28,9 @@ export const deleteEvent = eventId => {
     return axios.delete(`/api/events/${eventId}`)
 }
 
+export const appendEventToAttendees = (eventId, attendeesId) => {
+    // debugger
+    return axios.patch(`/api/users/attendees/${eventId}`, { id: attendeesId})
+}
+
 
