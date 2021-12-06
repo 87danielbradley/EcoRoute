@@ -12,7 +12,7 @@ import Tags from './tags';
 // import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
 import EventFormItem from './event_form_item';
-
+import {FORM_TYPE_CREATE_EVENT, FORM_TYPE_UPDATE_EVENT } from '../../constants/events_constants'
 
 class EventForm extends Component {
 
@@ -86,7 +86,7 @@ class EventForm extends Component {
       const attendeeObjects = getFriendsByUsername(state, attendeeUsernames)
 
       attendeeObjects.unshift(this.props.currentUser)
-      
+      debugger
       let lng = attendeeObjects.reduce((total, next) => total + next.location[0],0)/attendeeObjects.length;
       let lat = attendeeObjects.reduce((total, next) => total + next.location[1],0)/attendeeObjects.length;
       
@@ -131,12 +131,13 @@ class EventForm extends Component {
         // console.log(this.state.attendees)
         const {title, attendees, date, category, locationSearch} = this.state;
         const {friends, sortedPlaces} = this.props;
-    
-    
+        console.log("THE FORM TYPE IS", this.props.formType)
+      
         return (
             <div>
               <Card>
-            <h1 className="eventHeader">Create An Event </h1>
+              
+            <h1 className="eventHeader">Event Form</h1>
             <CardContent>
               <FormControl >
                 <TextField className="eventTitle"

@@ -2,14 +2,16 @@ import { connect } from "react-redux";
 import { updateAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 import { setModalStatus } from "../../actions/app_actions";
-
+import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions";
+import { FORM_TYPE_UPDATE_EVENT} from '../../constants/events_constants'
 const mapStateToProps = (state, ownProps) => {
    const emptyEvent = {
         title: '',
         category: '',
         date: new Date(),
         attendees: [],
-        hidden: false
+        hidden: false,
+        location: []
     };
   try {
     const eventId = state.appState.currentEditEventId;
@@ -63,7 +65,7 @@ const mapStateToProps = (state, ownProps) => {
     console.log(error)
     return {
     event: emptyEvent,
-    formType: "Update Event"
+    // formType: FORM_TYPE_UPDATE_EVENT
 }
     
   }
@@ -74,9 +76,12 @@ const mapDispatchToProps = dispatch => {
   
   return {
     action: (event, currentUser) => dispatch(updateAnEvent(event, currentUser)), 
+     findPlacesNearby: (query, nearby) => dispatch(findPlacesNearby(query, nearby)),
+    fetchMatrix: (attendeesArray, placesArray) => dispatch(fetchMatrix(attendeesArray, placesArray)),
       closeModalEvent: () => { 
             dispatch(setModalStatus(false))
-        }
+        },
+
   }
 }
 

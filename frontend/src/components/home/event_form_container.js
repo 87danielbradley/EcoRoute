@@ -27,7 +27,8 @@ const mapStateToProps = (state) => {
                   )
     
   }
-  
+  debugger
+  // friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
   return (
   
     {event: {
@@ -40,7 +41,7 @@ const mapStateToProps = (state) => {
     events: state.events,
     currentUser: state.session.user,
     formType: "Create Event",
-    friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
+    friends: Object.values(state.friends).filter(friend => friend.friendsState > 0).map(user => user.username),
     allState: state,
     placesPojo: state.navigation.places,
     placesLocation: featureArray,
