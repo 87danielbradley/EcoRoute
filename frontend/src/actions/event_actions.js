@@ -83,7 +83,14 @@ console.log("CREATE EVENT PAYLOAD",event)
     //     event.id = Math.floor(Math.random()*100)
     //     dispatch(receiveEvent(event))
     // })
-    return APIUtil.createEvent(event)
+   APIUtil.createEvent(event)
+    .then(eventRes => {
+        console.log(eventRes)
+
+        dispatch(receiveEvent(eventRes))
+    })
+    .catch(error => console.log(error))
+    return   APIUtil.createEvent(event)
     .then(eventRes => {
         console.log(eventRes)
 

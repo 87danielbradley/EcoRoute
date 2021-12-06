@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { updateAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 import { setModalStatus } from "../../actions/app_actions";
+import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions";
 
 const mapStateToProps = (state, ownProps) => {
    const emptyEvent = {
@@ -9,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
         category: '',
         date: new Date(),
         attendees: [],
-        hidden: false
+        hidden: false,
+        locatioin: ''
     };
   try {
     const eventId = state.appState.currentEditEventId;
@@ -74,6 +76,8 @@ const mapDispatchToProps = dispatch => {
   
   return {
     action: (event, currentUser) => dispatch(updateAnEvent(event, currentUser)), 
+     findPlacesNearby: (query, nearby) => dispatch(findPlacesNearby(query, nearby)),
+    fetchMatrix: (attendeesArray, placesArray) => dispatch(fetchMatrix(attendeesArray, placesArray)),
       closeModalEvent: () => { 
             dispatch(setModalStatus(false))
         }
