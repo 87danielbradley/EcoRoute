@@ -54,7 +54,7 @@ const EventIndexItem = (props) => {
                     "https://images.unsplash.com/photo-1612985837958-e9fe38eab003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGRhbmNpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
                     "https://images.unsplash.com/photo-1586210477741-f3d7dc250c78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODF8fGRhbmNpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
                   ]
-    const imageUrl = (props.event.category === 'Food'? foodUrls[props.eventIndex] :props.event.category === 'Music'? musicUrls[props.eventIndex]: gameUrls[props.eventIndex])
+    const imageUrl = (props.event.category === 'Food'? foodUrls[props.eventIndex%10] :props.event.category === 'Music'? musicUrls[props.eventIndex%10]: gameUrls[props.eventIndex%10])
     return (
         <div style={{marginTop: "20px"}}>
              <Card sx={{ maxWidth: 345 }}>

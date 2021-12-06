@@ -79,7 +79,7 @@ const mapDispatchToProps = dispatch => {
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
         fetchEventsUserIsInvitedTo: (userId) => dispatch(fetchEventsUserIsInvitedTo(userId)),
         openModalAndEditEvent: (eventId) => { 
-            console.log("EVENT ID", eventId)
+            // console.log("EVENT ID", eventId)
             dispatch(setEditingEvent(eventId));
             dispatch(setModalStatus(true))
         }

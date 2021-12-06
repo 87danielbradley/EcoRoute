@@ -32,7 +32,7 @@ const About = () => {
                             <a href="https://github.com/sparsons808">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/">
+                            <a href="https://angel.co/u/sydney-parsons">
                                 <img src={Angel} alt="Angel Link" />
                             </a>
                             <a href="https://www.linkedin.com/in/sydney-parsons-18929458/">
@@ -55,6 +55,7 @@ const About = () => {
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
                             <a href="https://angel.co/">
+                            {/* <a href="https://angel.co/u/tyler-koh"> */}
                                 <img src={Angel} alt="Angel Link" />
                             </a>
                             <a href="https://linkedin.com/">
@@ -76,7 +77,7 @@ const About = () => {
                             <a href="https://github.com/87danielbradley">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/">
+                            <a href="https://angel.co/u/daniel-james-bradley">
                                 <img src={Angel} alt="Angel Link" />
                             </a>
                             <a href="https://www.linkedin.com/in/87danielbradley/">

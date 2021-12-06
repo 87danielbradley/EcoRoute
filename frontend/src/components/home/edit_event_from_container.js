@@ -3,7 +3,7 @@ import { updateAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 import { setModalStatus } from "../../actions/app_actions";
 import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions";
-
+import { FORM_TYPE_UPDATE_EVENT} from '../../constants/events_constants'
 const mapStateToProps = (state, ownProps) => {
    const emptyEvent = {
         title: '',
@@ -11,12 +11,12 @@ const mapStateToProps = (state, ownProps) => {
         date: new Date(),
         attendees: [],
         hidden: false,
-        locatioin: ''
+        location: []
     };
   try {
     const eventId = state.appState.currentEditEventId;
-    console.log(eventId)
-    console.log("state.events[eventId]", state.events[eventId])
+    // console.log(eventId)
+    // console.log("state.events[eventId]", state.events[eventId])
     // const emptyEvent = {
     //       title: '',
     //       category: '',
@@ -65,7 +65,7 @@ const mapStateToProps = (state, ownProps) => {
     console.log(error)
     return {
     event: emptyEvent,
-    formType: "Update Event"
+    // formType: FORM_TYPE_UPDATE_EVENT
 }
     
   }
@@ -80,7 +80,8 @@ const mapDispatchToProps = dispatch => {
     fetchMatrix: (attendeesArray, placesArray) => dispatch(fetchMatrix(attendeesArray, placesArray)),
       closeModalEvent: () => { 
             dispatch(setModalStatus(false))
-        }
+        },
+
   }
 }
 

@@ -54,7 +54,7 @@ class FriendsIndexItem extends React.Component {
         
         if(friend.friendsState === 3) {
             return (
-                <div>
+                <div id="friend-item-container">
                     <Card className="cardFriends" sx={{ maxWidth: 345 }} >
                         <Divider>
 
@@ -70,7 +70,7 @@ class FriendsIndexItem extends React.Component {
         } else if (friend.friendsState === 1) {
             // these are people who requested current user
             return (
-                <div>
+                <div id="friend-item-container">
                     <Card className="cardFriends" sx={{ maxWidth: 345 }} >
                         <Divider>
 

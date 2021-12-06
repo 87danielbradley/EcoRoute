@@ -55,7 +55,7 @@ class EventFormItem extends React.Component {
 
    componentDidMount(){
        const firstPlace = this.props.sortedPlaces[0];
-        console.log("FIRST PLACE", firstPlace)
+        // console.log("FIRST PLACE", firstPlace)
        if (firstPlace){
            this.setState({currentPlace: firstPlace.center})
        }

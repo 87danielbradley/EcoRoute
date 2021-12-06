@@ -24,7 +24,7 @@ class HomePage extends React.Component{
             this.props.fetchAllFriends(this.props.userId)
                 .then(() => this.setState({ num: 1 }))
         }
-        console.log(this.props.allState)
+        // console.log(this.props.allState)
     }
     
     render(){

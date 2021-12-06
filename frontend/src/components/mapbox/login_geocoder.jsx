@@ -77,7 +77,7 @@ export default class LoginGeocoder extends React.PureComponent{
         let that = this;
         geocoder.on('result', function(e) {
            
-            console.log(e.result.geometry)
+            // console.log(e.result.geometry)
 
             that.props.setParentState({location: e.result.geometry.coordinates})
             // that.props.setParentState({"geometry": JSON.parse(geocoder.lastSelected).geometry})
@@ -85,8 +85,8 @@ export default class LoginGeocoder extends React.PureComponent{
         })
         geolocator.on('geolocate', function(e) {
             
-            console.log(e.coords.latitude)
-            console.log(e.coords.longitude)
+            // console.log(e.coords.latitude)
+            // console.log(e.coords.longitude)
             
 
             that.props.setParentState({location: [e.coords.latitude, e.coords.longitude]})
