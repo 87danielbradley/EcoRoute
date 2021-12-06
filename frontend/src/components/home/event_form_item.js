@@ -6,7 +6,7 @@ import * as React from 'react';
 // import FormControl from '@mui/material/FormControl';
 // import Select from '@mui/material/Select';
 // import Tooltip from '@mui/material/Tooltip'
-import { Tooltip, Select, FormControl, MenuItem, Box, InputLabel } from '@mui/material'
+import { Select, FormControl, MenuItem, Box, InputLabel } from '@mui/material'
 import './home.css'
 
 //<Tooltip title={`Average Attendee Arrival Time: ${Math.round(this.props.sortedPlaces[idx].time/60)} minutes`} key={this.props.sortedPlaces.time}>
@@ -67,7 +67,7 @@ class EventFormItem extends React.Component {
     handleChange = (event) => {
         this.props.onLocationSelect(event.target.value)
         this.setState({currentPlace: event.target.value})
-        // debugger
+       
   };
 
     render(){

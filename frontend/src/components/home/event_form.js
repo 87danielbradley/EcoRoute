@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Tags from './tags';
-import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
+// import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
 import EventFormItem from './event_form_item';
 
@@ -62,7 +62,7 @@ class EventForm extends Component {
         event._id = _id
       }
 
-      // debugger
+      
 
       this.props.action(event,this.props.currentUser);
       this.props.closeModalEvent();
@@ -106,7 +106,7 @@ class EventForm extends Component {
 
       })
       //attendeesArray, placesArray
-      // debugger
+      
       
     //   getPlaces(query, nearbyString).then(({data}) => {
     //       console.log("data", data)

@@ -15,20 +15,20 @@ const mapStateToProps = (state, ownProps) => {
     const eventId = state.appState.currentEditEventId;
     console.log(eventId)
     console.log("state.events[eventId]", state.events[eventId])
-    const emptyEvent = {
-          title: '',
-          category: '',
-          date: new Date(),
-          attendees: [],
-          hidden: false
-      }      
+    // const emptyEvent = {
+    //       title: '',
+    //       category: '',
+    //       date: new Date(),
+    //       attendees: [],
+    //       hidden: false
+    //   }      
       const event =  state.events[eventId]
 
        const featureArray = []
     if (state.navigation.places.features){
       
       state.navigation.places.features.map(feature => featureArray.push(feature.center))
-      // debugger
+      
     }
     let sortedPlaces = []
     if (state.navigation.matrix.durations){
@@ -42,7 +42,7 @@ const mapStateToProps = (state, ownProps) => {
                       feature.time = reduced[idx]}
                       return feature}
                     )
-      // debugger
+      
     }
     return {
       event:  event, //!eventId ? emptyEvent : state.events[eventId],

@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
   if (state.navigation.places.features){
     
     state.navigation.places.features.map(feature => featureArray.push(feature.center))
-    // debugger
+    
   }
   let sortedPlaces = []
   if (state.navigation.matrix.durations){
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
                     feature.time = reduced[idx]}
                     return feature}
                   )
-    // debugger
+    
   }
   
   return (

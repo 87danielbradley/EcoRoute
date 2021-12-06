@@ -45,7 +45,11 @@ class SessionForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
         this.props.action(this.state) 
-            .then( () => this.checkThenClose())
+            .then( () => {
+                debugger
+                this.props.currentUser ? this.props.fetchAllFriends(this.props.currentUser): console.log('temp fix')
+                this.checkThenClose()
+            })
 
     }
     checkThenClose() {
@@ -84,7 +88,7 @@ class SessionForm extends React.Component{
                         <div className="sf-header">
                             <span>
                                 Have an account? 
-                                <a onClick={() => openModal('login')}> Login </a>
+                                <span onClick={() => openModal('login')}> Login </span>
                             </span>
                             <h3>{formType}</h3>
                         </div>: 
@@ -140,7 +144,7 @@ class SessionForm extends React.Component{
 
                         {formType === 'Sign up' ?
                             null : <div>New to EcoRoute?
-                                <a onClick={() => openModal('signup')}> Sign up </a>
+                                <span onClick={() => openModal('signup')}> Sign up </span>
                             </div>}
 
                         {formType === 'Sign up'?

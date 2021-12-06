@@ -190,6 +190,7 @@ router.get('/friend_request/:userId', passport.authenticate('jwt', {session: fal
 router.get('/all_friends/:userId', async (req, res) => {
     
     try {
+        
         const friends =  await User.aggregate([
             { "$lookup": {
               "from": FriendRequest.collection.name,
@@ -268,7 +269,7 @@ router.delete('/friend_request/:userId/decline', passport.authenticate('jwt', {s
                             // { $rawResult: true }
                 )
 
-                // debugger
+               
             
                 await User.findOneAndUpdate(
                     { _id: request.params.userId },

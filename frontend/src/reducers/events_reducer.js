@@ -112,7 +112,7 @@ const initialState = {
 
 
 const EventsReducer = (oldState = initialState, action) => {
-  // debugger
+  
     Object.freeze(oldState);
     let nextState = Object.assign({}, oldState);
 

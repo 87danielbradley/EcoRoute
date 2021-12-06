@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { connect } from "react-redux";
 import MapboxView from "./mapbox_view"
 import {findPlacesNearby} from "../../actions/matrix_actions"

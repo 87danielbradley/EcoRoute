@@ -2,7 +2,7 @@ const { RECIEVE_USER_LOGOUT, RECIEVE_USER_SIGN_IN,RECEIVE_CURRENT_USER } = requi
 
 const intitalState = {
     isAuthenticated: false,
-    user: {}
+    user: undefined
 };
 
 const sessionApiReducer = (state = intitalState, action) => {

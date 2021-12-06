@@ -21,7 +21,7 @@ const style = {
 };
 
 function TransitionsModal(props) {
-  const { setModalOpenStatus, modalOpenStatus, isEditingEvent, clearEditEventId } = props
+  const { setModalOpenStatus, modalOpenStatus, isEditingEvent } = props
   const handleOpen = () => { 
     setModalOpenStatus(true)
   } ;

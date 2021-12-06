@@ -1,46 +1,52 @@
-import { dividerClasses } from "@mui/material";
 import React from "react";
-import SearchTags from './search_tags';
+import AutoComplete from "./auto_complete"
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: null
+            email: null,
+            searchFriends: this.props.friends
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleAddFriend = this.handleAddFriend.bind(this)
     }
 
-    handleChange(type) {
-        return (e) => (
-            this.setState({[type]: e.currentTarget.value})
-        )
-    }
+    // handleChange(type) {
+    //     return (e) => (
+    //         this.setState({[type]: e.currentTarget.value})
+    //     )
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.fetchSearchedUser(this.state.email)
+        this.props.fetchSearchedUser(e.currentTarget.innerText)
+        console.log(this.props.searchedUser)
     }
     
     handleAddFriend() {
-        this.props.sendRequest(this.state.user.id)
+        this.props.sendRequest(this.props.searchedUser[0].id)
+            .then(() => this.props.resetSearchedUser())
+        // reset searchedUser
     }
 
     render() {
-        
+        // console.log("searchFriends", this.state.searchFriends)
+        let addButton;
+        if (this.props.searchedUser.length) {
+            addButton = (
+                <button onClick={this.handleAddFriend}>Add Friend</button>
+            )
+        } else {
+            addButton = (<div className="nothing-searched"></div>)
+        }
         return (
             <div className="search-bar">
                 <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="find friends by email"
-                        onChange={this.handleChange('email')}
-                    />
-                    <button onClick={this.handleSubmit} > Search </button>
+                    <AutoComplete handleAddFriend={this.handleAddFriend} suggestions={this.state.searchFriends} handleSubmit={this.handleSubmit}/>
                 </form>
-                {/* <SearchTags /> */}
+                {addButton}
             </div>
         )
     }

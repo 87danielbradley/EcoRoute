@@ -7,7 +7,7 @@ import friendsReducer from './friends_reducer';
 import ModalReducer from './modal_reducer';
 import AppStateReducer from './app_state_reducer';
 import matrixApiReducer from './navigation_reducer';
-import SessionErrorsReducer from './session_errors_reducer';
+// import SessionErrorsReducer from './session_errors_reducer';
 import SearchReducer from './search_reducer';
 
 const RootReducer = combineReducers({
