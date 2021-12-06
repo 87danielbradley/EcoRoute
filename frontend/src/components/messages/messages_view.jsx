@@ -49,7 +49,9 @@ class MessagesView extends React.Component{
         event.preventDefault();
         this.props.createMessage({text: this.state.text,
         eventId: this.state.eventId});
-        this.setState({text: ""})
+        this.setState({text: ""});
+        
+        document.getElementById('temp-input').value = '';
         // this.props.fetchEventMessages(this.state.eventId)
         //     .then(response => {
         //         return (this.setState({ eventId: this.state.eventId, messages: response.messages.data }))
@@ -83,11 +85,12 @@ class MessagesView extends React.Component{
         }
     }
     render(){
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
         // if (!this.state.messages) {
         if (this.state.messages === null || this.state.messages.length === 0) {
         // if (this.state.messages.length === 0) {
             return (
-            <div>
+            <div id='chat-box'>
                 <form onSubmit={this.handleSubmit} >
                     <input id="temp-input" 
                         type="text"
@@ -100,18 +103,18 @@ class MessagesView extends React.Component{
             </div>)
         } else {
         return(
-            <div>
+            <div id='message-view-box'>
                 <form onSubmit={this.handleSubmit} >
                     <input id="temp-input" 
                         type="text"
                         placeholder="Send a message"
                         onChange={this.update()}>
                     </input>
-                    <input type="submit" value="&#9998;"></input>
+                   
                 </form>
                
                 {this.state.messages.map((message) =>(
-                    <MessagesViewItem text={message.text} />
+                    <MessagesViewItem text={message.text} message={message} currentUser={this.props.currentUser} />
                 ))}
             </div>
         )

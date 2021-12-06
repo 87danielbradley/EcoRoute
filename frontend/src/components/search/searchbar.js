@@ -1,5 +1,6 @@
 import React from "react";
 import AutoComplete from "./auto_complete"
+import "./searchbar.css"
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -18,11 +19,16 @@ class SearchBar extends React.Component {
     //         this.setState({[type]: e.currentTarget.value})
     //     )
     // }
+    componentDidUpdate(prevProps) {
+        if (prevProps.friends !== this.props.friends || prevProps.searchedUser !== this.props.searchedUser) {
+            this.setState( {searchFriends: this.props.friends} )
+        }
+    }
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.resetSearchedUser()
         this.props.fetchSearchedUser(e.currentTarget.innerText)
-        console.log(this.props.searchedUser)
     }
     
     handleAddFriend() {
@@ -32,11 +38,10 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        // console.log("searchFriends", this.state.searchFriends)
         let addButton;
         if (this.props.searchedUser.length) {
             addButton = (
-                <button onClick={this.handleAddFriend}>Add Friend</button>
+                <button className="search-bar-button" onClick={this.handleAddFriend}>Add Friend</button>
             )
         } else {
             addButton = (<div className="nothing-searched"></div>)

@@ -34,7 +34,7 @@ export const fetchFriend = userId => dispatch => {
 export const sendRequest = (userId) => (dispatch) =>  {
     return (
         APIUtil.sendFriendRequest(userId)
-        .then((args) => console.log('friend request sent',args) )
+        // .then((args) => console.log('friend request sent',args) )
         .catch(err => console.log(err))
     )
 };
@@ -55,7 +55,7 @@ export const fetchAllFriends = userId => dispatch => {
         APIUtil.getAllFriends(userId)
         .then(friends => { 
             // // 
-            console.log(friends)
+            // console.log(friends)
             dispatch(receiveAllFriends(friends))
         })
         .catch(err => {

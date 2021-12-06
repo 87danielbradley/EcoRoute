@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 1%;
-    align-items: center;
+    align-items: initial;
     font-family: 'Inter', sans-serif;
 }
 

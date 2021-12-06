@@ -1,0 +1,72 @@
+
+
+
+.MuiCardContent-root{
+    max-width: 100%;
+   
+
+}
+
+
+#friend-container{
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#friend-item-container{
+    max-width: 100%;
+    min-width: 100%;
+}
+/* 
+.MuiPaper-root{
+    max-width: 100%;
+    background: green;
+    min-width: 100%;
+}
+.MuiPaper-elevation{
+    max-width: 100%;
+    background: green;
+    min-width: 100%;
+}
+.MuiPaper-rounded{
+    max-width: 100%;
+    background: green;
+    min-width: 100%;
+}
+.MuiPaper-elevation1{
+    max-width: 100%;
+    background: green;
+    min-width: 100%;
+}
+.MuiCard-root{
+    max-width: 100%;
+    background: green;
+    min-width: 100%;
+}
+.cardFriends{
+    max-width: 100%;
+    background: green;
+    min-width: 100%;
+}
+.css-1ri6ub7-MuiPaper-root-MuiCard-root{
+    background: green;
+    max-width: 100%;
+}
+
+.MuiDivider-root{
+    max-width: 100%;
+    min-width: 100%;
+} 
+.MuiDivider-fullWidth{
+    max-width: 100%;
+    min-width: 100%;
+} 
+.MuiDivider-withChildren{
+    max-width: 100%;
+    min-width: 100%;
+} 
+.css-1ws8119-MuiDivider-root{
+    max-width: 100%;
+    min-width: 100%;
+} */

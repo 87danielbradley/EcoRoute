@@ -65,14 +65,11 @@ export default class MapboxView extends React.PureComponent{
                                 &#x263B;
                                 
                             </div>
-                            <div id="create-friend" className="sidebar-toggle-upper rounded-rect upper" onClick={() => this.toggleSidebar('upper')}>
-                                &#x2B;
-                                
-                            </div>
+                            
                         </div>
                     </div>
                     <div id="lower" className="sidebar-lower flex-lower lower collapsed collapsed-lower">
-                        <div className="sidebar-content rounded-rect flex-center message">
+                        <div className="sidebar-content rounded-rect message">
                 
                             {/* <input id="temp-input" type="text"></input> */}
                             <div id="chat-box">
@@ -178,19 +175,29 @@ export default class MapboxView extends React.PureComponent{
                         }
                     });
                 for (const marker of friends.features){
-                const container = document.createElement('div');
-                container.className = 'marker';
-                container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+50)}/${Math.floor(Math.random()*10+50)})`
-                // container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
-    
-                container.style.width = '50px';
-                container.style.height = '50px';
-                container.style.backgroundSize = '100%';
-                new mapboxgl.Marker(container)
-                    .setLngLat(marker.geometry.coordinates)
-                    .addTo(window.map);
-            }
+                    const container = document.createElement('div');
+                    container.className = 'marker';
+                    container.style.backgroundImage = `url(https://placekitten.com/${Math.floor(Math.random()*10+50)}/${Math.floor(Math.random()*10+50)})`
+                    // container.style.backgroundImage = `url(https://picsum.photos/${Math.floor(Math.random()*10+10)}/${Math.floor(Math.random()*10+10)})`
+        
+                    container.style.width = '50px';
+                    container.style.height = '50px';
+                    container.style.backgroundSize = '100%';
+                    new mapboxgl.Marker(container)
+                        .setLngLat(marker.geometry.coordinates)
+                        .addTo(window.map);
+                }
                 
+                const eventContainer = document.createElement('div');
+                eventContainer.className = 'marker';
+                eventContainer.style.backgroundImage = 'url(https://raw.githubusercontent.com/87danielbradley/EcoRoute/b3e95cb9380a1d569179cbeaa20d265de7762a52/frontend/src/components/mapbox/center.svg)'
+                eventContainer.style.width = '50px';
+                eventContainer.style.height = '50px';
+                eventContainer.style.backgroundSize = '100%';
+                new mapboxgl.Marker(eventContainer)
+                    .setLngLat(this.props.events[eventIndex].location)
+                    .addTo(window.map);
+
 
 
 
@@ -311,6 +318,7 @@ export default class MapboxView extends React.PureComponent{
         // this.state.map.easeTo({
         //     padding: padding,
         //     duration: 1000 // In ms. This matches the CSS transition duration property.
+        
         // });
     }
 

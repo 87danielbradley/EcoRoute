@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     };
   try {
     const eventId = state.appState.currentEditEventId;
-    console.log(eventId)
-    console.log("state.events[eventId]", state.events[eventId])
+    // console.log(eventId)
+    // console.log("state.events[eventId]", state.events[eventId])
     // const emptyEvent = {
     //       title: '',
     //       category: '',

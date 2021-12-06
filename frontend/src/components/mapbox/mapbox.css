@@ -192,6 +192,7 @@ The toggleSidebar() function removes this class from the element in order to exp
     align-items: top;
     right: 0px;
     top: 0px;
+    width: 316px;
 }
 
 
@@ -326,11 +327,12 @@ The toggleSidebar() function removes this class from the element in order to exp
    
 }
 #chat-box{
-    margin-top: 13px;
+    margin-top: 40px;
     display: flex;
     overflow: auto;
     gap: 5px;
     justify-content: left;
+    width: 100%;
 }
 
 .graph-container{
@@ -353,4 +355,10 @@ The toggleSidebar() function removes this class from the element in order to exp
 
 .marker{
     border-radius: 50%;
+}
+
+
+.avatarName{
+    
+    
 }
