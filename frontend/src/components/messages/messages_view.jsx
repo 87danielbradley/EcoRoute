@@ -97,7 +97,7 @@ class MessagesView extends React.Component{
                         placeholder="Send a message"
                         onChange={this.update()}>
                     </input>
-                    <input type="submit" value="&#9998;"></input>
+                   
                 </form>
                 You have no new messages
             </div>)
