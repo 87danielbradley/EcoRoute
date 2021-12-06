@@ -91,7 +91,7 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
     })
     .catch(error => console.log(error))
 }
-export const updateAnEvent = (event) => (dispatch, getState)=> {
+export const updateAnEvent = (event, currentUser) => (dispatch, getState)=> {
     
     // console.log("UPDATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
@@ -99,7 +99,15 @@ export const updateAnEvent = (event) => (dispatch, getState)=> {
     const attendees = getFriendsByUsername(state, usernames)
     // console.log(attendees)
     
-
+    const {email, location, id, username, friends} = currentUser
+    const curUser = {
+        email, 
+        location, 
+        username, 
+        friends, 
+        _id: id
+    }
+    attendees.unshift(curUser)
 
     event.attendees = attendees;
     
