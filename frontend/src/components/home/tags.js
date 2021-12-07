@@ -29,13 +29,11 @@ const useStyles = makeStyles((theme) => ({
   *   attendees.map(attendee => idToUsernameMap[attendee])
   * 
   */
+ debugger
  let attendeeUsername = []
  if (formType === 'Update Event') {
-    
-   const mappedUsernames = attendees.map(attendeeId => {
-        const username = (allFriends[attendeeId] && allFriends[attendeeId].username) || 'no name'
-      return username
-   });
+    // debugger
+   const mappedUsernames = Object.values(attendees).map(attendee => attendee.username);
    attendeeUsername = mappedUsernames
   //  console.log("MAPPED", mappedUsernames)
  } else {
@@ -74,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
             // label="Add Attendees"
             placeholder="Attendees"
             onChange={(e) => {
-              console.log(e)
+              // console.log(e)
             }}
             onKeyDown={(e) => {
               if (e.code === "Enter" && e.target.value) {
