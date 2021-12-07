@@ -21,6 +21,16 @@ class EventIndex extends React.Component{
         
     }
 
+    componentDidUpdate(prevProps) {
+        console.log('prev events', prevProps.events)
+        console.log('props events', this.props.events)
+        console.log(this.props.events.length === prevProps.events.length)
+        if (this.props.events.length !== prevProps.events.length) {
+            this.props.fetchUserEvents(this.props.currentUser.id)
+                .then(() => this.props.fetchEventsUserIsInvitedTo(this.props.currentUser.id))
+        }
+    }
+
     render(){
 
         const {events, deleteEvent, openModalAndEditEvent} = this.props;
