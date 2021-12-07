@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import Autocomplete from "@mui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { connect } from "react-redux";
-import { getFriends} from '../../selectors/event_selectors'
+// import { connect } from "react-redux";
+// import { getFriends} from '../../selectors/event_selectors'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,18 +22,22 @@ const useStyles = makeStyles((theme) => ({
  * and use the resulting array of usernames to initialize selectedOptions 
  */
 
- function Tags({ onOptionsChange, attendees, formType, friends, allFriends}) {  
+ export default function Tags({ onOptionsChange, attendees, formType, friends, allFriends}) {  
  /**
   * if formType === update
   *  loop over attendees 
   *   attendees.map(attendee => idToUsernameMap[attendee])
   * 
   */
- debugger
- let attendeeUsername = []
+//  debugger
+   let attendeeUsername = Object.values(attendees).map(attendee => attendee.username);
  if (formType === 'Update Event') {
     // debugger
    const mappedUsernames = Object.values(attendees).map(attendee => attendee.username);
+  //  const mappedUsernames = attendees.map(attendeeId => {
+  //       const username = (allFriends[attendeeId] && allFriends[attendeeId].username) || 'no name'
+  //     return username
+  //  });
    attendeeUsername = mappedUsernames
   //  console.log("MAPPED", mappedUsernames)
  } else {
@@ -87,9 +91,9 @@ const useStyles = makeStyles((theme) => ({
   );
 }
 
-const mapStateToProps = (state)=>  ({
-  allFriends: getFriends(state)
+// const mapStateToProps = (state)=>  ({
+//   allFriends: getFriends(state)
 
-})
+// })
 
-export default connect(mapStateToProps, null) (Tags)
+// export default connect(mapStateToProps, null) (Tags)

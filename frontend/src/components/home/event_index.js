@@ -22,9 +22,6 @@ class EventIndex extends React.Component{
     }
 
     componentDidUpdate(prevProps) {
-        console.log('prev events', prevProps.events)
-        console.log('props events', this.props.events)
-        console.log(this.props.events.length === prevProps.events.length)
         if (this.props.events.length !== prevProps.events.length) {
             this.props.fetchUserEvents(this.props.currentUser.id)
                 .then(() => this.props.fetchEventsUserIsInvitedTo(this.props.currentUser.id))
@@ -33,7 +30,7 @@ class EventIndex extends React.Component{
 
     render(){
 
-        const {events, deleteEvent, openModalAndEditEvent} = this.props;
+        const { events, deleteEvent, openModalAndEditEvent } = this.props;
            
   
        
@@ -89,10 +86,9 @@ const mapDispatchToProps = dispatch => {
         deleteEvent: (eventId) => dispatch(deleteAnEvent(eventId)),
         fetchEventsUserIsInvitedTo: (userId) => dispatch(fetchEventsUserIsInvitedTo(userId)),
         openModalAndEditEvent: (eventId) => { 
-            // console.log("EVENT ID", eventId)
             dispatch(setEditingEvent(eventId));
             dispatch(setModalStatus(true))
-        }
+        },
     }
 
 }

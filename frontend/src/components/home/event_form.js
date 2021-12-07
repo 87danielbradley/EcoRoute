@@ -12,7 +12,7 @@ import Tags from './tags';
 // import {  getPlaces, getMatrix } from '../../util/matrix_api_util'
 import { getFriendsByUsername } from '../../selectors/event_selectors'
 import EventFormItem from './event_form_item';
-import {FORM_TYPE_CREATE_EVENT, FORM_TYPE_UPDATE_EVENT } from '../../constants/events_constants'
+
 
 class EventForm extends Component {
 
@@ -129,14 +129,14 @@ class EventForm extends Component {
     render() {
         // console.log(this.state.attendees)
         const {title, attendees, date, category, locationSearch} = this.state;
-        const {friends, sortedPlaces} = this.props;
-        // console.log("THE FORM TYPE IS", this.props.formType)
+        const {friends, sortedPlaces, formType} = this.props;
+
       
         return (
             <div>
               <Card>
-              
-            <h1 className="eventHeader">Event Form</h1>
+              {formType === "Create Event" ? <h1 className="eventHeader">Create Event</h1> : <h1 className="eventHeader">Update Event</h1>}
+            
             <CardContent>
               <FormControl >
                 <TextField className="eventTitle"

@@ -3,7 +3,7 @@ import { updateAnEvent } from "../../actions/event_actions";
 import EventForm from "./event_form";
 import { setModalStatus } from "../../actions/app_actions";
 import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions";
-import { FORM_TYPE_UPDATE_EVENT} from '../../constants/events_constants'
+
 const mapStateToProps = (state, ownProps) => {
    const emptyEvent = {
         title: '',

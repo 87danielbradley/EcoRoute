@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import EventFormContainer from './event_form_container';
 import EditEventFormContainer from './edit_event_from_container'
 import { connect } from 'react-redux'
-import { setModalStatus, clearEditingEventId } from '../../actions/app_actions'
+import { setModalStatus } from '../../actions/app_actions'
  
 const style = {
   position: 'absolute',
@@ -24,10 +24,9 @@ function TransitionsModal(props) {
   const { setModalOpenStatus, modalOpenStatus, isEditingEvent } = props
   const handleOpen = () => { 
     setModalOpenStatus(true)
-  } ;
+  };
   const handleClose = () => { 
-    setModalOpenStatus(false);
-    clearEditingEventId()
+    setModalOpenStatus(false)
   };
 
   return (
@@ -67,8 +66,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setModalOpenStatus: (status) => dispatch(setModalStatus(status)),
-    clearEditEventId: () => dispatch(clearEditingEventId())
+    setModalOpenStatus: (status) => dispatch(setModalStatus(status))
   }
 }
 
