@@ -49,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
       event:  event, //!eventId ? emptyEvent : state.events[eventId],
       formType: "Update Event",
-      friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
+      friends: Object.values(state.friends).filter(friend => friend.friendsState > 0).map(user => user.username),
       allState: state,
       placesPojo: state.navigation.places,
       placesLocation: featureArray,
