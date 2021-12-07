@@ -5,8 +5,8 @@ import {findPlacesNearby, fetchMatrix} from "../../actions/matrix_actions";
 import { setModalStatus } from "../../actions/app_actions";
 
 const mapStateToProps = (state) => {
-  
-  
+
+
   const featureArray = []
   if (state.navigation.places.features){
     
@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
                   )
     
   }
-  debugger
+  // debugger
   // friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
   return (
   

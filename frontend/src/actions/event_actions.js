@@ -56,7 +56,7 @@ export const searchEventLocation = (query, userLocation, attendees) => (dispatch
 }
 
 export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
-   
+//    debugger
 // console.log("CREATE EVENT PAYLOAD",event)
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
@@ -85,21 +85,23 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
     // })
    APIUtil.createEvent(event)
     .then(eventRes => {
-        console.log(eventRes)
-
-        dispatch(receiveEvent(eventRes))
-    })
-    .catch(error => console.log(error))
-    return   APIUtil.createEvent(event)
-    .then(eventRes => {
         // console.log(eventRes)
-        eventRes.data.attendees.forEach( attendee => {
+        eventRes.data.attendees.forEach(attendee => {
             APIUtil.appendEventToAttendees(eventRes.data._id, attendee)
         })
-        // debugger
         dispatch(receiveEvent(eventRes))
     })
     .catch(error => console.log(error))
+    // return   APIUtil.createEvent(event)
+    // .then(eventRes => {
+    //     // console.log(eventRes)
+    //     eventRes.data.attendees.forEach( attendee => {
+    //         APIUtil.appendEventToAttendees(eventRes.data._id, attendee)
+    //     })
+    //     // debugger
+    //     dispatch(receiveEvent(eventRes))
+    // })
+    // .catch(error => console.log(error))
 }
 export const updateAnEvent = (event, currentUser) => (dispatch, getState)=> {
     

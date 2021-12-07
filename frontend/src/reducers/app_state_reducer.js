@@ -6,7 +6,6 @@ const initialState = {
 }
 
  const appState = (state = initialState, action) => {
-
     switch (action.type) {
         case SET_MODAL_OPEN_STATUS:
             return {
