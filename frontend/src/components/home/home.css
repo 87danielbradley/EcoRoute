@@ -6,6 +6,8 @@
     margin: auto;
     margin-left: 5px;
     margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
     background: white;
     z-index: 20;
     border-radius: 5px;
@@ -17,6 +19,12 @@
 
 #events-header *{
     margin: auto;
+}
+
+.table-element{
+    
+    height: 100%;
+    padding-top: 5px;
 }
 
 #menu-item0{

@@ -39,7 +39,7 @@ class EventIndex extends React.Component{
      
             <div className="event-index-item">
                 <div className="events-header">
-                    <h1>Events</h1>
+                    <h1 className="table-element">Events</h1>
                     <span><CreateEventModal /></span>
                 </div>
 
