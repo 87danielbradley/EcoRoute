@@ -54,11 +54,11 @@ const About = () => {
                             <a href="https://github.com/tkoh13" target="_blank">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/" target="_blank">
-                            {/* <a href="https://angel.co/u/tyler-koh"> */}
+                            {/* <a href="https://angel.co/" target="_blank"> */}
+                            <a href="https://angel.co/u/tyler-koh">
                                 <img src={Angel} alt="Angel Link" />
                             </a>
-                            <a href="https://linkedin.com/"target="_blank">
+                            <a href="https://www.linkedin.com/in/tylerkoh/"target="_blank">
                                 <img src={LinkedIn} alt="LinkedIn Link" />
                             </a>
                         </div>
