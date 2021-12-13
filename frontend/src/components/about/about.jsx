@@ -29,13 +29,13 @@ const About = () => {
                             BIO GOES HERE
                         </p> */}
                         <div className="team-links">
-                            <a href="https://github.com/sparsons808">
+                            <a href="https://github.com/sparsons808" target="_blank">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/u/sydney-parsons">
+                            <a href="https://angel.co/u/sydney-parsons" target="_blank">
                                 <img src={Angel} alt="Angel Link" />
                             </a>
-                            <a href="https://www.linkedin.com/in/sydney-parsons-18929458/">
+                            <a href="https://www.linkedin.com/in/sydney-parsons-18929458/" target="_blank">
                                 <img src={LinkedIn} alt="LinkedIn Link" />
                             </a>
                         </div>
@@ -51,14 +51,14 @@ const About = () => {
                             BIO GOES HERE
                         </p> */}
                         <div className="team-links">
-                            <a href="https://github.com/tkoh13">
+                            <a href="https://github.com/tkoh13" target="_blank">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/">
+                            <a href="https://angel.co/" target="_blank">
                             {/* <a href="https://angel.co/u/tyler-koh"> */}
                                 <img src={Angel} alt="Angel Link" />
                             </a>
-                            <a href="https://linkedin.com/">
+                            <a href="https://linkedin.com/"target="_blank">
                                 <img src={LinkedIn} alt="LinkedIn Link" />
                             </a>
                         </div>
@@ -74,13 +74,13 @@ const About = () => {
                             BIO GOES HERE
                         </p> */}
                         <div className="team-links">
-                            <a href="https://github.com/87danielbradley">
+                            <a href="https://github.com/87danielbradley" target="_blank">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/u/daniel-james-bradley">
+                            <a href="https://angel.co/u/daniel-james-bradley" target="_blank">
                                 <img src={Angel} alt="Angel Link" />
                             </a>
-                            <a href="https://www.linkedin.com/in/87danielbradley/">
+                            <a href="https://www.linkedin.com/in/87danielbradley/" target="_blank">
                                 <img src={LinkedIn} alt="LinkedIn Link" />
                             </a>
                         </div>
@@ -97,13 +97,13 @@ const About = () => {
                             Outside coding she enjoys playing the piano and staying fit.
                         </p> */}
                         <div className="team-links">
-                            <a href="https://github.com/mickeysaddai">
+                            <a href="https://github.com/mickeysaddai" target="_blank">
                                 <img src={GitHub} alt="GitHub Link" />
                             </a>
-                            <a href="https://angel.co/u/michelle-addai">
+                            <a href="https://angel.co/u/michelle-addai" target="_blank">
                                 <img src={Angel} alt="Angel Link" />
                             </a>
-                            <a href="https://www.linkedin.com/in/michelle-addai-5626a6106/">
+                            <a href="https://www.linkedin.com/in/michelle-addai-5626a6106/" target="_blank"> 
                                 <img src={LinkedIn} alt="LinkedIn Link" />
                             </a>
                         </div>
