@@ -4,7 +4,7 @@ import { fetchSearchedUser, resetSearchedUser } from "../../actions/search_actio
 import SearchBar from './searchbar';
 
 const mapStateToProps = state => {
-    // debugger
+    
     let searchFriends = Object.values(state.friends).filter(friend => friend.friendsState === 0 && friend.username !== state.session.user.username)
         .map(friend => friend.email)
     return({

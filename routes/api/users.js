@@ -309,7 +309,7 @@ router.get('/search', async (req, res) => {
 })
 
 router.patch('/attendees/:eventId', (req, res) => {
-    debugger
+    
     const eventId = req.params.eventId
     const person = User.findOneAndUpdate(
         { _id: req.body.id },

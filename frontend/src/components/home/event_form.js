@@ -48,7 +48,7 @@ class EventForm extends Component {
 
     createEventHandler = (e) => {
       e.preventDefault()
-      debugger
+      
       const {title, category,date, attendees, _id, location} = this.state;
 
       const event = {
@@ -86,7 +86,7 @@ class EventForm extends Component {
       const attendeeObjects = getFriendsByUsername(state, attendeeUsernames)
 
       attendeeObjects.unshift(this.props.currentUser)
-      // debugger
+      
       let lng = attendeeObjects.reduce((total, next) => total + next.location[0],0)/attendeeObjects.length;
       let lat = attendeeObjects.reduce((total, next) => total + next.location[1],0)/attendeeObjects.length;
       

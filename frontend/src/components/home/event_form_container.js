@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
                   )
     
   }
-  // debugger
+  
   // friends: Object.values(state.friends).map(friend => friend.username).filter(name => name !== undefined),
   return (
   

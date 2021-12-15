@@ -21,7 +21,7 @@ const initialState = {
                 }
         }
         case SET_EDIT_EVENT_ID:
-            // debugger
+            
             return {
                 ...state,
                 currentEditEventId: action.payload

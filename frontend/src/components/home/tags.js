@@ -29,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
   *   attendees.map(attendee => idToUsernameMap[attendee])
   * 
   */
-//  debugger
+
    let attendeeUsername = Object.values(attendees).map(attendee => attendee.username);
  if (formType === 'Update Event') {
-    // debugger
+    
    const mappedUsernames = Object.values(attendees).map(attendee => attendee.username);
   //  const mappedUsernames = attendees.map(attendeeId => {
   //       const username = (allFriends[attendeeId] && allFriends[attendeeId].username) || 'no name'

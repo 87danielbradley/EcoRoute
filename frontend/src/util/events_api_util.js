@@ -29,7 +29,7 @@ export const deleteEvent = eventId => {
 }
 
 export const appendEventToAttendees = (eventId, attendeesId) => {
-    // debugger
+    
     return axios.patch(`/api/users/attendees/${eventId}`, { id: attendeesId})
 }
 
