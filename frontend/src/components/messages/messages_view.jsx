@@ -52,6 +52,8 @@ class MessagesView extends React.Component{
         this.setState({text: ""});
         
         document.getElementById('temp-input').value = '';
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
+        
         // this.props.fetchEventMessages(this.state.eventId)
         //     .then(response => {
         //         return (this.setState({ eventId: this.state.eventId, messages: response.messages.data }))
@@ -83,6 +85,8 @@ class MessagesView extends React.Component{
                     return (this.setState({ eventId: this.props.eventId, messages: response.messages.data }))
                 });
         }
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
+        
     }
     render(){
         (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
