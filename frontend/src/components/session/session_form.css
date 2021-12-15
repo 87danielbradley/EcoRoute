@@ -15,3 +15,7 @@
     flex-direction: column;
     margin: 5px;
 } */
+
+.session-errors{
+    color: red;
+}

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { signup } from "../../actions/session_actions";
 import SessionForm from './session_form';
 import { Link } from "react-router-dom";
-import { login } from "../../actions/session_actions";
+import { login, resetErrors } from "../../actions/session_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { fetchAllFriends } from "../../actions/friend_actions";
 
@@ -29,7 +29,8 @@ const mDTP = (dispatch, ownProps) => ({
     action: (newFormUser) => dispatch(signup(newFormUser)),
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
-    fetchAllFriends: (userId) => dispatch(fetchAllFriends(userId))
+    fetchAllFriends: (userId) => dispatch(fetchAllFriends(userId)),
+    resetErrors: () => dispatch(resetErrors())
 })
 
 export default connect(mSTP,mDTP)(SessionForm);

@@ -33,9 +33,9 @@ class SessionForm extends React.Component{
     //     this.setState({errors: nextProps.errors})
     // }
 
-    // componentDidMount(){
-    //     this.props.resetErrors()
-    // }
+    componentDidMount(){
+        this.props.resetErrors()
+    }
 
     update(field){
         return (event) => {
@@ -68,7 +68,7 @@ class SessionForm extends React.Component{
     }
     sessionErrors(){
         return(
-            <ul >
+            <ul className="session-errors" >
                 {Object.values(this.props.errors).map((error,i)=>(
                     <li key={`error-${i}`}>
                         Invalid login credentials: {error}

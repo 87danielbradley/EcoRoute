@@ -6,7 +6,7 @@ export const RECIEVE_USER_LOGOUT = "RECIEVE_USER_LOGOUT";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 // export const RESET_SESSION_ERRORS = "RESET_SESSION_ERRORS";
 export const RECIEVE_USER_SIGN_IN = "RECIEVE_USER_SIGN_IN";
-
+export const RESET_SESSION_ERRORS = "RESET_SESSION_ERRORS";
 
 const recieveCurrentUser = (user) => ({
     type: RECEIVE_CURRENT_USER,
@@ -23,7 +23,11 @@ const logoutCurrentUser = () => ({
 const receiveSessionErrors = (errors) => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
-})
+});
+
+const resetSessionErrors = () => ({
+    type: RESET_SESSION_ERRORS
+});
 
 export const signup = (formUser) => dispatch => APIutil.signup(formUser)
     .then(() => dispatch(recieveCurrentUser(formUser)),
@@ -47,5 +51,7 @@ export const logout = () => dispatch => {
     APIutil.setAuthToken(false);
     dispatch(logoutCurrentUser())
 }
+
+export const resetErrors = () => dispatch => dispatch(resetSessionErrors());
 
 // export const logout = (formUser) => dispatch => APIutil.signup(formUser)
