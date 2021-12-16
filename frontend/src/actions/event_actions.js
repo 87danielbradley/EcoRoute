@@ -57,11 +57,11 @@ export const searchEventLocation = (query, userLocation, attendees) => (dispatch
 
 export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
 
-// console.log("CREATE EVENT PAYLOAD",event)
+
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
-    // console.log(attendees)
+    
 
     const {email, location, id, username, friends} = currentUser
     const curUser = {
@@ -75,7 +75,7 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
 
     
     event.attendees = attendees;
-    // console.log(event)
+    
 
 
     // const fakeCreate = Promise.resolve(event)
@@ -85,7 +85,7 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
     // })
    APIUtil.createEvent(event)
     .then(eventRes => {
-        // console.log(eventRes)
+        
         eventRes.data.attendees.forEach(attendee => {
             APIUtil.appendEventToAttendees(eventRes.data._id, attendee)
         })
@@ -94,7 +94,7 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
     .catch(error => console.log(error))
     // return   APIUtil.createEvent(event)
     // .then(eventRes => {
-    //     // console.log(eventRes)
+    //     
     //     eventRes.data.attendees.forEach( attendee => {
     //         APIUtil.appendEventToAttendees(eventRes.data._id, attendee)
     //     })
@@ -105,11 +105,11 @@ export const createAnEvent = (event, currentUser) => (dispatch, getState) => {
 }
 export const updateAnEvent = (event, currentUser) => (dispatch, getState)=> {
     
-    // console.log("UPDATE EVENT PAYLOAD",event)
+    
     const state = getState() //gives redux state, this is a redux thunk
     const usernames = event.attendees
     const attendees = getFriendsByUsername(state, usernames)
-    // console.log(attendees)
+   
     
     const {email, location, id, username, friends} = currentUser
     const curUser = {
@@ -131,7 +131,7 @@ export const updateAnEvent = (event, currentUser) => (dispatch, getState)=> {
     })
     return  APIUtil.updateEvent(event)
     .then(eventRes => {
-        // console.log(eventRes)
+        
         dispatch(receiveEvent(eventRes))
     })
 }

@@ -120,8 +120,7 @@ export default class MapboxView extends React.PureComponent{
         })
         
         // map.setCenter([lng,lat])
-        // console.log([lng,lat])
-        // console.log(eventIndex)
+       
         // if (window.map.getStyle().layers.length > 111){
         //     window.map.removeLayer('event')
         // }

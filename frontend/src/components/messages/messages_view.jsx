@@ -22,9 +22,7 @@ class MessagesView extends React.Component{
     }
     componentDidMount(){
         // this.props.fetchMessages()
-        // console.log(`componentDidMount`)
-        // console.log(this.state)
-        // console.log(this.props)
+        
         this.props.fetchEventMessages(this.props.eventId)
             .then(response => {
                 // console.log("mounted response", response)
@@ -52,7 +50,7 @@ class MessagesView extends React.Component{
         this.setState({text: ""});
         
         document.getElementById('temp-input').value = '';
-        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log(''))
         
         // this.props.fetchEventMessages(this.state.eventId)
         //     .then(response => {
@@ -62,9 +60,7 @@ class MessagesView extends React.Component{
     }
 
     componentDidUpdate(prevProps){
-        // console.log("updated state", this.state)
-        // console.log("updated state.messages", this.state.messages)
-        // console.log("updated props.eventId", this.props.eventId)
+       
         if (this.props.eventId !== prevProps.eventId) { //|| this.props.messages !== prevProps.messages){
             // // // 
             // this.setState({eventId: this.props.eventId,
@@ -76,8 +72,7 @@ class MessagesView extends React.Component{
                     return (this.setState({ eventId: this.props.eventId, messages: response.messages.data }))
                 });
         } else if (this.props.newMessage !== prevProps.newMessage) {
-            // console.log("this.props.messages", this.props.messages)
-            // console.log("prevProps.messages", prevProps.messages)
+            
             // return (this.setState({ messages: this.props.messages }))
 
             this.props.fetchEventMessages(this.props.eventId)
@@ -85,11 +80,11 @@ class MessagesView extends React.Component{
                     return (this.setState({ eventId: this.props.eventId, messages: response.messages.data }))
                 });
         }
-        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log(''))
         
     }
     render(){
-        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight:console.log('searching'))
+        (document.getElementById("message-view-box")? document.getElementById("message-view-box").scrollTop = document.getElementById("message-view-box").scrollHeight: console.log(''))
         // if (!this.state.messages) {
         if (this.state.messages === null || this.state.messages.length === 0) {
         // if (this.state.messages.length === 0) {

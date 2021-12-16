@@ -7,10 +7,10 @@ export const getMatrix = (attendees, places) => {
     attendees.map(attendee => locations.push(...attendee.location))
     let sources = [...Array(locations.length/2).keys()]
     places.map(place => locations.push(...place))
-    // console.log("LOCATIONS", locations)
+    
     const locationAt = semiColon(locations)
     let destinations = [...Array(locations.length/2).keys()].filter(n => !sources.includes(n))
-    // console.log("LOCATIONATTT", locationAt)
+    
     // return Promise.resolve()
    
     // return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?approaches=curb;curb;curb&access_token=${accessToken}`)
@@ -53,10 +53,10 @@ export const getDirections = (attendees, places) => {
     attendees.map(attendee => locations.push(...attendee.location))
     // let sources = [...Array(locations.length/2).keys()]
     places.map(place => locations.push(...place))
-    // console.log("LOCATIONS", locations)
+    
     const locationAt = semiColon(locations)
     // let destinations = [...Array(locations.length/2).keys()].filter(n => !sources.includes(n))
-    // console.log("LOCATIONATTT", locationAt)
+    
     // return Promise.resolve()
     
     return axios.get(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving/${locationAt.join(';')}?access_token=${accessToken}`)

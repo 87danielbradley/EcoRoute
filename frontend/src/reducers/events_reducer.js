@@ -100,7 +100,7 @@ const EventsReducer = (oldState = initialState, action) => {
 
     switch (action.type) {
         case RECEIVE_USER_EVENTS:
-          // console.log(" RECEIVE_USER_EVENTS", action)
+          
        
             action.events.data.forEach(event => {
                

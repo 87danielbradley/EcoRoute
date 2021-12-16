@@ -19,7 +19,7 @@ class EventForm extends Component {
     constructor(props){
 
         super(props);
-          // console.log("props here", this.props.eventId)
+          
             this.state = { 
               ...this.props.event, 
               location: '',
@@ -30,7 +30,7 @@ class EventForm extends Component {
     }
     
     onTextFieldChange = (fieldName, event) => {
-      // console.log(event.target.value)
+      
       this.setState({[fieldName]: event.target.value}, () => {
         if (fieldName === 'locationSearch' && event.target.value.length > 5) {
           this.handleSearch()
@@ -109,12 +109,12 @@ class EventForm extends Component {
       
       
     //   getPlaces(query, nearbyString).then(({data}) => {
-    //       console.log("data", data)
+   
     //       const features = data.features;
     //       const places = features.map(place => place.geometry.coordinates)
-    //       console.log("attendee objects", attendeeObjects)
+    
     //       getMatrix(attendeeObjects, places).then(response => {
-    //         console.log(response)
+    
     //       })
 
     //       return places
@@ -122,12 +122,12 @@ class EventForm extends Component {
     }
 
     handleLocationSelect = (coordinates) => {
-      // console.log("value", coordinates)
+      
       this.setState({location: coordinates}) //attempt to set state
     }
     
     render() {
-        // console.log(this.state.attendees)
+        
         const {title, attendees, date, category, locationSearch} = this.state;
         const {friends, sortedPlaces, formType} = this.props;
 
