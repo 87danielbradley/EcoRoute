@@ -20,6 +20,7 @@ const App = () => (
             <ProtectedRoute path="/messages" component={MessagesContainer} />
             {/* change below to protected route */}
             <Route path="/events/:eventId" component={EditEventContainer} />
+            
         </Switch>
     </div>
 )
