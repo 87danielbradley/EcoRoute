@@ -11,6 +11,9 @@ const users = require("./routes/api/users");
 const messages = require("./routes/api/messages");
 const events = require("./routes/api/events");
 // const User = require('./models/User')
+
+require('dotenv').config()
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
   app.get('/', (req, res) => {
